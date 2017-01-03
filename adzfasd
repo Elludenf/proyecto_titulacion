@@ -1,0 +1,4 @@
+ per_codigo | per_nombre1 | per_nombre2 | per_apellido1 | per_apellido2 | per_tipoid | per_id | per_direccion | per_telefono | per_celular | per_mail | per_mailpuce | per_fechanac | per_sexo | per_foto 
+------------+-------------+-------------+---------------+---------------+------------+--------+---------------+--------------+-------------+----------+--------------+--------------+----------+----------
+(0 rows)
+

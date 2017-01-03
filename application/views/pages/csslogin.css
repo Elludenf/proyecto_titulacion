@@ -1,0 +1,42 @@
+body {
+	background-color:black;
+	}
+aside{
+    color: #FF0000;
+    font-size: 20px;
+    /*text-align: right;*/
+    background: #FF0;
+    position: relative;
+    right:0px;
+    height: 800px;
+    width: 200px;
+    float: right;
+
+}
+p{
+    color: #0000FF;
+    font-size: 10px;
+}
+/*este es un comentario*/
+a {
+    text-decoration: none;
+    color: #000000;
+}
+li{
+    display: inline-block;
+    list-style: none !important;
+    margin-right:15px;
+}
+.formato1{
+    color: #FFFF00;
+}
+#formato2{
+    /*solo un elemento se aplica*/
+    color: #00FFFF;
+}
+@media screen and (max-width: 800px)
+{
+    nav{
+        display:none;
+    }
+}
