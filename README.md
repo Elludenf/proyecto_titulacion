@@ -1,4 +1,2 @@
 # proyecto_titulacion
 Proyecto titulacion
-asadsadadsadc
-dasdsadsads
