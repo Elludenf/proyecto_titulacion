@@ -46,8 +46,16 @@ class Estudiante extends CI_Controller
 		$this->form_validation->set_rules('est_carrera','Est Carrera','required|max_length[1024]');
 		
 		if($this->form_validation->run())     
-        {   
+        {
+            //Agregado
+            $this->db->select_max('per_codigo');
+            $result= $this->db->get('estudiante')->row_array();
+            //echo $result['per_codigo'];
+            //
             $params = array(
+                //agregado
+                'per_codigo' =>$result['per_codigo']+1,
+                //
 				'per_nombre1' => $this->input->post('per_nombre1'),
 				'per_nombre2' => $this->input->post('per_nombre2'),
 				'per_apellido1' => $this->input->post('per_apellido1'),

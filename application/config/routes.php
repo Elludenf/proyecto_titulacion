@@ -63,6 +63,7 @@ $route['(:any)'] = 'admin/view/$1';
 $route['(:any)'] = 'carrera/view/$1';
 $route['(:any)'] = 'facultades/view/$1';
 $route['(:any)'] = 'estudiantes/view/$1';
+$route['(:any)'] = 'escuelas/view/$1';
 //modificado
 //$route['(:any)'] = 'estudiantes/edit/$1';
 //$route['(:any)'] = 'estudiantes/add/$1';

@@ -12,11 +12,11 @@ class Carrera_model extends CI_Model
     }
     
     /*
-     * Get carrera by CARR_CODIGO
+     * Get carrera by carr_codigo
      */
-    function get_carrera($CARR_CODIGO)
+    function get_carrera($carr_codigo)
     {
-        return $this->db->get_where('CARRERAS',array('CARR_CODIGO'=>$CARR_CODIGO))->row_array();
+        return $this->db->get_where('carreras',array('carr_codigo'=>$carr_codigo))->row_array();
     }
     
     /*
@@ -24,7 +24,7 @@ class Carrera_model extends CI_Model
      */
     function get_all_carreras()
     {
-        return $this->db->get('CARRERAS')->result_array();
+        return $this->db->get('carreras')->result_array();
     }
     
     /*
@@ -32,17 +32,17 @@ class Carrera_model extends CI_Model
      */
     function add_carrera($params)
     {
-        $this->db->insert('CARRERAS',$params);
-        return $this->db->insert_id();
+        $this->db->insert('carreras',$params);
+        //return $this->db->insert_id();
     }
     
     /*
      * function to update carrera
      */
-    function update_carrera($CARR_CODIGO,$params)
+    function update_carrera($carr_codigo,$params)
     {
-        $this->db->where('CARR_CODIGO',$CARR_CODIGO);
-        $response = $this->db->update('CARRERAS',$params);
+        $this->db->where('carr_codigo',$carr_codigo);
+        $response = $this->db->update('carreras',$params);
         if($response)
         {
             return "carrera updated successfully";
@@ -56,9 +56,9 @@ class Carrera_model extends CI_Model
     /*
      * function to delete carrera
      */
-    function delete_carrera($CARR_CODIGO)
+    function delete_carrera($carr_codigo)
     {
-        $response = $this->db->delete('CARRERAS',array('CARR_CODIGO'=>$CARR_CODIGO));
+        $response = $this->db->delete('carreras',array('carr_codigo'=>$carr_codigo));
         if($response)
         {
             return "carrera deleted successfully";
