@@ -12,11 +12,11 @@ class Estudiante_model extends CI_Model
     }
     
     /*
-     * Get estudiante by PER_CODIGO
+     * Get estudiante by per_codigo
      */
-    function get_estudiante($PER_CODIGO)
+    function get_estudiante($per_codigo)
     {
-        return $this->db->get_where('estudiante',array('per_codigo'=>$PER_CODIGO))->row_array();
+        return $this->db->get_where('estudiante',array('per_codigo'=>$per_codigo))->row_array();
     }
     
     /*
@@ -39,9 +39,9 @@ class Estudiante_model extends CI_Model
     /*
      * function to update estudiante
      */
-    function update_estudiante($PER_CODIGO,$params)
+    function update_estudiante($per_codigo,$params)
     {
-        $this->db->where('per_codigo',$PER_CODIGO);
+        $this->db->where('per_codigo',$per_codigo);
         $response = $this->db->update('estudiante',$params);
         if($response)
         {
@@ -56,9 +56,9 @@ class Estudiante_model extends CI_Model
     /*
      * function to delete estudiante
      */
-    function delete_estudiante($PER_CODIGO)
+    function delete_estudiante($per_codigo)
     {
-        $response = $this->db->delete('estudiante',array('per_codigo'=>$PER_CODIGO));
+        $response = $this->db->delete('estudiante',array('per_codigo'=>$per_codigo));
         if($response)
         {
             return "estudiante deleted successfully";

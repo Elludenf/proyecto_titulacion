@@ -2,24 +2,24 @@
 
 <?php echo form_open('estudiante/add'); ?>
 
-	<div>PER NOMBRE1 : <input type="text" name="PER_NOMBRE1" value="<?php echo $this->input->post('PER_NOMBRE1'); ?>" /></div>
-	<div>PER NOMBRE2 : <input type="text" name="PER_NOMBRE2" value="<?php echo $this->input->post('PER_NOMBRE2'); ?>" /></div>
-	<div>PER APELLIDO1 : <input type="text" name="PER_APELLIDO1" value="<?php echo $this->input->post('PER_APELLIDO1'); ?>" /></div>
-	<div>PER APELLIDO2 : <input type="text" name="PER_APELLIDO2" value="<?php echo $this->input->post('PER_APELLIDO2'); ?>" /></div>
-	<div>PER TIPOID : <input type="text" name="PER_TIPOID" value="<?php echo $this->input->post('PER_TIPOID'); ?>" /></div>
-	<div>PER ID : <input type="text" name="PER_ID" value="<?php echo $this->input->post('PER_ID'); ?>" /></div>
-	<div>PER DIRECCION : <input type="text" name="PER_DIRECCION" value="<?php echo $this->input->post('PER_DIRECCION'); ?>" /></div>
-	<div>PER TELEFONO : <input type="text" name="PER_TELEFONO" value="<?php echo $this->input->post('PER_TELEFONO'); ?>" /></div>
-	<div>PER CELULAR : <input type="text" name="PER_CELULAR" value="<?php echo $this->input->post('PER_CELULAR'); ?>" /></div>
-	<div>PER MAIL : <input type="text" name="PER_MAIL" value="<?php echo $this->input->post('PER_MAIL'); ?>" /></div>
-	<div>PER MAILPUCE : <input type="text" name="PER_MAILPUCE" value="<?php echo $this->input->post('PER_MAILPUCE'); ?>" /></div>
-	<div>PER FECHANAC : <input type="text" name="PER_FECHANAC" value="<?php echo $this->input->post('PER_FECHANAC'); ?>" /></div>
-	<div>PER SEXO : <input type="text" name="PER_SEXO" value="<?php echo $this->input->post('PER_SEXO'); ?>" /></div>
-	<div>PER FOTO : <input type="text" name="PER_FOTO" value="<?php echo $this->input->post('PER_FOTO'); ?>" /></div>
-	<div>EST FECHAINGRESO : <input type="text" name="EST_FECHAINGRESO" value="<?php echo $this->input->post('EST_FECHAINGRESO'); ?>" /></div>
-	<div>EST FECHAESTIMADAGRADUACION : <input type="text" name="EST_FECHAESTIMADAGRADUACION" value="<?php echo $this->input->post('EST_FECHAESTIMADAGRADUACION'); ?>" /></div>
-	<div>EST FECHAGRADUACION : <input type="text" name="EST_FECHAGRADUACION" value="<?php echo $this->input->post('EST_FECHAGRADUACION'); ?>" /></div>
-	<div>EST CARRERA : <input type="text" name="EST_CARRERA" value="<?php echo $this->input->post('EST_CARRERA'); ?>" /></div>
+	<div>Per Nombre1 : <input type="text" name="per_nombre1" value="<?php echo $this->input->post('per_nombre1'); ?>" /></div>
+	<div>Per Nombre2 : <input type="text" name="per_nombre2" value="<?php echo $this->input->post('per_nombre2'); ?>" /></div>
+	<div>Per Apellido1 : <input type="text" name="per_apellido1" value="<?php echo $this->input->post('per_apellido1'); ?>" /></div>
+	<div>Per Apellido2 : <input type="text" name="per_apellido2" value="<?php echo $this->input->post('per_apellido2'); ?>" /></div>
+	<div>Per Tipoid : <input type="text" name="per_tipoid" value="<?php echo $this->input->post('per_tipoid'); ?>" /></div>
+	<div>Per Id : <input type="text" name="per_id" value="<?php echo $this->input->post('per_id'); ?>" /></div>
+	<div>Per Direccion : <input type="text" name="per_direccion" value="<?php echo $this->input->post('per_direccion'); ?>" /></div>
+	<div>Per Telefono : <input type="text" name="per_telefono" value="<?php echo $this->input->post('per_telefono'); ?>" /></div>
+	<div>Per Celular : <input type="text" name="per_celular" value="<?php echo $this->input->post('per_celular'); ?>" /></div>
+	<div>Per Mail : <input type="text" name="per_mail" value="<?php echo $this->input->post('per_mail'); ?>" /></div>
+	<div>Per Mailpuce : <input type="text" name="per_mailpuce" value="<?php echo $this->input->post('per_mailpuce'); ?>" /></div>
+	<div>Per Fechanac : <input type="text" name="per_fechanac" value="<?php echo $this->input->post('per_fechanac'); ?>" /></div>
+	<div>Per Sexo : <input type="text" name="per_sexo" value="<?php echo $this->input->post('per_sexo'); ?>" /></div>
+	<div>Per Foto : <input type="text" name="per_foto" value="<?php echo $this->input->post('per_foto'); ?>" /></div>
+	<div>Est Fechaingreso : <input type="text" name="est_fechaingreso" value="<?php echo $this->input->post('est_fechaingreso'); ?>" /></div>
+	<div>Est Fechaestimadagraduacion : <input type="text" name="est_fechaestimadagraduacion" value="<?php echo $this->input->post('est_fechaestimadagraduacion'); ?>" /></div>
+	<div>Est Fechagraduacion : <input type="text" name="est_fechagraduacion" value="<?php echo $this->input->post('est_fechagraduacion'); ?>" /></div>
+	<div>Est Carrera : <input type="text" name="est_carrera" value="<?php echo $this->input->post('est_carrera'); ?>" /></div>
 	
 	<button type="submit">Save</button>
 
