@@ -76,8 +76,8 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'   => '',
 	'hostname' => '127.0.0.1',
-	'username' => 'postgres',
-	'password' => 'SpardaPP05',
+	'username' => 'admintitulacion',
+	'password' => 'fb0c33a45',
 	'database' => 'db_titulacion',
 	'dbdriver' => 'postgre',
 	'dbprefix' => '',
@@ -94,7 +94,7 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE,
-    'port'=> 5434
+    'port'=> 5432
 
 
 );
