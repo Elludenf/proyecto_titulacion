@@ -1,9 +1,9 @@
 <?php
 class Admin extends CI_Controller { 
-    public function view($page= 'login')
+    public function view($page= 'login_view')
     {
         
-       if ( ! file_exists(APPPATH.'views/'.$page.'.php'))
+       if ( ! file_exists(APPPATH.'views'.$page.'.php'))
         {
                 // Whoops, we don't have a page for that!
                 echo('no existe la pagina');
