@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Learning CI</title>
+    <title>Simple Login with CodeIgniter1</title>
 </head>
 <body>
-    <?php if(isset($_SESSION)) {
-        echo $this->session->flashdata('flash_data');
-    } ?>
- 
-    <form action="<?= site_url('login') ?>" method="post">
-        <p><label for="username">Usuario</label>
-        <input type="text" name="username" /></p>
-        <p><label for="password">Contreseña</label>
-        <input type="text" name="password" /></p>
-        <p> <button type="submit">validar</button></p>
-        
-        
-       
-    </form>
+<h1>Simple Login with CodeIgniter1</h1>
+<?php echo validation_errors(); ?>
+<?php echo form_open('verifylogin'); ?>
+<label for="username">Username:</label>
+<input type="text" size="20" id="username" name="username"/>
+<br/>
+<label for="password">Password:</label>
+<input type="password" size="20" id="passowrd" name="password"/>
+<br/>
+<input type="submit" value="Login"/>
+</form>
 </body>
 </html>

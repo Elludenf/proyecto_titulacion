@@ -1,30 +1,35 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
- 
-/**
- * @name Home.php
- * @author Imron Rosdiana
- */
-class Home extends CI_Controller
-{
- 
-    function __construct() {
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+session_start(); //we need to call PHP's session object to access it through CI
+class Home extends CI_Controller {
+
+    function __construct()
+    {
         parent::__construct();
- 
-        if(empty($this->session->userdata('id_user'))) {
-            $this->session->set_flashdata('flash_data', 'You don\'t have access!');
-            redirect('login');
+    }
+
+    function index()
+    {
+        if($this->session->userdata('logged_in'))
+        {
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+            $this->load->view('home_view', $data);
+        }
+        else
+        {
+            //If no session, redirect to login page
+            redirect('login', 'refresh');
         }
     }
- 
-    public function index() {
-        $this->load->view('home');
+
+    function logout()
+    {
+        $this->session->unset_userdata('logged_in');
+        session_destroy();
+        redirect('home', 'refresh');
     }
- 
-    public function logout() {
-        $data = ['id_user', 'username'];
-        $this->session->unset_userdata($data);
- 
-        redirect('login');
-    }
+
+
 }
+
+?>
