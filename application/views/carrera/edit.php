@@ -1,22 +1,9 @@
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('carrera/edit/'.$carrera['CARR_CODIGO']); ?>
+<?php echo form_open('carrera/edit/'.$carrera['carr_codigo']); ?>
 
-	<div>
-				ESC CODIGO : 
-				<select name="ESC_CODIGO">
-					<option value="">select escuela</option>
-					<?php 
-					foreach($all_escuelas as $escuela)
-					{
-						$selected = ($escuela['ESC_CODIGO'] == $carrera['ESC_CODIGO']) ? ' selected="selected"' : null;
-
-						echo '<option value="'.$escuela['ESC_CODIGO'].'" '.$selected.'>'.$escuela['ESC_CODIGO'].'</option>';
-					} 
-					?>
-				</select>
-		</div>
-	<div>CARR DESCRIPCION : <input type="text" name="CARR_DESCRIPCION" value="<?php echo ($this->input->post('CARR_DESCRIPCION') ? $this->input->post('CARR_DESCRIPCION') : $carrera['CARR_DESCRIPCION']); ?>" /></div>
+	<div>Esc Codigo : <input type="text" name="esc_codigo" value="<?php echo ($this->input->post('esc_codigo') ? $this->input->post('esc_codigo') : $carrera['esc_codigo']); ?>" /></div>
+	<div>Carr Descripcion : <input type="text" name="carr_descripcion" value="<?php echo ($this->input->post('carr_descripcion') ? $this->input->post('carr_descripcion') : $carrera['carr_descripcion']); ?>" /></div>
 	
 	<button type="submit">Save</button>
 	

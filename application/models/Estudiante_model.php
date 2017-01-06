@@ -33,7 +33,7 @@ class Estudiante_model extends CI_Model
     function add_estudiante($params)
     {
         $this->db->insert('estudiante',$params);
-        return $this->db->insert_id();
+        //return $this->db->insert_id();
     }
     
     /*
