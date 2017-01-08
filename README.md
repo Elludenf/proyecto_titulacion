@@ -1,9 +1,7 @@
 # proyecto_titulacion
-Proyecto titulacion
-zasdsadadadas
-
-sa
-dadasdad
-henryp
-
-pato
+Proyecto elaborado por:
+Patricio Pérez
+Henry Trujillo
+Ronny Cordova
+Roberto Gallardo
+''''''''''''''

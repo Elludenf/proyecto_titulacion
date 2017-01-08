@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'admin/view';
+$route['default_controller'] = 'login';
 //$route['default_controller'] = 'carrera/view';
 
 //ejemploShadow111
@@ -60,6 +60,7 @@ $route['404_override'] = '';
 //$route['(:any)'] = 'pages/view/$1';
 $route['(:any)'] = 'admin/view/$1';
 //$route['default_controller'] = 'login';
+$route['(:any)'] = 'calendario/view/$1';
 $route['(:any)'] = 'carrera/view/$1';
 $route['(:any)'] = 'facultades/view/$1';
 $route['(:any)'] = 'estudiantes/view/$1';
@@ -67,6 +68,8 @@ $route['(:any)'] = 'escuelas/view/$1';
 $route['(:any)'] = 'permiso/view/$1';
 $route['(:any)'] = 'zrole/view/$1';
 $route['(:any)'] = 'zusuario/view/$1';
+$route['(:any)'] = 'periodos_academicos2/view/$1';
+$route['(:any)'] = 'plan_de_estudio/view/$1';
 //modificado
 //$route['(:any)'] = 'estudiantes/edit/$1';
 //$route['(:any)'] = 'estudiantes/add/$1';
