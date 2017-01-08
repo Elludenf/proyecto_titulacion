@@ -1,6 +1,7 @@
 # proyecto_titulacion
-Proyecto elborado por:
+Proyecto elaborado por:
 Patricio Pérez
 Henry Trujillo
 Ronny Cordova
 Roberto Gallardo
+''''''''''''''
