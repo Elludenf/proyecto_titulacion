@@ -42,9 +42,7 @@ class Calendario extends CI_Controller
             //echo $result['per_codigo'];
             //
             $params = array(
-                //agregado
                 'calcodigo' =>$result['calcodigo']+1,
-                //
 				'pac_codigo' => $this->input->post('pac_codigo'),
 				'calfecha' => $this->input->post('calfecha'),
 				'caldiasemana' => $this->input->post('caldiasemana'),
@@ -57,8 +55,8 @@ class Calendario extends CI_Controller
         else
         {
 
-			$this->load->model('Periodos_academicos2_model');
-			$data['all_periodos_academicos2'] = $this->Periodos_academicos2_model->get_all_periodos_academicos2();
+			$this->load->model('Periodos_academicos_model');
+			$data['all_periodos_academicos'] = $this->Periodos_academicos_model->get_all_periodos_academicos();
                 
             $this->load->view('calendario/add',$data);
         }
@@ -97,8 +95,8 @@ class Calendario extends CI_Controller
             {   
                 $data['calendario'] = $this->Calendario_model->get_calendario($calcodigo);
     
-				$this->load->model('Periodos_academicos2_model');
-				$data['all_periodos_academicos2'] = $this->Periodos_academicos2_model->get_all_periodos_academicos2();
+				$this->load->model('Periodos_academicos_model');
+				$data['all_periodos_academicos'] = $this->Periodos_academicos_model->get_all_periodos_academicos();
 
                 $this->load->view('calendario/edit',$data);
             }

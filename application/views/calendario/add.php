@@ -5,13 +5,13 @@
 	<div>
 				Pac Codigo : 
 				<select name="pac_codigo">
-					<option value="">select periodos_academicos2</option>
+					<option value="">select periodo_academico</option>
 					<?php 
-					foreach($all_periodos_academicos2 as $periodos_academicos2)
+					foreach($all_periodos_academicos as $periodo_academico)
 					{
-						$selected = ($periodos_academicos2['pac_codigo'] == $this->input->post('pac_codigo')) ? ' selected="selected"' : null;
+						$selected = ($periodo_academico['pac_codigo'] == $this->input->post('pac_codigo')) ? ' selected="selected"' : null;
 
-						echo '<option value="'.$periodos_academicos2['pac_codigo'].'" '.$selected.'>'.$periodos_academicos2['pac_descripcion'].'</option>';
+						echo '<option value="'.$periodo_academico['pac_codigo'].'" '.$selected.'>'.$periodo_academico['pac_descripcion'].'</option>';
 					} 
 					?>
 				</select>
