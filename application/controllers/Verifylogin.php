@@ -13,14 +13,18 @@ class VerifyLogin extends CI_Controller {
         //This method will have the credentials validation
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('zusrnombre', 'Zusrnombre', 'trim|required');
-        $this->form_validation->set_rules('zusrclave', 'Zusrclave', 'trim|required|callback_check_database');
+        $this->form_validation->set_rules('zusrnombre', 'nombre', 'trim|required');
+        $this->form_validation->set_rules('zusrclave', 'clave', 'trim|required|callback_check_database');
 
         if($this->form_validation->run() == FALSE)
         {
             //Field validation failed.  User redirected to login page
 
-            $this->load->view('Login/login_view');
+
+            $this->load->view('templates/header');
+            $this->load->view('login/login_view');
+            $this->load->view('templates/footer');
+
         }
         else
         {

@@ -12,22 +12,29 @@
 
         <!--  start login-inner -->
         <div id="login-inner">
+            <?php echo validation_errors(); ?>
+            <?php echo form_open('verifylogin/index'); ?>
             <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                    <th>Usuario: </th>
-                    <td><input type="text"  class="login-inp" /></td>
+                    <th><label for="zusrnombre">Usuario2:</label> </th>
+                    <td><input type="text"  class="login-inp" id="zusrnombre" name="zusrnombre"/></td>
+
                 </tr>
                 <tr>
-                    <th>Contraseña: </th>
-                    <td><input type="password" value="************"  onfocus="this.value=''" class="login-inp" /></td>
+                    <th><label for="zusrclave">Contraseña2:</label></th>
+                    <td><input type="password" value="************"  onfocus="this.value=''" class="login-inp" id="zusrclave" name="zusrclave" /></td>
+
                 </tr>
 
                 <tr>
                     <th></th>
-                    <td><input type="button" class="submit-login"  /></td>
+                    <td><input value="" type="submit" class="submit-login"  /></td>
                 </tr>
 
+
+
             </table>
+
         </div>
         <!--  end login-inner -->
 
@@ -45,3 +52,6 @@
 <div class="clear"></div>
 <div class="clear"></div>
 <div class="clear"></div>
+
+
+
