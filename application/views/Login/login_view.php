@@ -1,32 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>PUCE</title>
-</head>
-<body>
-    <h3 align="center">Bienvenido!!</h3>
-    <h2 align="center">Sistema de seguimiento del proceso de graduacion</h2>
-    <div style="background-color: #2b669a" align="center">
-        <h1>Inicio de sesion</h1>
-        <?php echo validation_errors(); ?>
-        <?php echo form_open('verifylogin/index'); ?>
-        <p>
-        <label for="zusrnombre">Usuario:</label>
-        <input type="text" size="20" id="zusrnombre" name="zusrnombre"/>
-        </p>
-        <br/>
-        <p>
-        <label for="zusrclave">Contraseña:</label>
-        <input type="password" size="20" id="zusrclave" name="zusrclave"/>
-        </p>
-        <br/>
-        <input type="submit" value="Login"/>
-        </form>
+<div class="clear"></div>
+
+<!-- Start: login-holder -->
+<div id="login-holder">
+
+    <div id = "login-box">
+        <!--  start login-title -->
+        <div id = "login-title">
+            <h2>Inicio de Sesión</h2>
+        </div>
+        <!--  end login-title -->
+
+        <!--  start login-inner -->
+        <div id="login-inner">
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <th>Usuario: </th>
+                    <td><input type="text"  class="login-inp" /></td>
+                </tr>
+                <tr>
+                    <th>Contraseña: </th>
+                    <td><input type="password" value="************"  onfocus="this.value=''" class="login-inp" /></td>
+                </tr>
+
+                <tr>
+                    <th></th>
+                    <td><input type="button" class="submit-login"  /></td>
+                </tr>
+
+            </table>
+        </div>
+        <!--  end login-inner -->
+
+        <a href="" class="forgot-pwd"><br>¿Olvidaste tu contraseña?</a>
     </div>
-    <p>**los siguientes textos son de prueba:</p>
-    <p>* temporalmente, utiice el usuario "rob" y pass: 123 (ingresando el usuario en la base, tabla zusuarios)</p>
-    <p>* por el momento el redireccionamiento se lo realiza hacia la pag. Estudiamte/index</p>
-    <!--<a ><?php// echo site_url('estudiante/index'); ?></a> -->
-    <!--<a href="<?php //echo site_url('verifylogin/index'); ?>">Edit</a> -->
-</body>
-</html>
+
+
+    <div id="password-fgt" title="Inconvenientes con tus credenciales">
+        <p>Por favor dirigite al centro de informatica</p>
+    </div>
+
+</div>
+<!-- End: login-holder -->
+
+<div class="clear"></div>
+<div class="clear"></div>
+<div class="clear"></div>
