@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'login';
+$route['default_controller'] ='login/view/$1';
 //$route['default_controller'] = 'carrera/view';
 
 //ejemploShadow111
@@ -70,6 +70,9 @@ $route['(:any)'] = 'zrole/view/$1';
 $route['(:any)'] = 'zusuario/view/$1';
 $route['(:any)'] = 'periodos_academicos/view/$1';
 $route['(:any)'] = 'plan_de_estudio/view/$1';
+
+
+//$route['(:any)'] = 'login/view/$1';
 //modificado
 //$route['(:any)'] = 'estudiantes/edit/$1';
 //$route['(:any)'] = 'estudiantes/add/$1';
