@@ -93,145 +93,30 @@
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Carrera</a></th>
 
                                     </tr>
-                                    <tr>
-                                        <td><input  type="checkbox"/></td>
-                                        <td>Sabev</td>
-                                        <td>George</td>
-                                        <td><a href="">george@mainevent.co.za</a></td>
-                                        <td>R250</td>
-                                        <td><a href="">www.mainevent.co.za</a></td>
-                                        <td>George</td>
-                                        <td>George</td>
-                                        <td>George</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
+                                    <?php foreach($estudiante as $e){ ?>
+                                        <tr>
+                                            <td><?php echo $e['per_codigo']; ?></td>
+                                            <td><?php echo $e['per_nombre1']; ?></td>
+                                            <td><?php echo $e['per_nombre2']; ?></td>
+                                            <td><?php echo $e['per_apellido1']; ?></td>
+                                            <td><?php echo $e['per_apellido2']; ?></td>
+                                            <td><?php echo $e['per_tipoid']; ?></td>
+                                            <td><?php echo $e['per_id']; ?></td>
+                                            <td><?php echo $e['per_direccion']; ?></td>
+                                            <td><?php echo $e['per_telefono']; ?></td>
+                                            <td><?php echo $e['per_celular']; ?></td>
+                                            <td><?php echo $e['per_mail']; ?></td>
+                                            <td><?php echo $e['per_mailpuce']; ?></td>
+                                            <td><?php echo $e['per_fechanac']; ?></td>
+                                            <td><?php echo $e['per_sexo']; ?></td>
+                                            <td><?php echo $e['per_foto']; ?></td>
+                                            <td><?php echo $e['est_fechaingreso']; ?></td>
+                                            <td><?php echo $e['est_fechaestimadagraduacion']; ?></td>
+                                            <td><?php echo $e['est_fechagraduacion']; ?></td>
+                                            <td><?php echo $e['est_carrera']; ?></td>
+                                        </tr>
+                                    <?php } ?>
 
-
-
-                                    </tr>
-                                    <tr class="alternate-row">
-                                        <td><input  type="checkbox"/></td>
-                                        <td>Sabev</td>
-                                        <td>George</td>
-                                        <td><a href="">george@mainevent.co.za</a></td>
-                                        <td>R250</td>
-                                        <td><a href="">www.mainevent.co.za</a></td>
-                                        <td>George</td>
-                                        <td>George</td>
-                                        <td>George</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td><input  type="checkbox"/></td>
-                                        <td>Sabev</td>
-                                        <td>George</td>
-                                        <td><a href="">george@mainevent.co.za</a></td>
-                                        <td>R250</td>
-                                        <td><a href="">www.mainevent.co.za</a></td>
-                                        <td>George</td>
-                                        <td>George</td>
-                                        <td>George</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-
-                                    </tr>
-                                    <tr class="alternate-row">
-                                        <td><input  type="checkbox"/></td>
-                                        <td>Sabev</td>
-                                        <td>George</td>
-                                        <td><a href="">george@mainevent.co.za</a></td>
-                                        <td>R250</td>
-                                        <td><a href="">www.mainevent.co.za</a></td>
-                                        <td>George</td>
-                                        <td>George</td>
-                                        <td>George</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td><input  type="checkbox"/></td>
-                                        <td>Sabev</td>
-                                        <td>George</td>
-                                        <td><a href="">george@mainevent.co.za</a></td>
-                                        <td>R250</td>
-                                        <td><a href="">www.mainevent.co.za</a></td>
-                                        <td>George</td>
-                                        <td>George</td>
-                                        <td>George</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                    </tr>
-                                    <tr class="alternate-row">
-                                        <td><input  type="checkbox"/></td>
-                                        <td>Sabev</td>
-                                        <td>George</td>
-                                        <td><a href="">george@mainevent.co.za</a></td>
-                                        <td>R250</td>
-                                        <td><a href="">www.mainevent.co.za</a></td>
-                                        <td>George</td>
-                                        <td>George</td>
-                                        <td>George</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-                                        <td>Prueba</td>
-
-                                    </tr>
                                 </table>
                                 <!--  end product-table................................... -->
                             </form>
