@@ -4,32 +4,32 @@
  * www.crudigniter.com
  */
  
-class Periodos_academicos2 extends CI_Controller
+class Periodos_academicos extends CI_Controller
 {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Periodos_academicos2_model');
+        $this->load->model('Periodos_academicos_model');
     } 
 
     /*
-     * Listing of periodos_academicos2
+     * Listing of periodos_academicos
      */
     function index()
     {
-        $data['periodos_academicos2'] = $this->Periodos_academicos2_model->get_all_periodos_academicos2();
+        $data['periodos_academicos'] = $this->Periodos_academicos_model->get_all_periodos_academicos();
 
-        $this->load->view('periodos_academicos2/index',$data);
+        $this->load->view('periodos_academicos/index',$data);
     }
 
     /*
-     * Adding a new periodos_academicos2
+     * Adding a new periodo_academico
      */
     function add()
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('pac_descripcion','Pac Descripcion','required');
+		$this->form_validation->set_rules('pac_descripcion','Pac Descripcion','required|max_length[30]');
 		$this->form_validation->set_rules('pac_fechainicio','Pac Fechainicio','required');
 		$this->form_validation->set_rules('pac_fechafinal','Pac Fechafinal','required');
 		$this->form_validation->set_rules('pac_perido','Pac Perido','integer');
@@ -39,7 +39,7 @@ class Periodos_academicos2 extends CI_Controller
             //Agregado
             $this->db->select_max('pac_codigo');
             $result= $this->db->get('periodos_academicos2')->row_array();
-            //echo $result['pac_codigo'];
+            //echo $result['per_codigo'];
             //
             $params = array(
                 //agregado
@@ -51,28 +51,28 @@ class Periodos_academicos2 extends CI_Controller
 				'pac_perido' => $this->input->post('pac_perido'),
             );
             
-            $periodos_academicos2_id = $this->Periodos_academicos2_model->add_periodos_academicos2($params);
-            redirect('periodos_academicos2/index');
+            $periodo_academico_id = $this->Periodos_academicos_model->add_periodo_academico($params);
+            redirect('periodos_academicos/index');
         }
         else
         {
-            $this->load->view('periodos_academicos2/add');
+            $this->load->view('periodos_academicos/add');
         }
     }  
 
     /*
-     * Editing a periodos_academicos2
+     * Editing a periodo_academico
      */
     function edit($pac_codigo)
     {   
-        // check if the periodos_academicos2 exists before trying to edit it
-        $periodos_academicos2 = $this->Periodos_academicos2_model->get_periodos_academicos2($pac_codigo);
+        // check if the periodo_academico exists before trying to edit it
+        $periodo_academico = $this->Periodos_academicos_model->get_periodo_academico($pac_codigo);
         
-        if(isset($periodos_academicos2['pac_codigo']))
+        if(isset($periodo_academico['pac_codigo']))
         {
             $this->load->library('form_validation');
 
-			$this->form_validation->set_rules('pac_descripcion','Pac Descripcion','required');
+			$this->form_validation->set_rules('pac_descripcion','Pac Descripcion','required|max_length[30]');
 			$this->form_validation->set_rules('pac_fechainicio','Pac Fechainicio','required');
 			$this->form_validation->set_rules('pac_fechafinal','Pac Fechafinal','required');
 			$this->form_validation->set_rules('pac_perido','Pac Perido','integer');
@@ -86,35 +86,35 @@ class Periodos_academicos2 extends CI_Controller
 					'pac_perido' => $this->input->post('pac_perido'),
                 );
 
-                $this->Periodos_academicos2_model->update_periodos_academicos2($pac_codigo,$params);            
-                redirect('periodos_academicos2/index');
+                $this->Periodos_academicos_model->update_periodo_academico($pac_codigo,$params);            
+                redirect('periodos_academicos/index');
             }
             else
             {   
-                $data['periodos_academicos2'] = $this->Periodos_academicos2_model->get_periodos_academicos2($pac_codigo);
+                $data['periodo_academico'] = $this->Periodos_academicos_model->get_periodo_academico($pac_codigo);
     
-                $this->load->view('periodos_academicos2/edit',$data);
+                $this->load->view('periodos_academicos/edit',$data);
             }
         }
         else
-            show_error('The periodos_academicos2 you are trying to edit does not exist.');
+            show_error('The periodo_academico you are trying to edit does not exist.');
     } 
 
     /*
-     * Deleting periodos_academicos2
+     * Deleting periodo_academico
      */
     function remove($pac_codigo)
     {
-        $periodos_academicos2 = $this->Periodos_academicos2_model->get_periodos_academicos2($pac_codigo);
+        $periodo_academico = $this->Periodos_academicos_model->get_periodo_academico($pac_codigo);
 
-        // check if the periodos_academicos2 exists before trying to delete it
-        if(isset($periodos_academicos2['pac_codigo']))
+        // check if the periodo_academico exists before trying to delete it
+        if(isset($periodo_academico['pac_codigo']))
         {
-            $this->Periodos_academicos2_model->delete_periodos_academicos2($pac_codigo);
-            redirect('periodos_academicos2/index');
+            $this->Periodos_academicos_model->delete_periodo_academico($pac_codigo);
+            redirect('periodos_academicos/index');
         }
         else
-            show_error('The periodos_academicos2 you are trying to delete does not exist.');
+            show_error('The periodo_academico you are trying to delete does not exist.');
     }
     
 }

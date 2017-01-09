@@ -68,7 +68,7 @@ $route['(:any)'] = 'escuelas/view/$1';
 $route['(:any)'] = 'permiso/view/$1';
 $route['(:any)'] = 'zrole/view/$1';
 $route['(:any)'] = 'zusuario/view/$1';
-$route['(:any)'] = 'periodos_academicos2/view/$1';
+$route['(:any)'] = 'periodos_academicos/view/$1';
 $route['(:any)'] = 'plan_de_estudio/view/$1';
 //modificado
 //$route['(:any)'] = 'estudiantes/edit/$1';

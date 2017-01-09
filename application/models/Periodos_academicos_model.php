@@ -4,7 +4,7 @@
  * www.crudigniter.com
  */
  
-class Periodos_academicos2_model extends CI_Model
+class Periodos_academicos_model extends CI_Model
 {
     function __construct()
     {
@@ -12,60 +12,60 @@ class Periodos_academicos2_model extends CI_Model
     }
     
     /*
-     * Get periodos_academicos2 by pac_codigo
+     * Get periodo_academico by pac_codigo
      */
-    function get_periodos_academicos2($pac_codigo)
+    function get_periodo_academico($pac_codigo)
     {
         return $this->db->get_where('periodos_academicos2',array('pac_codigo'=>$pac_codigo))->row_array();
     }
     
     /*
-     * Get all periodos_academicos2
+     * Get all periodos_academicos
      */
-    function get_all_periodos_academicos2()
+    function get_all_periodos_academicos()
     {
         return $this->db->get('periodos_academicos2')->result_array();
     }
     
     /*
-     * function to add new periodos_academicos2
+     * function to add new periodo_academico
      */
-    function add_periodos_academicos2($params)
+    function add_periodo_academico($params)
     {
         $this->db->insert('periodos_academicos2',$params);
         //return $this->db->insert_id();
     }
     
     /*
-     * function to update periodos_academicos2
+     * function to update periodo_academico
      */
-    function update_periodos_academicos2($pac_codigo,$params)
+    function update_periodo_academico($pac_codigo,$params)
     {
         $this->db->where('pac_codigo',$pac_codigo);
         $response = $this->db->update('periodos_academicos2',$params);
         if($response)
         {
-            return "periodos_academicos2 updated successfully";
+            return "periodo_academico updated successfully";
         }
         else
         {
-            return "Error occuring while updating periodos_academicos2";
+            return "Error occuring while updating periodo_academico";
         }
     }
     
     /*
-     * function to delete periodos_academicos2
+     * function to delete periodo_academico
      */
-    function delete_periodos_academicos2($pac_codigo)
+    function delete_periodo_academico($pac_codigo)
     {
         $response = $this->db->delete('periodos_academicos2',array('pac_codigo'=>$pac_codigo));
         if($response)
         {
-            return "periodos_academicos2 deleted successfully";
+            return "periodo_academico deleted successfully";
         }
         else
         {
-            return "Error occuring while deleting periodos_academicos2";
+            return "Error occuring while deleting periodo_academico";
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('periodos_academicos2/add'); ?>
+<?php echo form_open('periodos_academicos/add'); ?>
 
 	<div>Pac Descripcion : <input type="text" name="pac_descripcion" value="<?php echo $this->input->post('pac_descripcion'); ?>" /></div>
 	<div>Pac Fechainicio : <input type="text" name="pac_fechainicio" value="<?php echo $this->input->post('pac_fechainicio'); ?>" /></div>
