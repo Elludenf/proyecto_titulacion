@@ -4,35 +4,32 @@
  * www.crudigniter.com
  */
  
-class Estudiante extends CI_Controller
+class Profesor extends CI_Controller
 {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Estudiante_model');
+        $this->load->model('Profesor_model');
     } 
 
     /*
-     * Listing of estudiante
+     * Listing of profesores
      */
     function index()
     {
-        $data['estudiante'] = $this->Estudiante_model->get_all_estudiantes();
+        $data['profesores'] = $this->Profesor_model->get_all_profesores();
 
-        $this->load->helper('form');
-        $this->load->helper(array('form'));
-        $this->load->view('templates/header');
-        $this->load->view('estudiante/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('profesores/index',$data);
     }
 
     /*
-     * Adding a new estudiante
+     * Adding a new profesor
      */
     function add()
     {   
         $this->load->library('form_validation');
 
+		$this->form_validation->set_rules('rol_codigo','Rol Codigo','required|integer');
 		$this->form_validation->set_rules('per_nombre1','Per Nombre1','required|max_length[50]');
 		$this->form_validation->set_rules('per_nombre2','Per Nombre2','max_length[50]');
 		$this->form_validation->set_rules('per_apellido1','Per Apellido1','required|max_length[50]');
@@ -42,18 +39,17 @@ class Estudiante extends CI_Controller
 		$this->form_validation->set_rules('per_direccion','Per Direccion','required|max_length[1024]');
 		$this->form_validation->set_rules('per_telefono','Per Telefono','max_length[10]');
 		$this->form_validation->set_rules('per_celular','Per Celular','required|max_length[10]');
-		$this->form_validation->set_rules('per_mail','Per Mail','required|max_length[254]');
-		$this->form_validation->set_rules('per_mailpuce','Per Mailpuce','max_length[254]');
+		$this->form_validation->set_rules('per_mail','Per Mail','required|max_length[254]|valid_email');
+		$this->form_validation->set_rules('per_mailpuce','Per Mailpuce','max_length[254]|valid_email');
 		$this->form_validation->set_rules('per_fechanac','Per Fechanac','required');
 		$this->form_validation->set_rules('per_sexo','Per Sexo','required|max_length[1]');
 		$this->form_validation->set_rules('per_clave','Per Clave','max_length[15]');
-		$this->form_validation->set_rules('carr_codigo','Carr Codigo','required|integer');
-		$this->form_validation->set_rules('est_fechaingreso','Est Fechaingreso','required');
+		$this->form_validation->set_rules('pro_oficina','Pro Oficina','max_length[15]');
 		
 		if($this->form_validation->run())     
         {
             $this->db->select_max('per_codigo');
-            $result= $this->db->get('estudiante')->row_array();
+            $result= $this->db->get('profesor')->row_array();
             $params = array(
                 'per_codigo' =>$result['per_codigo']+1,
 				'rol_codigo' => $this->input->post('rol_codigo'),
@@ -72,43 +68,35 @@ class Estudiante extends CI_Controller
 				'per_sexo' => $this->input->post('per_sexo'),
 				'per_foto' => $this->input->post('per_foto'),
 				'per_clave' => $this->input->post('per_clave'),
-				'carr_codigo' => $this->input->post('carr_codigo'),
-				'est_fechaingreso' => $this->input->post('est_fechaingreso'),
-				'est_fechaestimadagraduacion' => $this->input->post('est_fechaestimadagraduacion'),
-				'est_fechagraduacion' => $this->input->post('est_fechagraduacion'),
+				'pro_oficina' => $this->input->post('pro_oficina'),
             );
             
-            $estudiante_id = $this->Estudiante_model->add_estudiante($params);
-            redirect('estudiante/index');
+            $profesor_id = $this->Profesor_model->add_profesor($params);
+            redirect('profesor/index');
         }
         else
         {
 
 			$this->load->model('Rol_model');
 			$data['all_roles'] = $this->Rol_model->get_all_roles();
-
-			$this->load->model('Carrera_model');
-			$data['all_carreras'] = $this->Carrera_model->get_all_carreras();
                 
-            $this->load->view('templates/header');
-            $this->load->view('estudiante/add',$data);
-            $this->load->view('templates/footer');
+            $this->load->view('profesores/add',$data);
         }
     }  
 
     /*
-     * Editing a estudiante
+     * Editing a profesor
      */
     function edit($per_codigo)
-    {
-        $this->load->library('form_validation');
-        // check if the estudiante exists before trying to edit it
-        $estudiante = $this->Estudiante_model->get_estudiante($per_codigo);
+    {   
+        // check if the profesor exists before trying to edit it
+        $profesor = $this->Profesor_model->get_profesor($per_codigo);
         
-        if(isset($estudiante['per_codigo']))
+        if(isset($profesor['per_codigo']))
         {
             $this->load->library('form_validation');
 
+			$this->form_validation->set_rules('rol_codigo','Rol Codigo','required|integer');
 			$this->form_validation->set_rules('per_nombre1','Per Nombre1','required|max_length[50]');
 			$this->form_validation->set_rules('per_nombre2','Per Nombre2','max_length[50]');
 			$this->form_validation->set_rules('per_apellido1','Per Apellido1','required|max_length[50]');
@@ -118,13 +106,12 @@ class Estudiante extends CI_Controller
 			$this->form_validation->set_rules('per_direccion','Per Direccion','required|max_length[1024]');
 			$this->form_validation->set_rules('per_telefono','Per Telefono','max_length[10]');
 			$this->form_validation->set_rules('per_celular','Per Celular','required|max_length[10]');
-			$this->form_validation->set_rules('per_mail','Per Mail','required|max_length[254]');
-			$this->form_validation->set_rules('per_mailpuce','Per Mailpuce','max_length[254]');
+			$this->form_validation->set_rules('per_mail','Per Mail','required|max_length[254]|valid_email');
+			$this->form_validation->set_rules('per_mailpuce','Per Mailpuce','max_length[254]|valid_email');
 			$this->form_validation->set_rules('per_fechanac','Per Fechanac','required');
 			$this->form_validation->set_rules('per_sexo','Per Sexo','required|max_length[1]');
 			$this->form_validation->set_rules('per_clave','Per Clave','max_length[15]');
-			$this->form_validation->set_rules('carr_codigo','Carr Codigo','required|integer');
-			$this->form_validation->set_rules('est_fechaingreso','Est Fechaingreso','required');
+			$this->form_validation->set_rules('pro_oficina','Pro Oficina','max_length[15]');
 		
 			if($this->form_validation->run())     
             {   
@@ -145,47 +132,41 @@ class Estudiante extends CI_Controller
 					'per_sexo' => $this->input->post('per_sexo'),
 					'per_foto' => $this->input->post('per_foto'),
 					'per_clave' => $this->input->post('per_clave'),
-					'carr_codigo' => $this->input->post('carr_codigo'),
-					'est_fechaingreso' => $this->input->post('est_fechaingreso'),
-					'est_fechaestimadagraduacion' => $this->input->post('est_fechaestimadagraduacion'),
-					'est_fechagraduacion' => $this->input->post('est_fechagraduacion'),
+					'pro_oficina' => $this->input->post('pro_oficina'),
                 );
 
-                $this->Estudiante_model->update_estudiante($per_codigo,$params);            
-                redirect('estudiante/index');
+                $this->Profesor_model->update_profesor($per_codigo,$params);            
+                redirect('profesor/index');
             }
             else
             {   
-                $data['estudiante'] = $this->Estudiante_model->get_estudiante($per_codigo);
+                $data['profesor'] = $this->Profesor_model->get_profesor($per_codigo);
     
 				$this->load->model('Rol_model');
 				$data['all_roles'] = $this->Rol_model->get_all_roles();
 
-				$this->load->model('Carrera_model');
-				$data['all_carreras'] = $this->Carrera_model->get_all_carreras();
-
-                $this->load->view('estudiante/edit',$data);
+                $this->load->view('profesores/edit',$data);
             }
         }
         else
-            show_error('The estudiante you are trying to edit does not exist.');
+            show_error('The profesor you are trying to edit does not exist.');
     } 
 
     /*
-     * Deleting estudiante
+     * Deleting profesor
      */
     function remove($per_codigo)
     {
-        $estudiante = $this->Estudiante_model->get_estudiante($per_codigo);
+        $profesor = $this->Profesor_model->get_profesor($per_codigo);
 
-        // check if the estudiante exists before trying to delete it
-        if(isset($estudiante['per_codigo']))
+        // check if the profesor exists before trying to delete it
+        if(isset($profesor['per_codigo']))
         {
-            $this->Estudiante_model->delete_estudiante($per_codigo);
-            redirect('estudiante/index');
+            $this->Profesor_model->delete_profesor($per_codigo);
+            redirect('profesor/index');
         }
         else
-            show_error('The estudiante you are trying to delete does not exist.');
+            show_error('The profesor you are trying to delete does not exist.');
     }
     
 }

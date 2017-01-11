@@ -19,7 +19,7 @@ class Carrera extends CI_Controller
     {
         $data['carreras'] = $this->Carrera_model->get_all_carreras();
 
-        $this->load->view('carrera/index',$data);
+        $this->load->view('carreras/index',$data);
     }
 
     /*
@@ -30,20 +30,14 @@ class Carrera extends CI_Controller
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('esc_codigo','Esc Codigo','required|integer');
-		$this->form_validation->set_rules('carr_descripcion','Carr Descripcion','required');
-
-        //Agregado
-        $this->db->select_max('carr_codigo');
-        $result= $this->db->get('carreras')->row_array();
-        //echo $result['per_codigo'];
-        //
-
+		$this->form_validation->set_rules('carr_descripcion','Carr Descripcion','required|max_length[50]');
+		
 		if($this->form_validation->run())     
-        {   
+        {
+            $this->db->select_max('carr_codigo');
+            $result= $this->db->get('carreras')->row_array();
             $params = array(
-                //agregado
                 'carr_codigo' =>$result['carr_codigo']+1,
-                //
 				'esc_codigo' => $this->input->post('esc_codigo'),
 				'carr_descripcion' => $this->input->post('carr_descripcion'),
             );
@@ -53,7 +47,11 @@ class Carrera extends CI_Controller
         }
         else
         {
-            $this->load->view('carrera/add');
+
+			$this->load->model('Escuela_model');
+			$data['all_escuelas'] = $this->Escuela_model->get_all_escuelas();
+                
+            $this->load->view('carreras/add',$data);
         }
     }  
 
@@ -61,8 +59,7 @@ class Carrera extends CI_Controller
      * Editing a carrera
      */
     function edit($carr_codigo)
-    {
-        $this->load->library('form_validation');
+    {   
         // check if the carrera exists before trying to edit it
         $carrera = $this->Carrera_model->get_carrera($carr_codigo);
         
@@ -71,7 +68,7 @@ class Carrera extends CI_Controller
             $this->load->library('form_validation');
 
 			$this->form_validation->set_rules('esc_codigo','Esc Codigo','required|integer');
-			$this->form_validation->set_rules('carr_descripcion','Carr Descripcion','required');
+			$this->form_validation->set_rules('carr_descripcion','Carr Descripcion','required|max_length[50]');
 		
 			if($this->form_validation->run())     
             {   
@@ -87,7 +84,10 @@ class Carrera extends CI_Controller
             {   
                 $data['carrera'] = $this->Carrera_model->get_carrera($carr_codigo);
     
-                $this->load->view('carrera/edit',$data);
+				$this->load->model('Escuela_model');
+				$data['all_escuelas'] = $this->Escuela_model->get_all_escuelas();
+
+                $this->load->view('carreras/edit',$data);
             }
         }
         else

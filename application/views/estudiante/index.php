@@ -73,6 +73,7 @@
                                     <tr>
                                         <th class="table-header-check"><a id="toggle-all" ></a> </th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo</a>	</th>
+                                        <th class="table-header-repeat line-left minwidth-1"><a href="">Rol</a>	</th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">1er Nombre</a></th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">2do Nombre</a></th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">1er Apellido</a></th>
@@ -85,17 +86,23 @@
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Email Personal</a></th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Email PUCE</a></th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha Nacimiento</a></th>
+                                        <!--
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">ID</a></th>
+                                        -->
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Sexo</a></th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Foto</a></th>
+                                        <th class="table-header-repeat line-left minwidth-1"><a href="">Carrera</a></th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha Ingreso Universidad</a></th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha Estimada Graduación</a></th>
-                                        <th class="table-header-repeat line-left minwidth-1"><a href="">Carrera</a></th>
+                                        <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha Graduación</a></th>
+                                        <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</a></th>
 
                                     </tr>
                                     <?php foreach($estudiante as $e){ ?>
                                         <tr>
+                                            <td></td>
                                             <td><?php echo $e['per_codigo']; ?></td>
+                                            <td><?php echo $e['rol_codigo']; ?></td>
                                             <td><?php echo $e['per_nombre1']; ?></td>
                                             <td><?php echo $e['per_nombre2']; ?></td>
                                             <td><?php echo $e['per_apellido1']; ?></td>
@@ -110,10 +117,15 @@
                                             <td><?php echo $e['per_fechanac']; ?></td>
                                             <td><?php echo $e['per_sexo']; ?></td>
                                             <td><?php echo $e['per_foto']; ?></td>
+                                            <td><?php echo $e['carr_codigo']; ?></td>
                                             <td><?php echo $e['est_fechaingreso']; ?></td>
                                             <td><?php echo $e['est_fechaestimadagraduacion']; ?></td>
                                             <td><?php echo $e['est_fechagraduacion']; ?></td>
-                                            <td><?php echo $e['est_carrera']; ?></td>
+                                            <td>
+                                                <a href="<?php echo site_url('estudiante/edit/'.$e['per_codigo']); ?>">Edit</a> |
+                                                <a href="<?php echo site_url('estudiante/remove/'.$e['per_codigo']); ?>">Delete</a>
+                                            </td>
+
                                         </tr>
                                     <?php } ?>
 
@@ -127,8 +139,8 @@
                         <div id="actions-box">
                             <a href="" class="action-slider"></a>
                             <div id="actions-box-slider">
-                                <a href="" class="action-edit">Editar</a>
-                                <a href="" class="action-delete">Eliminar</a>
+                                <a href="<?php echo site_url(); ?>" class="action-edit">Editar</a>
+                                <a href="<?php echo site_url(); ?>" class="action-delete">Eliminar</a>
                             </div>
                             <div class="clear"></div>
                         </div>

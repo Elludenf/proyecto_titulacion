@@ -4,7 +4,7 @@
  * www.crudigniter.com
  */
  
-class Escuelas_model extends CI_Model
+class Escuela_model extends CI_Model
 {
     function __construct()
     {
@@ -12,9 +12,9 @@ class Escuelas_model extends CI_Model
     }
     
     /*
-     * Get escuelas by esc_codigo
+     * Get escuela by esc_codigo
      */
-    function get_escuelas($esc_codigo)
+    function get_escuela($esc_codigo)
     {
         return $this->db->get_where('escuelas',array('esc_codigo'=>$esc_codigo))->row_array();
     }
@@ -28,44 +28,44 @@ class Escuelas_model extends CI_Model
     }
     
     /*
-     * function to add new escuelas
+     * function to add new escuela
      */
-    function add_escuelas($params)
+    function add_escuela($params)
     {
         $this->db->insert('escuelas',$params);
         //return $this->db->insert_id();
     }
     
     /*
-     * function to update escuelas
+     * function to update escuela
      */
-    function update_escuelas($esc_codigo,$params)
+    function update_escuela($esc_codigo,$params)
     {
         $this->db->where('esc_codigo',$esc_codigo);
         $response = $this->db->update('escuelas',$params);
         if($response)
         {
-            return "escuelas updated successfully";
+            return "escuela updated successfully";
         }
         else
         {
-            return "Error occuring while updating escuelas";
+            return "Error occuring while updating escuela";
         }
     }
     
     /*
-     * function to delete escuelas
+     * function to delete escuela
      */
-    function delete_escuelas($esc_codigo)
+    function delete_escuela($esc_codigo)
     {
         $response = $this->db->delete('escuelas',array('esc_codigo'=>$esc_codigo));
         if($response)
         {
-            return "escuelas deleted successfully";
+            return "escuela deleted successfully";
         }
         else
         {
-            return "Error occuring while deleting escuelas";
+            return "Error occuring while deleting escuela";
         }
     }
 }
