@@ -63,19 +63,20 @@ $route['(:any)'] = 'admin/view/$1';
 $route['(:any)'] = 'calendario/view/$1';
 $route['(:any)'] = 'carrera/view/$1';
 $route['(:any)'] = 'facultades/view/$1';
-$route['(:any)'] = 'estudiantes/view/$1';
-$route['(:any)'] = 'escuelas/view/$1';
+$route['(:any)'] = 'estudiante/view/$1';
+$route['(:any)'] = 'escuela/view/$1';
 $route['(:any)'] = 'permiso/view/$1';
-$route['(:any)'] = 'zrole/view/$1';
-$route['(:any)'] = 'zusuario/view/$1';
+$route['(:any)'] = 'profesor/view/$1';
+$route['(:any)'] = 'roles/view/$1';
+$route['(:any)'] = 'modulo/view/$1';
 $route['(:any)'] = 'periodos_academicos/view/$1';
 $route['(:any)'] = 'plan_de_estudio/view/$1';
 
 
 //$route['(:any)'] = 'login/view/$1';
 //modificado
-//$route['(:any)'] = 'estudiantes/edit/$1';
-//$route['(:any)'] = 'estudiantes/add/$1';
+//$route['(:any)'] = 'estudiante/edit/$1';
+//$route['(:any)'] = 'estudiante/add/$1';
 //$route['login/index'] = 'login/index';
 //$route['login/(:any)'] = 'login/view/$1';
 //$route['login'] = 'login';

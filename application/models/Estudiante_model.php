@@ -22,7 +22,7 @@ class Estudiante_model extends CI_Model
     /*
      * Get all estudiante
      */
-    function get_all_estudiante()
+    function get_all_estudiantes()
     {
         return $this->db->get('estudiante')->result_array();
     }
