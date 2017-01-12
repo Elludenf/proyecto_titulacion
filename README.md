@@ -1,7 +1,6 @@
 # proyecto_titulacion
-Proyecto elaborado por:
-Patricio Pérez
-Henry Trujillo
-Ronny Cordova
-Roberto Gallardo
-''''''''''''''
+##Proyecto elaborado por:
+<dt>Patricio Pérez
+<dt>Henry Trujillo
+<dt>Ronny Cordova
+<dt>Roberto Gallardo
