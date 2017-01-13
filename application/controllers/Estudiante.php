@@ -33,17 +33,18 @@ class Estudiante extends CI_Controller
     {   
         $this->load->library('form_validation');
 
+        $this->form_validation->set_rules('rol_codigo','Rol Codigo','required|integer');
 		$this->form_validation->set_rules('per_nombre1','Per Nombre1','required|max_length[50]');
 		$this->form_validation->set_rules('per_nombre2','Per Nombre2','max_length[50]');
 		$this->form_validation->set_rules('per_apellido1','Per Apellido1','required|max_length[50]');
 		$this->form_validation->set_rules('per_apellido2','Per Apellido2','max_length[50]');
 		$this->form_validation->set_rules('per_tipoid','Per Tipoid','required|max_length[3]');
-		$this->form_validation->set_rules('per_id','Per Id','required|max_length[15]');
+		$this->form_validation->set_rules('per_id','Per Id','required|max_length[15]|is_unique[estudiante.per_id]');
 		$this->form_validation->set_rules('per_direccion','Per Direccion','required|max_length[1024]');
 		$this->form_validation->set_rules('per_telefono','Per Telefono','max_length[10]');
 		$this->form_validation->set_rules('per_celular','Per Celular','required|max_length[10]');
-		$this->form_validation->set_rules('per_mail','Per Mail','required|max_length[254]');
-		$this->form_validation->set_rules('per_mailpuce','Per Mailpuce','max_length[254]');
+		$this->form_validation->set_rules('per_mail','Per Mail','required|max_length[254]|valid_email|is_unique[estudiante.per_mail]');
+		$this->form_validation->set_rules('per_mailpuce','Per Mailpuce','max_length[254]|valid_email|is_unique[estudiante.per_mailpuce]');
 		$this->form_validation->set_rules('per_fechanac','Per Fechanac','required');
 		$this->form_validation->set_rules('per_sexo','Per Sexo','required|max_length[1]');
 		$this->form_validation->set_rules('per_clave','Per Clave','max_length[15]');
@@ -109,17 +110,18 @@ class Estudiante extends CI_Controller
         {
             $this->load->library('form_validation');
 
+            $this->form_validation->set_rules('rol_codigo','Rol Codigo','required|integer');
 			$this->form_validation->set_rules('per_nombre1','Per Nombre1','required|max_length[50]');
 			$this->form_validation->set_rules('per_nombre2','Per Nombre2','max_length[50]');
 			$this->form_validation->set_rules('per_apellido1','Per Apellido1','required|max_length[50]');
 			$this->form_validation->set_rules('per_apellido2','Per Apellido2','max_length[50]');
 			$this->form_validation->set_rules('per_tipoid','Per Tipoid','required|max_length[3]');
-			$this->form_validation->set_rules('per_id','Per Id','required|max_length[15]');
+			$this->form_validation->set_rules('per_id','Per Id','required|max_length[15]is_unique[estudiante.per_id]');
 			$this->form_validation->set_rules('per_direccion','Per Direccion','required|max_length[1024]');
 			$this->form_validation->set_rules('per_telefono','Per Telefono','max_length[10]');
 			$this->form_validation->set_rules('per_celular','Per Celular','required|max_length[10]');
-			$this->form_validation->set_rules('per_mail','Per Mail','required|max_length[254]');
-			$this->form_validation->set_rules('per_mailpuce','Per Mailpuce','max_length[254]');
+			$this->form_validation->set_rules('per_mail','Per Mail','required|max_length[254]is_unique[estudiante.per_mail]');
+			$this->form_validation->set_rules('per_mailpuce','Per Mailpuce','max_length[254]is_unique[estudiante.per_mailpuce]');
 			$this->form_validation->set_rules('per_fechanac','Per Fechanac','required');
 			$this->form_validation->set_rules('per_sexo','Per Sexo','required|max_length[1]');
 			$this->form_validation->set_rules('per_clave','Per Clave','max_length[15]');
