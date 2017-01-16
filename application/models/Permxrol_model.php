@@ -12,11 +12,11 @@ class Permxrol_model extends CI_Model
     }
     
     /*
-     * Get permxrol by zpermcodigo
+     * Get permxrol by perm_codigo
      */
-    function get_permxrol($zpermcodigo)
+    function get_permxrol($perm_codigo)
     {
-        return $this->db->get_where('permxrol',array('zpermcodigo'=>$zpermcodigo))->row_array();
+        return $this->db->get_where('permxrol',array('perm_codigo'=>$perm_codigo))->row_array();
     }
     
     /*
@@ -26,18 +26,17 @@ class Permxrol_model extends CI_Model
     {
         return $this->db->get('permxrol')->result_array();
     }
-
     /*
      * Get permisos asociados a un rol
      */
-    function get_perm_x_rol($zrolcodigo)
+    function get_perm_x_rol($rol_codigo)
     {
-        return $this->db->get_where('permxrol',array('zrolcodigo'=>$zrolcodigo))->result_array();
+        return $this->db->get_where('permxrol',array('rol_codigo'=>$rol_codigo))->result_array();
     }
-    
     /*
      * function to add new permxrol
      */
+
     function add_permxrol($params)
     {
         $this->db->insert('permxrol',$params);
@@ -47,9 +46,9 @@ class Permxrol_model extends CI_Model
     /*
      * function to update permxrol
      */
-    function update_permxrol($zpermcodigo,$params)
+    function update_permxrol($perm_codigo,$params)
     {
-        $this->db->where('zpermcodigo',$zpermcodigo);
+        $this->db->where('perm_codigo',$perm_codigo);
         $response = $this->db->update('permxrol',$params);
         if($response)
         {
@@ -64,9 +63,9 @@ class Permxrol_model extends CI_Model
     /*
      * function to delete permxrol
      */
-    function delete_permxrol($zpermcodigo)
+    function delete_permxrol($perm_codigo)
     {
-        $response = $this->db->delete('permxrol',array('zpermcodigo'=>$zpermcodigo));
+        $response = $this->db->delete('permxrol',array('perm_codigo'=>$perm_codigo));
         if($response)
         {
             return "permxrol deleted successfully";

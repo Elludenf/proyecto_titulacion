@@ -44,24 +44,24 @@ class Permxrol extends CI_Controller
     /*
      * Editing a permxrol
      */
-    function edit($zpermcodigo)
+    function edit($perm_codigo)
     {   
         // check if the permxrol exists before trying to edit it
-        $permxrol = $this->Permxrol_model->get_permxrol($zpermcodigo);
+        $permxrol = $this->Permxrol_model->get_permxrol($perm_codigo);
         
-        if(isset($permxrol['zpermcodigo']))
+        if(isset($permxrol['perm_codigo']))
         {
             if(isset($_POST) && count($_POST) > 0)     
             {   
                 $params = array(
                 );
 
-                $this->Permxrol_model->update_permxrol($zpermcodigo,$params);            
+                $this->Permxrol_model->update_permxrol($perm_codigo,$params);            
                 redirect('permxrol/index');
             }
             else
             {   
-                $data['permxrol'] = $this->Permxrol_model->get_permxrol($zpermcodigo);
+                $data['permxrol'] = $this->Permxrol_model->get_permxrol($perm_codigo);
     
                 $this->load->view('permxrol/edit',$data);
             }
@@ -73,14 +73,14 @@ class Permxrol extends CI_Controller
     /*
      * Deleting permxrol
      */
-    function remove($zpermcodigo)
+    function remove($perm_codigo)
     {
-        $permxrol = $this->Permxrol_model->get_permxrol($zpermcodigo);
+        $permxrol = $this->Permxrol_model->get_permxrol($perm_codigo);
 
         // check if the permxrol exists before trying to delete it
-        if(isset($permxrol['zpermcodigo']))
+        if(isset($permxrol['perm_codigo']))
         {
-            $this->Permxrol_model->delete_permxrol($zpermcodigo);
+            $this->Permxrol_model->delete_permxrol($perm_codigo);
             redirect('permxrol/index');
         }
         else
