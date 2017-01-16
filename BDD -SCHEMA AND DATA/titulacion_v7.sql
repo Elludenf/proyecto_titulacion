@@ -1,7 +1,182 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 9.x                               */
-/* Created on:     16/01/2017 10:03:04 a. m.                    */
+/* Created on:     16/01/2017 3:12:54 p. m.                     */
 /*==============================================================*/
+
+
+drop index CARR_ESC_FK;
+
+drop index CARRERAS_PK;
+
+drop table CARRERAS;
+
+drop index DICTA_FK;
+
+drop index DICTA2_FK;
+
+drop index DICTA_PK;
+
+drop table DICTA;
+
+drop index ELABORA_FK;
+
+drop index ELABORA2_FK;
+
+drop index ELABORA_PK;
+
+drop table ELABORA;
+
+drop index ESC_FACU_FK;
+
+drop index ESCUELAS_PK;
+
+drop table ESCUELAS;
+
+drop index ROLXPERSONA_FK;
+
+drop index EST_CARR_FK;
+
+drop index ESTUDIANTE_PK;
+
+drop table ESTUDIANTE;
+
+drop index TOMA_FK;
+
+drop index EXAMEN_COMPLEXIVO_PK;
+
+drop table EXAMEN_COMPLEXIVO;
+
+drop index FACULTADES_PK;
+
+drop table FACULTADES;
+
+drop index EXA_INT_FK;
+
+drop index INTENTOS_PK;
+
+drop table INTENTOS;
+
+drop index MATERIAS_PK;
+
+drop table MATERIAS;
+
+drop index MATERIA_X_PLAN_DE_ESTUDIO_FK;
+
+drop index MATERIA_X_PLAN_DE_ESTUDIO3_FK;
+
+drop index MATERIA_X_PLAN_DE_ESTUDIO2_FK;
+
+drop index MATERIA_X_PLAN_DE_ESTUDIO_PK;
+
+drop table MATERIA_X_PLAN_DE_ESTUDIO;
+
+drop index MATSORTEADAS_X_EXAMEN_FK;
+
+drop index MATSORTEADAS_X_EXAMEN2_FK;
+
+drop index MATSORTEADAS_X_EXAMEN_PK;
+
+drop table MATSORTEADAS_X_EXAMEN;
+
+drop index MAT_AP_X_EST_FK;
+
+drop index MAT_AP_X_EST2_FK;
+
+drop index MAT_AP_X_EST_PK;
+
+drop table MAT_AP_X_EST;
+
+drop index MODULO_PK;
+
+drop table MODULO;
+
+drop index MODXROL_FK;
+
+drop index MODXROL2_FK;
+
+drop index MODXROL_PK;
+
+drop table MODXROL;
+
+drop index PERIODOS_ACADEMICOS_PK;
+
+drop table PERIODOS_ACADEMICOS;
+
+drop index PERMISOS_PK;
+
+drop table PERMISOS;
+
+drop index PERMXROL_FK;
+
+drop index PERMXROL2_FK;
+
+drop index PERMXROL_PK;
+
+drop table PERMXROL;
+
+drop index MALL_CARR_FK;
+
+drop index PLAN_DE_ESTUDIO_PK;
+
+drop table PLAN_DE_ESTUDIO;
+
+drop index ROLXPERSONA2_FK;
+
+drop index PROFESOR_PK;
+
+drop table PROFESOR;
+
+drop index PRO_DISERTACION_FK;
+
+drop index PRORROGA_PK;
+
+drop table PRORROGA;
+
+drop index ES_NOMBRADO_FK;
+
+drop index RESPONSABLES_TITULACION_PK;
+
+drop table RESPONSABLES_TITULACION;
+
+drop index REVDIR_X_DISERTACION_FK;
+
+drop index REVDIR_X_DISERTACION2_FK;
+
+drop index REVDIR_X_DISERTACION_PK;
+
+drop table REVDIR_X_DISERTACION;
+
+drop index REALIZA_FK;
+
+drop index RELATIONSHIP_3_FK;
+
+drop index REVISIONES_PK;
+
+drop table REVISIONES;
+
+drop index ES_DESIGNADO_FK;
+
+drop index REV_DIR_TRAB_TITULACION_PK;
+
+drop table REV_DIR_TRAB_TITULACION;
+
+drop index ROLES_PK;
+
+drop table ROLES;
+
+drop index TRABAJO_DISERTACION_PK;
+
+drop table TRABAJO_DISERTACION;
+
+drop domain ZESTEXAM;
+
+drop domain Z_SEXO;
+
+drop domain Z_TIPO_ID;
+
+drop domain Z_TIPO_RESPONSABLE_T;
+
+drop domain Z_TIPO_REVISOR;
 
 /*==============================================================*/
 /* Domain: ZESTEXAM                                             */
@@ -106,6 +281,37 @@ MAT_CODIGO
 /*==============================================================*/
 create  index DICTA_FK on DICTA (
 PER_CODIGO
+);
+
+/*==============================================================*/
+/* Table: ELABORA                                               */
+/*==============================================================*/
+create table ELABORA (
+   PER_CODIGO           INT4                 not null,
+   DIS_CODIGO           INT4                 not null,
+   constraint PK_ELABORA primary key (PER_CODIGO, DIS_CODIGO)
+);
+
+/*==============================================================*/
+/* Index: ELABORA_PK                                            */
+/*==============================================================*/
+create unique index ELABORA_PK on ELABORA (
+PER_CODIGO,
+DIS_CODIGO
+);
+
+/*==============================================================*/
+/* Index: ELABORA2_FK                                           */
+/*==============================================================*/
+create  index ELABORA2_FK on ELABORA (
+PER_CODIGO
+);
+
+/*==============================================================*/
+/* Index: ELABORA_FK                                            */
+/*==============================================================*/
+create  index ELABORA_FK on ELABORA (
+DIS_CODIGO
 );
 
 /*==============================================================*/
@@ -576,37 +782,6 @@ DIS_CODIGO
 );
 
 /*==============================================================*/
-/* Table: RELATIONSHIP_16                                       */
-/*==============================================================*/
-create table RELATIONSHIP_16 (
-   PER_CODIGO           INT4                 not null,
-   DIS_CODIGO           INT4                 not null,
-   constraint PK_RELATIONSHIP_16 primary key (PER_CODIGO, DIS_CODIGO)
-);
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_16_PK                                    */
-/*==============================================================*/
-create unique index RELATIONSHIP_16_PK on RELATIONSHIP_16 (
-PER_CODIGO,
-DIS_CODIGO
-);
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_17_FK                                    */
-/*==============================================================*/
-create  index RELATIONSHIP_17_FK on RELATIONSHIP_16 (
-PER_CODIGO
-);
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_16_FK                                    */
-/*==============================================================*/
-create  index RELATIONSHIP_16_FK on RELATIONSHIP_16 (
-DIS_CODIGO
-);
-
-/*==============================================================*/
 /* Table: RESPONSABLES_TITULACION                               */
 /*==============================================================*/
 create table RESPONSABLES_TITULACION (
@@ -779,6 +954,16 @@ alter table DICTA
       references MATERIAS (MAT_CODIGO)
       on delete restrict on update restrict;
 
+alter table ELABORA
+   add constraint FK_ELABORA_ELABORA_TRABAJO_ foreign key (DIS_CODIGO)
+      references TRABAJO_DISERTACION (DIS_CODIGO)
+      on delete restrict on update restrict;
+
+alter table ELABORA
+   add constraint FK_ELABORA_ELABORA2_ESTUDIAN foreign key (PER_CODIGO)
+      references ESTUDIANTE (PER_CODIGO)
+      on delete restrict on update restrict;
+
 alter table ESCUELAS
    add constraint FK_ESCUELAS_ESC_FACU_FACULTAD foreign key (FACU_CODIGO)
       references FACULTADES (FACU_CODIGO)
@@ -872,16 +1057,6 @@ alter table PROFESOR
 alter table PRORROGA
    add constraint FK_PRORROGA_PRO_DISER_TRABAJO_ foreign key (DIS_CODIGO)
       references TRABAJO_DISERTACION (DIS_CODIGO)
-      on delete restrict on update restrict;
-
-alter table RELATIONSHIP_16
-   add constraint FK_RELATION_RELATIONS_TRABAJO_ foreign key (DIS_CODIGO)
-      references TRABAJO_DISERTACION (DIS_CODIGO)
-      on delete restrict on update restrict;
-
-alter table RELATIONSHIP_16
-   add constraint FK_RELATION_RELATIONS_ESTUDIAN foreign key (PER_CODIGO)
-      references ESTUDIANTE (PER_CODIGO)
       on delete restrict on update restrict;
 
 alter table RESPONSABLES_TITULACION

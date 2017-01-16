@@ -1,7 +1,8 @@
 /*==============================================================*/
 /* dbms name:      mysql 5.0                                    */
-/* created on:     16/01/2017 10:02:22 a. m.                    */
+/* created on:     16/01/2017 3:13:41 p. m.                     */
 /*==============================================================*/
+
 
 /*==============================================================*/
 /* table: carreras                                              */
@@ -22,6 +23,16 @@ create table dicta
    per_codigo           int not null,
    mat_codigo           int not null,
    primary key (per_codigo, mat_codigo)
+);
+
+/*==============================================================*/
+/* table: elabora                                               */
+/*==============================================================*/
+create table elabora
+(
+   per_codigo           int not null,
+   dis_codigo           int not null,
+   primary key (per_codigo, dis_codigo)
 );
 
 /*==============================================================*/
@@ -251,16 +262,6 @@ create table prorroga
 );
 
 /*==============================================================*/
-/* table: relationship_16                                       */
-/*==============================================================*/
-create table relationship_16
-(
-   per_codigo           int not null,
-   dis_codigo           int not null,
-   primary key (per_codigo, dis_codigo)
-);
-
-/*==============================================================*/
 /* table: responsables_titulacion                               */
 /*==============================================================*/
 create table responsables_titulacion
@@ -346,6 +347,12 @@ alter table dicta add constraint fk_dicta foreign key (per_codigo)
 alter table dicta add constraint fk_dicta2 foreign key (mat_codigo)
       references materias (mat_codigo) on delete restrict on update restrict;
 
+alter table elabora add constraint fk_elabora foreign key (dis_codigo)
+      references trabajo_disertacion (dis_codigo) on delete restrict on update restrict;
+
+alter table elabora add constraint fk_elabora2 foreign key (per_codigo)
+      references estudiante (per_codigo) on delete restrict on update restrict;
+
 alter table escuelas add constraint fk_esc_facu foreign key (facu_codigo)
       references facultades (facu_codigo) on delete restrict on update restrict;
 
@@ -402,12 +409,6 @@ alter table profesor add constraint fk_rolxpersona2 foreign key (rol_codigo)
 
 alter table prorroga add constraint fk_pro_disertacion foreign key (dis_codigo)
       references trabajo_disertacion (dis_codigo) on delete restrict on update restrict;
-
-alter table relationship_16 add constraint fk_relationship_16 foreign key (dis_codigo)
-      references trabajo_disertacion (dis_codigo) on delete restrict on update restrict;
-
-alter table relationship_16 add constraint fk_relationship_17 foreign key (per_codigo)
-      references estudiante (per_codigo) on delete restrict on update restrict;
 
 alter table responsables_titulacion add constraint fk_es_nombrado foreign key (per_codigo)
       references profesor (per_codigo) on delete restrict on update restrict;
