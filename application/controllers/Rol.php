@@ -76,7 +76,18 @@ class Rol extends CI_Controller
             else
             {   
                 $data['rol'] = $this->Rol_model->get_rol($rol_codigo);
-    
+                //i
+                //cargo permisos de tabla cruzada
+                $this->load->model('Permxrol_model');
+                $data['all_permisos'] = $this->Permxrol_model->get_perm_x_rol($rol_codigo);
+                //Cargo caracteristicas del permiso
+                $this->load->model('Permiso_model');
+                $res=[];
+                foreach ($data['all_permisos'] as $pxr){
+                    $res[$pxr['zpermcodigo']] = $this->Permiso_model->get_permiso($pxr['zpermcodigo']);
+                }
+                $data['permisos_detalle'] = $res;
+                //////
                 $this->load->view('roles/edit',$data);
             }
         }

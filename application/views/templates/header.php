@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    <link rel = "stylesheet" type = "text/css"  href = "../assets/css/pantalla_hf.css" />
+    <link rel = "stylesheet" type = "text/css"  href="<?php echo base_url();?>/assets/css/pantalla_hf.css"/>
     <!-- Custom jquery scripts -->
-    <script src="../assets/js/jquery/custom_jquery.js" type="text/javascript"></script>
+    <script src="<?php echo base_url();?>/assets/js/jquery/custom_jquery.js" type="text/javascript"></script>
 
 </head>
 <body>
 
 
 <div id = "header">
-    <div class = "logo"><img src = "../assets/images/header_footer/logo_puce.png"></div>
+    <div class = "logo"><img src = "<?php echo base_url();?>/assets/images/header_footer/logo_puce.png"></div>
 </div>

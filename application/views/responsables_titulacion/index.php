@@ -13,8 +13,8 @@
 		<td><?php echo $r['res_tipo']; ?></td>
 		<td><?php echo $r['res_fechanombramiento']; ?></td>
 		<td>
-            <a href="<?php echo site_url('responsables_titulacion/edit/'.$r['id']); ?>">Edit</a> | 
-            <a href="<?php echo site_url('responsables_titulacion/remove/'.$r['id']); ?>">Delete</a>
+            <a href="<?php echo site_url('responsable_titulacion/edit/'.$r['res_codigo']); ?>">Edit</a> |
+            <a href="<?php echo site_url('responsable_titulacion/remove/'.$r['res_codigo']); ?>">Delete</a>
         </td>
     </tr>
 	<?php } ?>

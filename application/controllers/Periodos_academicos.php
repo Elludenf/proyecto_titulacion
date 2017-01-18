@@ -23,7 +23,7 @@ class Periodos_academicos extends CI_Controller
     }
 
     /*
-     * Adding a new periodo_academico
+     * Adding a new periodos_academicos
      */
     function add()
     {   
@@ -36,22 +36,17 @@ class Periodos_academicos extends CI_Controller
 		
 		if($this->form_validation->run())     
         {
-            //Agregado
             $this->db->select_max('pac_codigo');
-            $result= $this->db->get('periodos_academicos2')->row_array();
-            //echo $result['per_codigo'];
-            //
+            $result= $this->db->get('periodos_academicos')->row_array();
             $params = array(
-                //agregado
                 'pac_codigo' =>$result['pac_codigo']+1,
-                //
 				'pac_descripcion' => $this->input->post('pac_descripcion'),
 				'pac_fechainicio' => $this->input->post('pac_fechainicio'),
 				'pac_fechafinal' => $this->input->post('pac_fechafinal'),
 				'pac_perido' => $this->input->post('pac_perido'),
             );
             
-            $periodo_academico_id = $this->Periodos_academicos_model->add_periodo_academico($params);
+            $periodos_academicos_id = $this->Periodos_academicos_model->add_periodos_academicos($params);
             redirect('periodos_academicos/index');
         }
         else
@@ -61,14 +56,14 @@ class Periodos_academicos extends CI_Controller
     }  
 
     /*
-     * Editing a periodo_academico
+     * Editing a periodos_academicos
      */
     function edit($pac_codigo)
     {   
-        // check if the periodo_academico exists before trying to edit it
-        $periodo_academico = $this->Periodos_academicos_model->get_periodo_academico($pac_codigo);
+        // check if the periodos_academicos exists before trying to edit it
+        $periodos_academicos = $this->Periodos_academicos_model->get_periodos_academicos($pac_codigo);
         
-        if(isset($periodo_academico['pac_codigo']))
+        if(isset($periodos_academicos['pac_codigo']))
         {
             $this->load->library('form_validation');
 
@@ -86,35 +81,35 @@ class Periodos_academicos extends CI_Controller
 					'pac_perido' => $this->input->post('pac_perido'),
                 );
 
-                $this->Periodos_academicos_model->update_periodo_academico($pac_codigo,$params);            
+                $this->Periodos_academicos_model->update_periodos_academicos($pac_codigo,$params);            
                 redirect('periodos_academicos/index');
             }
             else
             {   
-                $data['periodo_academico'] = $this->Periodos_academicos_model->get_periodo_academico($pac_codigo);
+                $data['periodos_academicos'] = $this->Periodos_academicos_model->get_periodos_academicos($pac_codigo);
     
                 $this->load->view('periodos_academicos/edit',$data);
             }
         }
         else
-            show_error('The periodo_academico you are trying to edit does not exist.');
+            show_error('The periodos_academicos you are trying to edit does not exist.');
     } 
 
     /*
-     * Deleting periodo_academico
+     * Deleting periodos_academicos
      */
     function remove($pac_codigo)
     {
-        $periodo_academico = $this->Periodos_academicos_model->get_periodo_academico($pac_codigo);
+        $periodos_academicos = $this->Periodos_academicos_model->get_periodos_academicos($pac_codigo);
 
-        // check if the periodo_academico exists before trying to delete it
-        if(isset($periodo_academico['pac_codigo']))
+        // check if the periodos_academicos exists before trying to delete it
+        if(isset($periodos_academicos['pac_codigo']))
         {
-            $this->Periodos_academicos_model->delete_periodo_academico($pac_codigo);
+            $this->Periodos_academicos_model->delete_periodos_academicos($pac_codigo);
             redirect('periodos_academicos/index');
         }
         else
-            show_error('The periodo_academico you are trying to delete does not exist.');
+            show_error('The periodos_academicos you are trying to delete does not exist.');
     }
     
 }

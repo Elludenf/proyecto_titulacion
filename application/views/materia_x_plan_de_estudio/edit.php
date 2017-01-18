@@ -1,6 +1,6 @@
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('permxrol/edit/'.$permxrol['perm_codigo']); ?>
+<?php echo form_open('materia_x_plan_de_estudio/edit/'.$materia_x_plan_de_estudio['plan_codigo']); ?>
 
 	
 	<button type="submit">Save</button>
