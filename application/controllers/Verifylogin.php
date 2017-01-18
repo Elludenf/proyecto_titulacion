@@ -13,8 +13,8 @@ class VerifyLogin extends CI_Controller {
         //This method will have the credentials validation
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('zusrnombre', 'Nombre', 'trim|required');
-        $this->form_validation->set_rules('zusrclave', 'Clave', 'trim|required|callback_check_database');
+        $this->form_validation->set_rules('per_mailpuce', 'Nombre', 'trim|required');
+        $this->form_validation->set_rules('per_clave', 'Clave', 'trim|required|callback_check_database');
 
         if($this->form_validation->run() == FALSE)
         {
@@ -37,7 +37,7 @@ class VerifyLogin extends CI_Controller {
     function check_database($password)
     {
         //Field validation succeeded.  Validate against database
-        $username = $this->input->post('zusrnombre');
+        $username = $this->input->post('per_mailpuce');
 
         //query the database
         $result = $this->user->login($username, $password);
@@ -48,8 +48,8 @@ class VerifyLogin extends CI_Controller {
             foreach($result as $row)
             {
                 $sess_array = array(
-                    'zusrcodigo' => $row->zusrcodigo,
-                    'zusrnombre' => $row->zusrnombre
+                    'per_clave' => $row->per_clave,
+                    'per_mailpuce' => $row->per_mailpuce
                 );
                 $this->session->set_userdata('logged_in', $sess_array);
             }
