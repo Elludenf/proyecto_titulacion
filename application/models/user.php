@@ -2,9 +2,9 @@
 Class User extends CI_Model
 {
   public function login($username,$password) {
-    $this -> db -> select('per_codigo, per_mail, per_clave');
+    $this -> db -> select('per_codigo, per_mailpuce, per_clave');
     $this -> db -> from('estudiante');
-    $this -> db -> where('per_mail', $username);
+    $this -> db -> where('per_mailpuce', $username);
     $this -> db -> where('per_clave', $password);
     $this -> db -> limit(1);
 
@@ -16,9 +16,9 @@ Class User extends CI_Model
     }
     else
     {
-      $this -> db -> select('per_codigo, per_mail, per_clave');
+      $this -> db -> select('per_codigo, per_mailpuce, per_clave');
       $this -> db -> from('profesor');
-      $this -> db -> where('per_mail', $username);
+      $this -> db -> where('per_mailpuce', $username);
       $this -> db -> where('per_clave', $password);
       $this -> db -> limit(1);
 
