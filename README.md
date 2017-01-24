@@ -4,3 +4,4 @@
 <dt>Henry Trujillo
 <dt>Ronny Cordova
 <dt>Roberto Gallardo
+<dt>Juan Cruz
