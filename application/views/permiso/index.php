@@ -10,15 +10,15 @@
     </tr>
 	<?php foreach($permisos as $p){ ?>
     <tr>
-		<td><?php echo $p['zpermcodigo']; ?></td>
-		<td><?php echo $p['zperm_estado']; ?></td>
-		<td><?php echo $p['zperm_creat']; ?></td>
-		<td><?php echo $p['zperm_read']; ?></td>
-		<td><?php echo $p['zperm_update']; ?></td>
-		<td><?php echo $p['zperm_delete']; ?></td>
+		<td><?php echo $p['perm_codigo']; ?></td>
+		<td><?php echo $p['perm_estado']; ?></td>
+		<td><?php echo $p['perm_creat']; ?></td>
+		<td><?php echo $p['perm_read']; ?></td>
+		<td><?php echo $p['perm_update']; ?></td>
+		<td><?php echo $p['perm_delete']; ?></td>
 		<td>
-            <a href="<?php echo site_url('permiso/edit/'.$p['zpermcodigo']); ?>">Edit</a> |
-            <a href="<?php echo site_url('permiso/remove/'.$p['zpermcodigo']); ?>">Delete</a>
+            <a href="<?php echo site_url('permiso/edit/'.$p['perm_codigo']); ?>">Edit</a> |
+            <a href="<?php echo site_url('permiso/remove/'.$p['perm_codigo']); ?>">Delete</a>
         </td>
     </tr>
 	<?php } ?>

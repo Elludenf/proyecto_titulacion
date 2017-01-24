@@ -31,18 +31,18 @@ class Permiso extends CI_Controller
         if(isset($_POST) && count($_POST) > 0)     
         {
             //Agregado
-            $this->db->select_max('zpermcodigo');
+            $this->db->select_max('perm_codigo');
             $result= $this->db->get('permisos')->row_array();
             //
             $params = array(
                 //agregado
-                'zpermcodigo' =>$result['zpermcodigo']+1,
+                'perm_codigo' =>$result['perm_codigo']+1,
                 //
-				'zperm_estado' => $this->input->post('zperm_estado'),
-				'zperm_creat' => $this->input->post('zperm_creat'),
-				'zperm_read' => $this->input->post('zperm_read'),
-				'zperm_update' => $this->input->post('zperm_update'),
-				'zperm_delete' => $this->input->post('zperm_delete'),
+				'perm_estado' => $this->input->post('perm_estado'),
+				'perm_creat' => $this->input->post('perm_creat'),
+				'perm_read' => $this->input->post('perm_read'),
+				'perm_update' => $this->input->post('perm_update'),
+				'perm_delete' => $this->input->post('perm_delete'),
             );
             
             $permiso_id = $this->Permiso_model->add_permiso($params);
@@ -57,30 +57,30 @@ class Permiso extends CI_Controller
     /*
      * Editing a permiso
      */
-    function edit($zpermcodigo)
+    function edit($perm_codigo)
     {
         $this->load->library('form_validation');
         // check if the permiso exists before trying to edit it
-        $permiso = $this->Permiso_model->get_permiso($zpermcodigo);
+        $permiso = $this->Permiso_model->get_permiso($perm_codigo);
         
-        if(isset($permiso['zpermcodigo']))
+        if(isset($permiso['perm_codigo']))
         {
             if(isset($_POST) && count($_POST) > 0)     
             {   
                 $params = array(
-					'zperm_estado' => $this->input->post('zperm_estado'),
-					'zperm_creat' => $this->input->post('zperm_creat'),
-					'zperm_read' => $this->input->post('zperm_read'),
-					'zperm_update' => $this->input->post('zperm_update'),
-					'zperm_delete' => $this->input->post('zperm_delete'),
+					'perm_estado' => $this->input->post('perm_estado'),
+					'perm_creat' => $this->input->post('perm_creat'),
+					'perm_read' => $this->input->post('perm_read'),
+					'perm_update' => $this->input->post('perm_update'),
+					'perm_delete' => $this->input->post('perm_delete'),
                 );
 
-                $this->Permiso_model->update_permiso($zpermcodigo,$params);            
+                $this->Permiso_model->update_permiso($perm_codigo,$params);
                 redirect('permiso/index');
             }
             else
             {   
-                $data['permiso'] = $this->Permiso_model->get_permiso($zpermcodigo);
+                $data['permiso'] = $this->Permiso_model->get_permiso($perm_codigo);
     
                 $this->load->view('permiso/edit',$data);
             }
@@ -92,14 +92,14 @@ class Permiso extends CI_Controller
     /*
      * Deleting permiso
      */
-    function remove($zpermcodigo)
+    function remove($perm_codigo)
     {
-        $permiso = $this->Permiso_model->get_permiso($zpermcodigo);
+        $permiso = $this->Permiso_model->get_permiso($perm_codigo);
 
         // check if the permiso exists before trying to delete it
-        if(isset($permiso['zpermcodigo']))
+        if(isset($permiso['perm_codigo']))
         {
-            $this->Permiso_model->delete_permiso($zpermcodigo);
+            $this->Permiso_model->delete_permiso($perm_codigo);
             redirect('permiso/index');
         }
         else

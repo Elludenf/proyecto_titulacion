@@ -84,7 +84,7 @@ class Rol extends CI_Controller
                 $this->load->model('Permiso_model');
                 $res=[];
                 foreach ($data['all_permisos'] as $pxr){
-                    $res[$pxr['zpermcodigo']] = $this->Permiso_model->get_permiso($pxr['zpermcodigo']);
+                    $res[$pxr['permcodigo']] = $this->Permiso_model->get_permiso($pxr['zpermcodigo']);
                 }
                 $data['permisos_detalle'] = $res;
                 //////

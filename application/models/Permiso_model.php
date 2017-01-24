@@ -14,9 +14,9 @@ class Permiso_model extends CI_Model
     /*
      * Get permiso by zpermcodigo
      */
-    function get_permiso($zpermcodigo)
+    function get_permiso($perm_codigo)
     {
-        return $this->db->get_where('permisos',array('zpermcodigo'=>$zpermcodigo))->row_array();
+        return $this->db->get_where('permisos',array('perm_codigo'=>$perm_codigo))->row_array();
     }
     
     /*
@@ -44,9 +44,9 @@ class Permiso_model extends CI_Model
     /*
      * function to update permiso
      */
-    function update_permiso($zpermcodigo,$params)
+    function update_permiso($perm_codigo,$params)
     {
-        $this->db->where('zpermcodigo',$zpermcodigo);
+        $this->db->where('perm_codigo',$perm_codigo);
         $response = $this->db->update('permisos',$params);
         if($response)
         {
@@ -61,9 +61,9 @@ class Permiso_model extends CI_Model
     /*
      * function to delete permiso
      */
-    function delete_permiso($zpermcodigo)
+    function delete_permiso($perm_codigo)
     {
-        $response = $this->db->delete('permisos',array('zpermcodigo'=>$zpermcodigo));
+        $response = $this->db->delete('permisos',array('perm_codigo'=>$perm_codigo));
         if($response)
         {
             return "permiso deleted successfully";
