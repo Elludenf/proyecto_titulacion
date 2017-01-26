@@ -1,9 +1,136 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 9.x                               */
-/* Created on:     26/01/2017 9:49:50 a. m.                     */
+/* Created on:     26/01/2017 4:16:07 p. m.                     */
 /*==============================================================*/
 
 
+drop index CARR_ESC_FK;
+
+drop index CARRERAS_PK;
+
+drop table CARRERAS;
+
+drop index DICTA_FK;
+
+drop index DICTA2_FK;
+
+drop index DICTA_PK;
+
+drop table DICTA;
+
+drop index ELABORA_FK;
+
+drop index ELABORA2_FK;
+
+drop index ELABORA_PK;
+
+drop table ELABORA;
+
+drop index ESC_FACU_FK;
+
+drop index ESCUELAS_PK;
+
+drop table ESCUELAS;
+
+drop index EST_CARR_FK;
+
+drop index ESTUDIANTE_PK;
+
+drop table ESTUDIANTE;
+
+drop index TOMA_FK;
+
+drop index EXAMEN_COMPLEXIVO_PK;
+
+drop table EXAMEN_COMPLEXIVO;
+
+drop index FACULTADES_PK;
+
+drop table FACULTADES;
+
+drop index MATERIAS_PK;
+
+drop table MATERIAS;
+
+drop index MATERIA_X_PLAN_DE_ESTUDIO_FK;
+
+drop index MATERIA_X_PLAN_DE_ESTUDIO3_FK;
+
+drop index MATERIA_X_PLAN_DE_ESTUDIO2_FK;
+
+drop index MATERIA_X_PLAN_DE_ESTUDIO_PK;
+
+drop table MATERIA_X_PLAN_DE_ESTUDIO;
+
+drop index MATSORTEADAS_X_EXAMEN_FK;
+
+drop index MATSORTEADAS_X_EXAMEN2_FK;
+
+drop index MATSORTEADAS_X_EXAMEN_PK;
+
+drop table MATSORTEADAS_X_EXAMEN;
+
+drop index MAT_AP_X_EST_FK;
+
+drop index MAT_AP_X_EST2_FK;
+
+drop index MAT_AP_X_EST_PK;
+
+drop table MAT_AP_X_EST;
+
+drop index PERIODOS_ACADEMICOS_PK;
+
+drop table PERIODOS_ACADEMICOS;
+
+drop index MALL_CARR_FK;
+
+drop index PLAN_DE_ESTUDIO_PK;
+
+drop table PLAN_DE_ESTUDIO;
+
+drop index PROFESOR_PK;
+
+drop table PROFESOR;
+
+drop index PRO_DISERTACION_FK;
+
+drop index PRORROGA_PK;
+
+drop table PRORROGA;
+
+drop index ES_NOMBRADO_FK;
+
+drop index RESPONSABLES_TITULACION_PK;
+
+drop table RESPONSABLES_TITULACION;
+
+drop index REVDIR_X_DISERTACION3_FK;
+
+drop index REVDIR_X_DISERTACION2_FK;
+
+drop index REVDIR_X_DISERTACION_PK;
+
+drop table REVDIR_X_DISERTACION;
+
+drop index REVDIR_X_DISERTACION_FK;
+
+drop index REVISIONES_PK;
+
+drop table REVISIONES;
+
+drop index TRABAJO_DISERTACION_PK;
+
+drop table TRABAJO_DISERTACION;
+
+drop domain ZESTEXAM;
+
+drop domain Z_SEXO;
+
+drop domain Z_TIPO_ID;
+
+drop domain Z_TIPO_RESPONSABLE_T;
+
+drop domain Z_TIPO_REVISOR;
 
 /*==============================================================*/
 /* Domain: ZESTEXAM                                             */
@@ -543,7 +670,6 @@ create table REVISIONES (
    OBS_CODIGO           SERIAL               not null,
    REV_DIS_CODIGO       INT4                 not null,
    PROF_CODIGO          INT4                 not null,
-   DIS_CODIGO           INT4                 not null,
    OBS_FECHA            DATE                 not null,
    OBS_DESCRIPCION      VARCHAR(1024)        not null,
    constraint PK_REVISIONES primary key (OBS_CODIGO)
@@ -554,13 +680,6 @@ create table REVISIONES (
 /*==============================================================*/
 create unique index REVISIONES_PK on REVISIONES (
 OBS_CODIGO
-);
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_3_FK                                     */
-/*==============================================================*/
-create  index RELATIONSHIP_3_FK on REVISIONES (
-DIS_CODIGO
 );
 
 /*==============================================================*/
@@ -691,11 +810,6 @@ alter table REVDIR_X_DISERTACION
 alter table REVDIR_X_DISERTACION
    add constraint FK_REVDIR_X_REVDIR_X__PROFESOR foreign key (PROF_CODIGO)
       references PROFESOR (PROF_CODIGO)
-      on delete restrict on update restrict;
-
-alter table REVISIONES
-   add constraint FK_REVISION_RELATIONS_TRABAJO_ foreign key (DIS_CODIGO)
-      references TRABAJO_DISERTACION (DIS_CODIGO)
       on delete restrict on update restrict;
 
 alter table REVISIONES
