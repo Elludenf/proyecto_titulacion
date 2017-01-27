@@ -1,368 +1,330 @@
 /*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     26/01/2017 4:18:21 p. m.                     */
+/* dbms name:      mysql 5.0                                    */
+/* created on:     26/01/2017 9:01:54 p. m.                     */
 /*==============================================================*/
 
 
-drop table if exists CARRERAS;
-
-drop table if exists DICTA;
-
-drop table if exists ELABORA;
-
-drop table if exists ESCUELAS;
-
-drop table if exists ESTUDIANTE;
-
-drop table if exists EXAMEN_COMPLEXIVO;
-
-drop table if exists FACULTADES;
-
-drop table if exists MATERIAS;
-
-drop table if exists MATERIA_X_PLAN_DE_ESTUDIO;
-
-drop table if exists MATSORTEADAS_X_EXAMEN;
-
-drop table if exists MAT_AP_X_EST;
-
-drop table if exists PERIODOS_ACADEMICOS;
-
-drop table if exists PLAN_DE_ESTUDIO;
-
-drop table if exists PROFESOR;
-
-drop table if exists PRORROGA;
-
-drop table if exists RESPONSABLES_TITULACION;
-
-drop table if exists REVDIR_X_DISERTACION;
-
-drop table if exists REVISIONES;
-
-drop table if exists TRABAJO_DISERTACION;
-
 /*==============================================================*/
-/* Table: CARRERAS                                              */
+/* table: carreras                                              */
 /*==============================================================*/
-create table CARRERAS
+create table carreras
 (
-   CARR_CODIGO          int not null auto_increment,
-   ESC_CODIGO           int not null,
-   CARR_DESCRIPCION     char(50) not null,
-   primary key (CARR_CODIGO)
+   carr_codigo          int not null auto_increment,
+   esc_codigo           int not null,
+   carr_descripcion     char(50) not null,
+   primary key (carr_codigo)
 );
 
 /*==============================================================*/
-/* Table: DICTA                                                 */
+/* table: dicta                                                 */
 /*==============================================================*/
-create table DICTA
+create table dicta
 (
-   PROF_CODIGO          int not null,
-   MAT_CODIGO           int not null,
-   primary key (PROF_CODIGO, MAT_CODIGO)
+   prof_codigo          int not null,
+   mat_codigo           int not null,
+   primary key (prof_codigo, mat_codigo)
 );
 
 /*==============================================================*/
-/* Table: ELABORA                                               */
+/* table: elabora                                               */
 /*==============================================================*/
-create table ELABORA
+create table elabora
 (
-   EST_CODIGO           int not null,
-   DIS_CODIGO           int not null,
-   ELB_NOTA_HORAL       float,
-   ELB_NOTA_ESCRITO     float,
-   primary key (EST_CODIGO, DIS_CODIGO)
+   est_codigo           int not null,
+   dis_codigo           int not null,
+   elb_nota_horal       float,
+   elb_nota_escrito     float,
+   primary key (est_codigo, dis_codigo)
 );
 
 /*==============================================================*/
-/* Table: ESCUELAS                                              */
+/* table: escuelas                                              */
 /*==============================================================*/
-create table ESCUELAS
+create table escuelas
 (
-   ESC_CODIGO           int not null auto_increment,
-   FACU_CODIGO          int not null,
-   ESC_DESCRIPCION      char(50) not null,
-   primary key (ESC_CODIGO)
+   esc_codigo           int not null auto_increment,
+   facu_codigo          int not null,
+   esc_descripcion      char(50) not null,
+   primary key (esc_codigo)
 );
 
 /*==============================================================*/
-/* Table: ESTUDIANTE                                            */
+/* table: estudiante                                            */
 /*==============================================================*/
-create table ESTUDIANTE
+create table estudiante
 (
-   EST_CODIGO           int not null auto_increment,
-   CARR_CODIGO          int not null,
-   EST_NOMBRE1          char(50) not null,
-   EST_NOMBRE2          char(50),
-   EST_APELLIDO1        char(50) not null,
-   EST_APELLIDO2        char(50),
-   EST_TIPOID           varchar(3) not null,
-   EST_ID               char(15) not null,
-   EST_DIRECCION        char(256) not null,
-   EST_TELEFONO         char(10),
-   EST_CELULAR          char(10) not null,
-   EST_MAIL             char(256) not null,
-   EST_MAILPUCE         char(256),
-   EST_FECHANAC         date not null,
-   EST_SEXO             varchar(1) not null,
-   EST_FOTO             longblob,
-   EST_FECHAINGRESO     date not null,
-   EST_FECHAESTIMADAGRADUACION date,
-   EST_FECHAGRADUACION  date,
-   primary key (EST_CODIGO)
+   est_codigo           int not null auto_increment,
+   carr_codigo          int not null,
+   est_nombre1          char(50) not null,
+   est_nombre2          char(50),
+   est_apellido1        char(50) not null,
+   est_apellido2        char(50),
+   est_tipoid           varchar(3) not null,
+   est_id               char(15) not null,
+   est_direccion        char(256) not null,
+   est_telefono         char(10),
+   est_celular          char(10) not null,
+   est_mail             char(256) not null,
+   est_mailpuce         char(256),
+   est_fechanac         date not null,
+   est_sexo             varchar(1) not null,
+   est_foto             longblob,
+   est_fechaingreso     date not null,
+   est_fechaestimadagraduacion date,
+   est_fechagraduacion  date,
+   primary key (est_codigo)
 );
 
 /*==============================================================*/
-/* Table: EXAMEN_COMPLEXIVO                                     */
+/* table: examen_complexivo                                     */
 /*==============================================================*/
-create table EXAMEN_COMPLEXIVO
+create table examen_complexivo
 (
-   EXA_CODIGO           int not null auto_increment,
-   EST_CODIGO           int,
-   EXA_FECHAINICIO      date not null,
-   EXA_ESTADO           char(2) not null,
-   EXA_HORAS_DOCENCIA   int,
-   EXA_HORAS_AUTONOMAS  int,
-   primary key (EXA_CODIGO)
+   exa_codigo           int not null auto_increment,
+   est_codigo           int,
+   exa_fechainicio      date not null,
+   exa_estado           char(2) not null,
+   exa_horas_docencia   int,
+   exa_horas_autonomas  int,
+   primary key (exa_codigo)
 );
 
 /*==============================================================*/
-/* Table: FACULTADES                                            */
+/* table: facultades                                            */
 /*==============================================================*/
-create table FACULTADES
+create table facultades
 (
-   FACU_CODIGO          int not null auto_increment,
-   FACU_DESCRIPCION     char(50) not null,
-   primary key (FACU_CODIGO)
+   facu_codigo          int not null auto_increment,
+   facu_descripcion     char(50) not null,
+   primary key (facu_codigo)
 );
 
 /*==============================================================*/
-/* Table: MATERIAS                                              */
+/* table: materias                                              */
 /*==============================================================*/
-create table MATERIAS
+create table materias
 (
-   MAT_CODIGO           int not null auto_increment,
-   MAT_NOMBRE           char(100) not null,
-   MAT_NIVEL            int not null,
-   primary key (MAT_CODIGO)
+   mat_codigo           int not null auto_increment,
+   mat_nombre           char(100) not null,
+   mat_nivel            int not null,
+   primary key (mat_codigo)
 );
 
 /*==============================================================*/
-/* Table: MATERIA_X_PLAN_DE_ESTUDIO                             */
+/* table: materia_x_plan_de_estudio                             */
 /*==============================================================*/
-create table MATERIA_X_PLAN_DE_ESTUDIO
+create table materia_x_plan_de_estudio
 (
-   PLAN_CODIGO          int not null,
-   MAT_CODIGO           int not null,
-   PAC_CODIGO           int not null,
-   primary key (PLAN_CODIGO, MAT_CODIGO, PAC_CODIGO)
+   plan_codigo          int not null,
+   mat_codigo           int not null,
+   pac_codigo           int not null,
+   primary key (plan_codigo, mat_codigo, pac_codigo)
 );
 
 /*==============================================================*/
-/* Table: MATSORTEADAS_X_EXAMEN                                 */
+/* table: matsorteadas_x_examen                                 */
 /*==============================================================*/
-create table MATSORTEADAS_X_EXAMEN
+create table matsorteadas_x_examen
 (
-   MAT_CODIGO           int not null,
-   EXA_CODIGO           int not null,
-   MXE_FECHA_1          date,
-   MXE_FECHA_2          date,
-   MXE_NOTA_HORAL_1     float,
-   MXE_NOTA_ESCRITA_1   float,
-   MXE_NOTA_HORAL_2     float,
-   MXE_NOTA_ESCRITA_2   float,
-   primary key (MAT_CODIGO, EXA_CODIGO)
+   mat_codigo           int not null,
+   exa_codigo           int not null,
+   mxe_fecha_1          date,
+   mxe_fecha_2          date,
+   mxe_nota_horal_1     float,
+   mxe_nota_escrita_1   float,
+   mxe_nota_horal_2     float,
+   mxe_nota_escrita_2   float,
+   primary key (mat_codigo, exa_codigo)
 );
 
 /*==============================================================*/
-/* Table: MAT_AP_X_EST                                          */
+/* table: mat_ap_x_est                                          */
 /*==============================================================*/
-create table MAT_AP_X_EST
+create table mat_ap_x_est
 (
-   MAT_CODIGO           int not null,
-   EST_CODIGO           int not null,
-   primary key (MAT_CODIGO, EST_CODIGO)
+   mat_codigo           int not null,
+   est_codigo           int not null,
+   primary key (mat_codigo, est_codigo)
 );
 
 /*==============================================================*/
-/* Table: PERIODOS_ACADEMICOS                                   */
+/* table: periodos_academicos                                   */
 /*==============================================================*/
-create table PERIODOS_ACADEMICOS
+create table periodos_academicos
 (
-   PAC_CODIGO           int not null auto_increment,
-   PAC_DESCRIPCION      char(30) not null,
-   PAC_FECHAINICIO      date not null,
-   PAC_FECHAFINAL       date not null,
-   PAC_PERIDO           int,
-   primary key (PAC_CODIGO)
+   pac_codigo           int not null auto_increment,
+   pac_descripcion      char(30) not null,
+   pac_fechainicio      date not null,
+   pac_fechafinal       date not null,
+   pac_perido           int,
+   primary key (pac_codigo)
 );
 
 /*==============================================================*/
-/* Table: PLAN_DE_ESTUDIO                                       */
+/* table: plan_de_estudio                                       */
 /*==============================================================*/
-create table PLAN_DE_ESTUDIO
+create table plan_de_estudio
 (
-   PLAN_CODIGO          int not null auto_increment,
-   CARR_CODIGO          int not null,
-   PLAN_DESCRIPCION     char(50) not null,
-   PLAN_FECHAINICIO     date,
-   PLAN_VIGENCIA        bool,
-   primary key (PLAN_CODIGO)
+   plan_codigo          int not null auto_increment,
+   carr_codigo          int not null,
+   plan_descripcion     char(50) not null,
+   plan_fechainicio     date,
+   plan_vigencia        bool,
+   primary key (plan_codigo)
 );
 
 /*==============================================================*/
-/* Table: PROFESOR                                              */
+/* table: profesor                                              */
 /*==============================================================*/
-create table PROFESOR
+create table profesor
 (
-   PROF_CODIGO          int not null auto_increment,
-   PROF_NOMBRE1         char(50) not null,
-   PROF_NOMBRE2         char(50),
-   PROF_APELLIDO1       char(50) not null,
-   PROF_APELLIDO2       char(50),
-   PROF_TIPOID          varchar(3) not null,
-   PROF_ID              char(15) not null,
-   PROF_DIRECCION       char(256) not null,
-   PROF_TELEFONO        char(10),
-   PROF_CELULAR         char(10) not null,
-   PROF_MAIL            char(256) not null,
-   PROF_MAILPUCE        char(256),
-   PROF_FECHANAC        date not null,
-   PROF_SEXO            varchar(1) not null,
-   PROF_FOTO            longblob,
-   PROF_OFICINA         char(15),
-   primary key (PROF_CODIGO)
+   prof_codigo          int not null auto_increment,
+   prof_nombre1         char(50) not null,
+   prof_nombre2         char(50),
+   prof_apellido1       char(50) not null,
+   prof_apellido2       char(50),
+   prof_tipoid          varchar(3) not null,
+   prof_id              char(15) not null,
+   prof_direccion       char(256) not null,
+   prof_telefono        char(10),
+   prof_celular         char(10) not null,
+   prof_mail            char(256) not null,
+   prof_mailpuce        char(256),
+   prof_fechanac        date not null,
+   prof_sexo            varchar(1) not null,
+   prof_foto            longblob,
+   prof_oficina         char(15),
+   primary key (prof_codigo)
 );
 
 /*==============================================================*/
-/* Table: PRORROGA                                              */
+/* table: prorroga                                              */
 /*==============================================================*/
-create table PRORROGA
+create table prorroga
 (
-   PRO_CODIGO           int not null auto_increment,
-   DIS_CODIGO           int not null,
-   PRO_FECHAINT         date not null,
-   PRO_FECHAINICIO      date not null,
-   PRO_FECHAFIN         date not null,
-   PRO_DESCRIPCION      char(30) not null,
-   PRO_DETALLE          varchar(1024) not null,
-   primary key (PRO_CODIGO)
+   pro_codigo           int not null auto_increment,
+   dis_codigo           int not null,
+   pro_fechaint         date not null,
+   pro_fechainicio      date not null,
+   pro_fechafin         date not null,
+   pro_descripcion      char(30) not null,
+   pro_detalle          varchar(1024) not null,
+   primary key (pro_codigo)
 );
 
 /*==============================================================*/
-/* Table: RESPONSABLES_TITULACION                               */
+/* table: responsables_titulacion                               */
 /*==============================================================*/
-create table RESPONSABLES_TITULACION
+create table responsables_titulacion
 (
-   RES_CODIGO           int not null auto_increment,
-   PROF_CODIGO          int,
-   RES_TIPO             varchar(2) not null,
-   RES_FECHANOMBRAMIENTO date not null,
-   primary key (RES_CODIGO)
+   res_codigo           int not null auto_increment,
+   prof_codigo          int,
+   res_tipo             varchar(2) not null,
+   res_fechanombramiento date not null,
+   primary key (res_codigo)
 );
 
 /*==============================================================*/
-/* Table: REVDIR_X_DISERTACION                                  */
+/* table: revdir_x_disertacion                                  */
 /*==============================================================*/
-create table REVDIR_X_DISERTACION
+create table revdir_x_disertacion
 (
-   DIS_CODIGO           int not null,
-   PROF_CODIGO          int not null,
-   RXD_TIPO             varchar(3) not null,
-   RXD_FECHANOMBRAMIENTO date not null,
-   primary key (DIS_CODIGO, PROF_CODIGO)
+   dis_codigo           int not null,
+   prof_codigo          int not null,
+   rxd_tipo             varchar(3) not null,
+   rxd_fechanombramiento date not null,
+   primary key (dis_codigo, prof_codigo)
 );
 
 /*==============================================================*/
-/* Table: REVISIONES                                            */
+/* table: revisiones                                            */
 /*==============================================================*/
-create table REVISIONES
+create table revisiones
 (
-   OBS_CODIGO           int not null auto_increment,
-   REV_DIS_CODIGO       int not null,
-   PROF_CODIGO          int not null,
-   OBS_FECHA            date not null,
-   OBS_DESCRIPCION      varchar(1024) not null,
-   primary key (OBS_CODIGO)
+   dis_codigo           int not null,
+   prof_codigo          int not null,
+   obs_codigo           int not null auto_increment,
+   obs_fecha            date not null,
+   obs_descripcion      varchar(1024) not null,
+   primary key (obs_codigo)
 );
 
 /*==============================================================*/
-/* Table: TRABAJO_DISERTACION                                   */
+/* table: trabajo_disertacion                                   */
 /*==============================================================*/
-create table TRABAJO_DISERTACION
+create table trabajo_disertacion
 (
-   DIS_CODIGO           int not null auto_increment,
-   DIS_FECHAINICIO      date not null,
-   DIS_FECHAPRESENTACIONPLAN date not null,
-   DIS_FECHAAPROBACION  date not null,
-   DIS_TITULO           varchar(1024) not null,
-   DIS_ESTADO           bool not null,
-   DIS_FECHAFIN         date,
-   DIS_DEFENSA          date,
-   primary key (DIS_CODIGO)
+   dis_codigo           int not null auto_increment,
+   dis_fechainicio      date not null,
+   dis_fechapresentacionplan date not null,
+   dis_fechaaprobacion  date not null,
+   dis_titulo           varchar(1024) not null,
+   dis_estado           bool not null,
+   dis_fechafin         date,
+   dis_defensa          date,
+   primary key (dis_codigo)
 );
 
-alter table CARRERAS add constraint FK_CARR_ESC foreign key (ESC_CODIGO)
-      references ESCUELAS (ESC_CODIGO) on delete restrict on update restrict;
+alter table carreras add constraint fk_carr_esc foreign key (esc_codigo)
+      references escuelas (esc_codigo) on delete restrict on update restrict;
 
-alter table DICTA add constraint FK_DICTA foreign key (PROF_CODIGO)
-      references PROFESOR (PROF_CODIGO) on delete restrict on update restrict;
+alter table dicta add constraint fk_dicta foreign key (prof_codigo)
+      references profesor (prof_codigo) on delete restrict on update restrict;
 
-alter table DICTA add constraint FK_DICTA2 foreign key (MAT_CODIGO)
-      references MATERIAS (MAT_CODIGO) on delete restrict on update restrict;
+alter table dicta add constraint fk_dicta2 foreign key (mat_codigo)
+      references materias (mat_codigo) on delete restrict on update restrict;
 
-alter table ELABORA add constraint FK_ELABORA foreign key (DIS_CODIGO)
-      references TRABAJO_DISERTACION (DIS_CODIGO) on delete restrict on update restrict;
+alter table elabora add constraint fk_elabora foreign key (dis_codigo)
+      references trabajo_disertacion (dis_codigo) on delete restrict on update restrict;
 
-alter table ELABORA add constraint FK_ELABORA2 foreign key (EST_CODIGO)
-      references ESTUDIANTE (EST_CODIGO) on delete restrict on update restrict;
+alter table elabora add constraint fk_elabora2 foreign key (est_codigo)
+      references estudiante (est_codigo) on delete restrict on update restrict;
 
-alter table ESCUELAS add constraint FK_ESC_FACU foreign key (FACU_CODIGO)
-      references FACULTADES (FACU_CODIGO) on delete restrict on update restrict;
+alter table escuelas add constraint fk_esc_facu foreign key (facu_codigo)
+      references facultades (facu_codigo) on delete restrict on update restrict;
 
-alter table ESTUDIANTE add constraint FK_EST_CARR foreign key (CARR_CODIGO)
-      references CARRERAS (CARR_CODIGO) on delete restrict on update restrict;
+alter table estudiante add constraint fk_est_carr foreign key (carr_codigo)
+      references carreras (carr_codigo) on delete restrict on update restrict;
 
-alter table EXAMEN_COMPLEXIVO add constraint FK_TOMA foreign key (EST_CODIGO)
-      references ESTUDIANTE (EST_CODIGO) on delete restrict on update restrict;
+alter table examen_complexivo add constraint fk_toma foreign key (est_codigo)
+      references estudiante (est_codigo) on delete restrict on update restrict;
 
-alter table MATERIA_X_PLAN_DE_ESTUDIO add constraint FK_MATERIA_X_PLAN_DE_ESTUDIO foreign key (PAC_CODIGO)
-      references PERIODOS_ACADEMICOS (PAC_CODIGO) on delete restrict on update restrict;
+alter table materia_x_plan_de_estudio add constraint fk_materia_x_plan_de_estudio foreign key (pac_codigo)
+      references periodos_academicos (pac_codigo) on delete restrict on update restrict;
 
-alter table MATERIA_X_PLAN_DE_ESTUDIO add constraint FK_MATERIA_X_PLAN_DE_ESTUDIO2 foreign key (PLAN_CODIGO)
-      references PLAN_DE_ESTUDIO (PLAN_CODIGO) on delete restrict on update restrict;
+alter table materia_x_plan_de_estudio add constraint fk_materia_x_plan_de_estudio2 foreign key (plan_codigo)
+      references plan_de_estudio (plan_codigo) on delete restrict on update restrict;
 
-alter table MATERIA_X_PLAN_DE_ESTUDIO add constraint FK_MATERIA_X_PLAN_DE_ESTUDIO3 foreign key (MAT_CODIGO)
-      references MATERIAS (MAT_CODIGO) on delete restrict on update restrict;
+alter table materia_x_plan_de_estudio add constraint fk_materia_x_plan_de_estudio3 foreign key (mat_codigo)
+      references materias (mat_codigo) on delete restrict on update restrict;
 
-alter table MATSORTEADAS_X_EXAMEN add constraint FK_MATSORTEADAS_X_EXAMEN foreign key (EXA_CODIGO)
-      references EXAMEN_COMPLEXIVO (EXA_CODIGO) on delete restrict on update restrict;
+alter table matsorteadas_x_examen add constraint fk_matsorteadas_x_examen foreign key (exa_codigo)
+      references examen_complexivo (exa_codigo) on delete restrict on update restrict;
 
-alter table MATSORTEADAS_X_EXAMEN add constraint FK_MATSORTEADAS_X_EXAMEN2 foreign key (MAT_CODIGO)
-      references MATERIAS (MAT_CODIGO) on delete restrict on update restrict;
+alter table matsorteadas_x_examen add constraint fk_matsorteadas_x_examen2 foreign key (mat_codigo)
+      references materias (mat_codigo) on delete restrict on update restrict;
 
-alter table MAT_AP_X_EST add constraint FK_MAT_AP_X_EST foreign key (MAT_CODIGO)
-      references MATERIAS (MAT_CODIGO) on delete restrict on update restrict;
+alter table mat_ap_x_est add constraint fk_mat_ap_x_est foreign key (mat_codigo)
+      references materias (mat_codigo) on delete restrict on update restrict;
 
-alter table MAT_AP_X_EST add constraint FK_MAT_AP_X_EST2 foreign key (EST_CODIGO)
-      references ESTUDIANTE (EST_CODIGO) on delete restrict on update restrict;
+alter table mat_ap_x_est add constraint fk_mat_ap_x_est2 foreign key (est_codigo)
+      references estudiante (est_codigo) on delete restrict on update restrict;
 
-alter table PLAN_DE_ESTUDIO add constraint FK_MALL_CARR foreign key (CARR_CODIGO)
-      references CARRERAS (CARR_CODIGO) on delete restrict on update restrict;
+alter table plan_de_estudio add constraint fk_mall_carr foreign key (carr_codigo)
+      references carreras (carr_codigo) on delete restrict on update restrict;
 
-alter table PRORROGA add constraint FK_PRO_DISERTACION foreign key (DIS_CODIGO)
-      references TRABAJO_DISERTACION (DIS_CODIGO) on delete restrict on update restrict;
+alter table prorroga add constraint fk_pro_disertacion foreign key (dis_codigo)
+      references trabajo_disertacion (dis_codigo) on delete restrict on update restrict;
 
-alter table RESPONSABLES_TITULACION add constraint FK_ES_NOMBRADO foreign key (PROF_CODIGO)
-      references PROFESOR (PROF_CODIGO) on delete restrict on update restrict;
+alter table responsables_titulacion add constraint fk_es_nombrado foreign key (prof_codigo)
+      references profesor (prof_codigo) on delete restrict on update restrict;
 
-alter table REVDIR_X_DISERTACION add constraint FK_REVDIR_X_DISERTACION2 foreign key (DIS_CODIGO)
-      references TRABAJO_DISERTACION (DIS_CODIGO) on delete restrict on update restrict;
+alter table revdir_x_disertacion add constraint fk_revdir_x_disertacion2 foreign key (dis_codigo)
+      references trabajo_disertacion (dis_codigo) on delete restrict on update restrict;
 
-alter table REVDIR_X_DISERTACION add constraint FK_REVDIR_X_DISERTACION3 foreign key (PROF_CODIGO)
-      references PROFESOR (PROF_CODIGO) on delete restrict on update restrict;
+alter table revdir_x_disertacion add constraint fk_revdir_x_disertacion3 foreign key (prof_codigo)
+      references profesor (prof_codigo) on delete restrict on update restrict;
 
-alter table REVISIONES add constraint FK_REVDIR_X_DISERTACION foreign key (REV_DIS_CODIGO, PROF_CODIGO)
-      references REVDIR_X_DISERTACION (DIS_CODIGO, PROF_CODIGO) on delete restrict on update restrict;
+alter table revisiones add constraint fk_revdir_x_disertacion foreign key (dis_codigo, prof_codigo)
+      references revdir_x_disertacion (dis_codigo, prof_codigo) on delete restrict on update restrict;
 
