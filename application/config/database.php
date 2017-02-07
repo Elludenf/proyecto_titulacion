@@ -76,11 +76,11 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'   => '',
 	'hostname' => '127.0.0.1',
-	'username' => 'administrador1',
+	'username' => 'admintitulacion',
 	'password' => 'fb0c33a45',
-	'database' => 'db_titulacion_pg',
+	'database' => 'db_titulacion',
 	'dbdriver' => 'postgre',
-    'schema' => 'titulacion,audit',
+    'schema' => 'public',
 	'dbprefix' => '',
 	'pconnect' => TRUE,
 	'db_debug' => TRUE,
@@ -95,7 +95,7 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE,
-    'port'=> 5432
+    'port'=> 5434
 
 
 );
