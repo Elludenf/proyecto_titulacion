@@ -95,7 +95,7 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE,
-    'port'=> 5434
+    'port'=> 5432
 
 
 );
