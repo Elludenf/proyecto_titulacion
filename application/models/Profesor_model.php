@@ -14,9 +14,9 @@ class Profesor_model extends CI_Model
     /*
      * Get profesor by per_codigo
      */
-    function get_profesor($per_codigo)
+    function get_profesor($prof_codigo)
     {
-        return $this->db->get_where('profesor',array('per_codigo'=>$per_codigo))->row_array();
+        return $this->db->get_where('profesor',array('prof_codigo'=>$prof_codigo))->row_array();
     }
     
     /*
@@ -39,9 +39,9 @@ class Profesor_model extends CI_Model
     /*
      * function to update profesor
      */
-    function update_profesor($per_codigo,$params)
+    function update_profesor($prof_codigo,$params)
     {
-        $this->db->where('per_codigo',$per_codigo);
+        $this->db->where('prof_codigo',$prof_codigo);
         $response = $this->db->update('profesor',$params);
         if($response)
         {
@@ -56,9 +56,9 @@ class Profesor_model extends CI_Model
     /*
      * function to delete profesor
      */
-    function delete_profesor($per_codigo)
+    function delete_profesor($prof_codigo)
     {
-        $response = $this->db->delete('profesor',array('per_codigo'=>$per_codigo));
+        $response = $this->db->delete('profesor',array('prof_codigo'=>$prof_codigo));
         if($response)
         {
             return "profesor deleted successfully";

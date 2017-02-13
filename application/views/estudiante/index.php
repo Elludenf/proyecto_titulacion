@@ -70,7 +70,7 @@
                                     <tr>
 
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo</a>	</th>
-                                        <th class="table-header-repeat line-left minwidth-1"><a href="">Rol</a>	</th>
+
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">1er Nombre</a></th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">2do Nombre</a></th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">1er Apellido</a></th>
@@ -98,29 +98,29 @@
                                     <?php foreach($estudiante as $e){ ?>
                                         <tr>
 
-                                            <td><?php echo $e['per_codigo']; ?></td>
-                                            <td><?php echo $e['rol_codigo']; ?></td>
-                                            <td><?php echo $e['per_nombre1']; ?></td>
-                                            <td><?php echo $e['per_nombre2']; ?></td>
-                                            <td><?php echo $e['per_apellido1']; ?></td>
-                                            <td><?php echo $e['per_apellido2']; ?></td>
-                                            <td><?php echo $e['per_tipoid']; ?></td>
-                                            <td><?php echo $e['per_id']; ?></td>
-                                            <td><?php echo $e['per_direccion']; ?></td>
-                                            <td><?php echo $e['per_telefono']; ?></td>
-                                            <td><?php echo $e['per_celular']; ?></td>
-                                            <td><?php echo $e['per_mail']; ?></td>
-                                            <td><?php echo $e['per_mailpuce']; ?></td>
-                                            <td><?php echo $e['per_fechanac']; ?></td>
-                                            <td><?php echo $e['per_sexo']; ?></td>
-                                            <td><?php echo $e['per_foto']; ?></td>
+                                            <td><?php echo $e['est_codigo']; ?></td>
+
+                                            <td><?php echo $e['est_nombre1']; ?></td>
+                                            <td><?php echo $e['est_nombre2']; ?></td>
+                                            <td><?php echo $e['est_apellido1']; ?></td>
+                                            <td><?php echo $e['est_apellido2']; ?></td>
+                                            <td><?php echo $e['est_tipoid']; ?></td>
+                                            <td><?php echo $e['est_id']; ?></td>
+                                            <td><?php echo $e['est_direccion']; ?></td>
+                                            <td><?php echo $e['est_telefono']; ?></td>
+                                            <td><?php echo $e['est_celular']; ?></td>
+                                            <td><?php echo $e['est_mail']; ?></td>
+                                            <td><?php echo $e['est_mailpuce']; ?></td>
+                                            <td><?php echo $e['est_fechanac']; ?></td>
+                                            <td><?php echo $e['est_sexo']; ?></td>
+                                            <td><?php echo $e['est_foto']; ?></td>
                                             <td><?php echo $e['carr_codigo']; ?></td>
                                             <td><?php echo $e['est_fechaingreso']; ?></td>
                                             <td><?php echo $e['est_fechaestimadagraduacion']; ?></td>
                                             <td><?php echo $e['est_fechagraduacion']; ?></td>
                                             <td>
-                                                <a href="<?php echo site_url('estudiante/edit/'.$e['per_codigo']); ?>">Edit</a> |
-                                                <a href="<?php echo site_url('estudiante/remove/'.$e['per_codigo']); ?>">Delete</a>
+                                                <a href="<?php echo site_url('estudiante/edit/'.$e['est_codigo']); ?>">Edit</a> |
+                                                <a href="<?php echo site_url('estudiante/remove/'.$e['est_codigo']); ?>">Delete</a>
                                             </td>
 
                                         </tr>

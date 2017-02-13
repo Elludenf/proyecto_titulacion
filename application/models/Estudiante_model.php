@@ -14,9 +14,9 @@ class Estudiante_model extends CI_Model
     /*
      * Get estudiante by per_codigo
      */
-    function get_estudiante($per_codigo)
+    function get_estudiante($est_codigo)
     {
-        return $this->db->get_where('estudiante',array('per_codigo'=>$per_codigo))->row_array();
+        return $this->db->get_where('estudiante',array('est_codigo'=>$est_codigo))->row_array();
     }
 
     /*Get total number of rows (used in pagination)*/
@@ -33,7 +33,7 @@ class Estudiante_model extends CI_Model
     {
         $offset = $this->uri->segment(3);
         return $this->db->limit($limit, $offset)
-                        ->get('estudiante')->result_array();
+            ->get('estudiante')->result_array();
     }
 
     /*
@@ -48,9 +48,9 @@ class Estudiante_model extends CI_Model
     /*
      * function to update estudiante
      */
-    function update_estudiante($per_codigo,$params)
+    function update_estudiante($est_codigo,$params)
     {
-        $this->db->where('per_codigo',$per_codigo);
+        $this->db->where('est_codigo',$est_codigo);
         $response = $this->db->update('estudiante',$params);
         if($response)
         {
@@ -65,9 +65,9 @@ class Estudiante_model extends CI_Model
     /*
      * function to delete estudiante
      */
-    function delete_estudiante($per_codigo)
+    function delete_estudiante($est_codigo)
     {
-        $response = $this->db->delete('estudiante',array('per_codigo'=>$per_codigo));
+        $response = $this->db->delete('estudiante',array('est_codigo'=>$est_codigo));
         if($response)
         {
             return "estudiante deleted successfully";

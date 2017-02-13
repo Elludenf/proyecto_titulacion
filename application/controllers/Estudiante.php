@@ -49,47 +49,39 @@ class Estudiante extends CI_Controller
     {
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('rol_codigo','Rol Codigo','required|integer');
-        $this->form_validation->set_rules('per_nombre1','Per Nombre1','required|max_length[50]');
-        $this->form_validation->set_rules('per_nombre2','Per Nombre2','max_length[50]');
-        $this->form_validation->set_rules('per_apellido1','Per Apellido1','required|max_length[50]');
-        $this->form_validation->set_rules('per_apellido2','Per Apellido2','max_length[50]');
-        $this->form_validation->set_rules('per_tipoid','Per Tipoid','required|max_length[3]');
-        $this->form_validation->set_rules('per_id','Per Id','required|max_length[15]|is_unique[estudiante.per_id]');
-        $this->form_validation->set_rules('per_direccion','Per Direccion','required|max_length[1024]');
-        $this->form_validation->set_rules('per_telefono','Per Telefono','max_length[10]');
-        $this->form_validation->set_rules('per_celular','Per Celular','required|max_length[10]');
-        $this->form_validation->set_rules('per_mail','Per Mail','required|max_length[254]|valid_email|is_unique[estudiante.per_mail]');
-        $this->form_validation->set_rules('per_mailpuce','Per Mailpuce','max_length[254]|valid_email|is_unique[estudiante.per_mailpuce]');
-        $this->form_validation->set_rules('per_fechanac','Per Fechanac','required');
-        $this->form_validation->set_rules('per_sexo','Per Sexo','required|max_length[1]');
-        $this->form_validation->set_rules('per_clave','Per Clave','max_length[15]');
         $this->form_validation->set_rules('carr_codigo','Carr Codigo','required|integer');
+        $this->form_validation->set_rules('est_nombre1','Est Nombre1','required');
+        $this->form_validation->set_rules('est_apellido1','Est Apellido1','required');
+        $this->form_validation->set_rules('est_tipoid','Est Tipoid','required|max_length[3]');
+        $this->form_validation->set_rules('est_id','Est Id','required');
+        $this->form_validation->set_rules('est_direccion','Est Direccion','required');
+        $this->form_validation->set_rules('est_celular','Est Celular','required');
+        $this->form_validation->set_rules('est_mail','Est Mail','required|valid_email');
+        $this->form_validation->set_rules('est_fechanac','Est Fechanac','required');
+        $this->form_validation->set_rules('est_sexo','Est Sexo','required|max_length[1]');
         $this->form_validation->set_rules('est_fechaingreso','Est Fechaingreso','required');
+        $this->form_validation->set_rules('est_mailpuce','Est Mailpuce','valid_email');
 
         if($this->form_validation->run())
         {
-            $this->db->select_max('per_codigo');
-            $result= $this->db->get('estudiante')->row_array();
+            //$this->db->select_max('per_codigo');
+            //$result= $this->db->get('estudiante')->row_array();
             $params = array(
-                'per_codigo' =>$result['per_codigo']+1,
-                'rol_codigo' => $this->input->post('rol_codigo'),
-                'per_nombre1' => $this->input->post('per_nombre1'),
-                'per_nombre2' => $this->input->post('per_nombre2'),
-                'per_apellido1' => $this->input->post('per_apellido1'),
-                'per_apellido2' => $this->input->post('per_apellido2'),
-                'per_tipoid' => $this->input->post('per_tipoid'),
-                'per_id' => $this->input->post('per_id'),
-                'per_direccion' => $this->input->post('per_direccion'),
-                'per_telefono' => $this->input->post('per_telefono'),
-                'per_celular' => $this->input->post('per_celular'),
-                'per_mail' => $this->input->post('per_mail'),
-                'per_mailpuce' => $this->input->post('per_mailpuce'),
-                'per_fechanac' => $this->input->post('per_fechanac'),
-                'per_sexo' => $this->input->post('per_sexo'),
-                'per_foto' => $this->input->post('per_foto'),
-                'per_clave' => $this->input->post('per_clave'),
                 'carr_codigo' => $this->input->post('carr_codigo'),
+                'est_nombre1' => $this->input->post('est_nombre1'),
+                'est_nombre2' => $this->input->post('est_nombre2'),
+                'est_apellido1' => $this->input->post('est_apellido1'),
+                'est_apellido2' => $this->input->post('est_apellido2'),
+                'est_tipoid' => $this->input->post('est_tipoid'),
+                'est_id' => $this->input->post('est_id'),
+                'est_direccion' => $this->input->post('est_direccion'),
+                'est_telefono' => $this->input->post('est_telefono'),
+                'est_celular' => $this->input->post('est_celular'),
+                'est_mail' => $this->input->post('est_mail'),
+                'est_mailpuce' => $this->input->post('est_mailpuce'),
+                'est_fechanac' => $this->input->post('est_fechanac'),
+                'est_sexo' => $this->input->post('est_sexo'),
+                'est_foto' => $this->input->post('est_foto'),
                 'est_fechaingreso' => $this->input->post('est_fechaingreso'),
                 'est_fechaestimadagraduacion' => $this->input->post('est_fechaestimadagraduacion'),
                 'est_fechagraduacion' => $this->input->post('est_fechagraduacion'),
@@ -100,9 +92,6 @@ class Estudiante extends CI_Controller
         }
         else
         {
-
-            $this->load->model('Rol_model');
-            $data['all_roles'] = $this->Rol_model->get_all_roles();
 
             $this->load->model('Carrera_model');
             $data['all_carreras'] = $this->Carrera_model->get_all_carreras();
@@ -116,68 +105,58 @@ class Estudiante extends CI_Controller
     /*
      * Editing a estudiante
      */
-    function edit($per_codigo)
+    function edit($est_codigo)
     {
         $this->load->library('form_validation');
         // check if the estudiante exists before trying to edit it
-        $estudiante = $this->Estudiante_model->get_estudiante($per_codigo);
+        $estudiante = $this->Estudiante_model->get_estudiante($est_codigo);
 
-        if(isset($estudiante['per_codigo']))
+        if(isset($estudiante['est_codigo']))
         {
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('rol_codigo','Rol Codigo','required|integer');
-            $this->form_validation->set_rules('per_nombre1','Per Nombre1','required|max_length[50]');
-            $this->form_validation->set_rules('per_nombre2','Per Nombre2','max_length[50]');
-            $this->form_validation->set_rules('per_apellido1','Per Apellido1','required|max_length[50]');
-            $this->form_validation->set_rules('per_apellido2','Per Apellido2','max_length[50]');
-            $this->form_validation->set_rules('per_tipoid','Per Tipoid','required|max_length[3]');
-            $this->form_validation->set_rules('per_id','Per Id','required|max_length[15]|is_unique[estudiante.per_id]');
-            $this->form_validation->set_rules('per_direccion','Per Direccion','required|max_length[1024]');
-            $this->form_validation->set_rules('per_telefono','Per Telefono','max_length[10]');
-            $this->form_validation->set_rules('per_celular','Per Celular','required|max_length[10]');
-            $this->form_validation->set_rules('per_mail','Per Mail','required|max_length[254]|is_unique[estudiante.per_mail]');
-            $this->form_validation->set_rules('per_mailpuce','Per Mailpuce','max_length[254]|is_unique[estudiante.per_mailpuce]');
-            $this->form_validation->set_rules('per_fechanac','Per Fechanac','required');
-            $this->form_validation->set_rules('per_sexo','Per Sexo','required|max_length[1]');
-            $this->form_validation->set_rules('per_clave','Per Clave','max_length[15]');
             $this->form_validation->set_rules('carr_codigo','Carr Codigo','required|integer');
+            $this->form_validation->set_rules('est_nombre1','Est Nombre1','required');
+            $this->form_validation->set_rules('est_apellido1','Est Apellido1','required');
+            $this->form_validation->set_rules('est_tipoid','Est Tipoid','required|max_length[3]');
+            $this->form_validation->set_rules('est_id','Est Id','required');
+            $this->form_validation->set_rules('est_direccion','Est Direccion','required');
+            $this->form_validation->set_rules('est_celular','Est Celular','required');
+            $this->form_validation->set_rules('est_mail','Est Mail','required|valid_email');
+            $this->form_validation->set_rules('est_fechanac','Est Fechanac','required');
+            $this->form_validation->set_rules('est_sexo','Est Sexo','required|max_length[1]');
             $this->form_validation->set_rules('est_fechaingreso','Est Fechaingreso','required');
+            $this->form_validation->set_rules('est_mailpuce','Est Mailpuce','valid_email');
 
             if($this->form_validation->run())
             {
                 $params = array(
-                    'rol_codigo' => $this->input->post('rol_codigo'),
-                    'per_nombre1' => $this->input->post('per_nombre1'),
-                    'per_nombre2' => $this->input->post('per_nombre2'),
-                    'per_apellido1' => $this->input->post('per_apellido1'),
-                    'per_apellido2' => $this->input->post('per_apellido2'),
-                    'per_tipoid' => $this->input->post('per_tipoid'),
-                    'per_id' => $this->input->post('per_id'),
-                    'per_direccion' => $this->input->post('per_direccion'),
-                    'per_telefono' => $this->input->post('per_telefono'),
-                    'per_celular' => $this->input->post('per_celular'),
-                    'per_mail' => $this->input->post('per_mail'),
-                    'per_mailpuce' => $this->input->post('per_mailpuce'),
-                    'per_fechanac' => $this->input->post('per_fechanac'),
-                    'per_sexo' => $this->input->post('per_sexo'),
-                    'per_foto' => $this->input->post('per_foto'),
-                    'per_clave' => $this->input->post('per_clave'),
                     'carr_codigo' => $this->input->post('carr_codigo'),
+                    'est_nombre1' => $this->input->post('est_nombre1'),
+                    'est_nombre2' => $this->input->post('est_nombre2'),
+                    'est_apellido1' => $this->input->post('est_apellido1'),
+                    'est_apellido2' => $this->input->post('est_apellido2'),
+                    'est_tipoid' => $this->input->post('est_tipoid'),
+                    'est_id' => $this->input->post('est_id'),
+                    'est_direccion' => $this->input->post('est_direccion'),
+                    'est_telefono' => $this->input->post('est_telefono'),
+                    'est_celular' => $this->input->post('est_celular'),
+                    'est_mail' => $this->input->post('est_mail'),
+                    'est_mailpuce' => $this->input->post('est_mailpuce'),
+                    'est_fechanac' => $this->input->post('est_fechanac'),
+                    'est_sexo' => $this->input->post('est_sexo'),
+                    'est_foto' => $this->input->post('est_foto'),
                     'est_fechaingreso' => $this->input->post('est_fechaingreso'),
                     'est_fechaestimadagraduacion' => $this->input->post('est_fechaestimadagraduacion'),
                     'est_fechagraduacion' => $this->input->post('est_fechagraduacion'),
                 );
 
-                $this->Estudiante_model->update_estudiante($per_codigo,$params);
+                $this->Estudiante_model->update_estudiante($est_codigo,$params);
                 redirect('estudiante/index');
             }
             else
             {
-                $data['estudiante'] = $this->Estudiante_model->get_estudiante($per_codigo);
-
-                $this->load->model('Rol_model');
-                $data['all_roles'] = $this->Rol_model->get_all_roles();
+                $data['estudiante'] = $this->Estudiante_model->get_estudiante($est_codigo);
 
                 $this->load->model('Carrera_model');
                 $data['all_carreras'] = $this->Carrera_model->get_all_carreras();
@@ -192,14 +171,14 @@ class Estudiante extends CI_Controller
     /*
      * Deleting estudiante
      */
-    function remove($per_codigo)
+    function remove($est_codigo)
     {
-        $estudiante = $this->Estudiante_model->get_estudiante($per_codigo);
+        $estudiante = $this->Estudiante_model->get_estudiante($est_codigo);
 
         // check if the estudiante exists before trying to delete it
-        if(isset($estudiante['per_codigo']))
+        if(isset($estudiante['est_codigo']))
         {
-            $this->Estudiante_model->delete_estudiante($per_codigo);
+            $this->Estudiante_model->delete_estudiante($est_codigo);
             redirect('estudiante/index');
         }
         else

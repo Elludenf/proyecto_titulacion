@@ -10,7 +10,7 @@
 		<th>Dis Defensa</th>
 		<th>Actions</th>
     </tr>
-	<?php foreach($trabajos_disertacion as $t){ ?>
+	<?php foreach($trabajo_disertacion as $t){ ?>
     <tr>
 		<td><?php echo $t['dis_codigo']; ?></td>
 		<td><?php echo $t['dis_fechainicio']; ?></td>

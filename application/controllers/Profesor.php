@@ -29,46 +29,38 @@ class Profesor extends CI_Controller
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('rol_codigo','Rol Codigo','required|integer');
-		$this->form_validation->set_rules('per_nombre1','Per Nombre1','required|max_length[50]');
-		$this->form_validation->set_rules('per_nombre2','Per Nombre2','max_length[50]');
-		$this->form_validation->set_rules('per_apellido1','Per Apellido1','required|max_length[50]');
-		$this->form_validation->set_rules('per_apellido2','Per Apellido2','max_length[50]');
-		$this->form_validation->set_rules('per_tipoid','Per Tipoid','required|max_length[3]');
-		$this->form_validation->set_rules('per_id','Per Id','required|max_length[15]|is_unique[profesor.per_id]');
-		$this->form_validation->set_rules('per_direccion','Per Direccion','required|max_length[1024]');
-		$this->form_validation->set_rules('per_telefono','Per Telefono','max_length[10]');
-		$this->form_validation->set_rules('per_celular','Per Celular','required|max_length[10]');
-		$this->form_validation->set_rules('per_mail','Per Mail','required|max_length[254]|valid_email|is_unique[profesor.per_mail]');
-		$this->form_validation->set_rules('per_mailpuce','Per Mailpuce','max_length[254]|valid_email|is_unique[profesor.per_mailpuce]');
-		$this->form_validation->set_rules('per_fechanac','Per Fechanac','required');
-		$this->form_validation->set_rules('per_sexo','Per Sexo','required|max_length[1]');
-		$this->form_validation->set_rules('per_clave','Per Clave','max_length[15]');
-		$this->form_validation->set_rules('pro_oficina','Pro Oficina','max_length[15]');
-		
-		if($this->form_validation->run())     
+        $this->form_validation->set_rules('prof_nombre1','Prof Nombre1','required');
+        $this->form_validation->set_rules('prof_apellido1','Prof Apellido1','required');
+        $this->form_validation->set_rules('prof_tipoid','Prof Tipoid','required|max_length[3]');
+        $this->form_validation->set_rules('prof_id','Prof Id','required');
+        $this->form_validation->set_rules('prof_direccion','Prof Direccion','required');
+        $this->form_validation->set_rules('prof_celular','Prof Celular','required');
+        $this->form_validation->set_rules('prof_mail','Prof Mail','required|valid_email');
+        $this->form_validation->set_rules('prof_fechanac','Prof Fechanac','required');
+        $this->form_validation->set_rules('prof_sexo','Prof Sexo','required|max_length[1]');
+        $this->form_validation->set_rules('prof_mailpuce','Prof Mailpuce','valid_email');
+
+
+        if($this->form_validation->run())
         {
-            $this->db->select_max('per_codigo');
-            $result= $this->db->get('profesor')->row_array();
+            //$this->db->select_max('per_codigo');
+            //$result= $this->db->get('profesor')->row_array();
             $params = array(
-                'per_codigo' =>$result['per_codigo']+1,
-				'rol_codigo' => $this->input->post('rol_codigo'),
-				'per_nombre1' => $this->input->post('per_nombre1'),
-				'per_nombre2' => $this->input->post('per_nombre2'),
-				'per_apellido1' => $this->input->post('per_apellido1'),
-				'per_apellido2' => $this->input->post('per_apellido2'),
-				'per_tipoid' => $this->input->post('per_tipoid'),
-				'per_id' => $this->input->post('per_id'),
-				'per_direccion' => $this->input->post('per_direccion'),
-				'per_telefono' => $this->input->post('per_telefono'),
-				'per_celular' => $this->input->post('per_celular'),
-				'per_mail' => $this->input->post('per_mail'),
-				'per_mailpuce' => $this->input->post('per_mailpuce'),
-				'per_fechanac' => $this->input->post('per_fechanac'),
-				'per_sexo' => $this->input->post('per_sexo'),
-				'per_foto' => $this->input->post('per_foto'),
-				'per_clave' => $this->input->post('per_clave'),
-				'pro_oficina' => $this->input->post('pro_oficina'),
+                'prof_nombre1' => $this->input->post('prof_nombre1'),
+                'prof_nombre2' => $this->input->post('prof_nombre2'),
+                'prof_apellido1' => $this->input->post('prof_apellido1'),
+                'prof_apellido2' => $this->input->post('prof_apellido2'),
+                'prof_tipoid' => $this->input->post('prof_tipoid'),
+                'prof_id' => $this->input->post('prof_id'),
+                'prof_direccion' => $this->input->post('prof_direccion'),
+                'prof_telefono' => $this->input->post('prof_telefono'),
+                'prof_celular' => $this->input->post('prof_celular'),
+                'prof_mail' => $this->input->post('prof_mail'),
+                'prof_mailpuce' => $this->input->post('prof_mailpuce'),
+                'prof_fechanac' => $this->input->post('prof_fechanac'),
+                'prof_sexo' => $this->input->post('prof_sexo'),
+                'prof_foto' => $this->input->post('prof_foto'),
+                'prof_oficina' => $this->input->post('prof_oficina'),
             );
             
             $profesor_id = $this->Profesor_model->add_profesor($params);
@@ -76,74 +68,61 @@ class Profesor extends CI_Controller
         }
         else
         {
-
-			$this->load->model('Rol_model');
-			$data['all_roles'] = $this->Rol_model->get_all_roles();
                 
-            $this->load->view('profesores/add',$data);
+            $this->load->view('profesores/add');
         }
     }  
 
     /*
      * Editing a profesor
      */
-    function edit($per_codigo)
+    function edit($prof_codigo)
     {   
         // check if the profesor exists before trying to edit it
-        $profesor = $this->Profesor_model->get_profesor($per_codigo);
+        $profesor = $this->Profesor_model->get_profesor($prof_codigo);
         
-        if(isset($profesor['per_codigo']))
+        if(isset($profesor['prof_codigo']))
         {
             $this->load->library('form_validation');
 
-			$this->form_validation->set_rules('rol_codigo','Rol Codigo','required|integer');
-			$this->form_validation->set_rules('per_nombre1','Per Nombre1','required|max_length[50]');
-			$this->form_validation->set_rules('per_nombre2','Per Nombre2','max_length[50]');
-			$this->form_validation->set_rules('per_apellido1','Per Apellido1','required|max_length[50]');
-			$this->form_validation->set_rules('per_apellido2','Per Apellido2','max_length[50]');
-			$this->form_validation->set_rules('per_tipoid','Per Tipoid','required|max_length[3]');
-			$this->form_validation->set_rules('per_id','Per Id','required|max_length[15]|is_unique[profesor.per_id]');
-			$this->form_validation->set_rules('per_direccion','Per Direccion','required|max_length[1024]');
-			$this->form_validation->set_rules('per_telefono','Per Telefono','max_length[10]');
-			$this->form_validation->set_rules('per_celular','Per Celular','required|max_length[10]');
-			$this->form_validation->set_rules('per_mail','Per Mail','required|max_length[254]|valid_email|is_unique[profesor.per_mail]');
-			$this->form_validation->set_rules('per_mailpuce','Per Mailpuce','max_length[254]|valid_email|is_unique[profesor.per_mailpuce]');
-			$this->form_validation->set_rules('per_fechanac','Per Fechanac','required');
-			$this->form_validation->set_rules('per_sexo','Per Sexo','required|max_length[1]');
-			$this->form_validation->set_rules('per_clave','Per Clave','max_length[15]');
-			$this->form_validation->set_rules('pro_oficina','Pro Oficina','max_length[15]');
+            $this->form_validation->set_rules('prof_nombre1','Prof Nombre1','required');
+            $this->form_validation->set_rules('prof_apellido1','Prof Apellido1','required');
+            $this->form_validation->set_rules('prof_tipoid','Prof Tipoid','required|max_length[3]');
+            $this->form_validation->set_rules('prof_id','Prof Id','required');
+            $this->form_validation->set_rules('prof_direccion','Prof Direccion','required');
+            $this->form_validation->set_rules('prof_celular','Prof Celular','required');
+            $this->form_validation->set_rules('prof_mail','Prof Mail','required|valid_email');
+            $this->form_validation->set_rules('prof_fechanac','Prof Fechanac','required');
+            $this->form_validation->set_rules('prof_sexo','Prof Sexo','required|max_length[1]');
+            $this->form_validation->set_rules('prof_mailpuce','Prof Mailpuce','valid_email');
 		
 			if($this->form_validation->run())     
             {   
                 $params = array(
-					'rol_codigo' => $this->input->post('rol_codigo'),
-					'per_nombre1' => $this->input->post('per_nombre1'),
-					'per_nombre2' => $this->input->post('per_nombre2'),
-					'per_apellido1' => $this->input->post('per_apellido1'),
-					'per_apellido2' => $this->input->post('per_apellido2'),
-					'per_tipoid' => $this->input->post('per_tipoid'),
-					'per_id' => $this->input->post('per_id'),
-					'per_direccion' => $this->input->post('per_direccion'),
-					'per_telefono' => $this->input->post('per_telefono'),
-					'per_celular' => $this->input->post('per_celular'),
-					'per_mail' => $this->input->post('per_mail'),
-					'per_mailpuce' => $this->input->post('per_mailpuce'),
-					'per_fechanac' => $this->input->post('per_fechanac'),
-					'per_sexo' => $this->input->post('per_sexo'),
-					'per_foto' => $this->input->post('per_foto'),
-					'per_clave' => $this->input->post('per_clave'),
-					'pro_oficina' => $this->input->post('pro_oficina'),
+                    'prof_nombre1' => $this->input->post('prof_nombre1'),
+                    'prof_nombre2' => $this->input->post('prof_nombre2'),
+                    'prof_apellido1' => $this->input->post('prof_apellido1'),
+                    'prof_apellido2' => $this->input->post('prof_apellido2'),
+                    'prof_tipoid' => $this->input->post('prof_tipoid'),
+                    'prof_id' => $this->input->post('prof_id'),
+                    'prof_direccion' => $this->input->post('prof_direccion'),
+                    'prof_telefono' => $this->input->post('prof_telefono'),
+                    'prof_celular' => $this->input->post('prof_celular'),
+                    'prof_mail' => $this->input->post('prof_mail'),
+                    'prof_mailpuce' => $this->input->post('prof_mailpuce'),
+                    'prof_fechanac' => $this->input->post('prof_fechanac'),
+                    'prof_sexo' => $this->input->post('prof_sexo'),
+                    'prof_foto' => $this->input->post('prof_foto'),
+                    'prof_oficina' => $this->input->post('prof_oficina'),
                 );
 
-                $this->Profesor_model->update_profesor($per_codigo,$params);            
+                $this->Profesor_model->update_profesor($prof_codigo,$params);
                 redirect('profesor/index');
             }
             else
             {   
-                $data['profesor'] = $this->Profesor_model->get_profesor($per_codigo);
-    
-				$this->load->model('Rol_model');
-				$data['all_roles'] = $this->Rol_model->get_all_roles();
+                $data['profesor'] = $this->Profesor_model->get_profesor($prof_codigo);
+
 
                 $this->load->view('profesores/edit',$data);
             }
@@ -155,14 +134,14 @@ class Profesor extends CI_Controller
     /*
      * Deleting profesor
      */
-    function remove($per_codigo)
+    function remove($prof_codigo)
     {
-        $profesor = $this->Profesor_model->get_profesor($per_codigo);
+        $profesor = $this->Profesor_model->get_profesor($prof_codigo);
 
         // check if the profesor exists before trying to delete it
-        if(isset($profesor['per_codigo']))
+        if(isset($profesor['prof_codigo']))
         {
-            $this->Profesor_model->delete_profesor($per_codigo);
+            $this->Profesor_model->delete_profesor($prof_codigo);
             redirect('profesor/index');
         }
         else
