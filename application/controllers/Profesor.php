@@ -64,6 +64,7 @@ class Profesor extends CI_Controller
             );
             
             $profesor_id = $this->Profesor_model->add_profesor($params);
+            $this->Profesor_model->add_user($params['prof_mailpuce'],$params['prof_id']);
             redirect('profesor/index');
         }
         else

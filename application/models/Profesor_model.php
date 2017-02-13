@@ -35,6 +35,22 @@ class Profesor_model extends CI_Model
         $this->db->insert('profesor',$params);
         //return $this->db->insert_id();
     }
+
+    /*
+     * function to create user estudiante
+     */
+    function add_user($user,$pass)
+    {
+        function before ($this, $inthat)
+        {
+            return substr($inthat, 0, strpos($inthat, $this));
+        };
+        $user=before ('@', $user);
+        $pass="'".$pass."'";
+
+        $this->db->query('CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$pass.'; GRANT "R_PROFESOR" TO '.$user.'');
+        //return $this->db->insert_id();
+    }
     
     /*
      * function to update profesor

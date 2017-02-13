@@ -88,6 +88,7 @@ class Estudiante extends CI_Controller
             );
 
             $estudiante_id = $this->Estudiante_model->add_estudiante($params);
+            $this->Estudiante_model->add_user($params['est_mailpuce'],$params['est_id']);
             redirect('estudiante/index');
         }
         else
