@@ -14,8 +14,10 @@ class Revdir_x_disertacion_model extends CI_Model
     /*
      * Get revdir_x_disertacion by dis_codigo
      */
-    function get_revdir_x_disertacion($dis_codigo,$prof_codigo)
+    function get_revdir_x_disertacion()
     {
+        $dis_codigo=$this->uri->segment(3);
+        $prof_codigo=$this->uri->segment(4);
         return $this->db->get_where('revdir_x_disertacion',array('dis_codigo'=>$dis_codigo,'prof_codigo'=>$prof_codigo))->row_array();
     }
     
@@ -26,6 +28,8 @@ class Revdir_x_disertacion_model extends CI_Model
     {
         return $this->db->get('revdir_x_disertacion')->result_array();
     }
+
+
     
     /*
      * function to add new revdir_x_disertacion
@@ -33,7 +37,7 @@ class Revdir_x_disertacion_model extends CI_Model
     function add_revdir_x_disertacion($params)
     {
         $this->db->insert('revdir_x_disertacion',$params);
-        return $this->db->insert_id();
+        //return $this->db->insert_id();
     }
     
     /*

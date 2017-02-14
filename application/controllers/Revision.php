@@ -19,7 +19,7 @@ class Revision extends CI_Controller
     {
         $data['revisiones'] = $this->Revision_model->get_all_revisiones();
 
-        $this->load->view('revisiones/index',$data);
+        $this->load->view('revision/index',$data);
     }
 
     /*
@@ -29,19 +29,14 @@ class Revision extends CI_Controller
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('dis_codigo','Dis Codigo','required|integer');
-		$this->form_validation->set_rules('red_codigo','Red Codigo','integer');
 		$this->form_validation->set_rules('obs_fecha','Obs Fecha','required');
 		$this->form_validation->set_rules('obs_descripcion','Obs Descripcion','required|max_length[1024]');
 		
 		if($this->form_validation->run())     
-        {
-            $this->db->select_max('obs_codigo');
-            $result= $this->db->get('revisiones')->row_array();
+        {   
             $params = array(
-                'obs_codigo' =>$result['obs_codigo']+1,
 				'dis_codigo' => $this->input->post('dis_codigo'),
-				'red_codigo' => $this->input->post('red_codigo'),
+				'prof_codigo' => $this->input->post('prof_codigo'),
 				'obs_fecha' => $this->input->post('obs_fecha'),
 				'obs_descripcion' => $this->input->post('obs_descripcion'),
             );
@@ -53,9 +48,24 @@ class Revision extends CI_Controller
         {
 
 			$this->load->model('Trabajo_disertacion_model');
-			$data['all_trabajos_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajos_disertacion();
+			$data['all_trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
+
+            $this->load->model('Revdir_x_disertacion_model');
+            $data['all_revdir'] = $this->Revdir_x_disertacion_model->get_all_revdir_x_disertacion();
+
+            $this->load->model('Profesor_model');
+            $c=0;
+            $a_prof=[];
+            foreach ($data['all_revdir'] as $revdir){
+                $prof=$this->Profesor_model->get_profesor($revdir['prof_codigo']);
+                $a_prof[$c]=$prof;
+                $c++;
+        }
+
+			$this->load->model('Profesor_model');
+			$data['all_profesores'] =$a_prof;
                 
-            $this->load->view('revisiones/add',$data);
+            $this->load->view('revision/add',$data);
         }
     }  
 
@@ -71,8 +81,6 @@ class Revision extends CI_Controller
         {
             $this->load->library('form_validation');
 
-			$this->form_validation->set_rules('dis_codigo','Dis Codigo','required|integer');
-			$this->form_validation->set_rules('red_codigo','Red Codigo','integer');
 			$this->form_validation->set_rules('obs_fecha','Obs Fecha','required');
 			$this->form_validation->set_rules('obs_descripcion','Obs Descripcion','required|max_length[1024]');
 		
@@ -80,7 +88,7 @@ class Revision extends CI_Controller
             {   
                 $params = array(
 					'dis_codigo' => $this->input->post('dis_codigo'),
-					'red_codigo' => $this->input->post('red_codigo'),
+					'prof_codigo' => $this->input->post('prof_codigo'),
 					'obs_fecha' => $this->input->post('obs_fecha'),
 					'obs_descripcion' => $this->input->post('obs_descripcion'),
                 );
@@ -93,9 +101,12 @@ class Revision extends CI_Controller
                 $data['revision'] = $this->Revision_model->get_revision($obs_codigo);
     
 				$this->load->model('Trabajo_disertacion_model');
-				$data['all_trabajos_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajos_disertacion();
+				$data['all_trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
 
-                $this->load->view('revisiones/edit',$data);
+				$this->load->model('Profesor_model');
+				$data['all_profesores'] = $this->Profesor_model->get_all_profesores();
+
+                $this->load->view('revision/edit',$data);
             }
         }
         else

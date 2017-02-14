@@ -1,17 +1,17 @@
 <table border="1" width="100%">
     <tr>
-		<th>Obs Codigo</th>
 		<th>Dis Codigo</th>
-		<th>Red Codigo</th>
+		<th>Prof Codigo</th>
+		<th>Obs Codigo</th>
 		<th>Obs Fecha</th>
 		<th>Obs Descripcion</th>
 		<th>Actions</th>
     </tr>
 	<?php foreach($revisiones as $r){ ?>
     <tr>
-		<td><?php echo $r['obs_codigo']; ?></td>
 		<td><?php echo $r['dis_codigo']; ?></td>
-		<td><?php echo $r['red_codigo']; ?></td>
+		<td><?php echo $r['prof_codigo']; ?></td>
+		<td><?php echo $r['obs_codigo']; ?></td>
 		<td><?php echo $r['obs_fecha']; ?></td>
 		<td><?php echo $r['obs_descripcion']; ?></td>
 		<td>

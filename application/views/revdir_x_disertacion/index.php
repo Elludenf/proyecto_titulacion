@@ -13,8 +13,8 @@
 		<td><?php echo $r['rxd_tipo']; ?></td>
 		<td><?php echo $r['rxd_fechanombramiento']; ?></td>
 		<td>
-            <a href="<?php echo site_url('revdir_x_disertacion/edit/'.$r['id']); ?>">Edit</a> | 
-            <a href="<?php echo site_url('revdir_x_disertacion/remove/'.$r['id']); ?>">Delete</a>
+            <a href="<?php echo site_url('revdir_x_disertacion/edit/'.$r['dis_codigo'].'/'.$r['prof_codigo']); ?>">Edit</a> |
+            <a href="<?php echo site_url('revdir_x_disertacion/remove/'.$r['dis_codigo'].'/'.$r['prof_codigo']); ?>">Delete</a>
         </td>
     </tr>
 	<?php } ?>
