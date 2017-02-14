@@ -33,7 +33,7 @@ class Revision_model extends CI_Model
     function add_revision($params)
     {
         $this->db->insert('revisiones',$params);
-        //return $this->db->insert_id();
+        return $this->db->insert_id();
     }
     
     /*

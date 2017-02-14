@@ -35,6 +35,8 @@ class Revdir_x_disertacion extends CI_Controller
 		if($this->form_validation->run())     
         {   
             $params = array(
+                'prof_codigo'=>$this->input->post('prof_codigo'),
+                'dis_codigo'=>$this->input->post('dis_codigo'),
 				'rxd_tipo' => $this->input->post('rxd_tipo'),
 				'rxd_fechanombramiento' => $this->input->post('rxd_fechanombramiento'),
             );
@@ -44,7 +46,12 @@ class Revdir_x_disertacion extends CI_Controller
         }
         else
         {
-            $this->load->view('revdir_x_disertacion/add');
+            $this->load->model('Trabajo_disertacion_model');
+            $data['all_trabajos'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
+            $this->load->model('Profesor_model');
+            $data['all_profesores'] = $this->Profesor_model->get_all_profesores();
+
+            $this->load->view('revdir_x_disertacion/add',$data);
         }
     }  
 
@@ -56,7 +63,7 @@ class Revdir_x_disertacion extends CI_Controller
         // check if the revdir_x_disertacion exists before trying to edit it
         $revdir_x_disertacion = $this->Revdir_x_disertacion_model->get_revdir_x_disertacion($dis_codigo,$prof_codigo);
         
-        if(isset($revdir_x_disertacion['dis_codigo']))
+        if(isset($revdir_x_disertacion['dis_codigo'])&&isset($revdir_x_disertacion['prof_codigo']))
         {
             $this->load->library('form_validation');
 

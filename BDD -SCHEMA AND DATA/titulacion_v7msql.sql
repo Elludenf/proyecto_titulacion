@@ -284,7 +284,7 @@ create table revdir_x_disertacion
 );
 
 /*==============================================================*/
-/* table: revisiones                                            */
+/* table: revision                                            */
 /*==============================================================*/
 create table revisiones
 (
