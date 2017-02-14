@@ -37,6 +37,15 @@ class Estudiante_model extends CI_Model
     }
 
     /*
+     * Get all estudiante
+     */
+    function get_all_estudiantes_()
+    {
+        return $this->db->get('estudiante')->result_array();
+
+    }
+
+    /*
      * function to add new estudiante
      */
     function add_estudiante($params)

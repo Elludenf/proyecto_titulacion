@@ -35,6 +35,8 @@ class Elabora extends CI_Controller
 		if($this->form_validation->run())     
         {   
             $params = array(
+                'est_codigo'=>$this->input->post('est_codigo'),
+                'dis_codigo'=>$this->input->post('dis_codigo'),
 				'elb_nota_horal' => $this->input->post('elb_nota_horal'),
 				'elb_nota_escrito' => $this->input->post('elb_nota_escrito'),
             );
@@ -44,7 +46,11 @@ class Elabora extends CI_Controller
         }
         else
         {
-            $this->load->view('elabora/add');
+            $this->load->model('Estudiante_model');
+            $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes_();
+            $this->load->model('Trabajo_disertacion_model');
+            $data['all_trabajos'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
+            $this->load->view('elabora/add',$data);
         }
     }  
 
@@ -76,7 +82,12 @@ class Elabora extends CI_Controller
             else
             {   
                 $data['elabora'] = $this->Elabora_model->get_elabora($est_codigo);
-    
+
+                $this->load->model('Estudiante_model');
+                $data['estudiante'] = $this->Estudiante_model->get_estudiante($est_codigo);
+                $this->load->model('Trabajo_disertacion_model');
+                $data['all_trabajos'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
+
                 $this->load->view('elabora/edit',$data);
             }
         }

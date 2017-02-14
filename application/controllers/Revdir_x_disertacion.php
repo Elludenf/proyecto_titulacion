@@ -77,13 +77,19 @@ class Revdir_x_disertacion extends CI_Controller
 					'rxd_fechanombramiento' => $this->input->post('rxd_fechanombramiento'),
                 );
 
-                $this->Revdir_x_disertacion_model->update_revdir_x_disertacion($dis_codigo,$params);            
+                $this->Revdir_x_disertacion_model->update_revdir_x_disertacion($dis_codigo,$prof_codigo,$params);
                 redirect('revdir_x_disertacion/index');
             }
             else
             {   
                 $data['revdir_x_disertacion'] = $this->Revdir_x_disertacion_model->get_revdir_x_disertacion($dis_codigo);
-    
+
+                $this->load->model('Trabajo_disertacion_model');
+                $data['trabajo'] = $this->Trabajo_disertacion_model->get_trabajo_disertacion($dis_codigo);
+
+                $this->load->model('Profesor_model');
+                $data['all_profesores'] = $this->Profesor_model->get_all_profesores();
+
                 $this->load->view('revdir_x_disertacion/edit',$data);
             }
         }

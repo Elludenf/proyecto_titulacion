@@ -35,7 +35,7 @@ class Elabora_model extends CI_Model
     function add_elabora($params)
     {
         $this->db->insert('elabora',$params);
-        return $this->db->insert_id();
+        //return $this->db->insert_id();
     }
     
     /*
