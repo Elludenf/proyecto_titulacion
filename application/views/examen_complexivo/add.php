@@ -3,21 +3,23 @@
 <?php echo form_open('examen_complexivo/add'); ?>
 
 	<div>
-				Per Codigo : 
-				<select name="per_codigo">
+				Est Codigo : 
+				<select name="est_codigo">
 					<option value="">select estudiante</option>
 					<?php 
-					foreach($all_estudiante as $estudiante)
+					foreach($all_estudiantes as $estudiante)
 					{
-						$selected = ($estudiante['per_codigo'] == $this->input->post('per_codigo')) ? ' selected="selected"' : null;
+						$selected = ($estudiante['est_codigo'] == $this->input->post('est_codigo')) ? ' selected="selected"' : null;
 
-						echo '<option value="'.$estudiante['per_codigo'].'" '.$selected.'>'.$estudiante['per_nombre1'].' '.$estudiante['per_apellido1'].'</option>';
+						echo '<option value="'.$estudiante['est_codigo'].'" '.$selected.'>'.$estudiante['est_nombre1'].'</option>';
 					} 
 					?>
 				</select>
 		</div>
 	<div>Exa Fechainicio : <input type="text" name="exa_fechainicio" value="<?php echo $this->input->post('exa_fechainicio'); ?>" /></div>
 	<div>Exa Estado : <input type="text" name="exa_estado" value="<?php echo $this->input->post('exa_estado'); ?>" /></div>
+	<div>Exa Horas Docencia : <input type="text" name="exa_horas_docencia" value="<?php echo $this->input->post('exa_horas_docencia'); ?>" /></div>
+	<div>Exa Horas Autonomas : <input type="text" name="exa_horas_autonomas" value="<?php echo $this->input->post('exa_horas_autonomas'); ?>" /></div>
 	
 	<button type="submit">Save</button>
 

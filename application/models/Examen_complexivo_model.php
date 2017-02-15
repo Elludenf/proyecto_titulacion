@@ -20,9 +20,9 @@ class Examen_complexivo_model extends CI_Model
     }
     
     /*
-     * Get all examen_complexivo
+     * Get all examenes_complexivo
      */
-    function get_all_examen_complexivo()
+    function get_all_examenes_complexivo()
     {
         return $this->db->get('examen_complexivo')->result_array();
     }
@@ -33,7 +33,7 @@ class Examen_complexivo_model extends CI_Model
     function add_examen_complexivo($params)
     {
         $this->db->insert('examen_complexivo',$params);
-        //return $this->db->insert_id();
+        return $this->db->insert_id();
     }
     
     /*

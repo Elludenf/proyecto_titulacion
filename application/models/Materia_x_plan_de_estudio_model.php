@@ -14,9 +14,12 @@ class Materia_x_plan_de_estudio_model extends CI_Model
     /*
      * Get materia_x_plan_de_estudio by plan_codigo
      */
-    function get_materia_x_plan_de_estudio($plan_codigo)
+    function get_materia_x_plan_de_estudio()
     {
-        return $this->db->get_where('materia_x_plan_de_estudio',array('plan_codigo'=>$plan_codigo))->row_array();
+        $plan_codigo=$this->uri->segment(3);
+        $mat_codigo=$this->uri->segment(4);
+        $pac_codigo=$this->uri->segment(5);
+        return $this->db->get_where('materia_x_plan_de_estudio',array('plan_codigo'=>$plan_codigo,'mat_codigo'=>$mat_codigo,'pac_codigo'=>$pac_codigo))->row_array();
     }
     
     /*
@@ -39,9 +42,9 @@ class Materia_x_plan_de_estudio_model extends CI_Model
     /*
      * function to update materia_x_plan_de_estudio
      */
-    function update_materia_x_plan_de_estudio($plan_codigo,$params)
+    function update_materia_x_plan_de_estudio($plan_codigo,$mat_codigo,$pac_codigo,$params)
     {
-        $this->db->where('plan_codigo',$plan_codigo);
+        $this->db->where(array('plan_codigo'=>$plan_codigo,'mat_codigo'=>$mat_codigo,'pac_codigo'=>$pac_codigo));
         $response = $this->db->update('materia_x_plan_de_estudio',$params);
         if($response)
         {
@@ -56,9 +59,9 @@ class Materia_x_plan_de_estudio_model extends CI_Model
     /*
      * function to delete materia_x_plan_de_estudio
      */
-    function delete_materia_x_plan_de_estudio($plan_codigo)
+    function delete_materia_x_plan_de_estudio($plan_codigo,$mat_codigo,$pac_codigo)
     {
-        $response = $this->db->delete('materia_x_plan_de_estudio',array('plan_codigo'=>$plan_codigo));
+        $response = $this->db->delete('materia_x_plan_de_estudio',array('plan_codigo'=>$plan_codigo,'mat_codigo'=>$mat_codigo,'pac_codigo'=>$pac_codigo));
         if($response)
         {
             return "materia_x_plan_de_estudio deleted successfully";

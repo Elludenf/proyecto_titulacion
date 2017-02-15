@@ -13,17 +13,13 @@ class Examen_complexivo extends CI_Controller
     } 
 
     /*
-     * Listing of examen_complexivo
+     * Listing of examenes_complexivo
      */
     function index()
     {
-        $data['examen_complexivo'] = $this->Examen_complexivo_model->get_all_examen_complexivo();
+        $data['examenes_complexivo'] = $this->Examen_complexivo_model->get_all_examenes_complexivo();
 
-        $this->load->helper('form');
-        $this->load->helper(array('form'));
-        $this->load->view('templates/header');
         $this->load->view('examen_complexivo/index',$data);
-        $this->load->view('templates/footer');
     }
 
     /*
@@ -33,19 +29,20 @@ class Examen_complexivo extends CI_Controller
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('per_codigo','Per Codigo','integer');
+		$this->form_validation->set_rules('est_codigo','Est Codigo','integer');
 		$this->form_validation->set_rules('exa_fechainicio','Exa Fechainicio','required');
 		$this->form_validation->set_rules('exa_estado','Exa Estado','required');
+		$this->form_validation->set_rules('exa_horas_docencia','Exa Horas Docencia','integer');
+		$this->form_validation->set_rules('exa_horas_autonomas','Exa Horas Autonomas','integer');
 		
 		if($this->form_validation->run())     
-        {
-            $this->db->select_max('exa_codigo');
-            $result= $this->db->get('examen_complexivo')->row_array();
+        {   
             $params = array(
-                'exa_codigo' =>$result['exa_codigo']+1,
-				'per_codigo' => $this->input->post('per_codigo'),
+				'est_codigo' => $this->input->post('est_codigo'),
 				'exa_fechainicio' => $this->input->post('exa_fechainicio'),
 				'exa_estado' => $this->input->post('exa_estado'),
+				'exa_horas_docencia' => $this->input->post('exa_horas_docencia'),
+				'exa_horas_autonomas' => $this->input->post('exa_horas_autonomas'),
             );
             
             $examen_complexivo_id = $this->Examen_complexivo_model->add_examen_complexivo($params);
@@ -55,11 +52,9 @@ class Examen_complexivo extends CI_Controller
         {
 
 			$this->load->model('Estudiante_model');
-			$data['all_estudiante'] = $this->Estudiante_model->get_all_estudiantes();
-
-            $this->load->view('templates/header');
-			$this->load->view('examen_complexivo/add',$data);
-            $this->load->view('templates/footer');
+			$data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes();
+                
+            $this->load->view('examen_complexivo/add',$data);
         }
     }  
 
@@ -75,16 +70,20 @@ class Examen_complexivo extends CI_Controller
         {
             $this->load->library('form_validation');
 
-			$this->form_validation->set_rules('per_codigo','Per Codigo','integer');
+			$this->form_validation->set_rules('est_codigo','Est Codigo','integer');
 			$this->form_validation->set_rules('exa_fechainicio','Exa Fechainicio','required');
 			$this->form_validation->set_rules('exa_estado','Exa Estado','required');
+			$this->form_validation->set_rules('exa_horas_docencia','Exa Horas Docencia','integer');
+			$this->form_validation->set_rules('exa_horas_autonomas','Exa Horas Autonomas','integer');
 		
 			if($this->form_validation->run())     
             {   
                 $params = array(
-					'per_codigo' => $this->input->post('per_codigo'),
+					'est_codigo' => $this->input->post('est_codigo'),
 					'exa_fechainicio' => $this->input->post('exa_fechainicio'),
 					'exa_estado' => $this->input->post('exa_estado'),
+					'exa_horas_docencia' => $this->input->post('exa_horas_docencia'),
+					'exa_horas_autonomas' => $this->input->post('exa_horas_autonomas'),
                 );
 
                 $this->Examen_complexivo_model->update_examen_complexivo($exa_codigo,$params);            
@@ -95,11 +94,9 @@ class Examen_complexivo extends CI_Controller
                 $data['examen_complexivo'] = $this->Examen_complexivo_model->get_examen_complexivo($exa_codigo);
     
 				$this->load->model('Estudiante_model');
-				$data['all_estudiante'] = $this->Estudiante_model->get_all_estudiantes();
+				$data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes();
 
-				$this->load->view('templates/header');
-				$this->load->view('examen_complexivo/edit',$data);
-                $this->load->view('templates/footer');
+                $this->load->view('examen_complexivo/edit',$data);
             }
         }
         else
