@@ -29,9 +29,12 @@ class Materia_x_plan_de_estudio extends CI_Controller
     {
         $this->load->library('form_validation');
 
-        if(isset($_POST) && count($_POST) > 0)
+        if($this->form_validation->run())
         {   
             $params = array(
+                'plan_codigo'=>$this->input->post('plan_codigo'),
+                'mat_codigo'=>$this->input->post('mat_codigo'),
+                'pac_codigo'=>$this->input->post('pac_codigo'),
             );
             
             $materia_x_plan_de_estudio_id = $this->Materia_x_plan_de_estudio_model->add_materia_x_plan_de_estudio($params);
@@ -39,21 +42,28 @@ class Materia_x_plan_de_estudio extends CI_Controller
         }
         else
         {
-            $this->load->view('materia_x_plan_de_estudio/add');
+            $this->load->model('Plan_de_estudio_model');
+            $data['all_planes'] = $this->Plan_de_estudio_model->get_all_planes_de_estudio();
+            $this->load->model('Materia_model');
+            $data['all_materias'] = $this->Materia_model->get_all_materias();
+            $this->load->model('Periodos_academicos_model');
+            $data['all_pac'] = $this->Periodos_academicos_model->get_all_periodos_academicos();
+
+            $this->load->view('materia_x_plan_de_estudio/add',$data);
         }
     }  
 
     /*
      * Editing a materia_x_plan_de_estudio
      */
-    function edit($plan_codigo)
+    function edit($plan_codigo,$mat_codigo,$pac_codigo)
     {   
         // check if the materia_x_plan_de_estudio exists before trying to edit it
-        $materia_x_plan_de_estudio = $this->Materia_x_plan_de_estudio_model->get_materia_x_plan_de_estudio($plan_codigo);
+        $materia_x_plan_de_estudio = $this->Materia_x_plan_de_estudio_model->get_materia_x_plan_de_estudio($plan_codigo,$mat_codigo,$pac_codigo);
         
-        if(isset($materia_x_plan_de_estudio['plan_codigo']))
+        if(isset($materia_x_plan_de_estudio['plan_codigo'])&&isset($materia_x_plan_de_estudio['mat_codigo'])&&isset($materia_x_plan_de_estudio['pac_codigo']))
         {
-            if(isset($_POST) && count($_POST) > 0)     
+            if($this->form_validation->run())
             {   
                 $params = array(
                 );
@@ -63,7 +73,7 @@ class Materia_x_plan_de_estudio extends CI_Controller
             }
             else
             {   
-                $data['materia_x_plan_de_estudio'] = $this->Materia_x_plan_de_estudio_model->get_materia_x_plan_de_estudio($plan_codigo);
+                $data['materia_x_plan_de_estudio'] = $this->Materia_x_plan_de_estudio_model->get_materia_x_plan_de_estudio($plan_codigo,$mat_codigo,$pac_codigo);
     
                 $this->load->view('materia_x_plan_de_estudio/edit',$data);
             }
@@ -75,14 +85,14 @@ class Materia_x_plan_de_estudio extends CI_Controller
     /*
      * Deleting materia_x_plan_de_estudio
      */
-    function remove($plan_codigo)
+    function remove($plan_codigo,$mat_codigo,$pac_codigo)
     {
-        $materia_x_plan_de_estudio = $this->Materia_x_plan_de_estudio_model->get_materia_x_plan_de_estudio($plan_codigo);
+        $materia_x_plan_de_estudio = $this->Materia_x_plan_de_estudio_model->get_materia_x_plan_de_estudio($plan_codigo,$mat_codigo,$pac_codigo);
 
         // check if the materia_x_plan_de_estudio exists before trying to delete it
         if(isset($materia_x_plan_de_estudio['plan_codigo']))
         {
-            $this->Materia_x_plan_de_estudio_model->delete_materia_x_plan_de_estudio($plan_codigo);
+            $this->Materia_x_plan_de_estudio_model->delete_materia_x_plan_de_estudio($plan_codigo,$mat_codigo,$pac_codigo);
             redirect('materia_x_plan_de_estudio/index');
         }
         else
