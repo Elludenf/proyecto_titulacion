@@ -26,10 +26,15 @@ class Dicta extends CI_Controller
      * Adding a new dicta
      */
     function add()
-    {   
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('mat_codigo','Materia','required');
+
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
+                'prof_codigo'=>$this->input->post('prof_codigo'),
+                'mat_codigo'=>$this->input->post('mat_codigo')
             );
             
             $dicta_id = $this->Dicta_model->add_dicta($params);
@@ -37,20 +42,25 @@ class Dicta extends CI_Controller
         }
         else
         {
-            $this->load->view('dicta/add');
+            $this->load->model('Materia_model');
+            $data['all_materias'] = $this->Materia_model->get_all_materias();
+            $this->load->model('Profesor_model');
+            $data['all_profesores'] = $this->Profesor_model->get_all_profesores();
+            $this->load->view('dicta/add',$data);
         }
     }  
 
     /*
      * Editing a dicta
      */
-    function edit($prof_codigo)
+    function edit($prof_codigo,$mat_codigo)
     {   
         // check if the dicta exists before trying to edit it
-        $dicta = $this->Dicta_model->get_dicta($prof_codigo);
+        $dicta = $this->Dicta_model->get_dicta($prof_codigo,$mat_codigo);
         
-        if(isset($dicta['prof_codigo']))
+        if(isset($dicta['prof_codigo'])&&isset($dicta['mat_codigo']))
         {
+            $this->load->library('form_validation');
             if(isset($_POST) && count($_POST) > 0)     
             {   
                 $params = array(
@@ -62,7 +72,10 @@ class Dicta extends CI_Controller
             else
             {   
                 $data['dicta'] = $this->Dicta_model->get_dicta($prof_codigo);
-    
+
+                $this->load->model('Materia_model');
+                $data['all_materias'] = $this->Materia_model->get_all_materias();
+
                 $this->load->view('dicta/edit',$data);
             }
         }
@@ -73,14 +86,14 @@ class Dicta extends CI_Controller
     /*
      * Deleting dicta
      */
-    function remove($prof_codigo)
+    function remove($prof_codigo,$mat_codigo)
     {
-        $dicta = $this->Dicta_model->get_dicta($prof_codigo);
+        $dicta = $this->Dicta_model->get_dicta($prof_codigo,$mat_codigo);
 
         // check if the dicta exists before trying to delete it
-        if(isset($dicta['prof_codigo']))
+        if(isset($dicta['prof_codigo'])&&isset($dicta['mat_codigo']))
         {
-            $this->Dicta_model->delete_dicta($prof_codigo);
+            $this->Dicta_model->delete_dicta($prof_codigo,$mat_codigo);
             redirect('dicta/index');
         }
         else

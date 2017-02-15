@@ -19,7 +19,7 @@ class Prorroga extends CI_Controller
     {
         $data['prorrogas'] = $this->Prorroga_model->get_all_prorrogas();
 
-        $this->load->view('prorrogas/index',$data);
+        $this->load->view('prorroga/index',$data);
     }
 
     /*
@@ -29,19 +29,15 @@ class Prorroga extends CI_Controller
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('dis_codigo','Dis Codigo','required|integer');
 		$this->form_validation->set_rules('pro_fechaint','Pro Fechaint','required');
 		$this->form_validation->set_rules('pro_fechainicio','Pro Fechainicio','required');
 		$this->form_validation->set_rules('pro_fechafin','Pro Fechafin','required');
-		$this->form_validation->set_rules('pro_descripcion','Pro Descripcion','required|max_length[30]');
+		$this->form_validation->set_rules('pro_descripcion','Pro Descripcion','required');
 		$this->form_validation->set_rules('pro_detalle','Pro Detalle','required|max_length[1024]');
 		
 		if($this->form_validation->run())     
-        {
-            $this->db->select_max('pro_codigo');
-            $result= $this->db->get('prorroga')->row_array();
+        {   
             $params = array(
-                'pro_codigo' =>$result['pro_codigo']+1,
 				'dis_codigo' => $this->input->post('dis_codigo'),
 				'pro_fechaint' => $this->input->post('pro_fechaint'),
 				'pro_fechainicio' => $this->input->post('pro_fechainicio'),
@@ -57,9 +53,9 @@ class Prorroga extends CI_Controller
         {
 
 			$this->load->model('Trabajo_disertacion_model');
-			$data['all_trabajos_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajos_disertacion();
+			$data['all_trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
                 
-            $this->load->view('prorrogas/add',$data);
+            $this->load->view('prorroga/add',$data);
         }
     }  
 
@@ -75,11 +71,10 @@ class Prorroga extends CI_Controller
         {
             $this->load->library('form_validation');
 
-			$this->form_validation->set_rules('dis_codigo','Dis Codigo','required|integer');
 			$this->form_validation->set_rules('pro_fechaint','Pro Fechaint','required');
 			$this->form_validation->set_rules('pro_fechainicio','Pro Fechainicio','required');
 			$this->form_validation->set_rules('pro_fechafin','Pro Fechafin','required');
-			$this->form_validation->set_rules('pro_descripcion','Pro Descripcion','required|max_length[30]');
+			$this->form_validation->set_rules('pro_descripcion','Pro Descripcion','required');
 			$this->form_validation->set_rules('pro_detalle','Pro Detalle','required|max_length[1024]');
 		
 			if($this->form_validation->run())     
@@ -101,9 +96,9 @@ class Prorroga extends CI_Controller
                 $data['prorroga'] = $this->Prorroga_model->get_prorroga($pro_codigo);
     
 				$this->load->model('Trabajo_disertacion_model');
-				$data['all_trabajos_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajos_disertacion();
+				$data['all_trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
 
-                $this->load->view('prorrogas/edit',$data);
+                $this->load->view('prorroga/edit',$data);
             }
         }
         else

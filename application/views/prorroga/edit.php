@@ -7,7 +7,7 @@
 				<select name="dis_codigo">
 					<option value="">select trabajo_disertacion</option>
 					<?php 
-					foreach($all_trabajos_disertacion as $trabajo_disertacion)
+					foreach($all_trabajo_disertacion as $trabajo_disertacion)
 					{
 						$selected = ($trabajo_disertacion['dis_codigo'] == $prorroga['dis_codigo']) ? ' selected="selected"' : null;
 

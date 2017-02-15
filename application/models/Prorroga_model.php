@@ -33,7 +33,7 @@ class Prorroga_model extends CI_Model
     function add_prorroga($params)
     {
         $this->db->insert('prorroga',$params);
-        //return $this->db->insert_id();
+        return $this->db->insert_id();
     }
     
     /*

@@ -105,7 +105,7 @@ class Revdir_x_disertacion extends CI_Controller
         $revdir_x_disertacion = $this->Revdir_x_disertacion_model->get_revdir_x_disertacion($dis_codigo,$prof_codigo);
 
         // check if the revdir_x_disertacion exists before trying to delete it
-        if(isset($revdir_x_disertacion['dis_codigo']))
+        if(isset($revdir_x_disertacion['dis_codigo'])&&isset($revdir_x_disertacion['prof_codigo']))
         {
             $this->Revdir_x_disertacion_model->delete_revdir_x_disertacion($dis_codigo,$prof_codigo);
             redirect('revdir_x_disertacion/index');

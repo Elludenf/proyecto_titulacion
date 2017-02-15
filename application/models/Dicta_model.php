@@ -14,9 +14,11 @@ class Dicta_model extends CI_Model
     /*
      * Get dicta by prof_codigo
      */
-    function get_dicta($prof_codigo)
+    function get_dicta()
     {
-        return $this->db->get_where('dicta',array('prof_codigo'=>$prof_codigo))->row_array();
+        $prof_codigo=$this->uri->segment(3);
+        $mat_codigo=$this->uri->segment(4);
+        return $this->db->get_where('dicta',array('prof_codigo'=>$prof_codigo,'mat_codigo'=>$mat_codigo))->row_array();
     }
     
     /*
@@ -39,9 +41,9 @@ class Dicta_model extends CI_Model
     /*
      * function to update dicta
      */
-    function update_dicta($prof_codigo,$params)
+    function update_dicta($prof_codigo,$mat_codigo,$params)
     {
-        $this->db->where('prof_codigo',$prof_codigo);
+        $this->db->where('prof_codigo',$prof_codigo,'mat_codigo',$mat_codigo);
         $response = $this->db->update('dicta',$params);
         if($response)
         {
@@ -56,9 +58,9 @@ class Dicta_model extends CI_Model
     /*
      * function to delete dicta
      */
-    function delete_dicta($prof_codigo)
+    function delete_dicta($prof_codigo,$mat_codigo)
     {
-        $response = $this->db->delete('dicta',array('prof_codigo'=>$prof_codigo));
+        $response = $this->db->delete('dicta',array('prof_codigo'=>$prof_codigo,'mat_codigo'=>$mat_codigo));
         if($response)
         {
             return "dicta deleted successfully";
