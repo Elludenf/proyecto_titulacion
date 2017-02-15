@@ -29,8 +29,12 @@ class Materia_x_plan_de_estudio extends CI_Controller
     {
         $this->load->library('form_validation');
 
+        $this->form_validation->set_rules('plan_codigo','Plan de Estudio','required');
+        $this->form_validation->set_rules('mat_codigo','Materia','required');
+        $this->form_validation->set_rules('pac_codigo','Periodo académico','required');
         if($this->form_validation->run())
-        {   
+        {
+
             $params = array(
                 'plan_codigo'=>$this->input->post('plan_codigo'),
                 'mat_codigo'=>$this->input->post('mat_codigo'),
@@ -42,6 +46,7 @@ class Materia_x_plan_de_estudio extends CI_Controller
         }
         else
         {
+
             $this->load->model('Plan_de_estudio_model');
             $data['all_planes'] = $this->Plan_de_estudio_model->get_all_planes_de_estudio();
             $this->load->model('Materia_model');

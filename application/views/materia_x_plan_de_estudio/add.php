@@ -2,7 +2,7 @@
 
 <?php echo form_open('materia_x_plan_de_estudio/add'); ?>
     <div>Plan de Estudio :
-        <select name="plan_de_estudio">
+        <select name="plan_codigo">
             <option value="">seleccionar plan de estudio</option>
             <?php
             foreach ($all_planes as $plan)
