@@ -14,9 +14,11 @@ class Mat_ap_x_est_model extends CI_Model
     /*
      * Get mat_ap_x_est by mat_codigo
      */
-    function get_mat_ap_x_est($mat_codigo)
+    function get_mat_ap_x_est()
     {
-        return $this->db->get_where('mat_ap_x_est',array('mat_codigo'=>$mat_codigo))->row_array();
+        $mat_codigo=$this->uri->segment(3);
+        $est_codigo=$this->uri->segment(4);
+        return $this->db->get_where('mat_ap_x_est',array('mat_codigo'=>$mat_codigo,'est_codigo'=>$est_codigo))->row_array();
     }
     
     /*
@@ -39,9 +41,9 @@ class Mat_ap_x_est_model extends CI_Model
     /*
      * function to update mat_ap_x_est
      */
-    function update_mat_ap_x_est($mat_codigo,$params)
+    function update_mat_ap_x_est($mat_codigo,$est_codigo,$params)
     {
-        $this->db->where('mat_codigo',$mat_codigo);
+        $this->db->where(array('mat_codigo'=>$mat_codigo,'est_codigo'=>$est_codigo));
         $response = $this->db->update('mat_ap_x_est',$params);
         if($response)
         {
@@ -56,9 +58,9 @@ class Mat_ap_x_est_model extends CI_Model
     /*
      * function to delete mat_ap_x_est
      */
-    function delete_mat_ap_x_est($mat_codigo)
+    function delete_mat_ap_x_est($mat_codigo,$est_codigo)
     {
-        $response = $this->db->delete('mat_ap_x_est',array('mat_codigo'=>$mat_codigo));
+        $response = $this->db->delete('mat_ap_x_est',array('mat_codigo'=>$mat_codigo,'est_codigo'=>$est_codigo));
         if($response)
         {
             return "mat_ap_x_est deleted successfully";

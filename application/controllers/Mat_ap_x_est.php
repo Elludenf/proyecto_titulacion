@@ -26,10 +26,14 @@ class Mat_ap_x_est extends CI_Controller
      * Adding a new mat_ap_x_est
      */
     function add()
-    {   
-        if(isset($_POST) && count($_POST) > 0)     
+    {
+        $this->load->library('form_validation');
+
+        if($this->form_validation->run())
         {   
             $params = array(
+                'mat_codigo'=>$this->input->post('mat_codigo'),
+                'est_codigo'=>$this->input->post('est_codigo'),
             );
             
             $mat_ap_x_est_id = $this->Mat_ap_x_est_model->add_mat_ap_x_est($params);
@@ -37,31 +41,36 @@ class Mat_ap_x_est extends CI_Controller
         }
         else
         {
-            $this->load->view('mat_ap_x_est/add');
+            $this->load->model('Materia_model');
+            $data['all_materias'] = $this->Materia_model->get_all_materias();
+            $this->load->model('Estudiante_model');
+            $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes();
+
+            $this->load->view('mat_ap_x_est/add',$data);
         }
     }  
 
     /*
      * Editing a mat_ap_x_est
      */
-    function edit($mat_codigo)
+    function edit($mat_codigo,$est_codigo)
     {   
         // check if the mat_ap_x_est exists before trying to edit it
-        $mat_ap_x_est = $this->Mat_ap_x_est_model->get_mat_ap_x_est($mat_codigo);
+        $mat_ap_x_est = $this->Mat_ap_x_est_model->get_mat_ap_x_est($mat_codigo,$est_codigo);
         
-        if(isset($mat_ap_x_est['mat_codigo']))
+        if(isset($mat_ap_x_est['mat_codigo'])&&isset($mat_ap_x_est['est_codigo']))
         {
-            if(isset($_POST) && count($_POST) > 0)     
+            if($this->form_validation->run())
             {   
                 $params = array(
                 );
 
-                $this->Mat_ap_x_est_model->update_mat_ap_x_est($mat_codigo,$params);            
+                $this->Mat_ap_x_est_model->update_mat_ap_x_est($mat_codigo,$est_codigo,$params);
                 redirect('mat_ap_x_est/index');
             }
             else
             {   
-                $data['mat_ap_x_est'] = $this->Mat_ap_x_est_model->get_mat_ap_x_est($mat_codigo);
+                $data['mat_ap_x_est'] = $this->Mat_ap_x_est_model->get_mat_ap_x_est($mat_codigo,$est_codigo);
     
                 $this->load->view('mat_ap_x_est/edit',$data);
             }
@@ -73,14 +82,14 @@ class Mat_ap_x_est extends CI_Controller
     /*
      * Deleting mat_ap_x_est
      */
-    function remove($mat_codigo)
+    function remove($mat_codigo,$est_codigo)
     {
-        $mat_ap_x_est = $this->Mat_ap_x_est_model->get_mat_ap_x_est($mat_codigo);
+        $mat_ap_x_est = $this->Mat_ap_x_est_model->get_mat_ap_x_est($mat_codigo,$est_codigo);
 
         // check if the mat_ap_x_est exists before trying to delete it
-        if(isset($mat_ap_x_est['mat_codigo']))
+        if(isset($mat_ap_x_est['mat_codigo'])&&isset($mat_ap_x_est['est_codigo']))
         {
-            $this->Mat_ap_x_est_model->delete_mat_ap_x_est($mat_codigo);
+            $this->Mat_ap_x_est_model->delete_mat_ap_x_est($mat_codigo,$est_codigo);
             redirect('mat_ap_x_est/index');
         }
         else

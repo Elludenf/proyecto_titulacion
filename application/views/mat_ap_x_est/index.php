@@ -9,8 +9,8 @@
 		<td><?php echo $m['mat_codigo']; ?></td>
 		<td><?php echo $m['est_codigo']; ?></td>
 		<td>
-            <a href="<?php echo site_url('mat_ap_x_est/edit/'.$m['id']); ?>">Edit</a> | 
-            <a href="<?php echo site_url('mat_ap_x_est/remove/'.$m['id']); ?>">Delete</a>
+            <a href="<?php echo site_url('mat_ap_x_est/edit/'.$m['mat_codigo'].'/'.$m['est_codigo']); ?>">Edit</a> |
+            <a href="<?php echo site_url('mat_ap_x_est/remove/'.$m['mat_codigo'].'/'.$m['est_codigo']); ?>">Delete</a>
         </td>
     </tr>
 	<?php } ?>

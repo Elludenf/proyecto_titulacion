@@ -1,6 +1,6 @@
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('mat_ap_x_est/edit/'.$mat_ap_x_est['mat_codigo']); ?>
+<?php echo form_open('mat_ap_x_est/edit/'.$mat_ap_x_est['mat_codigo'].'/'.$mat_ap_x_est['est_codigo']); ?>
 
 	
 	<button type="submit">Save</button>
