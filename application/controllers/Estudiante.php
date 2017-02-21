@@ -401,8 +401,6 @@ class Estudiante extends CI_Controller
             $pdf->Cell(22, 7, $alumno['est_fechaestimadagraduacion'], 'B', 0, 'C', 0);
             $pdf->Cell(20, 7, $alumno['est_fechagraduacion'], 'B', 0, 'C', 0);
 
-
-            //Se agrega un salto de linea
             $pdf->Ln(10);
         }
 
