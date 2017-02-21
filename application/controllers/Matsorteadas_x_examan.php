@@ -37,6 +37,8 @@ class Matsorteadas_x_examan extends CI_Controller
 		if($this->form_validation->run())     
         {   
             $params = array(
+                'mat_codigo'=>$this->input->post('mat_codigo'),
+                'exa_codigo'=>$this->input->post('exa_codigo'),
 				'mxe_fecha_1' => $this->input->post('mxe_fecha_1'),
 				'mxe_fecha_2' => $this->input->post('mxe_fecha_2'),
 				'mxe_nota_horal_1' => $this->input->post('mxe_nota_horal_1'),
@@ -50,19 +52,24 @@ class Matsorteadas_x_examan extends CI_Controller
         }
         else
         {
-            $this->load->view('matsorteadas_x_examan/add');
+            $this->load->model('Materia_model');
+            $data['all_materias'] = $this->Materia_model->get_all_materias();
+            $this->load->model('Examen_complexivo_model');
+            $data['all_examenes'] = $this->Examen_complexivo_model->get_all_examenes_complexivo();
+
+            $this->load->view('matsorteadas_x_examan/add',$data);
         }
     }  
 
     /*
      * Editing a matsorteadas_x_examan
      */
-    function edit($mat_codigo)
+    function edit($mat_codigo,$exa_codigo)
     {   
         // check if the matsorteadas_x_examan exists before trying to edit it
-        $matsorteadas_x_examan = $this->Matsorteadas_x_examan_model->get_matsorteadas_x_examan($mat_codigo);
+        $matsorteadas_x_examan = $this->Matsorteadas_x_examan_model->get_matsorteadas_x_examan($mat_codigo,$exa_codigo);
         
-        if(isset($matsorteadas_x_examan['mat_codigo']))
+        if(isset($matsorteadas_x_examan['mat_codigo'])&&isset($matsorteadas_x_examan['exa_codigo']))
         {
             $this->load->library('form_validation');
 
@@ -82,13 +89,19 @@ class Matsorteadas_x_examan extends CI_Controller
 					'mxe_nota_escrita_2' => $this->input->post('mxe_nota_escrita_2'),
                 );
 
-                $this->Matsorteadas_x_examan_model->update_matsorteadas_x_examan($mat_codigo,$params);            
+                $this->Matsorteadas_x_examan_model->update_matsorteadas_x_examan($mat_codigo,$exa_codigo,$params);
                 redirect('matsorteadas_x_examan/index');
             }
             else
             {   
                 $data['matsorteadas_x_examan'] = $this->Matsorteadas_x_examan_model->get_matsorteadas_x_examan($mat_codigo);
-    
+
+                $this->load->model('Materia_model');
+                $data['materia'] = $this->Materia_model->get_materia($mat_codigo);
+
+                $this->load->model('Examen_complexivo_model');
+                $data['all_examenes'] = $this->Examen_complexivo_model->get_all_examenes_complexivo();
+
                 $this->load->view('matsorteadas_x_examan/edit',$data);
             }
         }
@@ -101,12 +114,12 @@ class Matsorteadas_x_examan extends CI_Controller
      */
     function remove($mat_codigo)
     {
-        $matsorteadas_x_examan = $this->Matsorteadas_x_examan_model->get_matsorteadas_x_examan($mat_codigo);
+        $matsorteadas_x_examan = $this->Matsorteadas_x_examan_model->get_matsorteadas_x_examan($mat_codigo,$exa_codigo);
 
         // check if the matsorteadas_x_examan exists before trying to delete it
-        if(isset($matsorteadas_x_examan['mat_codigo']))
+        if(isset($matsorteadas_x_examan['mat_codigo'])&&isset($matsorteadas_x_examan['exa_codigo']))
         {
-            $this->Matsorteadas_x_examan_model->delete_matsorteadas_x_examan($mat_codigo);
+            $this->Matsorteadas_x_examan_model->delete_matsorteadas_x_examan($mat_codigo,$exa_codigo);
             redirect('matsorteadas_x_examan/index');
         }
         else

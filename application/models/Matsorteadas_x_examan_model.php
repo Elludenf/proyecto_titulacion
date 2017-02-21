@@ -33,7 +33,7 @@ class Matsorteadas_x_examan_model extends CI_Model
     function add_matsorteadas_x_examan($params)
     {
         $this->db->insert('matsorteadas_x_examen',$params);
-        return $this->db->insert_id();
+        //return $this->db->insert_id();
     }
     
     /*

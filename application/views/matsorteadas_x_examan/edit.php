@@ -1,6 +1,6 @@
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('matsorteadas_x_examan/edit/'.$matsorteadas_x_examan['mat_codigo']); ?>
+<?php echo form_open('matsorteadas_x_examan/edit/'.$matsorteadas_x_examan['mat_codigo'].'/'.$matsorteadas_x_examan['exa_codigo']); ?>
 
 	<div>Mxe Fecha 1 : <input type="text" name="mxe_fecha_1" value="<?php echo ($this->input->post('mxe_fecha_1') ? $this->input->post('mxe_fecha_1') : $matsorteadas_x_examan['mxe_fecha_1']); ?>" /></div>
 	<div>Mxe Fecha 2 : <input type="text" name="mxe_fecha_2" value="<?php echo ($this->input->post('mxe_fecha_2') ? $this->input->post('mxe_fecha_2') : $matsorteadas_x_examan['mxe_fecha_2']); ?>" /></div>
