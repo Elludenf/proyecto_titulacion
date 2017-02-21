@@ -14,9 +14,11 @@ class Matsorteadas_x_examan_model extends CI_Model
     /*
      * Get matsorteadas_x_examan by mat_codigo
      */
-    function get_matsorteadas_x_examan($mat_codigo)
+    function get_matsorteadas_x_examan()
     {
-        return $this->db->get_where('matsorteadas_x_examen',array('mat_codigo'=>$mat_codigo))->row_array();
+        $mat_codigo=$this->uri->segment(3);
+        $exa_codigo=$this->uri->segment(4);
+        return $this->db->get_where('matsorteadas_x_examen',array('mat_codigo'=>$mat_codigo,'exa_codigo'=>$exa_codigo))->row_array();
     }
     
     /*
@@ -33,15 +35,15 @@ class Matsorteadas_x_examan_model extends CI_Model
     function add_matsorteadas_x_examan($params)
     {
         $this->db->insert('matsorteadas_x_examen',$params);
-        return $this->db->insert_id();
+        //return $this->db->insert_id();
     }
     
     /*
      * function to update matsorteadas_x_examan
      */
-    function update_matsorteadas_x_examan($mat_codigo,$params)
+    function update_matsorteadas_x_examan($mat_codigo,$exa_codigo,$params)
     {
-        $this->db->where('mat_codigo',$mat_codigo);
+        $this->db->where(array('mat_codigo'=>$mat_codigo,'exa_codigo'=>$exa_codigo));
         $response = $this->db->update('matsorteadas_x_examen',$params);
         if($response)
         {
@@ -56,9 +58,9 @@ class Matsorteadas_x_examan_model extends CI_Model
     /*
      * function to delete matsorteadas_x_examan
      */
-    function delete_matsorteadas_x_examan($mat_codigo)
+    function delete_matsorteadas_x_examan($mat_codigo,$exa_codigo)
     {
-        $response = $this->db->delete('matsorteadas_x_examen',array('mat_codigo'=>$mat_codigo));
+        $response = $this->db->delete('matsorteadas_x_examen',array('mat_codigo'=>$mat_codigo,'exa_codigo'=>$exa_codigo));
         if($response)
         {
             return "matsorteadas_x_examan deleted successfully";

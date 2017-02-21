@@ -21,8 +21,8 @@
 		<td><?php echo $m['mxe_nota_horal_2']; ?></td>
 		<td><?php echo $m['mxe_nota_escrita_2']; ?></td>
 		<td>
-            <a href="<?php echo site_url('matsorteadas_x_examan/edit/'.$m['id']); ?>">Edit</a> | 
-            <a href="<?php echo site_url('matsorteadas_x_examan/remove/'.$m['id']); ?>">Delete</a>
+            <a href="<?php echo site_url('matsorteadas_x_examan/edit/'.$m['mat_codigo'].'/'.$m['exa_codigo']); ?>">Edit</a> |
+            <a href="<?php echo site_url('matsorteadas_x_examan/remove/'.$m['mat_codigo'].'/'.$m['exa_codigo']); ?>">Delete</a>
         </td>
     </tr>
 	<?php } ?>
