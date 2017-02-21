@@ -405,15 +405,7 @@ class Estudiante extends CI_Controller
             //Se agrega un salto de linea
             $pdf->Ln(10);
         }
-        /*
-         * Se manda el pdf al navegador
-         *
-         * $this->pdf->Output(nombredelarchivo, destino);
-         *
-         * I = Muestra el pdf en el navegador
-         * D = Envia el pdf para descarga
-         *
-         */
+
         $pdf->Output("Lista de alumnos.pdf", 'I');
     }
     function imprimir_grafico_disertacion(){
