@@ -44,7 +44,7 @@ class Mat_ap_x_est extends CI_Controller
             $this->load->model('Materia_model');
             $data['all_materias'] = $this->Materia_model->get_all_materias();
             $this->load->model('Estudiante_model');
-            $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes();
+            $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes_();
 
             $this->load->view('mat_ap_x_est/add',$data);
         }
@@ -60,6 +60,8 @@ class Mat_ap_x_est extends CI_Controller
         
         if(isset($mat_ap_x_est['mat_codigo'])&&isset($mat_ap_x_est['est_codigo']))
         {
+            $this->load->library('form_validation');
+
             if($this->form_validation->run())
             {   
                 $params = array(
@@ -69,13 +71,13 @@ class Mat_ap_x_est extends CI_Controller
                 redirect('mat_ap_x_est/index');
             }
             else
-            {   
+            {
                 $data['mat_ap_x_est'] = $this->Mat_ap_x_est_model->get_mat_ap_x_est($mat_codigo,$est_codigo);
 
                 $this->load->model('Materia_model');
                 $data['all_materias'] = $this->Materia_model->get_all_materias();
                 $this->load->model('Estudiante_model');
-                $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes();
+                $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes_();
 
                 $this->load->view('mat_ap_x_est/edit',$data);
             }
