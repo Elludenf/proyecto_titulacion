@@ -214,8 +214,7 @@ class Estudiante extends CI_Controller
         else
         {
 
-            $this->load->model('Rol_model');
-            $data['all_roles'] = $this->Rol_model->get_all_roles();
+
 
             $this->load->model('Carrera_model');
             $data['all_carreras'] = $this->Carrera_model->get_all_carreras();
