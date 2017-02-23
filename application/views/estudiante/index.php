@@ -44,8 +44,21 @@
                 </tr>
             </table>
         </div>
+    </div>
         <!--  end top-search -->
 
+<!--stars reposts--------------------------------------------------------------------------------------------------------------------->
+<br><br><br>
+
+        <div id="select-report">
+
+            <div class="btn-reports">
+
+                <a href='<?php echo site_url('Estudiante/reportes')?>' class="btn-reports-default">REPORTES</a>
+
+            </div>
+        </div>
+<!----end reports----------------------------------------------------------------->
 
         <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
             <tr>

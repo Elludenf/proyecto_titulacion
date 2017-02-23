@@ -18,6 +18,92 @@ class Estudiante_model extends CI_Model
     {
         return $this->db->get_where('estudiante',array('est_codigo'=>$est_codigo))->row_array();
     }
+    /*
+     * Get all estudiante graduate
+     */
+
+
+    function get_estudiantes_graduados($limit = 5)
+    {
+        $date2 = date('Y-m-d');
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)->get_where('estudiante',array('est_fechagraduacion <'=>$date2))->result_array();
+
+
+    }
+
+
+
+    /*
+  Get all estudiante raduados reportes
+*/
+
+    function get_graduados_reportes(){
+        $date2 = date('Y-m-d');
+        return $this->db->get_where('estudiante',array('est_fechagraduacion <'=>$date2))->result_array();
+
+    }
+
+    /*
+      Get all estudiante disertacion
+*/
+
+    function get_estudiantes_disertacion($limit = 5)
+    {
+        $offset = $this->uri->segment(3);
+        $this->db->select('*');
+        $this->db->from('estudiante');
+        $this->db->join('elabora','elabora.est_codigo=estudiante.est_codigo');
+        $query=$this->db->limit($limit, $offset)->get();
+        return $query->result_array();
+
+    }
+
+
+    /*
+    Get all estudiante disertacion reportes
+*/
+
+    function get_disertacion_reportes()
+    {
+        $this->db->select('*');
+        $this->db->from('estudiante');
+        $this->db->join('elabora','elabora.est_codigo=estudiante.est_codigo');
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    /*
+  Get all estudiante titulacion
+*/
+
+    function get_estudiantes_titulacion($limit = 5){
+
+        $offset = $this->uri->segment(3);
+        $this->db->select('*');
+        $this->db->from('estudiante');
+        $this->db->join('examen_complexivo','examen_complexivo.est_codigo=estudiante.est_codigo');
+        $query=$this->db->limit($limit, $offset)->get();
+        return $query->result_array();
+
+    }
+
+    /*
+     Get all estudiante titulacion reportes
+   */
+
+    function get_titulacion_reportes(){
+
+        $this->db->select('*');
+        $this->db->from('estudiante');
+        $this->db->join('examen_complexivo','examen_complexivo.est_codigo=estudiante.est_codigo');
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+
 
     /*Get total number of rows (used in pagination)*/
     private $table = "estudiante";
@@ -39,7 +125,7 @@ class Estudiante_model extends CI_Model
     /*
      * Get all estudiante
      */
-    function get_all_estudiantes_()
+    function get_todos_reportes()
     {
         return $this->db->get('estudiante')->result_array();
 
@@ -48,6 +134,14 @@ class Estudiante_model extends CI_Model
     /*
      * function to add new estudiante
      */
+
+    function get_all()
+    {
+
+        return $this->db->get('estudiante')->result_array();
+    }
+
+
     function add_estudiante($params)
     {
         $this->db->insert('estudiante',$params);
