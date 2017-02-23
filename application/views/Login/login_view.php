@@ -16,13 +16,13 @@
             <?php echo form_open('verifylogin/index'); ?>
             <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                    <th><label for="per_mailpuce">Usuario:</label> </th>
-                    <td><input type="text"  class="login-inp" id="per_mailpuce" name="per_mailpuce"/></td>
+                    <th><label for="rolname">Usuario:</label> </th>
+                    <td><input type="text"  class="login-inp" id="rolname" name="rolname"/></td>
 
                 </tr>
                 <tr>
-                    <th><label for="per_clave">Contraseña:</label></th>
-                    <td><input type="password" value="************"  onfocus="this.value=''" class="login-inp" id="per_clave" name="per_clave" /></td>
+                    <th><label for="rolpassword">Contraseña:</label></th>
+                    <td><input type="password" value="************"  onfocus="this.value=''" class="login-inp" id="rolpassword" name="rolpassword" /></td>
 
                 </tr>
 

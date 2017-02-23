@@ -29,8 +29,11 @@ class Mat_ap_x_est extends CI_Controller
     {
         $this->load->library('form_validation');
 
+        $this->form_validation->set_rules('est_codigo','Estudiante','required');
+        $this->form_validation->set_rules('mat_codigo','Materia','required');
         if($this->form_validation->run())
-        {   
+        {
+            echo 'INSERCION';
             $params = array(
                 'mat_codigo'=>$this->input->post('mat_codigo'),
                 'est_codigo'=>$this->input->post('est_codigo'),
