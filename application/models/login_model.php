@@ -2,13 +2,19 @@
 Class Login_model extends CI_Model
 {
     public function login($username,$password) {
-        $this -> db -> select('per_codigo, per_mailpuce, per_clave');
-        $this -> db -> from('estudiante');
-        $this -> db -> where('per_mailpuce', $username);
-        $this -> db -> where('per_clave', $password);
+
+        $username="'".$username."'";
+        $password="'".$password."'";
+
+        $select="SELECT rolname, rolpassword";
+        $from="from pg_authid";
+        $where="where rolname=".$username." and rolpassword='md5' || MD5(".$password." || ".$username.");";
+        $sql=$select." ".$from." ".$where;
+
+        $query=$this -> db -> query($sql);
         $this -> db -> limit(1);
 
-        $query = $this -> db -> get();
+
 
         if($query -> num_rows() == 1)
         {
@@ -16,22 +22,10 @@ Class Login_model extends CI_Model
         }
         else
         {
-            $this -> db -> select('per_codigo, per_mailpuce, per_clave');
-            $this -> db -> from('profesor');
-            $this -> db -> where('per_mailpuce', $username);
-            $this -> db -> where('per_clave', $password);
-            $this -> db -> limit(1);
-
-            $query = $this -> db -> get();
-
-            if($query -> num_rows() == 1)
-            {
-                return $query->result();
-            }else{
                 return false;
-            }
-
         }
+
+
     }
 
 }
