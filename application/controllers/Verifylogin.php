@@ -48,8 +48,8 @@ class VerifyLogin extends CI_Controller {
             foreach($result as $row)
             {
                 $sess_array = array(
-                    'rolpassword' => $row->per_clave,
-                    'rolname' => $row->per_mailpuce
+                    'rolpassword' => $row->rolpassword,
+                    'rolname' => $row->rolname
                 );
                 $this->session->set_userdata('logged_in', $sess_array);
             }
