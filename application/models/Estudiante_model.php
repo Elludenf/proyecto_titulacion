@@ -20,8 +20,7 @@ class Estudiante_model extends CI_Model
     }
 
     function getEstudianteBusqueda($param) {
-       /* if(empty($param))
-            return array();*/
+
 
         $result = $this->db->like('est_id', $param)
             ->or_like('est_apellido1', $param)
