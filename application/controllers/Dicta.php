@@ -15,11 +15,30 @@ class Dicta extends CI_Controller
     /*
      * Listing of dicta
      */
+    private $limit = 5;
     function index()
     {
         $data['dicta'] = $this->Dicta_model->get_all_dicta();
 
-        $this->load->view('dicta/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Dicta_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/dicta/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('dicta/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -46,7 +65,9 @@ class Dicta extends CI_Controller
             $data['all_materias'] = $this->Materia_model->get_all_materias();
             $this->load->model('Profesor_model');
             $data['all_profesores'] = $this->Profesor_model->get_all_profesores();
+            $this->load->view('templates/header');
             $this->load->view('dicta/add',$data);
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -76,7 +97,9 @@ class Dicta extends CI_Controller
                 $this->load->model('Materia_model');
                 $data['all_materias'] = $this->Materia_model->get_all_materias();
 
+                $this->load->view('templates/header');
                 $this->load->view('dicta/edit',$data);
+                $this->load->view('templates/footer');
             }
         }
         else

@@ -18,13 +18,19 @@ class Periodos_academicos_model extends CI_Model
     {
         return $this->db->get_where('periodos_academicos',array('pac_codigo'=>$pac_codigo))->row_array();
     }
-    
+    private $table = "periodos_academicos";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
     /*
      * Get all periodos_academicos
      */
-    function get_all_periodos_academicos()
+    function get_all_periodos_academicos($limit = 5)
     {
-        return $this->db->get('periodos_academicos')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('periodos_academicos')->result_array();
     }
     
     /*

@@ -15,11 +15,30 @@ class Elabora extends CI_Controller
     /*
      * Listing of elabora
      */
+    private $limit = 5;
     function index()
     {
         $data['elabora'] = $this->Elabora_model->get_all_elabora();
 
-        $this->load->view('elabora/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Elabora_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/elabora/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('elabora/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -47,10 +66,12 @@ class Elabora extends CI_Controller
         else
         {
             $this->load->model('Estudiante_model');
-            $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes_();
+            $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes();
             $this->load->model('Trabajo_disertacion_model');
             $data['all_trabajos'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
-            $this->load->view('elabora/add',$data);
+            $this->load->view('templates/header');
+            $this->load->view('elabora/add', $data);
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -88,7 +109,9 @@ class Elabora extends CI_Controller
                 $this->load->model('Trabajo_disertacion_model');
                 $data['all_trabajos'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
 
-                $this->load->view('elabora/edit',$data);
+                $this->load->view('templates/header');
+                $this->load->view('elabora/edit', $data);
+                $this->load->view('templates/footer');
             }
         }
         else

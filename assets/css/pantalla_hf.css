@@ -941,6 +941,83 @@ div.selectbox-wrapper3 ul li	{
 
 /*-----------------------------FIN REPORTES-------------------------------*/
 
+/*-----------------------------Edit y Add---------------------------------------*/
+
+#custom-lbl{
+
+	height: 30px;
+	padding-top: 10px;
+	padding-left: 300px;
+	font-size: 17px;
+	color:#444547;
+}
+
+.edit-inp{
+
+	background-color: #ffffcc;
+	border: none;
+	font-size: 14px;
+	height: 28px;
+	padding: 6px 6px 0 10px;
+	width: 204px;
+	color: #6f7072;
+	margin-left: 10px;
+}
+
+#edit-titulo{
+
+	font-size: 40px;
+	height: 75px;
+	padding-top: 50px;
+	padding-left: 120px;
+	color: #444547;
+
+}
+
+#edit-container{
+
+	border:  1px solid #767676;
+	width: 1000px;
+	margin-left: 200px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#edit-submit{
+	background: url(../images/pantalla_edit_add/btn_edit.png) no-repeat;
+	height: 33px;
+	width: 132px;
+	margin-top: 35px;
+	margin-left: 125px;
+	border: none;
+	cursor: pointer;
+
+}
+
+#edit-submit:hover{
+	background: url(../images/pantalla_edit_add/btnh_edit.png) no-repeat;
+}
+
+#add-submit{
+	background: url(../images/pantalla_edit_add/btn_add.png) no-repeat;
+	height: 33px;
+	width: 127px;
+	margin-top: 35px;
+	margin-left: 125px;
+	border: none;
+	cursor: pointer;
+
+}
+
+#add-submit:hover{
+	background: url(../images/pantalla_edit_add/btnh_add.png) no-repeat;
+}
+.clear-esp{
+
+	height:20px;
+}
+/*-----------------------------FIN Edit y Add---------------------------------------*/
+
 /*-----------------------------Footer----------------------------*/
 div#footer{
 

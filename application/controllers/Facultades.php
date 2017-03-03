@@ -15,11 +15,30 @@ class Facultades extends CI_Controller
     /*
      * Listing of facultades
      */
+    private $limit = 5;
     function index()
     {
         $data['facultades'] = $this->Facultades_model->get_all_facultades();
 
-        $this->load->view('facultades/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Facultades_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/facultades/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('facultades/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -49,7 +68,9 @@ class Facultades extends CI_Controller
         }
         else
         {
+            $this->load->view('templates/header');
             $this->load->view('facultades/add');
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -76,8 +97,10 @@ class Facultades extends CI_Controller
             else
             {   
                 $data['facultades'] = $this->Facultades_model->get_facultades($facu_codigo);
-    
-                $this->load->view('facultades/edit',$data);
+
+                $this->load->view('templates/header');
+                $this->load->view('facultades/edit', $data);
+                $this->load->view('templates/footer');
             }
         }
         else

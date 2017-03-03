@@ -15,11 +15,30 @@ class Permiso extends CI_Controller
     /*
      * Listing of permisos
      */
+    private $limit = 5;
     function index()
     {
         $data['permisos'] = $this->Permiso_model->get_all_permisos();
 
-        $this->load->view('permiso/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Permiso_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/permiso/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('permiso/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -50,7 +69,9 @@ class Permiso extends CI_Controller
         }
         else
         {
-            $this->load->view('permiso/add');
+            $this->load->view('templates/header');
+            $this->load->view('permiso/index');
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -81,8 +102,10 @@ class Permiso extends CI_Controller
             else
             {   
                 $data['permiso'] = $this->Permiso_model->get_permiso($perm_codigo);
-    
-                $this->load->view('permiso/edit',$data);
+
+                $this->load->view('templates/header');
+                $this->load->view('permiso/edit', $data);
+                $this->load->view('templates/footer');;
             }
         }
         else

@@ -18,13 +18,20 @@ class Responsables_titulacion_model extends CI_Model
     {
         return $this->db->get_where('responsables_titulacion',array('res_codigo'=>$res_codigo))->row_array();
     }
-    
+    private $table = "responsables_titulacion";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
+
     /*
      * Get all responsables_titulacion
      */
-    function get_all_responsables_titulacion()
+    function get_all_responsables_titulacion($limit = 5)
     {
-        return $this->db->get('responsables_titulacion')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('responsables_titulacion')->result_array();
     }
     
     /*

@@ -18,13 +18,20 @@ class Permiso_model extends CI_Model
     {
         return $this->db->get_where('permisos',array('perm_codigo'=>$perm_codigo))->row_array();
     }
-    
+    private $table = "permisos";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
+
     /*
      * Get all permisos
      */
-    function get_all_permisos()
+    function get_all_permisos($limit = 5)
     {
-        return $this->db->get('permisos')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('permisos')->result_array();
     }
     
     /*

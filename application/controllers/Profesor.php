@@ -15,11 +15,31 @@ class Profesor extends CI_Controller
     /*
      * Listing of profesores
      */
+
+    private $limit = 5;
     function index()
     {
         $data['profesores'] = $this->Profesor_model->get_all_profesores();
 
-        $this->load->view('profesores/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Profesor_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/profesor/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('profesores/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -69,8 +89,10 @@ class Profesor extends CI_Controller
         }
         else
         {
-                
+
+            $this->load->view('templates/header');
             $this->load->view('profesores/add');
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -125,7 +147,9 @@ class Profesor extends CI_Controller
                 $data['profesor'] = $this->Profesor_model->get_profesor($prof_codigo);
 
 
-                $this->load->view('profesores/edit',$data);
+                $this->load->view('templates/header');
+                $this->load->view('profesores/edit', $data);
+                $this->load->view('templates/footer');
             }
         }
         else

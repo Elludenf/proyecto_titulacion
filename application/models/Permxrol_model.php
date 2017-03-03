@@ -18,13 +18,20 @@ class Permxrol_model extends CI_Model
     {
         return $this->db->get_where('permxrol',array('perm_codigo'=>$perm_codigo))->row_array();
     }
-    
+    private $table = "permxrol";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
+
     /*
      * Get all permxrol
      */
-    function get_all_permxrol()
+    function get_all_permxrol($limit = 5)
     {
-        return $this->db->get('permxrol')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('permxrol')->result_array();
     }
     /*
      * Get permisos asociados a un rol

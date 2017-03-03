@@ -15,11 +15,31 @@ class Revdir_x_disertacion extends CI_Controller
     /*
      * Listing of revdir_x_disertacion
      */
+
+    private $limit = 5;
     function index()
     {
         $data['revdir_x_disertacion'] = $this->Revdir_x_disertacion_model->get_all_revdir_x_disertacion();
 
-        $this->load->view('revdir_x_disertacion/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Revdir_x_disertacion_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/revdir_x_disertacion/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('revdir_x_disertacion/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -51,7 +71,9 @@ class Revdir_x_disertacion extends CI_Controller
             $this->load->model('Profesor_model');
             $data['all_profesores'] = $this->Profesor_model->get_all_profesores();
 
-            $this->load->view('revdir_x_disertacion/add',$data);
+            $this->load->view('templates/header');
+            $this->load->view('revdir_x_disertacion/add', $data);
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -90,7 +112,9 @@ class Revdir_x_disertacion extends CI_Controller
                 $this->load->model('Profesor_model');
                 $data['all_profesores'] = $this->Profesor_model->get_all_profesores();
 
-                $this->load->view('revdir_x_disertacion/edit',$data);
+                $this->load->view('templates/header');
+                $this->load->view('revdir_x_disertacion/edit', $data);
+                $this->load->view('templates/footer');
             }
         }
         else

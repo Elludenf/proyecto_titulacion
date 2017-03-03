@@ -18,13 +18,20 @@ class Profesor_model extends CI_Model
     {
         return $this->db->get_where('profesor',array('prof_codigo'=>$prof_codigo))->row_array();
     }
-    
+    private $table = "profesor";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
+
     /*
      * Get all profesores
      */
-    function get_all_profesores()
+    function get_all_profesores($limit = 5)
     {
-        return $this->db->get('profesor')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('profesor')->result_array();
     }
     
     /*

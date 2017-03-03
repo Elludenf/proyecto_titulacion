@@ -18,13 +18,20 @@ class Plan_de_estudio_model extends CI_Model
     {
         return $this->db->get_where('plan_de_estudio',array('plan_codigo'=>$plan_codigo))->row_array();
     }
-    
+    private $table = "plan_de_estudio";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
+
     /*
      * Get all planes_de_estudio
      */
-    function get_all_planes_de_estudio()
+    function get_all_planes_de_estudio($limit = 5)
     {
-        return $this->db->get('plan_de_estudio')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('plan_de_estudio')->result_array();
     }
     
     /*

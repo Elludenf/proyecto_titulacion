@@ -10,7 +10,12 @@ class Revdir_x_disertacion_model extends CI_Model
     {
         parent::__construct();
     }
-    
+    private $table = "revdir_x_disertacion";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
+
     /*
      * Get revdir_x_disertacion by dis_codigo
      */
@@ -24,9 +29,11 @@ class Revdir_x_disertacion_model extends CI_Model
     /*
      * Get all revdir_x_disertacion
      */
-    function get_all_revdir_x_disertacion()
+    function get_all_revdir_x_disertacion($limit = 5)
     {
-        return $this->db->get('revdir_x_disertacion')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('revdir_x_disertacion')->result_array();
     }
 
 

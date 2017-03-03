@@ -20,13 +20,19 @@ class Matsorteadas_x_examan_model extends CI_Model
         $exa_codigo=$this->uri->segment(4);
         return $this->db->get_where('matsorteadas_x_examen',array('mat_codigo'=>$mat_codigo,'exa_codigo'=>$exa_codigo))->row_array();
     }
-    
+    private $table = "matsorteadas_x_examen";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
     /*
      * Get all matsorteadas_x_examen
      */
-    function get_all_matsorteadas_x_examen()
+    function get_all_matsorteadas_x_examen($limit = 5)
     {
-        return $this->db->get('matsorteadas_x_examen')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('matsorteadas_x_examen')->result_array();
     }
     
     /*

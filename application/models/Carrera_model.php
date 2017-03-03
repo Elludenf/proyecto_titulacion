@@ -22,11 +22,18 @@ class Carrera_model extends CI_Model
     /*
      * Get all carreras
      */
-    function get_all_carreras()
+    function get_all_carreras($limit = 5)
     {
-        return $this->db->get('carreras')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('carreras')->result_array();
     }
-    
+    /*Get total number of rows (used in pagination)*/
+    private $table = "carreras";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
     /*
      * function to add new carrera
      */

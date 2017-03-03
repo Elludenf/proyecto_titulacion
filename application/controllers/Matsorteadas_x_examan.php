@@ -15,11 +15,30 @@ class Matsorteadas_x_examan extends CI_Controller
     /*
      * Listing of matsorteadas_x_examen
      */
+    private $limit = 5;
     function index()
     {
         $data['matsorteadas_x_examen'] = $this->Matsorteadas_x_examan_model->get_all_matsorteadas_x_examen();
 
-        $this->load->view('matsorteadas_x_examan/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Matsorteadas_x_examan_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/matsorteadas_x_examan/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('matsorteadas_x_examan/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -57,7 +76,10 @@ class Matsorteadas_x_examan extends CI_Controller
             $this->load->model('Examen_complexivo_model');
             $data['all_examenes'] = $this->Examen_complexivo_model->get_all_examenes_complexivo();
 
-            $this->load->view('matsorteadas_x_examan/add',$data);
+
+            $this->load->view('templates/header');
+            $this->load->view('matsorteadas_x_examan/add', $data);
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -102,7 +124,10 @@ class Matsorteadas_x_examan extends CI_Controller
                 $this->load->model('Examen_complexivo_model');
                 $data['all_examenes'] = $this->Examen_complexivo_model->get_all_examenes_complexivo();
 
-                $this->load->view('matsorteadas_x_examan/edit',$data);
+
+                $this->load->view('templates/header');
+                $this->load->view('matsorteadas_x_examan/edit', $data);
+                $this->load->view('templates/footer');
             }
         }
         else

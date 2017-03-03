@@ -15,11 +15,31 @@ class Responsables_titulacion extends CI_Controller
     /*
      * Listing of responsables_titulacion
      */
+
+    private $limit = 5;
     function index()
     {
         $data['responsables_titulacion'] = $this->Responsables_titulacion_model->get_all_responsables_titulacion();
 
-        $this->load->view('responsables_titulacion/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Responsables_titulacion_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/responsables_titulacion/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('responsables_titulacion/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -48,8 +68,10 @@ class Responsables_titulacion extends CI_Controller
 
 			$this->load->model('Profesor_model');
 			$data['all_profesores'] = $this->Profesor_model->get_all_profesores();
-                
-            $this->load->view('responsables_titulacion/add',$data);
+
+            $this->load->view('templates/header');
+            $this->load->view('responsables_titulacion/add', $data);
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -86,7 +108,9 @@ class Responsables_titulacion extends CI_Controller
 				$this->load->model('Profesor_model');
 				$data['all_profesores'] = $this->Profesor_model->get_all_profesores();
 
-                $this->load->view('responsables_titulacion/edit',$data);
+                $this->load->view('templates/header');
+                $this->load->view('responsables_titulacion/edit', $data);
+                $this->load->view('templates/footer');
             }
         }
         else

@@ -24,11 +24,17 @@ class Dicta_model extends CI_Model
     /*
      * Get all dicta
      */
-    function get_all_dicta()
+    function get_all_dicta($limit = 5)
     {
-        return $this->db->get('dicta')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('dicta')->result_array();
     }
-    
+    private $table = "dicta";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
     /*
      * function to add new dicta
      */

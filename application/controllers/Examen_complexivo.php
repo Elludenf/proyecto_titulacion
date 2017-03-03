@@ -15,11 +15,30 @@ class Examen_complexivo extends CI_Controller
     /*
      * Listing of examenes_complexivo
      */
+    private $limit = 5;
     function index()
     {
         $data['examenes_complexivo'] = $this->Examen_complexivo_model->get_all_examenes_complexivo();
 
-        $this->load->view('examen_complexivo/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Examen_complexivo_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/examen_complexivo/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('examen_complexivo/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -53,8 +72,10 @@ class Examen_complexivo extends CI_Controller
 
 			$this->load->model('Estudiante_model');
 			$data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes();
-                
-            $this->load->view('examen_complexivo/add',$data);
+
+            $this->load->view('templates/header');
+            $this->load->view('examen_complexivo/add', $data);
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -96,7 +117,9 @@ class Examen_complexivo extends CI_Controller
 				$this->load->model('Estudiante_model');
 				$data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes();
 
-                $this->load->view('examen_complexivo/edit',$data);
+                $this->load->view('templates/header');
+                $this->load->view('examen_complexivo/edit', $data);
+                $this->load->view('templates/footer');
             }
         }
         else

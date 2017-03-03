@@ -10,16 +10,36 @@ class Carrera extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Carrera_model');
-    } 
+
+    }
 
     /*
      * Listing of carreras
      */
+    private $limit = 5;
     function index()
     {
         $data['carreras'] = $this->Carrera_model->get_all_carreras();
 
-        $this->load->view('carreras/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Carrera_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/carrera/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('carreras/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -50,8 +70,9 @@ class Carrera extends CI_Controller
 
 			$this->load->model('Escuela_model');
 			$data['all_escuelas'] = $this->Escuela_model->get_all_escuelas();
-                
+            $this->load->view('templates/header');
             $this->load->view('carreras/add',$data);
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -87,7 +108,9 @@ class Carrera extends CI_Controller
 				$this->load->model('Escuela_model');
 				$data['all_escuelas'] = $this->Escuela_model->get_all_escuelas();
 
+                $this->load->view('templates/header');
                 $this->load->view('carreras/edit',$data);
+                $this->load->view('templates/footer');
             }
         }
         else
