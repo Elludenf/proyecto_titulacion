@@ -18,13 +18,19 @@ class Examen_complexivo_model extends CI_Model
     {
         return $this->db->get_where('examen_complexivo',array('exa_codigo'=>$exa_codigo))->row_array();
     }
-    
+    private $table = "examen_complexivo";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
     /*
      * Get all examenes_complexivo
      */
-    function get_all_examenes_complexivo()
+    function get_all_examenes_complexivo($limit = 5)
     {
-        return $this->db->get('examen_complexivo')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('examen_complexivo')->result_array();
     }
     
     /*

@@ -18,13 +18,20 @@ class Prorroga_model extends CI_Model
     {
         return $this->db->get_where('prorroga',array('pro_codigo'=>$pro_codigo))->row_array();
     }
-    
+    private $table = "prorroga";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
+
     /*
      * Get all prorrogas
      */
-    function get_all_prorrogas()
+    function get_all_prorrogas($limit = 5)
     {
-        return $this->db->get('prorroga')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('prorroga')->result_array();
     }
     
     /*

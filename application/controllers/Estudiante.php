@@ -46,10 +46,37 @@ class Estudiante extends CI_Controller
         $this->load->view('estudiante/index', $data);
         $this->load->view('templates/footer');
     }
+    /*search query*/
+    function buscarEstudiante() {
 
+
+        $data['estudiante'] = $this->Estudiante_model->getEstudianteBusqueda($this->input->post('search'));
+
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Estudiante_model->countParamSearch($this->input->post('search'));
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = 5;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/estudiante/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('estudiante/index', $data);
+        $this->load->view('templates/footer');
+    }
     /*
      * page of reports
      */
+
     function reportes()
     {
         $data['estudiante'] = $this->Estudiante_model->get_all_estudiantes();
@@ -283,8 +310,9 @@ class Estudiante extends CI_Controller
 
                 $this->load->model('Carrera_model');
                 $data['all_carreras'] = $this->Carrera_model->get_all_carreras();
-
+                $this->load->view('templates/header');
                 $this->load->view('estudiante/edit',$data);
+                $this->load->view('templates/footer');
             }
         }
         else

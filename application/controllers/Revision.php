@@ -15,11 +15,30 @@ class Revision extends CI_Controller
     /*
      * Listing of revisiones
      */
+    private $limit = 5;
     function index()
     {
         $data['revisiones'] = $this->Revision_model->get_all_revisiones();
 
-        $this->load->view('revision/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Revision_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/revision/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('revision/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -64,8 +83,10 @@ class Revision extends CI_Controller
 
 			$this->load->model('Profesor_model');
 			$data['all_profesores'] =$a_prof;
-                
-            $this->load->view('revision/add',$data);
+
+            $this->load->view('templates/header');
+            $this->load->view('revision/add', $data);
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -106,7 +127,9 @@ class Revision extends CI_Controller
 				$this->load->model('Profesor_model');
 				$data['all_profesores'] = $this->Profesor_model->get_all_profesores();
 
-                $this->load->view('revision/edit',$data);
+                $this->load->view('templates/header');
+                $this->load->view('revision/edit', $data);
+                $this->load->view('templates/footer');
             }
         }
         else

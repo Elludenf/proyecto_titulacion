@@ -15,12 +15,32 @@ class Periodos_academicos extends CI_Controller
     /*
      * Listing of periodos_academicos
      */
+    private $limit = 5;
     function index()
     {
         $data['periodos_academicos'] = $this->Periodos_academicos_model->get_all_periodos_academicos();
 
-        $this->load->view('periodos_academicos/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Periodos_academicos_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/periodos_academicos/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('periodos_academicos/index', $data);
+        $this->load->view('templates/footer');
     }
+
 
     /*
      * Adding a new periodos_academicos
@@ -51,7 +71,9 @@ class Periodos_academicos extends CI_Controller
         }
         else
         {
+            $this->load->view('templates/header');
             $this->load->view('periodos_academicos/add');
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -87,8 +109,10 @@ class Periodos_academicos extends CI_Controller
             else
             {   
                 $data['periodos_academicos'] = $this->Periodos_academicos_model->get_periodos_academicos($pac_codigo);
-    
-                $this->load->view('periodos_academicos/edit',$data);
+
+                $this->load->view('templates/header');
+                $this->load->view('periodos_academicos/edit', $data);
+                $this->load->view('templates/footer');
             }
         }
         else

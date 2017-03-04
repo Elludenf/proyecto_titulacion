@@ -18,13 +18,20 @@ class Facultades_model extends CI_Model
     {
         return $this->db->get_where('facultades',array('facu_codigo'=>$facu_codigo))->row_array();
     }
-    
+    private $table = "facultades";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
+
     /*
      * Get all facultades
      */
-    function get_all_facultades()
+    function get_all_facultades($limit = 5)
     {
-        return $this->db->get('facultades')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('facultades')->result_array();
     }
     
     /*

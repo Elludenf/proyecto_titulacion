@@ -18,13 +18,20 @@ class Revision_model extends CI_Model
     {
         return $this->db->get_where('revisiones',array('obs_codigo'=>$obs_codigo))->row_array();
     }
-    
+    private $table = "revisiones";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
+
     /*
      * Get all revisiones
      */
-    function get_all_revisiones()
+    function get_all_revisiones($limit = 5)
     {
-        return $this->db->get('revisiones')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('revisiones')->result_array();
     }
     
     /*

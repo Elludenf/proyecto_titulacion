@@ -18,13 +18,19 @@ class Escuela_model extends CI_Model
     {
         return $this->db->get_where('escuelas',array('esc_codigo'=>$esc_codigo))->row_array();
     }
-    
+    private $table = "escuelas";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
     /*
      * Get all escuelas
      */
-    function get_all_escuelas()
+    function get_all_escuelas($limit = 5)
     {
-        return $this->db->get('escuelas')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('escuelas')->result_array();
     }
     
     /*

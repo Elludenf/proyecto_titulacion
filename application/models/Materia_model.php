@@ -18,13 +18,19 @@ class Materia_model extends CI_Model
     {
         return $this->db->get_where('materias',array('mat_codigo'=>$mat_codigo))->row_array();
     }
-    
+    private $table = "materias";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
     /*
      * Get all materias
      */
-    function get_all_materias()
+    function get_all_materias($limit = 5)
     {
-        return $this->db->get('materias')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('materias')->result_array();
     }
     
     /*

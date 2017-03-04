@@ -18,11 +18,22 @@ class Estudiante_model extends CI_Model
     {
         return $this->db->get_where('estudiante',array('est_codigo'=>$est_codigo))->row_array();
     }
+
+    function getEstudianteBusqueda($param) {
+
+
+        $result = $this->db->like('est_id', $param)
+            ->or_like('est_apellido1', $param)
+            ->or_like('est_apellido2', $param)
+            ->get('estudiante');
+
+        return $result->result_array();
+    }
+
+
     /*
      * Get all estudiante graduate
      */
-
-
     function get_estudiantes_graduados($limit = 5)
     {
         $date2 = date('Y-m-d');
@@ -111,6 +122,17 @@ class Estudiante_model extends CI_Model
     {
         return $this->db->count_all_results($this->table);
     }
+
+    function countParamSearch($param)
+    {
+        $result = $this->db->like('est_id', $param)
+            ->or_like('est_apellido1', $param)
+            ->or_like('est_apellido2', $param)
+            ->get('estudiante');
+
+        return $result->num_rows();
+    }
+
 
     /*
      * Get all estudiante

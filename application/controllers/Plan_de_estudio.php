@@ -15,11 +15,31 @@ class Plan_de_estudio extends CI_Controller
     /*
      * Listing of planes_de_estudio
      */
+
+    private $limit = 5;
     function index()
     {
         $data['planes_de_estudio'] = $this->Plan_de_estudio_model->get_all_planes_de_estudio();
 
-        $this->load->view('plan_de_estudio/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Plan_de_estudio_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/plan_de_estudio/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('plan_de_estudio/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -56,8 +76,10 @@ class Plan_de_estudio extends CI_Controller
 
 			$this->load->model('Carrera_model');
 			$data['all_carreras'] = $this->Carrera_model->get_all_carreras();
-                
-            $this->load->view('plan_de_estudio/add',$data);
+
+            $this->load->view('templates/header');
+            $this->load->view('plan_de_estudio/add', $data);
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -95,7 +117,9 @@ class Plan_de_estudio extends CI_Controller
 				$this->load->model('Carrera_model');
 				$data['all_carreras'] = $this->Carrera_model->get_all_carreras();
 
-                $this->load->view('plan_de_estudio/edit',$data);
+                $this->load->view('templates/header');
+                $this->load->view('plan_de_estudio/edit', $data);
+                $this->load->view('templates/footer');
             }
         }
         else

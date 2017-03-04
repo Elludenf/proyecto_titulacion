@@ -21,13 +21,21 @@ class Materia_x_plan_de_estudio_model extends CI_Model
         $pac_codigo=$this->uri->segment(5);
         return $this->db->get_where('materia_x_plan_de_estudio',array('plan_codigo'=>$plan_codigo,'mat_codigo'=>$mat_codigo,'pac_codigo'=>$pac_codigo))->row_array();
     }
-    
+
+    private $table = "materia_x_plan_de_estudio";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
+
     /*
      * Get all materia_x_plan_de_estudio
      */
-    function get_all_materia_x_plan_de_estudio()
+    function get_all_materia_x_plan_de_estudio($limit = 5)
     {
-        return $this->db->get('materia_x_plan_de_estudio')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('materia_x_plan_de_estudio')->result_array();
     }
     
     /*

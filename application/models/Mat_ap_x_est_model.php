@@ -20,13 +20,19 @@ class Mat_ap_x_est_model extends CI_Model
         $est_codigo=$this->uri->segment(4);
         return $this->db->get_where('mat_ap_x_est',array('mat_codigo'=>$mat_codigo,'est_codigo'=>$est_codigo))->row_array();
     }
-    
+    private $table = "mat_ap_x_est";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
     /*
      * Get all mat_ap_x_est
      */
-    function get_all_mat_ap_x_est()
+    function get_all_mat_ap_x_est($limit = 5)
     {
-        return $this->db->get('mat_ap_x_est')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('mat_ap_x_est')->result_array();
     }
     
     /*

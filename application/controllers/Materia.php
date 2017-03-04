@@ -15,11 +15,30 @@ class Materia extends CI_Controller
     /*
      * Listing of materias
      */
+    private $limit = 5;
     function index()
     {
         $data['materias'] = $this->Materia_model->get_all_materias();
 
-        $this->load->view('materia/index',$data);
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Materia_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/materia/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('materia/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -50,7 +69,9 @@ class Materia extends CI_Controller
         }
         else
         {
+            $this->load->view('templates/header');
             $this->load->view('materia/add');
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -82,8 +103,10 @@ class Materia extends CI_Controller
             else
             {   
                 $data['materia'] = $this->Materia_model->get_materia($mat_codigo);
-    
-                $this->load->view('materia/edit',$data);
+
+                $this->load->view('templates/header');
+                $this->load->view('materia/edit', $data);
+                $this->load->view('templates/footer');
             }
         }
         else

@@ -15,13 +15,29 @@ class Escuela extends CI_Controller
     /*
      * Listing of escuelas
      */
+    private $limit = 5;
     function index()
     {
         $data['escuelas'] = $this->Escuela_model->get_all_escuelas();
 
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Escuela_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/escuela/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
         $this->load->helper('form');
+        $this->load->helper(array('form'));
         $this->load->view('templates/header');
-        $this->load->view('escuelas/index',$data);
+        $this->load->view('escuelas/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -55,7 +71,7 @@ class Escuela extends CI_Controller
 			$data['all_facultades'] = $this->Facultades_model->get_all_facultades();
 
             $this->load->view('templates/header');
-            $this->load->view('escuelas/add',$data);
+            $this->load->view('escuelas/add', $data);
             $this->load->view('templates/footer');
         }
     }  

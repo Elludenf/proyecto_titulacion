@@ -18,13 +18,19 @@ class Trabajo_disertacion_model extends CI_Model
     {
         return $this->db->get_where('trabajo_disertacion',array('dis_codigo'=>$dis_codigo))->row_array();
     }
-
+    private $table = "trabajo_disertacion";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
     /*
      * Get all trabajo_disertacion
      */
-    function get_all_trabajo_disertacion()
+    function get_all_trabajo_disertacion($limit = 5)
     {
-        return $this->db->get('trabajo_disertacion')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('trabajo_disertacion')->result_array();
     }
 
     /*

@@ -24,11 +24,18 @@ class Elabora_model extends CI_Model
     /*
      * Get all elabora
      */
-    function get_all_elabora()
+    function get_all_elabora($limit = 5)
     {
-        return $this->db->get('elabora')->result_array();
+        $offset = $this->uri->segment(3);
+        return $this->db->limit($limit, $offset)
+            ->get('elabora')->result_array();
     }
-    
+
+    private $table = "elabora";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
     /*
      * function to add new elabora
      */
