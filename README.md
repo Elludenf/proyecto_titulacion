@@ -1,4 +1,4 @@
-# proyecto titulacion PUCE
+# proyecto titulacion PUCE1
 ##Proyecto elaborado por:
 <dt>Patricio Pérez
 <dt>Henry Trujillo
