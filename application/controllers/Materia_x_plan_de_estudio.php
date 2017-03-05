@@ -93,7 +93,7 @@ class Materia_x_plan_de_estudio extends CI_Controller
         {
             $this->load->library('form_validation');
 
-            if($this->form_validation->run())
+            if(isset($_POST) && count($_POST) > 0)
             {   
                 $params = array(
                 );

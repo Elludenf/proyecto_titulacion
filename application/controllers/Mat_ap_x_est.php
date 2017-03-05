@@ -78,7 +78,7 @@ class Mat_ap_x_est extends CI_Controller
      * Editing a mat_ap_x_est
      */
     function edit($mat_codigo,$est_codigo)
-    {   
+    {
         // check if the mat_ap_x_est exists before trying to edit it
         $mat_ap_x_est = $this->Mat_ap_x_est_model->get_mat_ap_x_est($mat_codigo,$est_codigo);
         
@@ -86,7 +86,7 @@ class Mat_ap_x_est extends CI_Controller
         {
             $this->load->library('form_validation');
 
-            if($this->form_validation->run())
+            if(isset($_POST) && count($_POST) > 0)
             {   
                 $params = array(
                 );
@@ -101,7 +101,7 @@ class Mat_ap_x_est extends CI_Controller
                 $this->load->model('Materia_model');
                 $data['all_materias'] = $this->Materia_model->get_all_materias();
                 $this->load->model('Estudiante_model');
-                $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes_();
+                $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes();
 
                 $this->load->view('templates/header');
                 $this->load->view('mat_ap_x_est/edit', $data);
