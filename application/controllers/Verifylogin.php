@@ -29,6 +29,7 @@ class VerifyLogin extends CI_Controller {
         else
         {
             //Go to private area
+
             redirect('estudiante/index', 'refresh');
         }
 
@@ -51,8 +52,10 @@ class VerifyLogin extends CI_Controller {
                     'rolpassword' => $row->rolpassword,
                     'rolname' => $row->rolname
                 );
-                $this->session->set_userdata('logged_in', $sess_array);
+                $this->session->set_userdata($sess_array);
             }
+            $this->load->model('Login_model');
+            $this->Login_model->set_role($username);
             return TRUE;
         }
         else

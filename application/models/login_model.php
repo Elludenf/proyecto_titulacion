@@ -28,5 +28,15 @@ Class Login_model extends CI_Model
 
     }
 
+    function logout(){
+
+        $this->session->sess_destroy();
+        $this->db->query('SET search_path TO titulacion');
+        $this->db->query('Set role titulacion_db_admin');
+    }
+    public function set_role($username){
+        $this->db->query('SET search_path TO titulacion');
+        $this->db->query('Set role '.$username);
+    }
 }
 ?>

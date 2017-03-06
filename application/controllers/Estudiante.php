@@ -21,6 +21,12 @@ class Estudiante extends CI_Controller
    * Listing of estudiante
    */
     private $limit = 5;
+    function logout(){
+        $this->load->view('templates/header');
+        $this->load->view('estudiante/add');
+        $this->load->view('templates/footer');
+
+    }
     function index()
     {
 

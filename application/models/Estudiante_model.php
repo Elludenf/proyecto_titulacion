@@ -180,10 +180,11 @@ class Estudiante_model extends CI_Model
             return substr($inthat, 0, strpos($inthat, $this));
         };
         $user=before ('@', $user);
-        $pass="'".$pass."'";
+        //$pass="'".$pass."'";
+        $query='CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$this->db->escape($pass).'; GRANT "R_ESTUDIANTE" TO '.$user.'';
+        //$this->db->query('CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$this->db->escape($pass).'; GRANT "R_ESTUDIANTE" TO '.$user.'');
+        $this->db->query($query);
 
-        $this->db->query('CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$pass.'; GRANT "R_ESTUDIANTE" TO '.$user.'');
-        //return $this->db->insert_id();
     }
 
     /*
