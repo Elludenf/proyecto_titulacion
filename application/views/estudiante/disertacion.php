@@ -13,12 +13,12 @@
     <div class = "logo2"><img src = "<?php echo base_url();?>assets/images/pantalla_main/logo_puce2.png"></div>
     <div class = "icono-despliegue"><img src = "<?php echo base_url();?>assets/images/pantalla_main/icono_despliegue_lista.png"></div>
     <div class = "tipo-usuario">ADMINISTRADOR</div>
-    <div class = "nombre-usuario">ADMINISTRADOR</div>
+    <div class = "nombre-usuario"><?php echo $this->session-> __get('rolname'); ?></div>
     <div class = "icono-usuario"><img src = "<?php echo base_url();?>assets/images/pantalla_main/icono_usuario.png"></div>
 
     <div class = "usuario-opciones">
         <div class = "usuario-opciones-desplegable">
-            <a href="" id="usuario-logout"> <img src="<?php echo base_url();?>assets/images/pantalla_main/icono_logout.png"> </a>
+            <a href="<?php echo base_url();?>login/index" id="usuario-logout"> <img src="<?php echo base_url();?>assets/images/pantalla_main/icono_logout.png"> </a>
             <div class="clear-desplegable"></div>
 
         </div>

@@ -54,10 +54,10 @@ class Carrera extends CI_Controller
 		
 		if($this->form_validation->run())     
         {
-            $this->db->select_max('carr_codigo');
-            $result= $this->db->get('carreras')->row_array();
+            //$this->db->select_max('carr_codigo');
+            //$result= $this->db->get('carreras')->row_array();
             $params = array(
-                'carr_codigo' =>$result['carr_codigo']+1,
+                //'carr_codigo' =>$result['carr_codigo']+1,
 				'esc_codigo' => $this->input->post('esc_codigo'),
 				'carr_descripcion' => $this->input->post('carr_descripcion'),
             );
