@@ -38,5 +38,10 @@ Class Login_model extends CI_Model
         $this->db->query('SET search_path TO titulacion');
         $this->db->query('Set role '.$username);
     }
+
+    public function get_grup_role($username){
+        $this->db->query(' SELECT rolname FROM pg_roles WHERE pg_has_role( \''.$username.'\', oid, \'member\')  limit 1;');
+
+    }
 }
 ?>

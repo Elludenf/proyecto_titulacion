@@ -12,7 +12,7 @@ class VerifyLogin extends CI_Controller {
     {
         //This method will have the credentials validation
         $this->load->library('form_validation');
-
+        $username = $this->input->post('rolname');
         $this->form_validation->set_rules('rolname', 'Nombre', 'trim|required');
         $this->form_validation->set_rules('rolpassword', 'Clave', 'trim|required|callback_check_database');
 
@@ -29,6 +29,12 @@ class VerifyLogin extends CI_Controller {
         else
         {
             //Go to private area
+            $this->Login_model->logout();
+
+            if($this->Login_model->get_grup_role($username)== R_ESTUDIANTE)
+
+                redirect('elabora/index', 'refresh');
+            else
 
             redirect('estudiante/index', 'refresh');
         }
