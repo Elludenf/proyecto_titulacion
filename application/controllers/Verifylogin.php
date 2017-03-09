@@ -29,9 +29,9 @@ class VerifyLogin extends CI_Controller {
         else
         {
             //Go to private area
-            $this->Login_model->logout();
+            //$this->Login_model->logout();
 
-            if($this->Login_model->get_grup_role($username)== R_ESTUDIANTE)
+            if($this->session-> __get('rol_group')== 'R_ESTUDIANTE')
 
                 redirect('elabora/index', 'refresh');
             else
@@ -52,11 +52,24 @@ class VerifyLogin extends CI_Controller {
         if($result)
         {
             $sess_array = array();
+            //Obteniendo rol
+            $this->load->model('Login_model');
+            $rol_=$this->Login_model->get_grup_role($username);
+            $rol_g=$rol_['rolname'];//Valor de la base
+            //valor para mostrar en pantalla
+            if($rol_g=='postgres'){
+                $tipo_usuario=$rol_g;
+                    }
+            else{
+                $tipo_usuario=substr($rol_g,2);
+                    }
             foreach($result as $row)
             {
                 $sess_array = array(
                     'rolpassword' => $row->rolpassword,
-                    'rolname' => $row->rolname
+                    'rolname' => $row->rolname,
+                    'rol_group' => $rol_g,//Valor de la base
+                    'tipo_usuario'=>$tipo_usuario//valor para mostrar en pantalla
                 );
                 $this->session->set_userdata($sess_array);
             }
