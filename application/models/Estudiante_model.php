@@ -19,6 +19,26 @@ class Estudiante_model extends CI_Model
         return $this->db->get_where('estudiante',array('est_codigo'=>$est_codigo))->row_array();
     }
 
+    function get_datos($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('select * from titulacion.estudiante where est_mailpuce=\''.$correo.'\'')->row_array();
+    }
+    function get_carrera($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('select carr_descripcion,esc_descripcion,facu_descripcion from titulacion.carreras join titulacion.estudiante on titulacion.estudiante.carr_codigo=titulacion.carreras.carr_codigo join titulacion.escuelas on titulacion.escuelas.esc_codigo=titulacion.carreras.esc_codigo join titulacion.facultades on titulacion.facultades.facu_codigo=titulacion.escuelas.facu_codigo where est_mailpuce=\''.$correo.'\'
+')->row_array();
+    }
+
+    function set_permiso($user)
+    {
+
+        $this->db->query('GRANT SELECT ON titulacion.estudiante TO '.$user.'');
+    }
+
+
+
     function getEstudianteBusqueda($param) {
 
 
@@ -181,13 +201,15 @@ class Estudiante_model extends CI_Model
      */
     function add_user($user,$pass)
     {
-        function before ($this, $inthat)
+        function before ($simbolo, $inthat)
         {
-            return substr($inthat, 0, strpos($inthat, $this));
+            return substr($inthat, 0, strpos($inthat, $simbolo));
         };
         $user=before ('@', $user);
+
+
         //$pass="'".$pass."'";
-        $query='CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$this->db->escape($pass).'; GRANT "R_ESTUDIANTE" TO '.$user.'';
+        $query='CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$this->db->escape($pass).'; GRANT "R_ESTUDIANTE" TO '.$user.'; GRANT "R_VISTA" TO '.$user.'';
         //$this->db->query('CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$this->db->escape($pass).'; GRANT "R_ESTUDIANTE" TO '.$user.'');
         $this->db->query($query);
 

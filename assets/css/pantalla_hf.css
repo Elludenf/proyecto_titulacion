@@ -929,17 +929,40 @@ div.selectbox-wrapper3 ul li	{
 
 
 /*-----------------------------FIN ESTUDIANTES----------------------------*/
-/*------------------------------REPORTES----------------------------------*/
+/*------------------------------PERFIL ESTUDIANTE----------------------------------*/
+
+
+#pagina_contenido_perfil{
+	position: relative;
+}
+.row{
+	margin-right: 15px;
+	margin-left: 15px;
+
+}
+.pricing{
+	position: relative;
+	margin-bottom: 15px;
+	border: 3px solid #eee;
+}
+.pricing-head h3{
+	font-weight: 200;
+	padding: 12px 0;
+	font-size: 18px;
+}
+.bg-purple-wisteria{
+	border-color: #9b59b6 !important;
+	background-image: none !important;
+	background-color: #9b59b6 !important;
+	color: white !important;
+
+}
 
 
 
 
 
-
-
-
-
-/*-----------------------------FIN REPORTES-------------------------------*/
+/*-----------------------------FIN PERFIL-------------------------------*/
 
 /*-----------------------------Edit y Add---------------------------------------*/
 

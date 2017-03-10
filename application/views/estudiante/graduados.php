@@ -6,8 +6,7 @@
  * Date: 1/24/2017
  * Time: 4:44 PM
  */-->
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
 <div id ="nav-bar">
 
