@@ -28,6 +28,11 @@ class Matsorteadas_x_examan_model extends CI_Model
     /*
      * Get all matsorteadas_x_examen
      */
+    function get_all_matsorteadas_x_examen_()
+    {
+        return $this->db->get('matsorteadas_x_examen')->result_array();
+    }
+
     function get_all_matsorteadas_x_examen($limit = 5)
     {
         $offset = $this->uri->segment(3);

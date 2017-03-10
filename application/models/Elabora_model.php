@@ -24,6 +24,12 @@ class Elabora_model extends CI_Model
     /*
      * Get all elabora
      */
+
+    function get_all_elabora_()
+    {
+        return $this->db->get('elabora')->result_array();
+    }
+
     function get_all_elabora($limit = 5)
     {
         $offset = $this->uri->segment(3);

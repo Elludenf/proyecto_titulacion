@@ -24,6 +24,12 @@ class Dicta_model extends CI_Model
     /*
      * Get all dicta
      */
+
+    function get_all_dicta_()
+    {
+        return $this->db->get('dicta')->result_array();
+    }
+
     function get_all_dicta($limit = 5)
     {
         $offset = $this->uri->segment(3);

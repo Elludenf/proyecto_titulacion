@@ -29,6 +29,11 @@ class Revdir_x_disertacion_model extends CI_Model
     /*
      * Get all revdir_x_disertacion
      */
+    function get_all_revdir_x_disertacion_()
+    {
+        return $this->db->get('revdir_x_disertacion')->result_array();
+    }
+
     function get_all_revdir_x_disertacion($limit = 5)
     {
         $offset = $this->uri->segment(3);

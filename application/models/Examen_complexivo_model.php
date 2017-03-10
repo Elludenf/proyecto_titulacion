@@ -26,6 +26,12 @@ class Examen_complexivo_model extends CI_Model
     /*
      * Get all examenes_complexivo
      */
+
+    function get_all_examenes_complexivo_()
+    {
+        return $this->db->get('examen_complexivo')->result_array();
+    }
+
     function get_all_examenes_complexivo($limit = 5)
     {
         $offset = $this->uri->segment(3);

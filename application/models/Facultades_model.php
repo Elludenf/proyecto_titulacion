@@ -27,6 +27,11 @@ class Facultades_model extends CI_Model
     /*
      * Get all facultades
      */
+    function get_all_facultades_()
+    {
+        return $this->db->get('facultades')->result_array();
+    }
+
     function get_all_facultades($limit = 5)
     {
         $offset = $this->uri->segment(3);

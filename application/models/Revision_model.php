@@ -27,6 +27,12 @@ class Revision_model extends CI_Model
     /*
      * Get all revisiones
      */
+
+    function get_all_revisiones_()
+    {
+        return $this->db->get('revisiones')->result_array();
+    }
+
     function get_all_revisiones($limit = 5)
     {
         $offset = $this->uri->segment(3);

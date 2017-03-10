@@ -27,6 +27,11 @@ class Responsables_titulacion_model extends CI_Model
     /*
      * Get all responsables_titulacion
      */
+    function get_all_responsables_titulacion_()
+    {
+        return $this->db->get('responsables_titulacion')->result_array();
+    }
+
     function get_all_responsables_titulacion($limit = 5)
     {
         $offset = $this->uri->segment(3);

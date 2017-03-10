@@ -36,6 +36,12 @@ class Periodos_academicos_model extends CI_Model
     /*
      * function to add new periodos_academicos
      */
+    function get_all_periodos_academicos_()
+    {
+        return $this->db->get('periodos_academicos')->result_array();
+    }
+
+
     function add_periodos_academicos($params)
     {
         $this->db->insert('periodos_academicos',$params);

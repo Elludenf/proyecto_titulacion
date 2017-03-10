@@ -26,6 +26,11 @@ class Trabajo_disertacion_model extends CI_Model
     /*
      * Get all trabajo_disertacion
      */
+    function get_all_trabajo_disertacion_()
+    {
+        return $this->db->get('trabajo_disertacion')->result_array();
+    }
+
     function get_all_trabajo_disertacion($limit = 5)
     {
         $offset = $this->uri->segment(3);

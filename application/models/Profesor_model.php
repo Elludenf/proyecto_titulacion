@@ -27,6 +27,11 @@ class Profesor_model extends CI_Model
     /*
      * Get all profesores
      */
+    function get_all_profesores_()
+    {
+        return $this->db->get('profesor')->result_array();
+    }
+
     function get_all_profesores($limit = 5)
     {
         $offset = $this->uri->segment(3);

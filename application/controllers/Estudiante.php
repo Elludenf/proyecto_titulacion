@@ -250,7 +250,7 @@ class Estudiante extends CI_Controller
 
 
             $this->load->model('Carrera_model');
-            $data['all_carreras'] = $this->Carrera_model->get_all_carreras();
+            $data['all_carreras'] = $this->Carrera_model->get_all_carreras_();
 
             $this->load->view('templates/header');
             $this->load->view('estudiante/add',$data);
@@ -315,7 +315,7 @@ class Estudiante extends CI_Controller
                 $data['estudiante'] = $this->Estudiante_model->get_estudiante($est_codigo);
 
                 $this->load->model('Carrera_model');
-                $data['all_carreras'] = $this->Carrera_model->get_all_carreras();
+                $data['all_carreras'] = $this->Carrera_model->get_all_carreras_();
                 $this->load->view('templates/header');
                 $this->load->view('estudiante/edit',$data);
                 $this->load->view('templates/footer');

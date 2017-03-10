@@ -28,6 +28,11 @@ class Mat_ap_x_est_model extends CI_Model
     /*
      * Get all mat_ap_x_est
      */
+    function get_all_mat_ap_x_est_()
+    {
+        return $this->db->get('mat_ap_x_est')->result_array();
+    }
+
     function get_all_mat_ap_x_est($limit = 5)
     {
         $offset = $this->uri->segment(3);

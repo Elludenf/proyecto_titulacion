@@ -27,6 +27,11 @@ class Plan_de_estudio_model extends CI_Model
     /*
      * Get all planes_de_estudio
      */
+    function get_all_planes_de_estudio_()
+    {
+        return $this->db->get('plan_de_estudio')->result_array();
+    }
+
     function get_all_planes_de_estudio($limit = 5)
     {
         $offset = $this->uri->segment(3);

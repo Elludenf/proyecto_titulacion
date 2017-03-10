@@ -147,6 +147,12 @@ class Estudiante_model extends CI_Model
     /*
      * Get all estudiante
      */
+
+    function get_all_estudiantes_()
+    {
+        return $this->db->get('estudiante')->result_array();
+    }
+
     function get_todos_reportes()
     {
         return $this->db->get('estudiante')->result_array();

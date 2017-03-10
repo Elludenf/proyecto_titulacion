@@ -26,6 +26,11 @@ class Materia_model extends CI_Model
     /*
      * Get all materias
      */
+    function get_all_materias_()
+    {
+        return $this->db->get('materias')->result_array();
+    }
+
     function get_all_materias($limit = 5)
     {
         $offset = $this->uri->segment(3);

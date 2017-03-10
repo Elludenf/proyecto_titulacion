@@ -26,6 +26,12 @@ class Escuela_model extends CI_Model
     /*
      * Get all escuelas
      */
+
+    function get_all_escuelas_()
+    {
+        return $this->db->get('escuelas')->result_array();
+    }
+
     function get_all_escuelas($limit = 5)
     {
         $offset = $this->uri->segment(3);

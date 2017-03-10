@@ -27,6 +27,11 @@ class Prorroga_model extends CI_Model
     /*
      * Get all prorrogas
      */
+    function get_all_prorrogas_()
+    {
+        return $this->db->get('prorroga')->result_array();
+    }
+
     function get_all_prorrogas($limit = 5)
     {
         $offset = $this->uri->segment(3);
