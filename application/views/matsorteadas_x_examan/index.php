@@ -86,6 +86,7 @@
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Mat Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Materia</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Exa Codigo</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Mxe Fecha 1</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Mxe Fecha 2</th>
@@ -98,6 +99,7 @@
 	<?php foreach($matsorteadas_x_examen as $m){ ?>
     <tr>
 		<td><?php echo $m['mat_codigo']; ?></td>
+        <td><?php echo $m['mat_nombre']; ?></td>
 		<td><?php echo $m['exa_codigo']; ?></td>
 		<td><?php echo $m['mxe_fecha_1']; ?></td>
 		<td><?php echo $m['mxe_fecha_2']; ?></td>

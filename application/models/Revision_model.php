@@ -36,8 +36,22 @@ class Revision_model extends CI_Model
     function get_all_revisiones($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('revisiones')->result_array();
+        //return $this->db->limit($limit, $offset)
+        //    ->get('revisiones')->result_array();
+        $this->db->limit($limit, $offset);
+        $this->db->select('*',
+            'profesor.prof_apellido1',
+            'profesor.prof_apellido2',
+            'profesor.prof_nombre1',
+            'profesor.prof_nombre2',
+            'rxd_tipo',
+            'trabajo_disertacion.dis_titulo');
+        $this->db->from('revisiones','profesor','revdir_x_disertacion','trabajo_disertacion');
+        $this->db->join('profesor','profesor.prof_codigo=revisiones.prof_codigo');
+        $this->db->join('revdir_x_disertacion','revdir_x_disertacion.prof_codigo=revisiones.prof_codigo');
+        $this->db->join('trabajo_disertacion','trabajo_disertacion.dis_codigo=revisiones.dis_codigo');
+        $query=$this->db->get();
+        return $query->result_array();
     }
     
     /*

@@ -160,8 +160,17 @@ class Estudiante_model extends CI_Model
     function get_all_estudiantes($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('estudiante')->result_array();
+        //return $this->db->limit($limit, $offset)
+            //
+        $this->db->limit($limit, $offset);
+        $this->db->select('*','carr_descripcion');
+        $this->db->from('estudiante','carreras');
+        $this->db->join('carreras','carreras.carr_codigo=estudiante.carr_codigo');
+        $this->db->order_by('est_codigo','asc');
+        $query=$this->db->get();
+        return $query->result_array();
+                //
+            //->get('estudiante')->result_array();
     }
 
     /*

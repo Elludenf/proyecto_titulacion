@@ -73,7 +73,7 @@ class Prorroga extends CI_Controller
         {
 
 			$this->load->model('Trabajo_disertacion_model');
-			$data['all_trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
+			$data['all_trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion_();
 
             $this->load->view('templates/header');
             $this->load->view('prorroga/add', $data);
@@ -118,7 +118,7 @@ class Prorroga extends CI_Controller
                 $data['prorroga'] = $this->Prorroga_model->get_prorroga($pro_codigo);
     
 				$this->load->model('Trabajo_disertacion_model');
-				$data['all_trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
+				$data['all_trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion_();
 
                 $this->load->view('templates/header');
                 $this->load->view('prorroga/edit', $data);

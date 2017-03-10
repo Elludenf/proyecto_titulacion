@@ -72,9 +72,9 @@ class Matsorteadas_x_examan extends CI_Controller
         else
         {
             $this->load->model('Materia_model');
-            $data['all_materias'] = $this->Materia_model->get_all_materias();
+            $data['all_materias'] = $this->Materia_model->get_all_materias_();
             $this->load->model('Examen_complexivo_model');
-            $data['all_examenes'] = $this->Examen_complexivo_model->get_all_examenes_complexivo();
+            $data['all_examenes'] = $this->Examen_complexivo_model->get_all_examenes_complexivo_();
 
 
             $this->load->view('templates/header');
@@ -122,7 +122,7 @@ class Matsorteadas_x_examan extends CI_Controller
                 $data['materia'] = $this->Materia_model->get_materia($mat_codigo);
 
                 $this->load->model('Examen_complexivo_model');
-                $data['all_examenes'] = $this->Examen_complexivo_model->get_all_examenes_complexivo();
+                $data['all_examenes'] = $this->Examen_complexivo_model->get_all_examenes_complexivo_();
 
 
                 $this->load->view('templates/header');

@@ -85,7 +85,9 @@
 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Est Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Estudiante</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Trabajo Disertacion</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Elb Nota Horal</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Elb Nota Escrito</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
@@ -93,7 +95,9 @@
 	<?php foreach($elabora as $e){ ?>
     <tr>
 		<td><?php echo $e['est_codigo']; ?></td>
+        <td><?php echo $e['est_apellido1'].' '.$e['est_apellido2'].' '.$e['est_nombre1'].' '.$e['est_nombre2'];  ?></td>
 		<td><?php echo $e['dis_codigo']; ?></td>
+        <td><?php echo $e['dis_titulo']; ?></td>
 		<td><?php echo $e['elb_nota_horal']; ?></td>
 		<td><?php echo $e['elb_nota_escrito']; ?></td>
 		<td>

@@ -110,7 +110,7 @@
 		<td><?php echo $p['prof_nombre2']; ?></td>
 		<td><?php echo $p['prof_apellido1']; ?></td>
 		<td><?php echo $p['prof_apellido2']; ?></td>
-		<td><?php echo $p['prof_tipoid']; ?></td>
+		<td><?php if($p['prof_tipoid']=='CED') echo 'Cedula'; else if($p['prof_tipoid']=='PAS') echo 'Pasaporte'; else echo 'Otro';?></td>
 		<td><?php echo $p['prof_id']; ?></td>
 		<td><?php echo $p['prof_direccion']; ?></td>
 		<td><?php echo $p['prof_telefono']; ?></td>
@@ -118,7 +118,7 @@
 		<td><?php echo $p['prof_mail']; ?></td>
 		<td><?php echo $p['prof_mailpuce']; ?></td>
 		<td><?php echo $p['prof_fechanac']; ?></td>
-		<td><?php echo $p['prof_sexo']; ?></td>
+		<td><?php if ($p['prof_sexo'] == 'F' )echo 'FEMENINO'; else echo 'MASCULINO'; ?></td>
 		<td><?php echo $p['prof_foto']; ?></td>
 		<td><?php echo $p['prof_oficina']; ?></td>
 		<td>

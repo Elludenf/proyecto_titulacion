@@ -35,8 +35,18 @@ class Examen_complexivo_model extends CI_Model
     function get_all_examenes_complexivo($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('examen_complexivo')->result_array();
+        //return $this->db->limit($limit, $offset)
+        //    ->get('examen_complexivo')->result_array();
+        $this->db->limit($limit, $offset);
+        $this->db->select('*','estudiante.est_apellido1',
+            'estudiante.est_apellido2',
+            'estudiante.est_nombre1',
+            'estudiante.est_nombre2',
+            'trabajo_disertacion.dis_titulo');
+        $this->db->from('examen_complexivo', 'estudiante');
+        $this->db->join('estudiante','estudiante.est_codigo = examen_complexivo.est_codigo');
+        $query=$this->db->get();
+        return $query->result_array();
     }
     
     /*

@@ -36,8 +36,20 @@ class Mat_ap_x_est_model extends CI_Model
     function get_all_mat_ap_x_est($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('mat_ap_x_est')->result_array();
+        //return $this->db->limit($limit, $offset)
+        //    ->get('mat_ap_x_est')->result_array();
+
+        $this->db->limit($limit, $offset);
+        $this->db->select('*','mat_nombre',
+            'estudiante.est_apellido1',
+            'estudiante.est_apellido2',
+            'estudiante.est_nombre1',
+            'estudiante.est_nombre2');
+        $this->db->from('mat_ap_x_est','estudiante','materias');
+        $this->db->join('materias','materias.mat_codigo=mat_ap_x_est.mat_codigo');
+        $this->db->join('estudiante','estudiante.est_codigo=mat_ap_x_est.est_codigo');
+        $query=$this->db->get();
+        return $query->result_array();
     }
     
     /*

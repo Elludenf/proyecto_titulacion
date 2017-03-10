@@ -69,7 +69,7 @@ class Carrera extends CI_Controller
         {
 
 			$this->load->model('Escuela_model');
-			$data['all_escuelas'] = $this->Escuela_model->get_all_escuelas();
+			$data['all_escuelas'] = $this->Escuela_model->get_all_escuelas_();
             $this->load->view('templates/header');
             $this->load->view('carreras/add',$data);
             $this->load->view('templates/footer');
@@ -106,7 +106,7 @@ class Carrera extends CI_Controller
                 $data['carrera'] = $this->Carrera_model->get_carrera($carr_codigo);
     
 				$this->load->model('Escuela_model');
-				$data['all_escuelas'] = $this->Escuela_model->get_all_escuelas();
+				$data['all_escuelas'] = $this->Escuela_model->get_all_escuelas_();
 
                 $this->load->view('templates/header');
                 $this->load->view('carreras/edit',$data);

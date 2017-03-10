@@ -54,7 +54,7 @@
 					{
 						$selected = ($profesor['prof_codigo'] == $this->input->post('prof_codigo')) ? ' selected="selected"' : null;
 
-						echo '<option value="'.$profesor['prof_codigo'].'" '.$selected.'>'.$profesor['prof_nombre1'].'</option>';
+						echo '<option value="'.$profesor['prof_codigo'].'" '.$selected.'>'.$profesor['prof_apellido1'].' '.$profesor['prof_apellido2'].' '.$profesor['prof_nombre1'].' '.$profesor['prof_nombre2'].'</option>';
 					} 
 					?>
 				</select>

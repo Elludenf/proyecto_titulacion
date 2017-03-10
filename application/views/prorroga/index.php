@@ -87,6 +87,7 @@
     <tr>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Pro Codigo</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Trabajo Disertacion</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Pro Fechaint</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Pro Fechainicio</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Pro Fechafin</th>
@@ -98,6 +99,7 @@
     <tr>
 		<td><?php echo $p['pro_codigo']; ?></td>
 		<td><?php echo $p['dis_codigo']; ?></td>
+        <td><?php echo $p['dis_titulo']; ?></td>
 		<td><?php echo $p['pro_fechaint']; ?></td>
 		<td><?php echo $p['pro_fechainicio']; ?></td>
 		<td><?php echo $p['pro_fechafin']; ?></td>

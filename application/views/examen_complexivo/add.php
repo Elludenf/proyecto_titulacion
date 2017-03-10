@@ -41,13 +41,24 @@
 					{
 						$selected = ($estudiante['est_codigo'] == $this->input->post('est_codigo')) ? ' selected="selected"' : null;
 
-						echo '<option value="'.$estudiante['est_codigo'].'" '.$selected.'>'.$estudiante['est_nombre1'].'</option>';
+						echo '<option value="'.$estudiante['est_codigo'].'" '.$selected.'>'.$estudiante['est_apellido1'].' '.$estudiante['est_apellido2'].' '.$estudiante['est_nombre1'].' '.$estudiante['est_nombre2'].'</option>';
 					} 
 					?>
 				</select>
 		</div>
 	<div id="custom-lbl" >Exa Fechainicio : <input type="text" class="edit-inp" name="exa_fechainicio" value="<?php echo $this->input->post('exa_fechainicio'); ?>" /></div>
-	<div id="custom-lbl" >Exa Estado : <input type="text" class="edit-inp" name="exa_estado" value="<?php echo $this->input->post('exa_estado'); ?>" /></div>
+	<div id="custom-lbl" >Exa Estado :
+        <select name="exa_estado" class="edit-inp">
+            <option value="">Seleccione un valor</option>
+            <?php
+
+            echo '<option value="EP">EN PROCESO</option>';
+            echo '<option value="AP">APROBADO</option>';
+            echo '<option value="RP">REPROBADO</option>';
+
+            ?>
+        </select>
+    </div>
 	<div id="custom-lbl" >Exa Horas Docencia : <input type="text" class="edit-inp" name="exa_horas_docencia" value="<?php echo $this->input->post('exa_horas_docencia'); ?>" /></div>
 	<div id="custom-lbl" >Exa Horas Autonomas : <input type="text" class="edit-inp" name="exa_horas_autonomas" value="<?php echo $this->input->post('exa_horas_autonomas'); ?>" /></div>
 

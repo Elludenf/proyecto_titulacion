@@ -68,7 +68,7 @@ class Escuela extends CI_Controller
         {
 
 			$this->load->model('Facultades_model');
-			$data['all_facultades'] = $this->Facultades_model->get_all_facultades();
+			$data['all_facultades'] = $this->Facultades_model->get_all_facultades_();
 
             $this->load->view('templates/header');
             $this->load->view('escuelas/add', $data);
@@ -106,7 +106,7 @@ class Escuela extends CI_Controller
                 $data['escuela'] = $this->Escuela_model->get_escuela($esc_codigo);
     
 				$this->load->model('Facultades_model');
-				$data['all_facultades'] = $this->Facultades_model->get_all_facultades();
+				$data['all_facultades'] = $this->Facultades_model->get_all_facultades_();
 
                 $this->load->view('templates/header');
                 $this->load->view('escuelas/edit',$data);

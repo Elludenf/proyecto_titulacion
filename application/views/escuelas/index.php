@@ -85,15 +85,17 @@
 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Esc Codigo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Facu Codigo</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Esc Descripcion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Facu Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Facultad</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
     </tr>
 	<?php foreach($escuelas as $e){ ?>
     <tr>
 		<td><?php echo $e['esc_codigo']; ?></td>
+        <td><?php echo $e['esc_descripcion']; ?></td>
 		<td><?php echo $e['facu_codigo']; ?></td>
-		<td><?php echo $e['esc_descripcion']; ?></td>
+        <td><?php echo $e['facu_descripcion']; ?></td>
 		<td>
             <a href="<?php echo site_url('escuela/edit/'.$e['esc_codigo']); ?>">Edit</a> |
             <a href="<?php echo site_url('escuela/remove/'.$e['esc_codigo']); ?>">Delete</a>

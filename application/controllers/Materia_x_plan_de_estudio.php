@@ -69,11 +69,11 @@ class Materia_x_plan_de_estudio extends CI_Controller
         {
 
             $this->load->model('Plan_de_estudio_model');
-            $data['all_planes'] = $this->Plan_de_estudio_model->get_all_planes_de_estudio();
+            $data['all_planes'] = $this->Plan_de_estudio_model->get_all_planes_de_estudio_();
             $this->load->model('Materia_model');
-            $data['all_materias'] = $this->Materia_model->get_all_materias();
+            $data['all_materias'] = $this->Materia_model->get_all_materias_();
             $this->load->model('Periodos_academicos_model');
-            $data['all_pac'] = $this->Periodos_academicos_model->get_all_periodos_academicos();
+            $data['all_pac'] = $this->Periodos_academicos_model->get_all_periodos_academicos_();
 
             $this->load->view('templates/header');
             $this->load->view('materia_x_plan_de_estudio/add', $data);

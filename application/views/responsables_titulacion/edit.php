@@ -40,20 +40,17 @@
 			{
 				$selected = ($profesor['prof_codigo'] == $responsables_titulacion['prof_codigo']) ? ' selected="selected"' : null;
 
-				echo '<option value="'.$profesor['prof_codigo'].'" '.$selected.'>'.$profesor['prof_nombre1'].$profesor['prof_apellido1'].'</option>';
+				echo '<option value="'.$profesor['prof_codigo'].'" '.$selected.'>'.$profesor['prof_apellido1'].$profesor['prof_nombre1'].'</option>';
 			}
 			?>
 		</select>
 		</div>
 	<div id="custom-lbl" >Res Tipo :
         <select name="res_tipo" class="edit-inp" >
-			<option value="">Seleccionar Tipo de Responsable</option>
-			<?php
-			echo '<option value="R1">Responsable Titulacion I</option>';
-			echo '<option value="R2">Responsable Titulacion II</option>';
-			$selected=$responsables_titulacion['res_tipo'];
-			?>
-		</select></div>
+            <option <?php if ($responsables_titulacion['res_tipo'] == 'R1' ) echo 'selected' ; ?> value="R1">Responsable Titulacion I</option>
+            <option <?php if ($responsables_titulacion['res_tipo'] == 'R2' ) echo 'selected' ; ?> value="R2">Responsable Titulacion II</option>
+		</select>
+    </div>
 	<div id="custom-lbl" >Res Fechanombramiento : <input type="text" class="edit-inp" name="res_fechanombramiento" value="<?php echo ($this->input->post('res_fechanombramiento') ? $this->input->post('res_fechanombramiento') : $responsables_titulacion['res_fechanombramiento']); ?>" /></div>
 
     <div id="custom-lbl"><button type="submit" id="edit-submit"></button></div>

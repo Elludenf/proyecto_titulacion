@@ -35,7 +35,14 @@
 	<div id="custom-lbl">Est Nombre2 : <input type="text"  class="edit-inp" name="est_nombre2" value="<?php echo ($this->input->post('est_nombre2') ? $this->input->post('est_nombre2') : $estudiante['est_nombre2']); ?>" /></div>
 	<div id="custom-lbl">Est Apellido1 : <input type="text" class="edit-inp" name="est_apellido1" value="<?php echo ($this->input->post('est_apellido1') ? $this->input->post('est_apellido1') : $estudiante['est_apellido1']); ?>" /></div>
 	<div id="custom-lbl">Est Apellido2 : <input type="text" class="edit-inp" name="est_apellido2" value="<?php echo ($this->input->post('est_apellido2') ? $this->input->post('est_apellido2') : $estudiante['est_apellido2']); ?>" /></div>
-	<div id="custom-lbl">Est Tipoid : <input type="text" class="edit-inp" name="est_tipoid" value="<?php echo ($this->input->post('est_tipoid') ? $this->input->post('est_tipoid') : $estudiante['est_tipoid']); ?>" /></div>
+	<div id="custom-lbl">Est Tipoid :
+		<select name="est_tipoid" class="edit-inp">
+			<option value="">Seleccione el tipo de identificacion:</option>
+            <option <?php if ($estudiante['est_tipoid'] == 'CED' ) echo 'selected' ; ?> value="CED">Cedula</option>
+            <option <?php if ($estudiante['est_tipoid'] == 'PAS' ) echo 'selected' ; ?> value="PAS">Pasaporte</option>
+            <option <?php if ($estudiante['est_tipoid'] == 'OTR' ) echo 'selected' ; ?> value="OTR">Otro</option>
+		</select>
+	</div>
 	<div id="custom-lbl">Est Id : <input type="text"class="edit-inp"  name="est_id" value="<?php echo ($this->input->post('est_id') ? $this->input->post('est_id') : $estudiante['est_id']); ?>" /></div>
 	<div id="custom-lbl">Est Direccion : <input type="text" class="edit-inp" name="est_direccion" value="<?php echo ($this->input->post('est_direccion') ? $this->input->post('est_direccion') : $estudiante['est_direccion']); ?>" /></div>
 	<div id="custom-lbl">Est Telefono : <input type="text" class="edit-inp" name="est_telefono" value="<?php echo ($this->input->post('est_telefono') ? $this->input->post('est_telefono') : $estudiante['est_telefono']); ?>" /></div>
@@ -43,12 +50,18 @@
 	<div id="custom-lbl">Est Mail : <input type="text"class="edit-inp"  name="est_mail" value="<?php echo ($this->input->post('est_mail') ? $this->input->post('est_mail') : $estudiante['est_mail']); ?>" /></div>
 	<div id="custom-lbl">Est Mailpuce : <input type="text"class="edit-inp"  name="est_mailpuce" value="<?php echo ($this->input->post('est_mailpuce') ? $this->input->post('est_mailpuce') : $estudiante['est_mailpuce']); ?>" /></div>
 	<div id="custom-lbl">Est Fechanac : <input type="text" class="edit-inp"  id="datepicker" name="est_fechanac" value="<?php echo ($this->input->post('est_fechanac') ? $this->input->post('est_fechanac') : $estudiante['est_fechanac']); ?>" /></div>
-	<div id="custom-lbl">Est Sexo : <input type="text" class="edit-inp" name="est_sexo" value="<?php echo ($this->input->post('est_sexo') ? $this->input->post('est_sexo') : $estudiante['est_sexo']); ?>" /></div>
+	<div id="custom-lbl">Est Sexo :
+        <select name="est_sexo" class="edit-inp">
+
+            <option <?php if ($estudiante['est_sexo'] == 'F' ) echo 'selected' ; ?> value="F">FEMENINO</option>
+            <option <?php if ($estudiante['est_sexo'] == 'M' ) echo 'selected' ; ?> value="M">MASCULINO</option>
+        </select>
+    </div>
 	<div id="custom-lbl">Est Foto : <input type="text" class="edit-inp" name="est_foto" value="<?php echo ($this->input->post('est_foto') ? $this->input->post('est_foto') : $estudiante['est_foto']); ?>" /></div>
 	<div id="custom-lbl">
 		Carr Codigo :
 		<select name="carr_codigo" class="edit-inp" >
-			<option value="">select carrera</option>
+			<option value="">Seleccion carrera</option>
 			<?php
 			foreach($all_carreras as $carrera)
 			{

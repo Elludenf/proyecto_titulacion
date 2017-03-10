@@ -35,8 +35,15 @@ class Prorroga_model extends CI_Model
     function get_all_prorrogas($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('prorroga')->result_array();
+        //return $this->db->limit($limit, $offset)
+        //    ->get('prorroga')->result_array();
+        $this->db->limit($limit, $offset);
+        $this->db->select('*','dis_titulo');
+        $this->db->from('prorroga','trabajo_disertacion');
+        $this->db->join('trabajo_disertacion','trabajo_disertacion.dis_codigo=prorroga.dis_codigo');
+        $this->db->order_by('prorroga.dis_codigo','asc');
+        $query=$this->db->get();
+        return $query->result_array();
     }
     
     /*

@@ -46,16 +46,11 @@
 		</select>
 	</div>
 	<div id="custom-lbl" >Rxd Tipo :
-		<select name="rxd_tipo" class="edit-inp" >
-			<option value="">Seleccione Tipo Responsable</option>
-			<?php
-
-			echo '<option value="DIR">Director</option>';
-			echo '<option value="R_1">Revisor I</option>';
-			echo '<option value="R_2">Revisor II</option>';
-
-			?>
-		</select>
+        <select name="rxd_tipo" class="edit-inp" >
+            <option <?php if ($revdir_x_disertacion['rxd_tipo'] == 'DIR' ) echo 'selected' ; ?> value="DIR">Director</option>
+            <option <?php if ($revdir_x_disertacion['rxd_tipo'] == 'R_1' ) echo 'selected' ; ?> value="R_1">Revisor 1</option>
+            <option <?php if ($revdir_x_disertacion['rxd_tipo'] == 'R_2' ) echo 'selected' ; ?> value="R_2">Revisor 2</option>
+        </select>
 	</div>
 	<div id="custom-lbl" >Rxd Fechanombramiento : <input type="text" class="edit-inp"  name="rxd_fechanombramiento" value="<?php echo ($this->input->post('rxd_fechanombramiento') ? $this->input->post('rxd_fechanombramiento') : $revdir_x_disertacion['rxd_fechanombramiento']); ?>" /></div>
 

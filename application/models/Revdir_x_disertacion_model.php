@@ -37,8 +37,20 @@ class Revdir_x_disertacion_model extends CI_Model
     function get_all_revdir_x_disertacion($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('revdir_x_disertacion')->result_array();
+        //return $this->db->limit($limit, $offset)
+        //    ->get('revdir_x_disertacion')->result_array();
+        $this->db->limit($limit, $offset);
+        $this->db->select('*',
+            'profesor.prof_apellido1',
+            'profesor.prof_apellido2',
+            'profesor.prof_nombre1',
+            'profesor.prof_nombre2',
+            'trabajo_disertacion.dis_titulo');
+        $this->db->from('revdir_x_disertacion','profesor','trabajo_disertacion');
+        $this->db->join('profesor','profesor.prof_codigo=revdir_x_disertacion.prof_codigo');
+        $this->db->join('trabajo_disertacion','trabajo_disertacion.dis_codigo=revdir_x_disertacion.dis_codigo');
+        $query=$this->db->get();
+        return $query->result_array();
     }
 
 

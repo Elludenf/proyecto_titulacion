@@ -35,8 +35,15 @@ class Escuela_model extends CI_Model
     function get_all_escuelas($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('escuelas')->result_array();
+        //return $this->db->limit($limit, $offset)
+        //    ->get('escuelas')->result_array();
+        $this->db->limit($limit, $offset);
+        $this->db->select('*','facu_descripcion');
+        $this->db->from('escuelas','facultades');
+        $this->db->join('facultades','facultades.facu_codigo=escuelas.facu_codigo');
+        $this->db->order_by('esc_codigo','asc');
+        $query=$this->db->get();
+        return $query->result_array();
     }
     
     /*

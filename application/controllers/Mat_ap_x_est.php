@@ -64,7 +64,7 @@ class Mat_ap_x_est extends CI_Controller
         else
         {
             $this->load->model('Materia_model');
-            $data['all_materias'] = $this->Materia_model->get_all_materias();
+            $data['all_materias'] = $this->Materia_model->get_all_materias_();
             $this->load->model('Estudiante_model');
             $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes_();
 

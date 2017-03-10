@@ -33,8 +33,19 @@ class Elabora_model extends CI_Model
     function get_all_elabora($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('elabora')->result_array();
+        $this->db->limit($limit, $offset);
+        //return $this->db->limit($limit, $offset)
+        //    ->get('elabora')->result_array();
+        $this->db->select('*','estudiante.est_apellido1',
+            'estudiante.est_apellido2',
+            'estudiante.est_nombre1',
+            'estudiante.est_nombre2',
+            'trabajo_disertacion.dis_titulo');
+        $this->db->from('elabora', 'estudiante', 'trabajo_disertacion');
+        $this->db->join('estudiante','estudiante.est_codigo = elabora.est_codigo');
+        $this->db->join('trabajo_disertacion','trabajo_disertacion.dis_codigo = elabora.dis_codigo');
+        $query=$this->db->get();
+        return $query->result_array();
     }
 
     private $table = "elabora";

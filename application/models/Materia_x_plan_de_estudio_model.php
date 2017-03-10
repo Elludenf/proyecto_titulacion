@@ -39,8 +39,16 @@ class Materia_x_plan_de_estudio_model extends CI_Model
     function get_all_materia_x_plan_de_estudio($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('materia_x_plan_de_estudio')->result_array();
+        //return $this->db->limit($limit, $offset)
+        //    ->get('materia_x_plan_de_estudio')->result_array();
+        $this->db->limit($limit, $offset);
+        $this->db->select('*','plan_descripcion','mat_nombre','pac_descripcion');
+        $this->db->from('materia_x_plan_de_estudio','plan_de_estudio','materias','periodos_academicos');
+        $this->db->join('plan_de_estudio','plan_de_estudio.plan_codigo=materia_x_plan_de_estudio.plan_codigo');
+        $this->db->join('materias','materias.mat_codigo=materia_x_plan_de_estudio.mat_codigo');
+        $this->db->join('periodos_academicos','periodos_academicos.pac_codigo=materia_x_plan_de_estudio.pac_codigo');
+        $query=$this->db->get();
+        return $query->result_array();
     }
     
     /*

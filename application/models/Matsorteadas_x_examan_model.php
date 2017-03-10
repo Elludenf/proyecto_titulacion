@@ -36,8 +36,14 @@ class Matsorteadas_x_examan_model extends CI_Model
     function get_all_matsorteadas_x_examen($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('matsorteadas_x_examen')->result_array();
+        //return $this->db->limit($limit, $offset)
+        //    ->get('matsorteadas_x_examen')->result_array();
+        $this->db->limit($limit, $offset);
+        $this->db->select('*','mat_nombre');
+        $this->db->from('matsorteadas_x_examen','materias');
+        $this->db->join('materias','materias.mat_codigo=matsorteadas_x_examen.mat_codigo');
+        $query=$this->db->get();
+        return $query->result_array();
     }
     
     /*

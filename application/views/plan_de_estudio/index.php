@@ -87,6 +87,7 @@
     <tr>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Plan Codigo</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Carr Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Carrera</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Plan Descripcion</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Plan Fechainicio</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Plan Vigencia</th>
@@ -96,9 +97,10 @@
     <tr>
 		<td><?php echo $p['plan_codigo']; ?></td>
 		<td><?php echo $p['carr_codigo']; ?></td>
+        <td><?php echo $p['carr_descripcion']; ?></td>
 		<td><?php echo $p['plan_descripcion']; ?></td>
 		<td><?php echo $p['plan_fechainicio']; ?></td>
-		<td><?php echo $p['plan_vigencia']; ?></td>
+		<td><?php if ($p['plan_vigencia']=='t')echo 'Vigente'; else echo 'No Vigente' ?></td>
 		<td>
             <a href="<?php echo site_url('plan_de_estudio/edit/'.$p['plan_codigo']); ?>">Edit</a> |
             <a href="<?php echo site_url('plan_de_estudio/remove/'.$p['plan_codigo']); ?>">Delete</a>

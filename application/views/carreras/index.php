@@ -84,15 +84,17 @@
 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Carr Codigo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Esc Codigo</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Carr Descripcion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Escuela</th>
+
         <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
     </tr>
 	<?php foreach($carreras as $c){ ?>
     <tr>
 		<td><?php echo $c['carr_codigo']; ?></td>
-		<td><?php echo $c['esc_codigo']; ?></td>
-		<td><?php echo $c['carr_descripcion']; ?></td>
+        <td><?php echo $c['carr_descripcion']; ?></td>
+		<td><?php echo $c['esc_descripcion']; ?></td>
+
 		<td>
             <a href="<?php echo site_url('carrera/edit/'.$c['carr_codigo']); ?>">Edit</a> |
             <a href="<?php echo site_url('carrera/remove/'.$c['carr_codigo']); ?>">Delete</a>

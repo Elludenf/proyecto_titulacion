@@ -71,7 +71,7 @@ class Examen_complexivo extends CI_Controller
         {
 
 			$this->load->model('Estudiante_model');
-			$data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes();
+			$data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes_();
 
             $this->load->view('templates/header');
             $this->load->view('examen_complexivo/add', $data);
@@ -115,7 +115,7 @@ class Examen_complexivo extends CI_Controller
                 $data['examen_complexivo'] = $this->Examen_complexivo_model->get_examen_complexivo($exa_codigo);
     
 				$this->load->model('Estudiante_model');
-				$data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes();
+				$data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes_();
 
                 $this->load->view('templates/header');
                 $this->load->view('examen_complexivo/edit', $data);

@@ -32,6 +32,9 @@
 
 <?php echo form_open('matsorteadas_x_examan/edit/'.$matsorteadas_x_examan['mat_codigo'].'/'.$matsorteadas_x_examan['exa_codigo']); ?>
 
+    <div id="custom-lbl" >Examen: <?php echo $matsorteadas_x_examan['exa_codigo'];?></div>
+    <div id="custom-lbl" >Materia: <?php echo $materia['mat_nombre'];?></div>
+    <div id="custom-lbl" >Mxe Fecha 1 : <input type="text" class="edit-inp" name="mxe_fecha_1" value="<?php echo ($this->input->post('mxe_fecha_1') ? $this->input->post('mxe_fecha_1') : $matsorteadas_x_examan['mxe_fecha_1']); ?>" /></div>
 	<div id="custom-lbl" >Mxe Fecha 1 : <input type="text" class="edit-inp" name="mxe_fecha_1" value="<?php echo ($this->input->post('mxe_fecha_1') ? $this->input->post('mxe_fecha_1') : $matsorteadas_x_examan['mxe_fecha_1']); ?>" /></div>
 	<div id="custom-lbl" >Mxe Fecha 2 : <input type="text" class="edit-inp" name="mxe_fecha_2" value="<?php echo ($this->input->post('mxe_fecha_2') ? $this->input->post('mxe_fecha_2') : $matsorteadas_x_examan['mxe_fecha_2']); ?>" /></div>
 	<div id="custom-lbl" >Mxe Nota Horal 1 : <input type="text" class="edit-inp" name="mxe_nota_horal_1" value="<?php echo ($this->input->post('mxe_nota_horal_1') ? $this->input->post('mxe_nota_horal_1') : $matsorteadas_x_examan['mxe_nota_horal_1']); ?>" /></div>

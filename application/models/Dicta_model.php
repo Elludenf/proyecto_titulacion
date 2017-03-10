@@ -33,8 +33,19 @@ class Dicta_model extends CI_Model
     function get_all_dicta($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('dicta')->result_array();
+        $this->db->limit($limit, $offset);
+        //return $this->db->limit($limit, $offset)
+         //   ->get('dicta')->result_array();
+        $this->db->select('*','mat_nombre',
+            'profesor.prof_apellido1',
+            'profesor.prof_apellido2',
+            'profesor.prof_nombre1',
+            'profesor.prof_nombre2');
+        $this->db->from('dicta','profesor','materias');
+        $this->db->join('materias','materias.mat_codigo=dicta.mat_codigo');
+        $this->db->join('profesor','profesor.prof_codigo=dicta.prof_codigo');
+        $query=$this->db->get();
+        return $query->result_array();
     }
     private $table = "dicta";
     function count()

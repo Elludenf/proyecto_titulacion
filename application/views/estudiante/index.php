@@ -145,7 +145,7 @@
                                             <td><?php echo $e['est_nombre2']; ?></td>
                                             <td><?php echo $e['est_apellido1']; ?></td>
                                             <td><?php echo $e['est_apellido2']; ?></td>
-                                            <td><?php echo $e['est_tipoid']; ?></td>
+                                            <td><?php if($e['est_tipoid']=='CED') echo 'Cedula'; else if($e['est_tipoid']=='PAS') echo 'Pasaporte'; else echo 'Otro';?></td>
                                             <td><?php echo $e['est_id']; ?></td>
                                             <td><?php echo $e['est_direccion']; ?></td>
                                             <td><?php echo $e['est_telefono']; ?></td>
@@ -153,9 +153,9 @@
                                             <td><?php echo $e['est_mail']; ?></td>
                                             <td><?php echo $e['est_mailpuce']; ?></td>
                                             <td><?php echo $e['est_fechanac']; ?></td>
-                                            <td><?php echo $e['est_sexo']; ?></td>
+                                            <td><?php if ($e['est_sexo'] == 'F' )echo 'FEMENINO'; else echo 'MASCULINO';?></td>
                                             <td><?php echo $e['est_foto']; ?></td>
-                                            <td><?php echo $e['carr_codigo']; ?></td>
+                                            <td><?php echo $e['carr_descripcion']; ?></td>
                                             <td><?php echo $e['est_fechaingreso']; ?></td>
                                             <td><?php echo $e['est_fechaestimadagraduacion']; ?></td>
                                             <td><?php echo $e['est_fechagraduacion']; ?></td>

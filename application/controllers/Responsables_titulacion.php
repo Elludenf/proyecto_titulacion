@@ -67,7 +67,7 @@ class Responsables_titulacion extends CI_Controller
         {
 
 			$this->load->model('Profesor_model');
-			$data['all_profesores'] = $this->Profesor_model->get_all_profesores();
+			$data['all_profesores'] = $this->Profesor_model->get_all_profesores_();
 
             $this->load->view('templates/header');
             $this->load->view('responsables_titulacion/add', $data);
@@ -106,7 +106,7 @@ class Responsables_titulacion extends CI_Controller
                 $data['responsables_titulacion'] = $this->Responsables_titulacion_model->get_responsables_titulacion($res_codigo);
     
 				$this->load->model('Profesor_model');
-				$data['all_profesores'] = $this->Profesor_model->get_all_profesores();
+				$data['all_profesores'] = $this->Profesor_model->get_all_profesores_();
 
                 $this->load->view('templates/header');
                 $this->load->view('responsables_titulacion/edit', $data);

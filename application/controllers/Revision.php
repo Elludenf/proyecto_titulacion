@@ -67,10 +67,10 @@ class Revision extends CI_Controller
         {
 
 			$this->load->model('Trabajo_disertacion_model');
-			$data['all_trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
+			$data['all_trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion_();
 
             $this->load->model('Revdir_x_disertacion_model');
-            $data['all_revdir'] = $this->Revdir_x_disertacion_model->get_all_revdir_x_disertacion();
+            $data['all_revdir'] = $this->Revdir_x_disertacion_model->get_all_revdir_x_disertacion_();
 
             $this->load->model('Profesor_model');
             $c=0;
@@ -122,10 +122,10 @@ class Revision extends CI_Controller
                 $data['revision'] = $this->Revision_model->get_revision($obs_codigo);
     
 				$this->load->model('Trabajo_disertacion_model');
-				$data['all_trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
+				$data['all_trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion_();
 
 				$this->load->model('Profesor_model');
-				$data['all_profesores'] = $this->Profesor_model->get_all_profesores();
+				$data['all_profesores'] = $this->Profesor_model->get_all_profesores_();
 
                 $this->load->view('templates/header');
                 $this->load->view('revision/edit', $data);

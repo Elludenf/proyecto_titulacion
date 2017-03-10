@@ -30,8 +30,15 @@ class Carrera_model extends CI_Model
     function get_all_carreras($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('carreras')->result_array();
+        //return $this->db->limit($limit, $offset)
+         //   ->get('carreras')->result_array();
+        $this->db->limit($limit, $offset);
+        $this->db->select('*','esc_descripcion');
+        $this->db->from('carreras','escuelas');
+        $this->db->join('escuelas','escuelas.esc_codigo=carreras.esc_codigo');
+        $this->db->order_by('carr_codigo','asc');
+        $query=$this->db->get();
+        return $query->result_array();
     }
     /*Get total number of rows (used in pagination)*/
     private $table = "carreras";

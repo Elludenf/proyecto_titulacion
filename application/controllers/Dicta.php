@@ -62,9 +62,9 @@ class Dicta extends CI_Controller
         else
         {
             $this->load->model('Materia_model');
-            $data['all_materias'] = $this->Materia_model->get_all_materias();
+            $data['all_materias'] = $this->Materia_model->get_all_materias_();
             $this->load->model('Profesor_model');
-            $data['all_profesores'] = $this->Profesor_model->get_all_profesores();
+            $data['all_profesores'] = $this->Profesor_model->get_all_profesores_();
             $this->load->view('templates/header');
             $this->load->view('dicta/add',$data);
             $this->load->view('templates/footer');
@@ -95,7 +95,7 @@ class Dicta extends CI_Controller
                 $data['dicta'] = $this->Dicta_model->get_dicta($prof_codigo);
 
                 $this->load->model('Materia_model');
-                $data['all_materias'] = $this->Materia_model->get_all_materias();
+                $data['all_materias'] = $this->Materia_model->get_all_materias_();
 
                 $this->load->view('templates/header');
                 $this->load->view('dicta/edit',$data);

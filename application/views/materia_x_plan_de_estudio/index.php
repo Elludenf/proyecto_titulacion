@@ -86,15 +86,21 @@
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Plan Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Plan De Estudios</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Mat Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Materia</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Pac Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Periodo Academico</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
     </tr>
 	<?php foreach($materia_x_plan_de_estudio as $m){ ?>
     <tr>
 		<td><?php echo $m['plan_codigo']; ?></td>
+        <td><?php echo $m['plan_descripcion']; ?></td>
 		<td><?php echo $m['mat_codigo']; ?></td>
+        <td><?php echo $m['mat_nombre']; ?></td>
 		<td><?php echo $m['pac_codigo']; ?></td>
+        <td><?php echo $m['pac_descripcion']; ?></td>
 		<td>
             <a href="<?php echo site_url('materia_x_plan_de_estudio/edit/'.$m['plan_codigo'].'/'.$m['mat_codigo'].'/'.$m['pac_codigo']); ?>">Edit</a> |
             <a href="<?php echo site_url('materia_x_plan_de_estudio/remove/'.$m['plan_codigo'].'/'.$m['mat_codigo'].'/'.$m['pac_codigo']); ?>">Delete</a>

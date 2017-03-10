@@ -87,6 +87,7 @@
                                 <tr>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">Exa Codigo</th>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">Est Codigo</th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Estudiante</th>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">Exa Fechainicio</th>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">Exa Estado</th>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">Exa Horas Docencia</th>
@@ -97,8 +98,9 @@
                                 <tr>
                                     <td><?php echo $e['exa_codigo']; ?></td>
                                     <td><?php echo $e['est_codigo']; ?></td>
+                                    <td><?php echo $e['est_apellido1'].' '.$e['est_apellido2'].' '.$e['est_nombre1'].' '.$e['est_nombre2'];  ?></td>
                                     <td><?php echo $e['exa_fechainicio']; ?></td>
-                                    <td><?php echo $e['exa_estado']; ?></td>
+                                    <td><?php if($e['exa_estado']=='AP') echo 'Aprobado'; else if ($e['exa_estado']=='EP') echo 'En Proceso'; else echo 'Reprobado';?></td>
                                     <td><?php echo $e['exa_horas_docencia']; ?></td>
                                     <td><?php echo $e['exa_horas_autonomas']; ?></td>
                                     <td>

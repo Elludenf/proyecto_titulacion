@@ -35,8 +35,15 @@ class Plan_de_estudio_model extends CI_Model
     function get_all_planes_de_estudio($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('plan_de_estudio')->result_array();
+        //return $this->db->limit($limit, $offset)
+        //    ->get('plan_de_estudio')->result_array();
+        $this->db->limit($limit, $offset);
+        $this->db->select('*','carr_descripcion');
+        $this->db->from('plan_de_estudio','carreras');
+        $this->db->join('carreras','carreras.carr_codigo=plan_de_estudio.carr_codigo');
+        $this->db->order_by('plan_codigo','asc');
+        $query=$this->db->get();
+        return $query->result_array();
     }
     
     /*

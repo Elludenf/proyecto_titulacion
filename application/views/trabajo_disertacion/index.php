@@ -102,7 +102,7 @@
 		<td><?php echo $t['dis_fechapresentacionplan']; ?></td>
 		<td><?php echo $t['dis_fechaaprobacion']; ?></td>
 		<td><?php echo $t['dis_titulo']; ?></td>
-		<td><?php echo $t['dis_estado']; ?></td>
+		<td><?php if ($t['dis_estado']=='f') echo 'En Curso'; else echo 'Finalizado';?></td>
 		<td><?php echo $t['dis_fechafin']; ?></td>
 		<td><?php echo $t['dis_defensa']; ?></td>
 		<td>

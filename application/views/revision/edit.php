@@ -34,7 +34,7 @@
 	<div id="custom-lbl" >
 				Dis Codigo : 
 				<select name="dis_codigo" class="edit-inp" >
-					<option value="">Seleccionar Trabajo de Disertacion</option>
+
 					<?php 
 					foreach($all_trabajo_disertacion as $trabajo_disertacion)
 					{
@@ -48,13 +48,12 @@
 	<div id="custom-lbl" >
 				Prof Codigo : 
 				<select name="prof_codigo" class="edit-inp" >
-					<option value="">Seleccionar Profesor</option>
 					<?php 
 					foreach($all_profesores as $profesor)
 					{
 						$selected = ($profesor['prof_codigo'] == $revision['prof_codigo']) ? ' selected="selected"' : null;
 
-						echo '<option value="'.$profesor['prof_codigo'].'" '.$selected.'>'.$profesor['prof_nombre1'].'</option>';
+						echo '<option value="'.$profesor['prof_codigo'].'" '.$selected.'>'.$profesor['prof_apellido1'].' '.$profesor['prof_apellido2'].' '.$profesor['prof_nombre1'].' '.$profesor['prof_nombre2'].'</option>';
 					} 
 					?>
 				</select>

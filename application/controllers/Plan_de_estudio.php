@@ -75,7 +75,7 @@ class Plan_de_estudio extends CI_Controller
         {
 
 			$this->load->model('Carrera_model');
-			$data['all_carreras'] = $this->Carrera_model->get_all_carreras();
+			$data['all_carreras'] = $this->Carrera_model->get_all_carreras_();
 
             $this->load->view('templates/header');
             $this->load->view('plan_de_estudio/add', $data);
@@ -115,7 +115,7 @@ class Plan_de_estudio extends CI_Controller
                 $data['plan_de_estudio'] = $this->Plan_de_estudio_model->get_plan_de_estudio($plan_codigo);
     
 				$this->load->model('Carrera_model');
-				$data['all_carreras'] = $this->Carrera_model->get_all_carreras();
+				$data['all_carreras'] = $this->Carrera_model->get_all_carreras_();
 
                 $this->load->view('templates/header');
                 $this->load->view('plan_de_estudio/edit', $data);

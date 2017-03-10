@@ -66,9 +66,9 @@ class Elabora extends CI_Controller
         else
         {
             $this->load->model('Estudiante_model');
-            $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes();
+            $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes_();
             $this->load->model('Trabajo_disertacion_model');
-            $data['all_trabajos'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
+            $data['all_trabajos'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion_();
             $this->load->view('templates/header');
             $this->load->view('elabora/add', $data);
             $this->load->view('templates/footer');
@@ -107,7 +107,7 @@ class Elabora extends CI_Controller
                 $this->load->model('Estudiante_model');
                 $data['estudiante'] = $this->Estudiante_model->get_estudiante($est_codigo);
                 $this->load->model('Trabajo_disertacion_model');
-                $data['all_trabajos'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
+                $data['all_trabajos'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion_();
 
                 $this->load->view('templates/header');
                 $this->load->view('elabora/edit', $data);

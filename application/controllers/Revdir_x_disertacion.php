@@ -67,9 +67,9 @@ class Revdir_x_disertacion extends CI_Controller
         else
         {
             $this->load->model('Trabajo_disertacion_model');
-            $data['all_trabajos'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
+            $data['all_trabajos'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion_();
             $this->load->model('Profesor_model');
-            $data['all_profesores'] = $this->Profesor_model->get_all_profesores();
+            $data['all_profesores'] = $this->Profesor_model->get_all_profesores_();
 
             $this->load->view('templates/header');
             $this->load->view('revdir_x_disertacion/add', $data);
@@ -110,7 +110,7 @@ class Revdir_x_disertacion extends CI_Controller
                 $data['trabajo'] = $this->Trabajo_disertacion_model->get_trabajo_disertacion($dis_codigo);
 
                 $this->load->model('Profesor_model');
-                $data['all_profesores'] = $this->Profesor_model->get_all_profesores();
+                $data['all_profesores'] = $this->Profesor_model->get_all_profesores_();
 
                 $this->load->view('templates/header');
                 $this->load->view('revdir_x_disertacion/edit', $data);

@@ -87,6 +87,7 @@
     <tr>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Res Codigo</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Prof Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Profesor</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Res Tipo</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Res Fechanombramiento</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
@@ -95,7 +96,8 @@
     <tr>
 		<td><?php echo $r['res_codigo']; ?></td>
 		<td><?php echo $r['prof_codigo']; ?></td>
-		<td><?php echo $r['res_tipo']; ?></td>
+        <td><?php echo $r['prof_apellido1'].' '.$r['prof_apellido2'].' '.$r['prof_nombre1'].' '.$r['prof_nombre2']; ?></td>
+		<td><?php if($r['res_tipo']=='R1') echo 'Responsable Titulacion I'; else echo 'Responsable Titulacion II'?></td>
 		<td><?php echo $r['res_fechanombramiento']; ?></td>
 		<td>
             <a href="<?php echo site_url('responsables_titulacion/edit/'.$r['res_codigo']); ?>">Edit</a> |

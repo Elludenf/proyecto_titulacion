@@ -35,8 +35,18 @@ class Responsables_titulacion_model extends CI_Model
     function get_all_responsables_titulacion($limit = 5)
     {
         $offset = $this->uri->segment(3);
-        return $this->db->limit($limit, $offset)
-            ->get('responsables_titulacion')->result_array();
+        //return $this->db->limit($limit, $offset)
+        //    ->get('responsables_titulacion')->result_array();
+        $this->db->limit($limit, $offset);
+        $this->db->select('*',
+            'profesor.prof_apellido1',
+            'profesor.prof_apellido2',
+            'profesor.prof_nombre1',
+            'profesor.prof_nombre2');
+        $this->db->from('responsables_titulacion','profesor');
+        $this->db->join('profesor','profesor.prof_codigo=responsables_titulacion.prof_codigo');
+        $query=$this->db->get();
+        return $query->result_array();
     }
     
     /*
