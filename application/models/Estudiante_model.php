@@ -191,6 +191,21 @@ class Estudiante_model extends CI_Model
     /*
      * function to add new estudiante
      */
+    function get_all_estudiantes_no_elabora_ni_toma()
+    {
+
+        $this->db->select('*');
+        $this->db->from('estudiante t1');
+        $this->db->where("NOT EXISTS (
+                          SELECT est_codigo FROM titulacion.examen_complexivo t2 WHERE t1.est_codigo = t2.est_codigo)
+                          AND 
+                        NOT EXISTS (
+                            SELECT est_codigo FROM titulacion.elabora t2 WHERE t1.est_codigo = t2.est_codigo
+                        )");
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
 
     function get_all()
     {

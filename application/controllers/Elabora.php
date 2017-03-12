@@ -66,9 +66,10 @@ class Elabora extends CI_Controller
         else
         {
             $this->load->model('Estudiante_model');
-            $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes_();
+            $data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes_no_elabora_ni_toma();
             $this->load->model('Trabajo_disertacion_model');
             $data['all_trabajos'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion_();
+
             $this->load->view('templates/header');
             $this->load->view('elabora/add', $data);
             $this->load->view('templates/footer');
