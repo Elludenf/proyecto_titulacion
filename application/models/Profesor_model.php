@@ -24,6 +24,38 @@ class Profesor_model extends CI_Model
         return $this->db->count_all_results($this->table);
     }
 
+    function getDirectorDisertacion($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM TITULACION.PROFESOR WHERE titulacion.profesor.prof_Codigo in
+(SELECT prof_Codigo FROM titulacion.REVDIR_X_DISERTACION WHERE titulacion.REVDIR_X_DISERTACION.dis_Codigo
+in(SELECT dis_codigo FROM TITULACION.trabajo_disertacion where TITULACION.trabajo_disertacion.dis_codigo in
+(SELECT titulacion.elabora.dis_codigo FROM titulacion.elabora WHERE
+titulacion.elabora.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) and titulacion.REVDIR_X_DISERTACION.rxd_tipo = \'DIR\' )')->row_array();
+    }
+
+    function getRevisor1Disertacion($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM TITULACION.PROFESOR WHERE titulacion.profesor.prof_Codigo in
+(SELECT prof_Codigo FROM titulacion.REVDIR_X_DISERTACION WHERE titulacion.REVDIR_X_DISERTACION.dis_Codigo
+in(SELECT dis_codigo FROM TITULACION.trabajo_disertacion where TITULACION.trabajo_disertacion.dis_codigo in
+(SELECT titulacion.elabora.dis_codigo FROM titulacion.elabora WHERE
+titulacion.elabora.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) and titulacion.REVDIR_X_DISERTACION.rxd_tipo = \'R_1\' )')->row_array();
+    }
+
+    function getRevisor2Disertacion($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM TITULACION.PROFESOR WHERE titulacion.profesor.prof_Codigo in
+(SELECT prof_Codigo FROM titulacion.REVDIR_X_DISERTACION WHERE titulacion.REVDIR_X_DISERTACION.dis_Codigo
+in(SELECT dis_codigo FROM TITULACION.trabajo_disertacion where TITULACION.trabajo_disertacion.dis_codigo in
+(SELECT titulacion.elabora.dis_codigo FROM titulacion.elabora WHERE
+titulacion.elabora.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) and titulacion.REVDIR_X_DISERTACION.rxd_tipo = \'R_2\' )')->row_array();
+    }
     /*
      * Get all profesores
      */

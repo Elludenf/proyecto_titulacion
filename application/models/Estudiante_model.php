@@ -24,6 +24,66 @@ class Estudiante_model extends CI_Model
         $correo=$user.'@puce.edu.ec';
         return $this->db->query('select * from titulacion.estudiante where est_mailpuce=\''.$correo.'\'')->row_array();
     }
+    function getDatosDisertacion($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM TITULACION.trabajo_disertacion where TITULACION.trabajo_disertacion.dis_codigo in
+(SELECT titulacion.elabora.dis_codigo FROM titulacion.elabora WHERE
+titulacion.elabora.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\'))')->row_array();
+    }
+
+    function getEstadoDisertacionPresentacion($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT \'class="active"\' as disEstado FROM 
+(SELECT dis_FechaPresentacionPlan FROM TITULACION.trabajo_disertacion where TITULACION.trabajo_disertacion.dis_codigo in
+(SELECT titulacion.elabora.dis_codigo FROM titulacion.elabora WHERE
+titulacion.elabora.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) AS FOO
+WHERE FOO IS NOT NULL')->row_array();
+        
+        
+    }
+
+    function getEstadoAprobacion($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT \'class="active"\' as disEstado FROM 
+(SELECT dis_FechaAprobacion FROM TITULACION.trabajo_disertacion where TITULACION.trabajo_disertacion.dis_codigo in
+(SELECT titulacion.elabora.dis_codigo FROM titulacion.elabora WHERE
+titulacion.elabora.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) AS FOO
+WHERE FOO IS NOT NULL')->row_array();
+
+
+    }
+
+    function getEstadoFinalizacion($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT \'class="active"\' as disEstado FROM 
+(SELECT dis_FechaFin FROM TITULACION.trabajo_disertacion where TITULACION.trabajo_disertacion.dis_codigo in
+(SELECT titulacion.elabora.dis_codigo FROM titulacion.elabora WHERE
+titulacion.elabora.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) AS FOO
+WHERE FOO IS NOT NULL')->row_array();
+
+
+    }
+
+    function getEstadoDefensa($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT \'class="active"\' as disEstado FROM 
+(SELECT dis_FechaFin FROM TITULACION.trabajo_disertacion where TITULACION.trabajo_disertacion.dis_codigo in
+(SELECT titulacion.elabora.dis_codigo FROM titulacion.elabora WHERE
+titulacion.elabora.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) AS FOO
+WHERE FOO IS NOT NULL')->row_array();
+
+
+    }
     function get_carrera($user)
     {
         $correo=$user.'@puce.edu.ec';

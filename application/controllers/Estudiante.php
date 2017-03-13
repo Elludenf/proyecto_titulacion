@@ -13,6 +13,7 @@ class Estudiante extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Estudiante_model');
+        $this->load->model('Profesor_model');
         $this->load->helper('url');
 
     }
@@ -58,7 +59,14 @@ class Estudiante extends CI_Controller
         $user=$this->session-> __get('rolname');
         $data['estudiante'] = $this->Estudiante_model->get_datos($user);
         $data['carrera'] = $this->Estudiante_model->get_carrera($user);
-
+        $data['disertacionInfo'] = $this->Estudiante_model->getDatosDisertacion($user);
+        $data['disertacionEstadoPresentacion'] = $this->Estudiante_model->getEstadoDisertacionPresentacion($user);
+        $data['disertacionEstadoAprobacion'] = $this->Estudiante_model->getEstadoAprobacion($user);
+        $data['disertacionEstadoFinalizacion'] = $this->Estudiante_model->getEstadoFinalizacion($user);
+        $data['disertacionEstadoDefensa'] = $this->Estudiante_model->getEstadoDefensa($user);
+        $data['directorDisertacion'] = $this->Profesor_model->getDirectorDisertacion($user);
+        $data['revisor1Disertacion'] = $this->Profesor_model->getRevisor1Disertacion($user);
+        $data['revisor2Disertacion'] = $this->Profesor_model->getRevisor2Disertacion($user);
 
         /*Empiezo de paginacion*/
         $total_rows = $this->Estudiante_model->count();
