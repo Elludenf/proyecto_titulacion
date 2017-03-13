@@ -74,6 +74,7 @@ $route['(:any)'] = 'plan_de_estudio/view/$1';
 $route['(:any)'] = 'responsable_titulacion/view/$1';
 $route['(:any)'] = 'rev_dir_trab_titulacion/view/$1';
 $route['(:any)'] = 'trabajo_disertacion/view/$1';
+$route['(:any)'] = 'cambio_clave/view/$1';
 //$route['(:any)'] = 'login/view/$1';
 //modificado
 //$route['(:any)'] = 'estudiante/edit/$1';
