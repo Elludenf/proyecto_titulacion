@@ -8,19 +8,78 @@
 
         var data = google.visualization.arrayToDataTable([
             ['Task', 'Hours per Day'],
-            ['Work',     11],
-            ['Eat',      2],
-            ['Commute',  2],
-            ['Watch TV', 2],
-            ['Sleep',    7]
+            ['Horas Docencia',     <?php echo $complexivoPrimerIntentoInfo['exa_horas_docencia']+ $complexivoSegundoIntentoInfo['exa_horas_docencia']; ?>  ],
+            ['Horas Autónomas',      <?php echo $complexivoPrimerIntentoInfo['exa_horas_autonomas']+$complexivoSegundoIntentoInfo['exa_horas_autonomas']; ?>],
         ]);
 
         var options = {
-            title: 'My Daily Activities'
+            title: 'Horas de estudio para examen complexivo',
+            pieHole: 0.4,
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+    }
 
+</script>
+<script>
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawMultSeries);
+
+    function drawMultSeries() {
+        var data = google.visualization.arrayToDataTable([
+            ['Materias', 'Nota de examen horal por materia', 'Nota de examen escrito por materia'],
+            [<?php echo "'" ?><?php echo $nombreMateria1ComplexivoPrimerIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia1ComplexivoPrimerIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia1ComplexivoPrimerIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia1ComplexivoPrimerIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia1ComplexivoPrimerIntento['mxe_nota_escrita_1'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria2ComplexivoPrimerIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia2ComplexivoPrimerIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia2ComplexivoPrimerIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia2ComplexivoPrimerIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia2ComplexivoPrimerIntento['mxe_nota_escrita_1'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria3ComplexivoPrimerIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia3ComplexivoPrimerIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia3ComplexivoPrimerIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia3ComplexivoPrimerIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia3ComplexivoPrimerIntento['mxe_nota_escrita_1'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria4ComplexivoPrimerIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia4ComplexivoPrimerIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia4ComplexivoPrimerIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia4ComplexivoPrimerIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia4ComplexivoPrimerIntento['mxe_nota_escrita_1'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria5ComplexivoPrimerIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia5ComplexivoPrimerIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia5ComplexivoPrimerIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia5ComplexivoPrimerIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia5ComplexivoPrimerIntento['mxe_nota_escrita_1'] ; ?> ]
+        ]);
+
+        var options = {
+            title: 'Notas primer intento examen complexivo',
+            chartArea: {width: '50%'},
+            hAxis: {
+                title: 'Notas',
+                minValue: 0
+            },
+            vAxis: {
+                title: 'Materias'
+            }
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>
+
+<script>
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawMultSeries1);
+
+    function drawMultSeries1() {
+        var data = google.visualization.arrayToDataTable([
+            ['Materias', 'Nota de examen horal por materia', 'Nota de examen escrito por materia'],
+            [<?php echo "'" ?><?php echo $nombreMateria1ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia1ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia1ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia1ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia1ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria2ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia2ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia2ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia2ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia2ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria3ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia3ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia3ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia3ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia3ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria4ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia4ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia4ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia4ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia4ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria5ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia5ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia5ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia5ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia5ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ]
+        ]);
+
+        var options = {
+            title: 'Notas segundo intento examen complexivo',
+            chartArea: {width: '50%'},
+            hAxis: {
+                title: 'Notas',
+                minValue: 0
+            },
+            vAxis: {
+                title: 'Materias'
+            }
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div1'));
         chart.draw(data, options);
     }
 </script>
@@ -119,7 +178,7 @@
 
             </div>
 
-
+            <?php if(strcmp($disertacionExists['case'],'true')==0){;?>
             <div class="container">
                 <ul class="progressbar">
                     <li <?php echo $disertacionEstadoPresentacion['disestado']; ?>>Presentación plan de Tesis</li>
@@ -247,9 +306,364 @@
                 </li>
 
             </ul>
+            
+            </div>
+            <?php } ?>
+
+
+            <?php if(strcmp($complexivoExists['case'],'true')==0){;?>
+                <div id="donutchart" style="width: 900px; height: 500px;"></div>
+                <div class="datos">
+                    <h3>INFORMACIÓN DEL TRABAJO DEL ESTUDIANTE</h3>
+
+                    <div class="pricing hover-effect">
+
+
+                        <div class="pricing-head">
+
+                            <h3 class="bg-purple-wisteria">
+                                <span>Examen Complexivo</span>
+                            </h3>
+
+                        </div>
+                        <ul class="pricing-content list-unstyled">
+
+                            <li>
+                                <i class="fa fa-calendar-minus-o"></i>
+                                <span class="usuario-item">Responsable Unidad Titulación 1:</span>
+                                <?php echo $responsableTitulacion1['prof_nombre1'].' '.$responsableTitulacion1['prof_nombre2'].' '.$responsableTitulacion1['prof_apellido1'].' '.$responsableTitulacion1['prof_apellido2']; ?>
+                                <ul>
+                                    <li>
+                                        <span class="usuario-item">Mail Personal:</span>
+                                        <?php echo $responsableTitulacion1['prof_mail'] ?>
+                                        <span class="usuario-item"> Mail PUCE:</span>
+                                        <?php echo $responsableTitulacion1['prof_mailpuce'] ?>
+                                        <span class="usuario-item"> Oficina:</span>
+                                        <?php echo $responsableTitulacion1['prof_oficina'] ?>
+                                    </li>
+                                    <li>
+                                        <span class="usuario-item">Telefono:</span>
+                                        <?php echo $responsableTitulacion1['prof_telefono'] ?>
+                                        <span class="usuario-item"> Celular:</span>
+                                        <?php echo $responsableTitulacion1['prof_celular'] ?>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <i class="fa fa-calendar-minus-o"></i>
+                                <span class="usuario-item">Responsable Unidad Titulación 2:</span>
+                                <?php echo $responsableTitulacion2['prof_nombre1'].' '.$responsableTitulacion2['prof_nombre2'].' '.$responsableTitulacion2['prof_apellido1'].' '.$responsableTitulacion2['prof_apellido2']; ?>
+                                <ul>
+                                    <li>
+                                        <span class="usuario-item">Mail Personal:</span>
+                                        <?php echo $responsableTitulacion2['prof_mail'] ?>
+                                        <span class="usuario-item"> Mail PUCE:</span>
+                                        <?php echo $responsableTitulacion2['prof_mailpuce'] ?>
+                                        <span class="usuario-item"> Oficina:</span>
+                                        <?php echo $responsableTitulacion2['prof_oficina'] ?>
+                                    </li>
+                                    <li>
+                                        <span class="usuario-item">Telefono:</span>
+                                        <?php echo $responsableTitulacion2['prof_telefono'] ?>
+                                        <span class="usuario-item"> Celular:</span>
+                                        <?php echo $responsableTitulacion2['prof_celular'] ?>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+
+
+                    </div>
+
+                    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+
+                    <div class="pricing-head">
+
+                        <h3 class="bg-purple-wisteria">
+                            <span>Primer Intento</span>
+                        </h3>
+
+                    </div>
+                    <ul class="pricing-content list-unstyled">
+
+                                <li>
+                            <i class="fa fa-calendar-minus-o"></i>
+
+
+                                    <span class="usuario-item">Fecha inicio del proceso:</span>
+                                    <?php echo $complexivoPrimerIntentoInfo['exa_fechainicio'] ?>
+
+                                </li>
+                                <li>
+                                    <span class="usuario-item">Estado del examen:</span>
+                                    <?php if(strcmp($complexivoPrimerIntentoInfo['exa_estado'],'EP')==0)
+                                        echo 'En proceso';
+                                    else if(strcmp($complexivoPrimerIntentoInfo['exa_estado'],'RP')==0)
+                                        echo 'Reprobado';
+                                    else if(strcmp($complexivoPrimerIntentoInfo['exa_estado'],'AP')==0)
+                                        echo 'Aprobado';
+                                    ?>
+                                </li>
+
+
+                                <li>
+
+                                <span class="usuario-item">Materia 1:</span>
+                                <?php echo $nombreMateria1ComplexivoPrimerIntento['mat_nombre'] ?>
+                                    <ul>
+                                        <li>
+
+                                            <span class="usuario-item">Fecha:</span>
+                                            <?php echo $materia1ComplexivoPrimerIntento['mxe_fecha_1'] ?> </li>
+                                        <li>
+
+                                            <span class="usuario-item">Nota horal:</span>
+                                            <?php echo $materia1ComplexivoPrimerIntento['mxe_nota_horal_1'] ?> </li>
+                                        <li>
+
+                                            <span class="usuario-item">Nota escrita:</span>
+                                            <?php echo $materia1ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?> </li>
+
+                                    </ul>
+
+                                </li>
+                                <li>
+
+                                    <span class="usuario-item">Materia 2:</span>
+                                    <?php echo $nombreMateria2ComplexivoPrimerIntento['mat_nombre'] ?>
+                                    <ul>
+                                        <li>
+
+                                            <span class="usuario-item">Fecha:</span>
+                                            <?php echo $materia2ComplexivoPrimerIntento['mxe_fecha_1'] ?> </li>
+                                        <li>
+
+                                            <span class="usuario-item">Nota horal:</span>
+                                            <?php echo $materia2ComplexivoPrimerIntento['mxe_nota_horal_1'] ?> </li>
+                                        <li>
+
+                                            <span class="usuario-item">Nota escrita:</span>
+                                            <?php echo $materia2ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?> </li>
+
+                                    </ul>
+
+                                </li>
+                                <li>
+
+                                    <span class="usuario-item">Materia 3:</span>
+                                    <?php echo $nombreMateria3ComplexivoPrimerIntento['mat_nombre'] ?>
+                                    <ul>
+                                        <li>
+
+                                            <span class="usuario-item">Fecha:</span>
+                                            <?php echo $materia3ComplexivoPrimerIntento['mxe_fecha_1'] ?> </li>
+                                        <li>
+
+                                            <span class="usuario-item">Nota horal:</span>
+                                            <?php echo $materia3ComplexivoPrimerIntento['mxe_nota_horal_1'] ?> </li>
+                                        <li>
+
+                                            <span class="usuario-item">Nota escrita:</span>
+                                            <?php echo $materia3ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?> </li>
+
+                                    </ul>
+
+                                </li>
+                                <li>
+
+                                    <span class="usuario-item">Materia 4:</span>
+                                    <?php echo $nombreMateria4ComplexivoPrimerIntento['mat_nombre'] ?>
+                                    <ul>
+                                        <li>
+
+                                            <span class="usuario-item">Fecha:</span>
+                                            <?php echo $materia4ComplexivoPrimerIntento['mxe_fecha_1'] ?> </li>
+                                        <li>
+
+                                            <span class="usuario-item">Nota horal:</span>
+                                            <?php echo $materia4ComplexivoPrimerIntento['mxe_nota_horal_1'] ?> </li>
+                                        <li>
+
+                                            <span class="usuario-item">Nota escrita:</span>
+                                            <?php echo $materia4ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?> </li>
+
+                                    </ul>
+
+                                </li>
+                                <li>
+
+                                    <span class="usuario-item">Materia 5:</span>
+                                    <?php echo $nombreMateria5ComplexivoPrimerIntento['mat_nombre'] ?>
+                                    <ul>
+                                        <li>
+
+                                            <span class="usuario-item">Fecha:</span>
+                                            <?php echo $materia5ComplexivoPrimerIntento['mxe_fecha_1'] ?> </li>
+                                        <li>
+
+                                            <span class="usuario-item">Nota horal:</span>
+                                            <?php echo $materia5ComplexivoPrimerIntento['mxe_nota_horal_1'] ?> </li>
+                                        <li>
+
+                                            <span class="usuario-item">Nota escrita:</span>
+                                            <?php echo $materia5ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?> </li>
+
+                                    </ul>
+
+                                </li>
+
+                    </ul>
+
+
+
                 </div>
 
+                <div id="chart_div1" style="width: 900px; height: 500px;"></div>
 
+                <div class="pricing-head">
+
+                    <h3 class="bg-purple-wisteria">
+                        <span>Segundo Intento</span>
+                    </h3>
+
+                </div>
+                <ul class="pricing-content list-unstyled">
+
+                    <li>
+                        <i class="fa fa-calendar-minus-o"></i>
+
+
+                        <span class="usuario-item">Fecha inicio del proceso:</span>
+                        <?php echo $complexivoSegundoIntentoInfo['exa_fechainicio'] ?>
+
+                    </li>
+                    <li>
+                        <span class="usuario-item">Estado del examen:</span>
+                        <?php if(strcmp($complexivoSegundoIntentoInfo['exa_estado'],'EP')==0)
+                            echo 'En proceso';
+                        else if(strcmp($complexivoSegundoIntentoInfo['exa_estado'],'RP')==0)
+                            echo 'Reprobado';
+                        else if(strcmp($complexivoSegundoIntentoInfo['exa_estado'],'AP')==0)
+                            echo 'Aprobado';
+                        ?>
+                    </li>
+
+
+                    <li>
+
+                        <span class="usuario-item">Materia 1:</span>
+                        <?php echo $nombreMateria1ComplexivoSegundoIntento['mat_nombre'] ?>
+                        <ul>
+                            <li>
+
+                                <span class="usuario-item">Fecha:</span>
+                                <?php echo $materia1ComplexivoSegundoIntento['mxe_fecha_1'] ?> </li>
+                            <li>
+
+                                <span class="usuario-item">Nota horal:</span>
+                                <?php echo $materia1ComplexivoSegundoIntento['mxe_nota_horal_1'] ?> </li>
+                            <li>
+
+                                <span class="usuario-item">Nota escrita:</span>
+                                <?php echo $materia1ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?> </li>
+
+                        </ul>
+
+                    </li>
+                    <li>
+
+                        <span class="usuario-item">Materia 2:</span>
+                        <?php echo $nombreMateria2ComplexivoSegundoIntento['mat_nombre'] ?>
+                        <ul>
+                            <li>
+
+                                <span class="usuario-item">Fecha:</span>
+                                <?php echo $materia2ComplexivoSegundoIntento['mxe_fecha_1'] ?> </li>
+                            <li>
+
+                                <span class="usuario-item">Nota horal:</span>
+                                <?php echo $materia2ComplexivoSegundoIntento['mxe_nota_horal_1'] ?> </li>
+                            <li>
+
+                                <span class="usuario-item">Nota escrita:</span>
+                                <?php echo $materia2ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?> </li>
+
+                        </ul>
+
+                    </li>
+                    <li>
+
+                        <span class="usuario-item">Materia 3:</span>
+                        <?php echo $nombreMateria3ComplexivoSegundoIntento['mat_nombre'] ?>
+                        <ul>
+                            <li>
+
+                                <span class="usuario-item">Fecha:</span>
+                                <?php echo $materia3ComplexivoSegundoIntento['mxe_fecha_1'] ?> </li>
+                            <li>
+
+                                <span class="usuario-item">Nota horal:</span>
+                                <?php echo $materia3ComplexivoSegundoIntento['mxe_nota_horal_1'] ?> </li>
+                            <li>
+
+                                <span class="usuario-item">Nota escrita:</span>
+                                <?php echo $materia3ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?> </li>
+
+                        </ul>
+
+                    </li>
+                    <li>
+
+                        <span class="usuario-item">Materia 4:</span>
+                        <?php echo $nombreMateria4ComplexivoSegundoIntento['mat_nombre'] ?>
+                        <ul>
+                            <li>
+
+                                <span class="usuario-item">Fecha:</span>
+                                <?php echo $materia4ComplexivoSegundoIntento['mxe_fecha_1'] ?> </li>
+                            <li>
+
+                                <span class="usuario-item">Nota horal:</span>
+                                <?php echo $materia4ComplexivoSegundoIntento['mxe_nota_horal_1'] ?> </li>
+                            <li>
+
+                                <span class="usuario-item">Nota escrita:</span>
+                                <?php echo $materia4ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?> </li>
+
+                        </ul>
+
+                    </li>
+                    <li>
+
+                        <span class="usuario-item">Materia 5:</span>
+                        <?php echo $nombreMateria5ComplexivoSegundoIntento['mat_nombre'] ?>
+                        <ul>
+                            <li>
+
+                                <span class="usuario-item">Fecha:</span>
+                                <?php echo $materia5ComplexivoSegundoIntento['mxe_fecha_1'] ?> </li>
+                            <li>
+
+                                <span class="usuario-item">Nota horal:</span>
+                                <?php echo $materia5ComplexivoSegundoIntento['mxe_nota_horal_1'] ?> </li>
+                            <li>
+
+                                <span class="usuario-item">Nota escrita:</span>
+                                <?php echo $materia5ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?> </li>
+
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+
+
+            </div>
+            <?php } ?>        
 
     </div>
 

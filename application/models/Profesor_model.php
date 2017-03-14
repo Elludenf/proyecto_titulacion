@@ -24,6 +24,18 @@ class Profesor_model extends CI_Model
         return $this->db->count_all_results($this->table);
     }
 
+    function getResponsableTitulacion1()
+    {
+        return $this->db->query('SELECT * FROM titulacion.profesor where titulacion.profesor.prof_codigo in (SELECT titulacion.responsables_titulacion.prof_codigo FROM 
+titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.res_tipo=\'R1\' AND titulacion.responsables_titulacion.res_fechanombramiento=(select max(titulacion.responsables_titulacion.res_fechanombramiento) 
+from titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.res_tipo=\'R1\'))')->row_array();
+    }
+    function getResponsableTitulacion2()
+    {
+        return $this->db->query('SELECT * FROM titulacion.profesor where titulacion.profesor.prof_codigo in (SELECT titulacion.responsables_titulacion.prof_codigo FROM 
+titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.res_tipo=\'R2\' AND titulacion.responsables_titulacion.res_fechanombramiento=(select max(titulacion.responsables_titulacion.res_fechanombramiento) 
+from titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.res_tipo=\'R2\'))')->row_array();
+    }
     function getDirectorDisertacion($user)
     {
         $correo=$user.'@puce.edu.ec';

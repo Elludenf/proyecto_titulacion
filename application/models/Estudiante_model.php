@@ -24,6 +24,29 @@ class Estudiante_model extends CI_Model
         $correo=$user.'@puce.edu.ec';
         return $this->db->query('select * from titulacion.estudiante where est_mailpuce=\''.$correo.'\'')->row_array();
     }
+
+    function getIfExistsDisertacion($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('select
+  case when exists (SELECT true FROM titulacion.elabora WHERE
+titulacion.elabora.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\'))
+    then \'true\'
+    else \'false\'
+  end;')->row_array();
+    }
+    function getIfExistsComplexivo($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('select
+  case when exists (SELECT true FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\'))
+    then \'true\'
+    else \'false\'
+  end;')->row_array();
+    }
     function getDatosDisertacion($user)
     {
         $correo=$user.'@puce.edu.ec';
@@ -84,6 +107,8 @@ WHERE FOO IS NOT NULL')->row_array();
 
 
     }
+
+   
     function get_carrera($user)
     {
         $correo=$user.'@puce.edu.ec';
