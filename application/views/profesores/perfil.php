@@ -61,7 +61,7 @@
 
                 <div class="btn-reports">
 
-                    <a href='<?php echo site_url('Estudiante/reportes')?>' class="btn-reports-default">DISERTACION</a>
+                    <a href='<?php echo site_url('profesor/disertacion_estudiantes')?>' class="btn-reports-default">DISERTACION</a>
 
                 </div>
             </div>
@@ -69,7 +69,7 @@
 
                 <div class="btn-reports">
 
-                    <a href='<?php echo site_url('Estudiante/reportes')?>' class="btn-reports-default">EXAMEN COMPLEXIVO</a>
+                    <a href='#' class="btn-reports-default">EXAMEN COMPLEXIVO</a>
 
                 </div>
             </div>

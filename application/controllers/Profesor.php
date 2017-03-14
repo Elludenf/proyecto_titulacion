@@ -10,6 +10,7 @@ class Profesor extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Profesor_model');
+
     } 
 
     /*
@@ -49,6 +50,31 @@ class Profesor extends CI_Controller
         $this->load->helper(array('form'));
         $this->load->view('templates/header');
         $this->load->view('profesores/perfil', $data);
+        $this->load->view('templates/footer');
+    }
+
+    function disertacion_estudiantes(){
+        $user=$this->session-> __get('rolname');
+        $data['profesor'] = $this->Profesor_model->get_datos($user);
+        $data['estudiantes']=$this->Profesor_model->get_estudiantes_disertacion($user);
+
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Profesor_model->count();
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/estudiante/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('profesores/disertacion_estudiantes', $data);
         $this->load->view('templates/footer');
     }
 
