@@ -26,6 +26,256 @@ class Examen_complexivo_model extends CI_Model
     /*
      * Get all examenes_complexivo
      */
+    function getPrimerIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+LIMIT 1')->row_array();
+    }
+
+
+    function getSegundoIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+OFFSET 1')->row_array();
+    }
+
+    function  getPrimeraMateriaSorteadasPrimerIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+LIMIT 1)LIMIT 1 OFFSET 0')->row_array();
+    }
+
+    function  getSegundaMateriaSorteadasPrimerIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+LIMIT 1)LIMIT 2 OFFSET 1')->row_array();
+    }
+
+    function  getTerceraMateriaSorteadasPrimerIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+LIMIT 1)LIMIT 3 OFFSET 2')->row_array();
+    }
+
+    function  getCuartaMateriaSorteadasPrimerIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+LIMIT 1)LIMIT 4 OFFSET 3')->row_array();
+    }
+
+    function  getQuintaMateriaSorteadasPrimerIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+LIMIT 1)LIMIT 5 OFFSET 4')->row_array();
+    }
+
+    function  getNombrePrimeraMateriaSorteadasPrimerIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT titulacion.materias.mat_nombre FROM titulacion.materias WHERE titulacion.materias.mat_codigo IN
+(SELECT mat_codigo FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+LIMIT 1)LIMIT 1 OFFSET 0)')->row_array();
+    }
+
+    function  getNombreSegundaMateriaSorteadasPrimerIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT titulacion.materias.mat_nombre FROM titulacion.materias WHERE titulacion.materias.mat_codigo IN
+(SELECT mat_codigo FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+LIMIT 1)LIMIT 2 OFFSET 1)')->row_array();
+    }
+
+    function  getNombreTerceraMateriaSorteadasPrimerIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT titulacion.materias.mat_nombre FROM titulacion.materias WHERE titulacion.materias.mat_codigo IN
+(SELECT mat_codigo FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+LIMIT 1)LIMIT 3 OFFSET 2)')->row_array();
+    }
+
+    function  getNombreCuartaMateriaSorteadasPrimerIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT titulacion.materias.mat_nombre FROM titulacion.materias WHERE titulacion.materias.mat_codigo IN
+(SELECT mat_codigo FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+LIMIT 1)LIMIT 4 OFFSET 3)')->row_array();
+    }
+
+    function  getNombreQuintaMateriaSorteadasPrimerIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT titulacion.materias.mat_nombre FROM titulacion.materias WHERE titulacion.materias.mat_codigo IN
+(SELECT mat_codigo FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+LIMIT 1)LIMIT 5 OFFSET 4)')->row_array();
+    }
+
+    function  getPrimeraMateriaSorteadasSegundoIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+OFFSET 1)LIMIT 1 OFFSET 0')->row_array();
+    }
+
+    function  getSegundaMateriaSorteadasSegundoIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+OFFSET 1)LIMIT 2 OFFSET 1')->row_array();
+    }
+
+    function  getTerceraMateriaSorteadasSegundoIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+OFFSET 1)LIMIT 3 OFFSET 2')->row_array();
+    }
+
+    function  getCuartaMateriaSorteadasSegundoIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+OFFSET 1)LIMIT 4 OFFSET 3')->row_array();
+    }
+
+    function  getQuintaMateriaSorteadasSegundoIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+OFFSET 1)LIMIT 5 OFFSET 4')->row_array();
+    }
+
+    function  getNombrePrimeraMateriaSorteadasSegundoIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT titulacion.materias.mat_nombre FROM titulacion.materias WHERE titulacion.materias.mat_codigo IN
+(SELECT mat_codigo FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+OFFSET 1)LIMIT 1 OFFSET 0)')->row_array();
+    }
+
+    function  getNombreSegundaMateriaSorteadasSegundoIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT titulacion.materias.mat_nombre FROM titulacion.materias WHERE titulacion.materias.mat_codigo IN
+(SELECT mat_codigo FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+OFFSET 1)LIMIT 2 OFFSET 1)')->row_array();
+    }
+
+    function  getNombreTerceraMateriaSorteadasSegundoIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT titulacion.materias.mat_nombre FROM titulacion.materias WHERE titulacion.materias.mat_codigo IN
+(SELECT mat_codigo FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+OFFSET 1)LIMIT 3 OFFSET 2)')->row_array();
+    }
+
+    function  getNombreCuartaMateriaSorteadasSegundoIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT titulacion.materias.mat_nombre FROM titulacion.materias WHERE titulacion.materias.mat_codigo IN
+(SELECT mat_codigo FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+OFFSET 1)LIMIT 4 OFFSET 3)')->row_array();
+    }
+
+    function  getNombreQuintaMateriaSorteadasSegundoIntento($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT titulacion.materias.mat_nombre FROM titulacion.materias WHERE titulacion.materias.mat_codigo IN
+(SELECT mat_codigo FROM titulacion.matsorteadas_x_examen WHERE  titulacion.matsorteadas_x_examen.exa_codigo IN
+(SELECT titulacion.examen_complexivo.exa_codigo FROM titulacion.examen_complexivo WHERE
+titulacion.examen_complexivo.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
+titulacion.estudiante.est_MailPuce=\''.$correo.'\')
+ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
+OFFSET 1)LIMIT 5 OFFSET 4)')->row_array();
+    }
 
     function get_all_examenes_complexivo_()
     {

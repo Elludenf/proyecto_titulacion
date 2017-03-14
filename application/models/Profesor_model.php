@@ -37,7 +37,18 @@ class Profesor_model extends CI_Model
         return $this->db->count_all_results($this->table);
     }
 
-
+    function getResponsableTitulacion1()
+    {
+        return $this->db->query('SELECT * FROM titulacion.profesor where titulacion.profesor.prof_codigo in (SELECT titulacion.responsables_titulacion.prof_codigo FROM 
+titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.res_tipo=\'R1\' AND titulacion.responsables_titulacion.res_fechanombramiento=(select max(titulacion.responsables_titulacion.res_fechanombramiento) 
+from titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.res_tipo=\'R1\'))')->row_array();
+    }
+    function getResponsableTitulacion2()
+    {
+        return $this->db->query('SELECT * FROM titulacion.profesor where titulacion.profesor.prof_codigo in (SELECT titulacion.responsables_titulacion.prof_codigo FROM 
+titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.res_tipo=\'R2\' AND titulacion.responsables_titulacion.res_fechanombramiento=(select max(titulacion.responsables_titulacion.res_fechanombramiento) 
+from titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.res_tipo=\'R2\'))')->row_array();
+    }
     function getDirectorDisertacion($user)
     {
         $correo=$user.'@puce.edu.ec';
@@ -99,14 +110,14 @@ titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) and titulacion.REVDIR_X_DI
      */
     function add_user($user,$pass)
     {
-        function before ($simbolo, $inthat)
+        function before ($this, $inthat)
         {
-            return substr($inthat, 0, strpos($inthat, $simbolo));
+            return substr($inthat, 0, strpos($inthat, $this));
         };
         $user=before ('@', $user);
         $pass="'".$pass."'";
 
-        $this->db->query('CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$pass.'; GRANT "R_PROFESOR" TO '.$user.'; GRANT "R_VISTA" TO '.$user.'');
+        $this->db->query('CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$pass.'; GRANT "R_PROFESOR" TO '.$user.'');
         //return $this->db->insert_id();
     }
     

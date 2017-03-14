@@ -14,6 +14,7 @@ class Estudiante extends CI_Controller
         parent::__construct();
         $this->load->model('Estudiante_model');
         $this->load->model('Profesor_model');
+        $this->load->model('Examen_complexivo_model');
         $this->load->helper('url');
 
     }
@@ -57,8 +58,11 @@ class Estudiante extends CI_Controller
     function perfil()
     {
         $user=$this->session-> __get('rolname');
+        //obtiene datos del estudiante
         $data['estudiante'] = $this->Estudiante_model->get_datos($user);
         $data['carrera'] = $this->Estudiante_model->get_carrera($user);
+        //obtiene datos de la disertacion
+        $data['disertacionExists'] = $this->Estudiante_model->getIfExistsDisertacion($user);
         $data['disertacionInfo'] = $this->Estudiante_model->getDatosDisertacion($user);
         $data['disertacionEstadoPresentacion'] = $this->Estudiante_model->getEstadoDisertacionPresentacion($user);
         $data['disertacionEstadoAprobacion'] = $this->Estudiante_model->getEstadoAprobacion($user);
@@ -67,7 +71,34 @@ class Estudiante extends CI_Controller
         $data['directorDisertacion'] = $this->Profesor_model->getDirectorDisertacion($user);
         $data['revisor1Disertacion'] = $this->Profesor_model->getRevisor1Disertacion($user);
         $data['revisor2Disertacion'] = $this->Profesor_model->getRevisor2Disertacion($user);
-
+        
+        //obtiene datos examen complexivo
+        $data['complexivoExists'] = $this->Estudiante_model->getIfExistsComplexivo($user);
+        $data['responsableTitulacion1'] = $this->Profesor_model->getResponsableTitulacion1();
+        $data['responsableTitulacion2'] = $this->Profesor_model->getResponsableTitulacion2();
+        $data['complexivoPrimerIntentoInfo'] = $this->Examen_complexivo_model->getPrimerIntento($user);
+        $data['complexivoSegundoIntentoInfo'] = $this->Examen_complexivo_model->getSegundoIntento($user);
+        $data['materia1ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getPrimeraMateriaSorteadasPrimerIntento($user);
+        $data['materia2ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getSegundaMateriaSorteadasPrimerIntento($user);
+        $data['materia3ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getTerceraMateriaSorteadasPrimerIntento($user);
+        $data['materia4ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getCuartaMateriaSorteadasPrimerIntento($user);
+        $data['materia5ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getQuintaMateriaSorteadasPrimerIntento($user);
+        $data['nombreMateria1ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombrePrimeraMateriaSorteadasPrimerIntento($user);
+        $data['nombreMateria2ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombreSegundaMateriaSorteadasPrimerIntento($user);
+        $data['nombreMateria3ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombreTerceraMateriaSorteadasPrimerIntento($user);
+        $data['nombreMateria4ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombreCuartaMateriaSorteadasPrimerIntento($user);
+        $data['nombreMateria5ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombreQuintaMateriaSorteadasPrimerIntento($user);
+        $data['materia1ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getPrimeraMateriaSorteadasSegundoIntento($user);
+        $data['materia2ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getSegundaMateriaSorteadasSegundoIntento($user);
+        $data['materia3ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getTerceraMateriaSorteadasSegundoIntento($user);
+        $data['materia4ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getCuartaMateriaSorteadasSegundoIntento($user);
+        $data['materia5ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getQuintaMateriaSorteadasSegundoIntento($user);
+        $data['nombreMateria1ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombrePrimeraMateriaSorteadasSegundoIntento($user);
+        $data['nombreMateria2ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombreSegundaMateriaSorteadasSegundoIntento($user);
+        $data['nombreMateria3ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombreTerceraMateriaSorteadasSegundoIntento($user);
+        $data['nombreMateria4ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombreCuartaMateriaSorteadasSegundoIntento($user);
+        $data['nombreMateria5ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombreQuintaMateriaSorteadasSegundoIntento($user);
+        
         /*Empiezo de paginacion*/
         $total_rows = $this->Estudiante_model->count();
 
