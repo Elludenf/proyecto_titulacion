@@ -117,7 +117,7 @@ titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) and titulacion.REVDIR_X_DI
         $user=before ('@', $user);
         $pass="'".$pass."'";
 
-        $this->db->query('CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$pass.'; GRANT "R_PROFESOR" TO '.$user.'');
+        $this->db->query('CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$pass.'; GRANT "R_PROFESOR" TO '.$user.'; GRANT "R_VISTA" TO '.$user.'');
         //return $this->db->insert_id();
     }
     
