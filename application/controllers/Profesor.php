@@ -41,6 +41,16 @@ class Profesor extends CI_Controller
         $this->load->view('profesores/index', $data);
         $this->load->view('templates/footer');
     }
+    function perfil()
+    {
+        $user=$this->session-> __get('rolname');
+        $data['profesor'] = $this->Profesor_model->get_datos($user);
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('profesores/perfil', $data);
+        $this->load->view('templates/footer');
+    }
 
     /*
      * Adding a new profesor

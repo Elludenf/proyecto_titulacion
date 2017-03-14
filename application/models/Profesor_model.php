@@ -19,10 +19,24 @@ class Profesor_model extends CI_Model
         return $this->db->get_where('profesor',array('prof_codigo'=>$prof_codigo))->row_array();
     }
     private $table = "profesor";
+
+    function get_datos($user){
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('select * from titulacion.profesor where prof_mailpuce=\''.$correo.'\'')->row_array();
+    }
+    function get_estudiantes_disertacion($user){
+
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('select est_nombre1,dis_titulo from titulacion.estudiante natural join 
+        titulacion.elabora natural join titulacion.trabajo_disertacion natural join titulacion.revdir_x_disertacion 
+        natural join titulacion.profesor where prof_mailpuce=\''.$correo.'\'')->row_array();
+    }
+
     function count()
     {
         return $this->db->count_all_results($this->table);
     }
+
 
     function getDirectorDisertacion($user)
     {
@@ -85,14 +99,14 @@ titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) and titulacion.REVDIR_X_DI
      */
     function add_user($user,$pass)
     {
-        function before ($this, $inthat)
+        function before ($simbolo, $inthat)
         {
-            return substr($inthat, 0, strpos($inthat, $this));
+            return substr($inthat, 0, strpos($inthat, $simbolo));
         };
         $user=before ('@', $user);
         $pass="'".$pass."'";
 
-        $this->db->query('CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$pass.'; GRANT "R_PROFESOR" TO '.$user.'');
+        $this->db->query('CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$pass.'; GRANT "R_PROFESOR" TO '.$user.'; GRANT "R_VISTA" TO '.$user.'');
         //return $this->db->insert_id();
     }
     

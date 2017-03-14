@@ -31,10 +31,13 @@ class VerifyLogin extends CI_Controller {
             //Go to private area
             //$this->Login_model->logout();
 
-            if($this->session-> __get('rol_group')== 'R_ESTUDIANTE') {
-
-
-                redirect('estudiante/perfil','refresh');
+            if($this->session-> __get('rol_group')== 'R_ESTUDIANTE')
+            {
+                 redirect('estudiante/perfil','refresh');
+            }
+            if($this->session-> __get('rol_group')== 'R_PROFESOR')
+            {
+                redirect('profesor/perfil','refresh');
             }
             else
 
