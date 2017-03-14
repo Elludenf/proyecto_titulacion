@@ -71,7 +71,7 @@ class Examen_complexivo extends CI_Controller
         {
 
 			$this->load->model('Estudiante_model');
-			$data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes_no_elabora_ni_toma();
+			$data['all_estudiantes'] = $this->Estudiante_model->get_all_estudiantes_no_disertacion_ni_examen_mas_dos_veces();
 
             $this->load->view('templates/header');
             $this->load->view('examen_complexivo/add', $data);

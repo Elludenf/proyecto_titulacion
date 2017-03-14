@@ -292,6 +292,22 @@ WHERE FOO IS NOT NULL')->row_array();
 
     }
 
+    function get_all_estudiantes_no_disertacion_ni_examen_mas_dos_veces()
+    {
+
+        $this->db->select('*');
+        $this->db->from('titulacion.estudiante t1');
+        $this->db->where("NOT EXISTS (
+                    SELECT est_codigo FROM titulacion.elabora t2 WHERE t1.est_codigo = t2.est_codigo)
+                    AND
+                    est_codigo in (SELECT est_codigo FROM titulacion.examen_complexivo t2 WHERE t1.est_codigo = t2.est_codigo)");
+        $this->db->group_by('est_codigo');
+        $this->db->having('count (*) <=2');
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
     function get_all()
     {
 

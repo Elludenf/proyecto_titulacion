@@ -97,9 +97,9 @@ titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) and titulacion.REVDIR_X_DI
      */
     function add_user($user,$pass)
     {
-        function before ($this, $inthat)
+        function before ($simbolo, $inthat)
         {
-            return substr($inthat, 0, strpos($inthat, $this));
+            return substr($inthat, 0, strpos($inthat, $simbolo));
         };
         $user=before ('@', $user);
         $pass="'".$pass."'";
