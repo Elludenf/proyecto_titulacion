@@ -31,6 +31,15 @@ class Trabajo_disertacion_model extends CI_Model
         return $this->db->get('trabajo_disertacion')->result_array();
     }
 
+    function get_all_trabajo_disertacion_x_profCodigo($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM titulacion.trabajo_disertacion WHERE titulacion.trabajo_disertacion.dis_Codigo IN
+(SELECT titulacion.revdir_x_disertacion.dis_Codigo FROM  titulacion.revdir_x_disertacion WHERE titulacion.revdir_x_disertacion.prof_Codigo IN
+(SELECT titulacion.profesor.prof_Codigo FROM titulacion.profesor WHERE 
+titulacion.profesor.prof_MailPuce =\''.$correo.'\'))')->result_array();
+    }
+
     function get_all_trabajo_disertacion($limit = 5)
     {
         $offset = $this->uri->segment(3);
