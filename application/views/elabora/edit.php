@@ -29,7 +29,7 @@
     <div id="edit-titulo">Modificar Disertacion Elaborada por Estudiante</div>
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('elabora/edit/'.$elabora['est_codigo']); ?>
+<?php echo form_open('elabora/edit/'.$elabora['est_codigo'].'/'.$elabora['dis_codigo']); ?>
 
     <div id="custom-lbl">Estudiante: <?php echo $estudiante['est_apellido1'].$estudiante['est_apellido2'].$estudiante['est_nombre1'].$estudiante['est_nombre2']?></div>
     <div id="custom-lbl">Trabajo Disertacion :
