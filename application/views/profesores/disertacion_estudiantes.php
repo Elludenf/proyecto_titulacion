@@ -77,7 +77,8 @@
                                         <td><?php echo $e['dis_titulo']; ?></td>
 
                                         <td>
-                                            <a href="#">detalles</a> |
+                                            <a href="#">detalles</a>|
+                                            <a href="<?php echo site_url('elabora/edit/'.$e['est_codigo'].'/'.$e['dis_codigo']); ?>">Calificar</a>
                                         </td>
 
                                     </tr>
