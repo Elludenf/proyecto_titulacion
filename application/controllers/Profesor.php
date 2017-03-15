@@ -46,6 +46,8 @@ class Profesor extends CI_Controller
     {
         $user=$this->session-> __get('rolname');
         $data['profesor'] = $this->Profesor_model->get_datos($user);
+        $data['responsableTitulacion1'] = $this->Profesor_model->getIfResponsableTitulacion1($user);
+        $data['responsableTitulacion2'] = $this->Profesor_model->getIfResponsableTitulacion2($user);
         $this->load->helper('form');
         $this->load->helper(array('form'));
         $this->load->view('templates/header');

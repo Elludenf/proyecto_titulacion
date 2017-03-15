@@ -86,6 +86,8 @@
 
                     <h3 class="bg-purple-wisteria">
                         <?php echo $profesor['prof_apellido1'].' '.$profesor['prof_apellido2'].' '.$profesor['prof_nombre1'].' '.$profesor['prof_nombre2']; ?> <span>Profesor</span>
+                        <?php echo $responsableTitulacion1['case']; ?>
+                        <?php echo $responsableTitulacion2['case']; ?>
                     </h3>
 
                 </div>

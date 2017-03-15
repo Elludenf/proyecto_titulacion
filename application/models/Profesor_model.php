@@ -81,6 +81,36 @@ in(SELECT dis_codigo FROM TITULACION.trabajo_disertacion where TITULACION.trabaj
 titulacion.elabora.est_Codigo IN (SELECT titulacion.estudiante.est_codigo FROM titulacion.estudiante WHERE
 titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) and titulacion.REVDIR_X_DISERTACION.rxd_tipo = \'R_2\' )')->row_array();
     }
+
+    function getIfResponsableTitulacion1($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('select
+  case when exists
+(SELECT * FROM titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.prof_Codigo IN
+(SELECT titulacion.profesor.prof_Codigo FROM titulacion.profesor WHERE 
+titulacion.profesor.prof_MailPuce = \''.$correo.'\') AND  titulacion.responsables_titulacion.res_fechanombramiento = (SELECT MAX(titulacion.responsables_titulacion.res_fechanombramiento) FROM titulacion.responsables_titulacion) 
+AND titulacion.responsables_titulacion.res_tipo = \'R1\')
+then \'Responsable Unidad de Titulación 1\'
+    else \' \'
+  end;')->row_array();
+
+    }
+
+    function getIfResponsableTitulacion2($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('select
+  case when exists
+(SELECT * FROM titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.prof_Codigo IN
+(SELECT titulacion.profesor.prof_Codigo FROM titulacion.profesor WHERE 
+titulacion.profesor.prof_MailPuce = \''.$correo.'\') AND  titulacion.responsables_titulacion.res_fechanombramiento = (SELECT MAX(titulacion.responsables_titulacion.res_fechanombramiento) FROM titulacion.responsables_titulacion) 
+AND titulacion.responsables_titulacion.res_tipo = \'R2\')
+then \'Responsable Unidad de Titulación 2\'
+    else \' \'
+  end;')->row_array();
+
+    }
     /*
      * Get all profesores
      */
@@ -95,6 +125,8 @@ titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) and titulacion.REVDIR_X_DI
         return $this->db->limit($limit, $offset)
             ->get('profesor')->result_array();
     }
+
+
     
     /*
      * function to add new profesor
