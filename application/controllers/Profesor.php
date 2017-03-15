@@ -55,6 +55,53 @@ class Profesor extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    function addRevision()
+    {
+        $user=$this->session-> __get('rolname');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('obs_fecha','Obs Fecha','required');
+        $this->form_validation->set_rules('obs_descripcion','Obs Descripcion','required|max_length[1024]');
+
+        if($this->form_validation->run())
+        {
+            $params = array(
+                'dis_codigo' => $this->input->post('dis_codigo'),
+                'prof_codigo' => $this->input->post('prof_codigo'),
+                'obs_fecha' => $this->input->post('obs_fecha'),
+                'obs_descripcion' => $this->input->post('obs_descripcion'),
+            );
+
+            $revision_id = $this->Revision_model->add_revision($params);
+            redirect('revision/index');
+        }
+        else
+        {
+
+            $this->load->model('Trabajo_disertacion_model');
+            $data['all_trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion_x_profCodigo($user);
+
+            $this->load->model('Revdir_x_disertacion_model');
+            $data['all_revdir'] = $this->Revdir_x_disertacion_model->get_this_revdir_x_disertacion_($user);
+
+            $this->load->model('Profesor_model');
+            $c=0;
+            $a_prof=[];
+            foreach ($data['all_revdir'] as $revdir){
+                $prof=$this->Profesor_model->get_profesor($revdir['prof_codigo']);
+                $a_prof[$c]=$prof;
+                $c++;
+            }
+
+            $this->load->model('Profesor_model');
+            $data['all_profesores'] =$a_prof;
+
+            $this->load->view('templates/header');
+            $this->load->view('profesores/revisarDisertacion', $data);
+            $this->load->view('templates/footer');
+        }
+    }
+
     function disertacion_estudiantes(){
         $user=$this->session-> __get('rolname');
         $data['profesor'] = $this->Profesor_model->get_datos($user);

@@ -34,6 +34,14 @@ class Revdir_x_disertacion_model extends CI_Model
         return $this->db->get('revdir_x_disertacion')->result_array();
     }
 
+    function get_this_revdir_x_disertacion_($user)
+    {
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('SELECT * FROM  titulacion.revdir_x_disertacion WHERE titulacion.revdir_x_disertacion.prof_Codigo IN
+(SELECT titulacion.profesor.prof_Codigo FROM titulacion.profesor WHERE 
+titulacion.profesor.prof_MailPuce =\''.$correo.'\')')->result_array();
+    }
+
     function get_all_revdir_x_disertacion($limit = 5)
     {
         $offset = $this->uri->segment(3);

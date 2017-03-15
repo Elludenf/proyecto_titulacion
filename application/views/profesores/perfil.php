@@ -64,6 +64,11 @@
                     <a href='<?php echo site_url('profesor/disertacion_estudiantes')?>' class="btn-reports-default">DISERTACION</a>
 
                 </div>
+                <div class="btn-reports">
+
+                    <a href='<?php echo site_url('profesor/addRevision')?>' class="btn-reports-default">HACER UNA REVISION</a>
+
+                </div>
             </div>
             <div id="select-report">
 
