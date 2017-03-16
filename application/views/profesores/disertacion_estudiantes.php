@@ -63,7 +63,6 @@
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">2do Nombre</a></th>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">1er Apellido</a></th>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">2do Apellido</a></th>
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">TIPO</a></th>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">TEMA</a></th>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</a></th>
 
@@ -75,7 +74,6 @@
                                         <td><?php echo $e['est_nombre2']; ?></td>
                                         <td><?php echo $e['est_apellido1']; ?></td>
                                         <td><?php echo $e['est_apellido2']; ?></td>
-                                        <td><?php echo $e['rxd_tipo']; ?></td>>
                                         <td><?php echo $e['dis_titulo']; ?></td>
 
                                         <td>
