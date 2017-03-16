@@ -69,15 +69,7 @@
                     <a href='<?php echo site_url('profesor/addRevision')?>' class="btn-reports-default">HACER UNA REVISION</a>
 
                 </div>
-            </div>
-            <div id="select-report">
 
-                <div class="btn-reports">
-
-                    <a href='#' class="btn-reports-default">EXAMEN COMPLEXIVO</a>
-
-                </div>
-            </div>
 
         </div>
 

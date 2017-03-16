@@ -127,14 +127,14 @@ class Revdir_x_disertacion extends CI_Controller
 
 
 
-                if($params['rxd_tipo']=='DIRECTOR')
+                if($params['rxd_tipo']=='DIR')
                 {
-
+                    //$this->db->query('revoke  "R_REVISOR_T_TITULACION" FROM '.$user.'');
                     $this->db->query('GRANT "R_DIRECTOR_T_TITULACION" TO '.$user.'');
                 }
                 else
                 {
-
+                    //$this->db->query('revoke  "R_DIRECTOR_T_TITULACION" FROM '.$user.'');
                     $this->db->query('GRANT "R_REVISOR_T_TITULACION" TO '.$user.'');
                 }
                 redirect('revdir_x_disertacion/index');

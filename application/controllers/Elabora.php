@@ -100,9 +100,14 @@ class Elabora extends CI_Controller
 
                 $this->Elabora_model->update_elabora($est_codigo,$dis_codigo,$params);
 
-
-
-                redirect('elabora/index');
+                if($this->session-> __get('rol_group')== 'R_PROFESOR')
+                {
+                    redirect('profesor/disertacion_estudiantes');
+                }
+                else
+                {
+                     redirect('elabora/index');
+                }
             }
             else
             {   

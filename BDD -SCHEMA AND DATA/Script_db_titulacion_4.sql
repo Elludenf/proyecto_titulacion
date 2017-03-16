@@ -5,6 +5,8 @@ GRANT SELECT(esc_codigo), UPDATE(esc_codigo), INSERT(esc_codigo), REFERENCES(esc
 GRANT SELECT(esc_codigo) ON titulacion.carreras TO "R_VISTA";
 GRANT SELECT(carr_descripcion), UPDATE(carr_descripcion), INSERT(carr_descripcion), REFERENCES(carr_descripcion) ON titulacion.carreras TO "R_OPERADOR";
 GRANT SELECT(carr_descripcion) ON titulacion.carreras TO "R_VISTA";
+GRANT SELECT ON TABLE titulacion.carreras TO "R_ESTUDIANTE";
+GRANT SELECT(carr_codigo) ON TITULACION.carreras TO "R_PROFESOR";
 
 --Dicta
 GRANT SELECT(prof_codigo), UPDATE(prof_codigo), INSERT(prof_codigo), REFERENCES(prof_codigo) ON titulacion.dicta TO "R_OPERADOR";
@@ -36,6 +38,9 @@ GRANT SELECT(elb_nota_escrito) ON titulacion.elabora TO "R_ESTUDIANTE";
 GRANT SELECT(elb_nota_escrito), UPDATE(elb_nota_escrito), INSERT(elb_nota_escrito), REFERENCES(elb_nota_escrito) ON titulacion.elabora TO "R_OPERADOR";
 GRANT SELECT(elb_nota_escrito) ON titulacion.elabora TO "R_REVISOR_T_TITULACION";
 GRANT SELECT(elb_nota_escrito) ON titulacion.elabora TO "R_VISTA";
+grant SELECT(est_codigo,dis_codigo) ON TITULACION.ELABORA to "R_PROFESOR";
+grant SELECT(est_codigo,dis_codigo) ON TITULACION.ELABORA to "R_PROFESOR";
+grant UPDATE (est_codigo,dis_codigo) ON TITULACION.ELABORA to "R_PROFESOR";
 
 --Escuelas
 GRANT SELECT(esc_codigo), UPDATE(esc_codigo), INSERT(esc_codigo), REFERENCES(esc_codigo) ON titulacion.escuelas TO "R_OPERADOR";
@@ -44,6 +49,7 @@ GRANT SELECT(facu_codigo), UPDATE(facu_codigo), INSERT(facu_codigo), REFERENCES(
 GRANT SELECT(facu_codigo) ON titulacion.escuelas TO "R_VISTA";
 GRANT SELECT(esc_descripcion), UPDATE(esc_descripcion), INSERT(esc_descripcion), REFERENCES(esc_descripcion) ON titulacion.escuelas TO "R_OPERADOR";
 GRANT SELECT(esc_descripcion) ON titulacion.escuelas TO "R_VISTA";
+GRANT SELECT ON TABLE titulacion.escuelas TO "R_ESTUDIANTE";
 
 --Estudiante
 GRANT SELECT(est_codigo), UPDATE(est_codigo), INSERT(est_codigo), REFERENCES(est_codigo) ON titulacion.estudiante TO "R_OPERADOR";
@@ -104,20 +110,24 @@ GRANT SELECT(est_fechagraduacion), UPDATE(est_fechagraduacion), INSERT(est_fecha
 GRANT SELECT(est_fechagraduacion) ON titulacion.estudiante TO "R_PROFESOR";
 GRANT SELECT(est_fechagraduacion) ON titulacion.estudiante TO "R_VISTA";
 GRANT SELECT ON TABLE titulacion.estudiante TO "R_ESTUDIANTE";
+GRANT SELECT ON TABLE TITULACION.ESTUDIANTE TO "R_PROFESOR";
+GRANT SELECT(est_id,est_codigo,est_nombre1,est_nombre2,est_apellido1,est_apellido2) ON TITULACION.ESTUDIANTE TO "R_PROFESOR";
+GRANT SELECT ON TABLE TITULACION.ESTUDIANTE TO "R_PROFESOR";
 
 
---
-GRANT SELECT ON TABLE titulacion.carreras TO "R_ESTUDIANTE";
-GRANT SELECT ON TABLE titulacion.escuelas TO "R_ESTUDIANTE";
-GRANT SELECT ON TABLE titulacion.facultades TO "R_ESTUDIANTE";
-GRANT SELECT(prof_codigo) ON TITULACION.PROFESOR TO "R_ESTUDIANTE";
-GRANT SELECT(rolname,rolpassword) ON pg_authid TO "R_ESTUDIANTE";
-GRANT SELECT ON TABLE titulacion.responsables_titulacion TO "R_ESTUDIANTE";
-GRANT SELECT(prof_codigo) ON TITULACION.PROFESOR TO "R_ESTUDIANTE";
-GRANT SELECT(mat_nombre,mat_codigo) ON TITULACION.materias TO "R_ESTUDIANTE";
-GRANT SELECT ON TABLE TITULACION.trabajo_disertacion TO "R_PROFESOR";
-GRANT UPDATE (est_codigo,dis_codigo) ON TITULACION.ELABORA TO "R_PROFESOR";
---
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 --Examen_Complexivo
 GRANT SELECT(exa_codigo), UPDATE(exa_codigo), INSERT(exa_codigo), REFERENCES(exa_codigo) ON titulacion.examen_complexivo TO "R_OPERADOR";
@@ -144,6 +154,11 @@ GRANT SELECT(facu_codigo), UPDATE(facu_codigo), INSERT(facu_codigo), REFERENCES(
 GRANT SELECT(facu_codigo) ON titulacion.facultades TO "R_VISTA";
 GRANT SELECT(facu_descripcion), UPDATE(facu_descripcion), INSERT(facu_descripcion), REFERENCES(facu_descripcion) ON titulacion.facultades TO "R_OPERADOR";
 GRANT SELECT(facu_descripcion) ON titulacion.facultades TO "R_VISTA";
+GRANT SELECT ON TABLE titulacion.facultades TO "R_ESTUDIANTE";
+
+--pg_authid
+GRANT SELECT(rolname,rolpassword) ON pg_authid TO "R_ESTUDIANTE";
+GRANT SELECT(rolname,rolpassword) ON pg_authid TO "R_PROFESOR";
 
 --Logged_actions
 GRANT SELECT(schema_name) ON titulacion.logged_actions TO "R_AUDITOR";
@@ -178,6 +193,7 @@ GRANT SELECT(mat_nombre), UPDATE(mat_nombre), INSERT(mat_nombre), REFERENCES(mat
 GRANT SELECT(mat_nombre) ON titulacion.materias TO "R_VISTA";
 GRANT SELECT(mat_nivel), UPDATE(mat_nivel), INSERT(mat_nivel), REFERENCES(mat_nivel) ON titulacion.materias TO "R_OPERADOR";
 GRANT SELECT(mat_nivel) ON titulacion.materias TO "R_VISTA";
+GRANT SELECT(mat_nombre,mat_codigo) ON TITULACION.materias TO "R_ESTUDIANTE";
 
 --MATSORTEADAS_X_EXAMEN
 GRANT SELECT(mat_codigo) ON titulacion.matsorteadas_x_examen TO "R_ESTUDIANTE";
@@ -267,13 +283,8 @@ GRANT SELECT(prof_foto) ON titulacion.profesor TO "R_VISTA";
 GRANT SELECT(prof_foto), UPDATE(prof_foto), INSERT(prof_foto), REFERENCES(prof_foto) ON titulacion.profesor TO "R_OPERADOR";
 GRANT SELECT(prof_oficina) ON titulacion.profesor TO "R_VISTA";
 GRANT SELECT(prof_oficina), UPDATE(prof_oficina), INSERT(prof_oficina), REFERENCES(prof_oficina) ON titulacion.profesor TO "R_OPERADOR";
-GRANT SELECT ON TABLE titulacion.responsables_titulacion TO "R_ESTUDIANTE";
-GRANT SELECT(est_id,est_codigo,est_nombre1,est_nombre2,est_apellido1,est_apellido2) ON TITULACION.ESTUDIANTE TO "R_PROFESOR";
-GRANT SELECT(dis_codigo,dis_titulo) ON  titulacion.trabajo_disertacion TO "R_PROFESOR";
-GRANT SELECT(est_codigo,dis_codigo) ON TITULACION.ELABORA TO "R_PROFESOR";
-GRANT SELECT(prof_codigo,dis_codigo) ON TITULACION.revdir_x_disertacion TO "R_PROFESOR";
-GRANT SELECT(prof_nombre1,prof_nombre2,prof_apellido1,prof_apellido2,prof_telefono,prof_telefono,prof_mailpuce,prof_oficina) ON TITULACION.profesor TO "R_ESTUDIANTE";
-GRANT SELECT(est_codigo,dis_codigo) ON TITULACION.ELABORA TO "R_PROFESOR";
+GRANT SELECT(prof_codigo,prof_nombre1,prof_nombre2,prof_apellido1,prof_apellido2,prof_telefono,prof_telefono,prof_mailpuce,prof_oficina) ON TITULACION.profesor TO "R_ESTUDIANTE";
+
 
 --PRORROGA
 GRANT SELECT(pro_codigo) ON titulacion.prorroga TO "R_VISTA";
@@ -329,6 +340,8 @@ GRANT SELECT(res_fechanombramiento) ON titulacion.responsables_titulacion TO "R_
 GRANT SELECT(res_fechanombramiento) ON titulacion.responsables_titulacion TO "R_REVISOR_T_TITULACION";
 GRANT SELECT(res_fechanombramiento) ON titulacion.responsables_titulacion TO "R_DIRECTOR_T_TITULACION";
 GRANT SELECT(res_fechanombramiento), UPDATE(res_fechanombramiento), INSERT(res_fechanombramiento), REFERENCES(res_fechanombramiento) ON titulacion.responsables_titulacion TO "R_OPERADOR";
+GRANT SELECT ON TABLE titulacion.responsables_titulacion TO "R_ESTUDIANTE";
+
 
 --REVDIR_X_DISERTACION
 GRANT SELECT(dis_codigo) ON titulacion.revdir_x_disertacion TO "R_DIRECTOR_T_TITULACION";
@@ -351,6 +364,7 @@ GRANT SELECT(rxd_fechanombramiento) ON titulacion.revdir_x_disertacion TO "R_EST
 GRANT SELECT(rxd_fechanombramiento) ON titulacion.revdir_x_disertacion TO "R_REVISOR_T_TITULACION";
 GRANT SELECT(rxd_fechanombramiento) ON titulacion.revdir_x_disertacion TO "R_VISTA";
 GRANT SELECT(rxd_fechanombramiento), UPDATE(rxd_fechanombramiento), INSERT(rxd_fechanombramiento), REFERENCES(rxd_fechanombramiento) ON titulacion.revdir_x_disertacion TO "R_OPERADOR";
+grant SELECT(prof_codigo,dis_codigo) ON TITULACION.revdir_x_disertacion to "R_PROFESOR";
 
 --REVISIONES
 GRANT SELECT(dis_codigo) ON titulacion.revisiones TO "R_VISTA";
@@ -420,3 +434,4 @@ GRANT SELECT(dis_defensa) ON titulacion.trabajo_disertacion TO "R_REVISOR_T_TITU
 GRANT SELECT(dis_defensa) ON titulacion.trabajo_disertacion TO "R_VISTA";
 GRANT SELECT(dis_defensa), UPDATE(dis_defensa) ON titulacion.trabajo_disertacion TO "R_DIRECTOR_T_TITULACION";
 GRANT SELECT(dis_defensa), UPDATE(dis_defensa), INSERT(dis_defensa), REFERENCES(dis_defensa) ON titulacion.trabajo_disertacion TO "R_OPERADOR";
+grant SELECT(dis_codigo,dis_titulo) ON  titulacion.trabajo_disertacion to "R_PROFESOR";

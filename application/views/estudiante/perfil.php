@@ -113,27 +113,7 @@
 
     <div class="row">
 
-        <div class="servicios">
-            <h3>CONSULTAS</h3>
 
-            <div id="select-report">
-
-                <div class="btn-reports">
-
-                    <a href='<?php echo site_url('Estudiante/reportes')?>' class="btn-reports-default">DISERTACION</a>
-
-                </div>
-            </div>
-            <div id="select-report">
-
-                <div class="btn-reports">
-
-                    <a href='<?php echo site_url('Estudiante/reportes')?>' class="btn-reports-default">EXAMEN COMPLEXIVO</a>
-
-                </div>
-            </div>
-
-        </div>
 
         <div class="datos">
             <h3>DATOS PERSONALES</h3>

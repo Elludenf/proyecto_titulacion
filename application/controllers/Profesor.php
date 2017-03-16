@@ -113,7 +113,7 @@ class Profesor extends CI_Controller
         $config['total_rows'] = $total_rows;
         $config['per_page'] = $this->limit;
         $config['uri_segment'] = 3;
-        $config['base_url'] = base_url().'/estudiante/index';
+        $config['base_url'] = base_url().'profesor/disertacion_estudiantes';
         $this->pagination->initialize($config);
 
         $page_links = $this->pagination->create_links();
