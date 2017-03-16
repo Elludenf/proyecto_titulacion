@@ -61,12 +61,12 @@ class Revdir_x_disertacion extends CI_Controller
 
                 'rxd_fechanombramiento' => $this->input->post('rxd_fechanombramiento'),
             );
-            $user=$this->db->query('select prof_mailpuce from titulacion.profesor where prof_codigo='.$params['prof_codigo'].'');
+            $user=$this->db->query('select prof_mailpuce from titulacion.profesor where prof_codigo='.$params['prof_codigo'])->row_array();
             function before ($simbolo, $inthat)
             {
                 return substr($inthat, 0, strpos($inthat, $simbolo));
             };
-            $user=before ('@', $user);
+            $user=before ('@', $user['prof_mailpuce']);
             if($params['rxd_tipo']=='DIRECTOR')
             {
 
