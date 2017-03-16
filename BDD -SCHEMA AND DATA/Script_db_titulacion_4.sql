@@ -285,7 +285,7 @@ GRANT SELECT(prof_foto), UPDATE(prof_foto), INSERT(prof_foto), REFERENCES(prof_f
 GRANT SELECT(prof_oficina) ON titulacion.profesor TO "R_VISTA";
 GRANT SELECT(prof_oficina), UPDATE(prof_oficina), INSERT(prof_oficina), REFERENCES(prof_oficina) ON titulacion.profesor TO "R_OPERADOR";
 GRANT SELECT(prof_codigo,prof_nombre1,prof_nombre2,prof_apellido1,prof_apellido2,prof_telefono,prof_telefono,prof_mailpuce,prof_oficina) ON TITULACION.profesor TO "R_ESTUDIANTE";
-
+GRANT SELECT ON TABLE titulacion.profesor TO "R_PROFESOR";
 
 --PRORROGA
 GRANT SELECT(pro_codigo) ON titulacion.prorroga TO "R_VISTA";
