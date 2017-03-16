@@ -32,7 +32,7 @@
 <?php echo form_open('responsables_titulacion/add'); ?>
 
 	<div  id="custom-lbl" >
-		Prof Codigo :
+		Profesor:
 		<select name="prof_codigo" class="edit-inp" >
 			<option value="">Seleccionar Profesor</option>
 			<?php
@@ -46,7 +46,7 @@
 		</select>
 		</div>
 	<div  id="custom-lbl" >
-		Res Tipo :
+		Tipo de Responsable:
 		<select name="res_tipo" class="edit-inp" >
 			<option value="">Seleccionar Tipo de Responsable</option>
 			<?php
@@ -56,7 +56,7 @@
 		</select>
 	</div>
 
-	<div  id="custom-lbl" >Res Fechanombramiento : <input type="text" class="edit-inp" name="res_fechanombramiento" value="<?php echo $this->input->post('res_fechanombramiento'); ?>" /></div>
+	<div  id="custom-lbl" >Fecha de Nombramiento : <input type="date" class="edit-inp" name="res_fechanombramiento" value="<?php echo $this->input->post('res_fechanombramiento'); ?>" /></div>
 
     <div id="custom-lbl" ><button type="submit" id="add-submit"></button></div>
 

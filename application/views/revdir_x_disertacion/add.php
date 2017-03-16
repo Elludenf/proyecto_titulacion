@@ -32,7 +32,7 @@
 <?php echo form_open('revdir_x_disertacion/add'); ?>
     <div  id="custom-lbl" >Profesor :
         <select name="prof_codigo" class="edit-inp" >
-            <option value="">select profesor</option>
+            <option value="">Seleccionar Profesor</option>
             <?php
             foreach($all_profesores as $profesor)
             {
@@ -56,7 +56,7 @@
 			?>
 		</select>
 	</div>
-	<div  id="custom-lbl" >Rxd Tipo :
+	<div  id="custom-lbl" >Tipo de Responsable :
 		<select name="rxd_tipo" class="edit-inp" >
 			<option value="">Seleccionar Tipo de Responsable</option>
 			<?php
@@ -66,7 +66,7 @@
 			?>
 		</select>
 	</div>
-	<div  id="custom-lbl" >Rxd Fechanombramiento : <input type="text" class="edit-inp" name="rxd_fechanombramiento" value="<?php echo $this->input->post('rxd_fechanombramiento'); ?>" /></div>
+	<div  id="custom-lbl" >Fecha de Nombramiento : <input type="date" class="edit-inp" name="rxd_fechanombramiento" value="<?php echo $this->input->post('rxd_fechanombramiento'); ?>" /></div>
 
     <div id="custom-lbl" ><button type="submit" id="add-submit"></button></div>
 

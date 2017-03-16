@@ -32,7 +32,7 @@
 <?php echo form_open('responsables_titulacion/edit/'.$responsables_titulacion['res_codigo']); ?>
 
 	<div id="custom-lbl" >
-		Prof Codigo :
+		Profesor:
 		<select name="prof_codigo" class="edit-inp" >
 			<option value="">Seleccionar Profesor</option>
 			<?php
@@ -45,13 +45,13 @@
 			?>
 		</select>
 		</div>
-	<div id="custom-lbl" >Res Tipo :
+	<div id="custom-lbl" >Tipo de Responsable:
         <select name="res_tipo" class="edit-inp" >
             <option <?php if ($responsables_titulacion['res_tipo'] == 'R1' ) echo 'selected' ; ?> value="R1">Responsable Titulacion I</option>
             <option <?php if ($responsables_titulacion['res_tipo'] == 'R2' ) echo 'selected' ; ?> value="R2">Responsable Titulacion II</option>
 		</select>
     </div>
-	<div id="custom-lbl" >Res Fechanombramiento : <input type="text" class="edit-inp" name="res_fechanombramiento" value="<?php echo ($this->input->post('res_fechanombramiento') ? $this->input->post('res_fechanombramiento') : $responsables_titulacion['res_fechanombramiento']); ?>" /></div>
+	<div id="custom-lbl" >Fecha de Nombramiento : <input type="date" class="edit-inp" name="res_fechanombramiento" value="<?php echo ($this->input->post('res_fechanombramiento') ? $this->input->post('res_fechanombramiento') : $responsables_titulacion['res_fechanombramiento']); ?>" /></div>
 
     <div id="custom-lbl"><button type="submit" id="edit-submit"></button></div>
 

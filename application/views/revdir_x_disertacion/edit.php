@@ -45,14 +45,14 @@
 			?>
 		</select>
 	</div>
-	<div id="custom-lbl" >Rxd Tipo :
+	<div id="custom-lbl" >Tipo de Responsable:
         <select name="rxd_tipo" class="edit-inp" >
             <option <?php if ($revdir_x_disertacion['rxd_tipo'] == 'DIR' ) echo 'selected' ; ?> value="DIR">Director</option>
             <option <?php if ($revdir_x_disertacion['rxd_tipo'] == 'R_1' ) echo 'selected' ; ?> value="R_1">Revisor 1</option>
             <option <?php if ($revdir_x_disertacion['rxd_tipo'] == 'R_2' ) echo 'selected' ; ?> value="R_2">Revisor 2</option>
         </select>
 	</div>
-	<div id="custom-lbl" >Rxd Fechanombramiento : <input type="text" class="edit-inp"  name="rxd_fechanombramiento" value="<?php echo ($this->input->post('rxd_fechanombramiento') ? $this->input->post('rxd_fechanombramiento') : $revdir_x_disertacion['rxd_fechanombramiento']); ?>" /></div>
+	<div id="custom-lbl" >Fecha de Nombramiento : <input type="date" class="edit-inp"  name="rxd_fechanombramiento" value="<?php echo ($this->input->post('rxd_fechanombramiento') ? $this->input->post('rxd_fechanombramiento') : $revdir_x_disertacion['rxd_fechanombramiento']); ?>" /></div>
 
     <div id="custom-lbl"><button type="submit" id="edit-submit"></button></div>
 

@@ -10,6 +10,7 @@
 body{
 
 	font-family: Calibri;
+	width: 100%;
 }
 
 a { 
@@ -22,10 +23,11 @@ table {
      display: block;
        overflow-x: auto;
        float: center;
+              margin-left: auto;
     }
 
     tbody{
-    	float: center;
+
     }
 
 
@@ -34,6 +36,16 @@ table {
 	clear: both;
 	font-size: 0px;
 	height: 80px;
+	line-height: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.clear2	{
+
+	clear: both;
+	font-size: 0px;
+	height: 40px;
 	line-height: 0px;
 	margin: 0px;
 	padding: 0px;
@@ -206,7 +218,7 @@ div#header{
 
 .btn-reports-default{
 	color:#ffffff;
-	background-color: #0065c2;
+	background-color: #595b5e;
 	border-color: rgba(0, 96, 204, 0.44);
 	display: table-cell;
 	float: none;
@@ -285,6 +297,7 @@ div#header{
 	margin-top: 12px;
 	margin-right: 20px;
 	font-size: 15px;
+	text-transform: uppercase;
 
 }
 
@@ -319,14 +332,15 @@ div#header{
 
 .usuario-opciones{
 	display: none;	
-	padding-top: 15px;
+	padding-top: 10px;
 	position: absolute;
+	height: auto;
 	font-size: 0px;
 	top: 30px;
 	width: 100%;
 	text-align: right;
 	float: right;
-	margin: 25px auto 0 auto;
+	margin: 145px auto 0 auto;
 
 }
 
@@ -362,8 +376,12 @@ div#header{
 
 #tabla-busqueda{
 	float:right;
-	margin-right: 15px;
-	background-color: white;
+		background-color: white;
+}
+
+#container-tabla{
+	width: 100%;
+	height: auto;
 }
 
 /*TABLA*/
@@ -731,7 +749,7 @@ a:hover.action-delete	{
 	border: 1px solid#bfbfbf;
 	border-radius: 5px;
 	color: #333333;
-	width:120px;
+	width:175px;
 	padding: 5px;
 	line-height: 14px;
 	margin-right: 6px;
@@ -929,6 +947,20 @@ div.selectbox-wrapper3 ul li	{
 
 
 /*-----------------------------FIN ESTUDIANTES----------------------------*/
+
+/*------------------------------PAGINACION----------------------------------*/
+ul.tsc_pagination { margin:4px 0; padding:0px; height:100%; overflow:hidden; font:12px 'Tahoma'; list-style-type:none; }
+ul.tsc_pagination li { float:left; margin:0px; padding:0px; margin-left:5px; }
+ 
+ul.tsc_pagination li a { color:black; display:block; text-decoration:none; padding:7px 10px 7px 10px; }
+ 
+ 
+ul.tsc_paginationA li a { color:#FFFFFF; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; }
+ 
+ul.tsc_paginationA01 li a { color:#474747; border:solid 1px #B6B6B6; padding:6px 9px 6px 9px; background:#E6E6E6; background:-moz-linear-gradient(top, #FFFFFF 1px, #F3F3F3 1px, #E6E6E6); background:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0.02, #FFFFFF), color-stop(0.02, #F3F3F3), color-stop(1, #E6E6E6)); }
+ul.tsc_paginationA01 li:hover a,
+ul.tsc_paginationA01 li.current a { background:#FFFFFF; }
+/*------------------------------FIN PAGINACION-------------------------------*/
 /*------------------------------PERFIL ESTUDIANTE----------------------------------*/
 
 
@@ -1040,6 +1072,183 @@ div.selectbox-wrapper3 ul li	{
 	height:20px;
 }
 /*-----------------------------FIN Edit y Add---------------------------------------*/
+/*-----------------------------Perfil Estudiante------------------------------------*/
+
+.datos{
+	display: inline;
+	height: auto;
+	width: 100%;
+}
+#datosp-titulo{
+
+	font-size: 25px;
+	font-weight: lighter;
+	height: 41px;
+	padding-top: 25px;
+	color: #444547;
+
+}
+
+#main-titulo{
+
+	font-size: 40px;
+	font-weight: lighter;
+	height: 80px;
+	padding-top: 35px;
+	color: #444547;
+	padding-left: 55px;
+	 border-bottom: 1px solid;
+	 border-color: #e1dce2;
+
+}
+
+#container-datos{
+
+	width: 100%;
+	height: auto;
+	display: flex;
+}
+
+
+#container-inner-datos{
+	
+	
+	padding-left: 105px;
+	width: 500px;
+	height: auto;
+	flex: 0 0 30%;
+
+}
+
+#container-inner-btn{
+	
+	
+	width: 500px;
+	height: auto;
+	flex: 0 0 30%;
+
+}
+
+.datos-header{
+
+	background-color: #9f53b2;
+	  border: 2px solid;
+	 border-color: #e1dce2;
+	 width: 500px;
+	 height:auto;
+
+}
+
+.datos-nombre-tipo{
+
+	font-size: 22px;
+	font-weight: lighter;
+	height: auto;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	text-align: center;
+	color: #ece9ec;
+	width: 500px;
+	text-transform: uppercase;
+	
+}
+
+.datos-nombre-tipo2{
+
+	font-size: 17px;
+	font-weight: lighter;
+	height: auto;
+	padding-top: 0px;
+	padding-bottom: 8px;
+	text-align: center;
+	color: #dcd7dd;
+	width: 500px;
+	
+}
+.datos-body{
+
+	background-color: #ffffff;
+	color: #444547;
+	 border: 2px solid;
+	 border-color: #e1dce2;
+	 width: 500px;
+	 height:auto;
+
+}
+
+#datos-ind{
+
+display: flex;
+align-items: center;
+	font-size: 16px;
+	background-color: #ffffff;
+	 color: #7e7780;
+	 border-bottom: 1px solid;
+	 border-color: #e1dce2;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	 width: 500px;
+	 height:auto;
+
+}
+
+#titulo-ind{
+
+display: flex;
+align-items: center;
+padding-left: 25px;
+font-size: 30px;
+	 width: 100%;
+	 height:auto;
+
+}
+
+
+#datos-ind2{
+
+display: flex;
+align-items: center;
+	font-size: 16px;
+	background-color: #ffffff;
+	 color: #7e7780;
+	 border-bottom: 1px solid;
+	 border-color: #e1dce2;
+		text-align: left;
+	 width: 500px;
+	 height:auto;
+
+}
+.txt-ind{
+padding-left: 20px;
+
+}
+
+.icn-inner-ind{
+padding-left: 40px;
+
+}
+.icn-ind{
+
+	padding-left: 20px;
+}
+
+.barra{
+	padding-top: 100px;
+	height:170px;
+	width: 500px;
+	border: 2px solid;
+	 border-color: #e1dce2;
+}
+
+.grafico{
+	width: 500px;
+	height: auto;
+		border: 2px solid;
+	 border-color: #e1dce2;
+
+}
+/*-----------------------------FIN Perfil Estudiante---------------------------------*/
 
 /*-----------------------------Footer----------------------------*/
 div#footer{

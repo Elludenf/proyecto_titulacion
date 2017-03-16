@@ -32,7 +32,7 @@
 <?php echo form_open('prorroga/add'); ?>
 
 	<div  id="custom-lbl" >
-				Dis Codigo : 
+				Trabajo de Disertacion :
 				<select name="dis_codigo" class="edit-inp" >
 					<option value="">Seleccionar Trabajo de Disertacion</option>
 					<?php 
@@ -45,11 +45,11 @@
 					?>
 				</select>
 		</div>
-	<div  id="custom-lbl" >Pro Fechaint : <input type="text" class="edit-inp" name="pro_fechaint" value="<?php echo $this->input->post('pro_fechaint'); ?>" /></div>
-	<div  id="custom-lbl" >Pro Fechainicio : <input type="text" class="edit-inp" name="pro_fechainicio" value="<?php echo $this->input->post('pro_fechainicio'); ?>" /></div>
-	<div  id="custom-lbl" >Pro Fechafin : <input type="text" class="edit-inp" name="pro_fechafin" value="<?php echo $this->input->post('pro_fechafin'); ?>" /></div>
-	<div  id="custom-lbl" >Pro Descripcion : <input type="text" class="edit-inp" name="pro_descripcion" value="<?php echo $this->input->post('pro_descripcion'); ?>" /></div>
-	<div  id="custom-lbl" >Pro Detalle : <input type="text" class="edit-inp" name="pro_detalle" value="<?php echo $this->input->post('pro_detalle'); ?>" /></div>
+	<div  id="custom-lbl" >Fecha de Solicitud : <input type="date" class="edit-inp" name="pro_fechaint" value="<?php echo $this->input->post('pro_fechaint'); ?>" /></div>
+	<div  id="custom-lbl" >Fecha de Inicio : <input type="date" class="edit-inp" name="pro_fechainicio" value="<?php echo $this->input->post('pro_fechainicio'); ?>" /></div>
+	<div  id="custom-lbl" >Fecha de Fin : <input type="date" class="edit-inp" name="pro_fechafin" value="<?php echo $this->input->post('pro_fechafin'); ?>" /></div>
+	<div  id="custom-lbl" >Descripcion : <input type="text" class="edit-inp" name="pro_descripcion" value="<?php echo $this->input->post('pro_descripcion'); ?>" /></div>
+	<div  id="custom-lbl" >Detalle : <input type="text" class="edit-inp" name="pro_detalle" value="<?php echo $this->input->post('pro_detalle'); ?>" /></div>
 
     <div id="custom-lbl" ><button type="submit" id="add-submit"></button></div>
 

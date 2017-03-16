@@ -32,7 +32,7 @@
 <?php echo form_open('carrera/add'); ?>
 
 	<div  id="custom-lbl" >
-				Esc Codigo : 
+				Escuela:
 				<select name="esc_codigo" class="edit-inp" >
 					<option value="">Seleccionar Escuela</option>
 					<?php 
@@ -45,7 +45,7 @@
 					?>
 				</select>
 		</div>
-	<div  id="custom-lbl" >Carr Descripcion : <input type="text" class="edit-inp" name="carr_descripcion" value="<?php echo $this->input->post('carr_descripcion'); ?>" /></div>
+	<div  id="custom-lbl" >Descripcion: <input type="text" class="edit-inp" name="carr_descripcion" value="<?php echo $this->input->post('carr_descripcion'); ?>" /></div>
 
     <div id="custom-lbl" ><button type="submit" id="add-submit"></button></div>
 

@@ -26,15 +26,15 @@
 </script>
 
 <div id="edit-container">
-    <div id="edit-titulo">Nueva Revision</div>
+    <div id="edit-titulo">Nueva Revisión</div>
 <?php echo validation_errors(); ?>
 
 <?php echo form_open('revision/add'); ?>
 
 	<div  id="custom-lbl" >
-				Dis Codigo : 
+				Trabajo de Disertación:
 				<select name="dis_codigo" class="edit-inp" >
-					<option value="">Seleccionar Trabajo de Disertacion</option>
+					<option value="">Seleccionar Trabajo de Disertación</option>
 					<?php 
 					foreach($all_trabajo_disertacion as $trabajo_disertacion)
 					{
@@ -46,7 +46,7 @@
 				</select>
 		</div>
 	<div  id="custom-lbl" >
-				Prof Codigo : 
+				Profesor:
 				<select name="prof_codigo" class="edit-inp" >
 					<option value="">Seleccionar Profesor</option>
 					<?php 
@@ -59,8 +59,8 @@
 					?>
 				</select>
 		</div>
-	<div  id="custom-lbl" >Obs Fecha : <input type="text" class="edit-inp" name="obs_fecha" value="<?php echo $this->input->post('obs_fecha'); ?>" /></div>
-	<div  id="custom-lbl" >Obs Descripcion : <input type="text" class="edit-inp" name="obs_descripcion" value="<?php echo $this->input->post('obs_descripcion'); ?>" /></div>
+	<div  id="custom-lbl" >Fecha de la Observación : <input type="date" class="edit-inp" name="obs_fecha" value="<?php echo $this->input->post('obs_fecha'); ?>" /></div>
+	<div  id="custom-lbl" >Observación : <input type="text" class="edit-inp" name="obs_descripcion" value="<?php echo $this->input->post('obs_descripcion'); ?>" /></div>
 
     <div id="custom-lbl" ><button type="submit" id="add-submit"></button></div>
 

@@ -44,8 +44,8 @@
             ?>
 
     </div>
-	<div id="custom-lbl">Elb Nota Horal : <input type="text"  class="edit-inp" name="elb_nota_horal" value="<?php echo ($this->input->post('elb_nota_horal') ? $this->input->post('elb_nota_horal') : $elabora['elb_nota_horal']); ?>" /></div>
-	<div id="custom-lbl">Elb Nota Escrito : <input type="text" class="edit-inp"  name="elb_nota_escrito" value="<?php echo ($this->input->post('elb_nota_escrito') ? $this->input->post('elb_nota_escrito') : $elabora['elb_nota_escrito']); ?>" /></div>
+	<div id="custom-lbl">Nota Oral : <input type="text"  class="edit-inp" name="elb_nota_horal" value="<?php echo ($this->input->post('elb_nota_horal') ? $this->input->post('elb_nota_horal') : $elabora['elb_nota_horal']); ?>" /></div>
+	<div id="custom-lbl">Nota Escrito : <input type="text" class="edit-inp"  name="elb_nota_escrito" value="<?php echo ($this->input->post('elb_nota_escrito') ? $this->input->post('elb_nota_escrito') : $elabora['elb_nota_escrito']); ?>" /></div>
 	
 
     <div id="custom-lbl"><button type="submit" id="edit-submit"></button></div>
