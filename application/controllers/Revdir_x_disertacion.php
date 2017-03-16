@@ -123,7 +123,7 @@ class Revdir_x_disertacion extends CI_Controller
                 {
                     return substr($inthat, 0, strpos($inthat, $simbolo));
                 };
-                $user=before ('@', $user);
+                $user=before ('@', $user['prof_mailpuce']);
 
 
 
