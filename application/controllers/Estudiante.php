@@ -31,124 +31,142 @@ class Estudiante extends CI_Controller
     }
     function index()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            $data['estudiante'] = $this->Estudiante_model->get_all_estudiantes();
 
-        $data['estudiante'] = $this->Estudiante_model->get_all_estudiantes();
+            /*Empiezo de paginacion*/
+            $total_rows = $this->Estudiante_model->count();
 
-        /*Empiezo de paginacion*/
-        $total_rows = $this->Estudiante_model->count();
+            $this->load->library('pagination');
+            $config['total_rows'] = $total_rows;
+            $config['per_page'] = $this->limit;
+            $config['uri_segment'] = 3;
+            $config['base_url'] = base_url() . '/estudiante/index';
 
-        $this->load->library('pagination');
-        $config['total_rows'] = $total_rows;
-        $config['per_page'] = $this->limit;
-        $config['uri_segment'] = 3;
-        $config['base_url'] = base_url().'/estudiante/index';
+            //CSS
+            $config['full_tag_open'] = '<ul class="tsc_pagination tsc_paginationA tsc_paginationA01">';
+            $config['full_tag_close'] = '</ul>';
+            $config['prev_link'] = '&lt;';
+            $config['prev_tag_open'] = '<li>';
+            $config['prev_tag_close'] = '</li>';
+            $config['next_link'] = '&gt;';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['cur_tag_open'] = '<li class="current"><a href="#">';
+            $config['cur_tag_close'] = '</a></li>';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
 
-        //CSS
-        $config['full_tag_open'] = '<ul class="tsc_pagination tsc_paginationA tsc_paginationA01">';
-        $config['full_tag_close'] = '</ul>';
-        $config['prev_link'] = '&lt;';
-        $config['prev_tag_open'] = '<li>';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_link'] = '&gt;';
-        $config['next_tag_open'] = '<li>';
-        $config['next_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="current"><a href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['last_tag_open'] = '<li>';
+            $config['last_tag_close'] = '</li>';
 
-        $config['first_tag_open'] = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li>';
-        $config['last_tag_close'] = '</li>';
+            $config['first_link'] = '&lt;&lt;';
+            $config['last_link'] = '&gt;&gt;';
+            //Fin CSS
 
-        $config['first_link'] = '&lt;&lt;';
-        $config['last_link'] = '&gt;&gt;';
-        //Fin CSS
+            $this->pagination->initialize($config);
 
-        $this->pagination->initialize($config);
+            $page_links = $this->pagination->create_links();
+            $data['links'] = explode('&nbsp;', $page_links);
+            /*Fin de paginacion*/
 
-        $page_links = $this->pagination->create_links();
-        $data['links'] = explode('&nbsp;',$page_links );
-        /*Fin de paginacion*/
+            $this->load->helper('form');
+            $this->load->helper(array('form'));
+            $this->load->view('templates/header');
+            $this->load->view('estudiante/index', $data);
+            $this->load->view('templates/footer');
+        }  else{
 
-        $this->load->helper('form');
-        $this->load->helper(array('form'));
-        $this->load->view('templates/header');
-        $this->load->view('estudiante/index', $data);
-        $this->load->view('templates/footer');
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     /*search query*/
     function perfil()
     {
-        $user=$this->session-> __get('rolname');
-        //obtiene datos del estudiante
-        $data['estudiante'] = $this->Estudiante_model->get_datos($user);
-        $data['carrera'] = $this->Estudiante_model->get_carrera($user);
-        //obtiene datos de la disertacion
-        $data['disertacionExists'] = $this->Estudiante_model->getIfExistsDisertacion($user);
-        $data['disertacionInfo'] = $this->Estudiante_model->getDatosDisertacion($user);
-        $data['disertacionEstadoPresentacion'] = $this->Estudiante_model->getEstadoDisertacionPresentacion($user);
-        $data['disertacionEstadoAprobacion'] = $this->Estudiante_model->getEstadoAprobacion($user);
-        $data['disertacionEstadoFinalizacion'] = $this->Estudiante_model->getEstadoFinalizacion($user);
-        $data['disertacionEstadoDefensa'] = $this->Estudiante_model->getEstadoDefensa($user);
-        $data['directorDisertacion'] = $this->Profesor_model->getDirectorDisertacion($user);
-        $data['revisor1Disertacion'] = $this->Profesor_model->getRevisor1Disertacion($user);
-        $data['revisor2Disertacion'] = $this->Profesor_model->getRevisor2Disertacion($user);
-        
-        //obtiene datos examen complexivo
-        $data['complexivoExists'] = $this->Estudiante_model->getIfExistsComplexivo($user);
-        $data['responsableTitulacion1'] = $this->Profesor_model->getResponsableTitulacion1();
-        $data['responsableTitulacion2'] = $this->Profesor_model->getResponsableTitulacion2();
-        $data['complexivoPrimerIntentoInfo'] = $this->Examen_complexivo_model->getPrimerIntento($user);
-        $data['complexivoSegundoIntentoInfo'] = $this->Examen_complexivo_model->getSegundoIntento($user);
-        $data['materia1ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getPrimeraMateriaSorteadasPrimerIntento($user);
-        $data['materia2ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getSegundaMateriaSorteadasPrimerIntento($user);
-        $data['materia3ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getTerceraMateriaSorteadasPrimerIntento($user);
-        $data['materia4ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getCuartaMateriaSorteadasPrimerIntento($user);
-        $data['materia5ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getQuintaMateriaSorteadasPrimerIntento($user);
-        $data['nombreMateria1ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombrePrimeraMateriaSorteadasPrimerIntento($user);
-        $data['nombreMateria2ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombreSegundaMateriaSorteadasPrimerIntento($user);
-        $data['nombreMateria3ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombreTerceraMateriaSorteadasPrimerIntento($user);
-        $data['nombreMateria4ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombreCuartaMateriaSorteadasPrimerIntento($user);
-        $data['nombreMateria5ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombreQuintaMateriaSorteadasPrimerIntento($user);
-        $data['materia1ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getPrimeraMateriaSorteadasSegundoIntento($user);
-        $data['materia2ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getSegundaMateriaSorteadasSegundoIntento($user);
-        $data['materia3ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getTerceraMateriaSorteadasSegundoIntento($user);
-        $data['materia4ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getCuartaMateriaSorteadasSegundoIntento($user);
-        $data['materia5ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getQuintaMateriaSorteadasSegundoIntento($user);
-        $data['nombreMateria1ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombrePrimeraMateriaSorteadasSegundoIntento($user);
-        $data['nombreMateria2ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombreSegundaMateriaSorteadasSegundoIntento($user);
-        $data['nombreMateria3ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombreTerceraMateriaSorteadasSegundoIntento($user);
-        $data['nombreMateria4ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombreCuartaMateriaSorteadasSegundoIntento($user);
-        $data['nombreMateria5ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombreQuintaMateriaSorteadasSegundoIntento($user);
-        
-        /*Empiezo de paginacion*/
-        $total_rows = $this->Estudiante_model->count();
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            $user = $this->session->__get('rolname');
+            //obtiene datos del estudiante
+            $data['estudiante'] = $this->Estudiante_model->get_datos($user);
+            $data['carrera'] = $this->Estudiante_model->get_carrera($user);
+            //obtiene datos de la disertacion
+            $data['disertacionExists'] = $this->Estudiante_model->getIfExistsDisertacion($user);
+            $data['disertacionInfo'] = $this->Estudiante_model->getDatosDisertacion($user);
+            $data['disertacionEstadoPresentacion'] = $this->Estudiante_model->getEstadoDisertacionPresentacion($user);
+            $data['disertacionEstadoAprobacion'] = $this->Estudiante_model->getEstadoAprobacion($user);
+            $data['disertacionEstadoFinalizacion'] = $this->Estudiante_model->getEstadoFinalizacion($user);
+            $data['disertacionEstadoDefensa'] = $this->Estudiante_model->getEstadoDefensa($user);
+            $data['directorDisertacion'] = $this->Profesor_model->getDirectorDisertacion($user);
+            $data['revisor1Disertacion'] = $this->Profesor_model->getRevisor1Disertacion($user);
+            $data['revisor2Disertacion'] = $this->Profesor_model->getRevisor2Disertacion($user);
 
-        $this->load->library('pagination');
-        $config['total_rows'] = $total_rows;
-        $config['per_page'] = $this->limit;
-        $config['uri_segment'] = 3;
-        $config['base_url'] = base_url().'/estudiante/index';
-        $this->pagination->initialize($config);
+            //obtiene datos examen complexivo
+            $data['complexivoExists'] = $this->Estudiante_model->getIfExistsComplexivo($user);
+            $data['responsableTitulacion1'] = $this->Profesor_model->getResponsableTitulacion1();
+            $data['responsableTitulacion2'] = $this->Profesor_model->getResponsableTitulacion2();
+            $data['complexivoPrimerIntentoInfo'] = $this->Examen_complexivo_model->getPrimerIntento($user);
+            $data['complexivoSegundoIntentoInfo'] = $this->Examen_complexivo_model->getSegundoIntento($user);
+            $data['materia1ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getPrimeraMateriaSorteadasPrimerIntento($user);
+            $data['materia2ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getSegundaMateriaSorteadasPrimerIntento($user);
+            $data['materia3ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getTerceraMateriaSorteadasPrimerIntento($user);
+            $data['materia4ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getCuartaMateriaSorteadasPrimerIntento($user);
+            $data['materia5ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getQuintaMateriaSorteadasPrimerIntento($user);
+            $data['nombreMateria1ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombrePrimeraMateriaSorteadasPrimerIntento($user);
+            $data['nombreMateria2ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombreSegundaMateriaSorteadasPrimerIntento($user);
+            $data['nombreMateria3ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombreTerceraMateriaSorteadasPrimerIntento($user);
+            $data['nombreMateria4ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombreCuartaMateriaSorteadasPrimerIntento($user);
+            $data['nombreMateria5ComplexivoPrimerIntento'] = $this->Examen_complexivo_model->getNombreQuintaMateriaSorteadasPrimerIntento($user);
+            $data['materia1ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getPrimeraMateriaSorteadasSegundoIntento($user);
+            $data['materia2ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getSegundaMateriaSorteadasSegundoIntento($user);
+            $data['materia3ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getTerceraMateriaSorteadasSegundoIntento($user);
+            $data['materia4ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getCuartaMateriaSorteadasSegundoIntento($user);
+            $data['materia5ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getQuintaMateriaSorteadasSegundoIntento($user);
+            $data['nombreMateria1ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombrePrimeraMateriaSorteadasSegundoIntento($user);
+            $data['nombreMateria2ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombreSegundaMateriaSorteadasSegundoIntento($user);
+            $data['nombreMateria3ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombreTerceraMateriaSorteadasSegundoIntento($user);
+            $data['nombreMateria4ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombreCuartaMateriaSorteadasSegundoIntento($user);
+            $data['nombreMateria5ComplexivoSegundoIntento'] = $this->Examen_complexivo_model->getNombreQuintaMateriaSorteadasSegundoIntento($user);
 
-        $page_links = $this->pagination->create_links();
-        $data['links'] = explode('&nbsp;',$page_links );
-        /*Fin de paginacion*/
+            /*Empiezo de paginacion*/
+            $total_rows = $this->Estudiante_model->count();
 
-        $this->load->helper('form');
-        $this->load->helper(array('form'));
-        $this->load->view('templates/header');
-        $this->load->view('estudiante/perfil', $data);
-        $this->load->view('templates/footer');
+            $this->load->library('pagination');
+            $config['total_rows'] = $total_rows;
+            $config['per_page'] = $this->limit;
+            $config['uri_segment'] = 3;
+            $config['base_url'] = base_url() . '/estudiante/index';
+            $this->pagination->initialize($config);
+
+            $page_links = $this->pagination->create_links();
+            $data['links'] = explode('&nbsp;', $page_links);
+            /*Fin de paginacion*/
+
+            $this->load->helper('form');
+            $this->load->helper(array('form'));
+            $this->load->view('templates/header');
+            $this->load->view('estudiante/perfil', $data);
+            $this->load->view('templates/footer');
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
 
 
     function buscarEstudiante() {
 
-
+        if (isset($_SERVER['HTTP_REFERER']))
+        {
         $data['estudiante'] = $this->Estudiante_model->getEstudianteBusqueda($this->input->post('search'));
 
         /*Empiezo de paginacion*/
@@ -170,7 +188,15 @@ class Estudiante extends CI_Controller
         $this->load->helper(array('form'));
         $this->load->view('templates/header');
         $this->load->view('estudiante/index', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer'); }
+        else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     /*
      * page of reports
@@ -178,6 +204,8 @@ class Estudiante extends CI_Controller
 
     function reportes()
     {
+        if (isset($_SERVER['HTTP_REFERER']))
+        {
         $data['estudiante'] = $this->Estudiante_model->get_all_estudiantes();
 
         /*Empiezo de paginacion*/
@@ -198,9 +226,16 @@ class Estudiante extends CI_Controller
         $this->load->helper(array('form'));
         $this->load->view('templates/header');
         $this->load->view('estudiante/reportes', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer');}
+
+        else{
 
 
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
@@ -209,53 +244,70 @@ class Estudiante extends CI_Controller
 
     function graduados()
     {
-        $data['estudiante'] = $this->Estudiante_model->get_estudiantes_graduados();
-        $total_rows=$this->Estudiante_model->count();
-        $this->load->library('pagination');
-        $config['total_rows'] = $total_rows;
-        $config['per_page'] = $this->limit;
-        $config['uri_segment'] = 3;
-        $config['base_url'] = base_url() . '/estudiante/graduado';
-        $this->pagination->initialize($config);
 
-        $page_links = $this->pagination->create_links();
-        $data['links'] = explode('&nbsp;', $page_links);
-        /*Fin de paginacion*/
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            $data['estudiante'] = $this->Estudiante_model->get_estudiantes_graduados();
+            $total_rows = $this->Estudiante_model->count();
+            $this->load->library('pagination');
+            $config['total_rows'] = $total_rows;
+            $config['per_page'] = $this->limit;
+            $config['uri_segment'] = 3;
+            $config['base_url'] = base_url() . '/estudiante/graduado';
+            $this->pagination->initialize($config);
 
-        $this->load->helper('form');
-        $this->load->helper(array('form'));
-        $this->load->view('templates/header');
-        $this->load->view('estudiante/graduados', $data);
-        $this->load->view('templates/footer');
+            $page_links = $this->pagination->create_links();
+            $data['links'] = explode('&nbsp;', $page_links);
+            /*Fin de paginacion*/
+
+            $this->load->helper('form');
+            $this->load->helper(array('form'));
+            $this->load->view('templates/header');
+            $this->load->view('estudiante/graduados', $data);
+            $this->load->view('templates/footer');
+        }
+        else{
 
 
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     /*
      * all students disertacion
      */
 
     function disertacion(){
-        $data['estudiante'] = $this->Estudiante_model->get_estudiantes_disertacion();
-        $total_rows=$this->Estudiante_model->count();
-        $this->load->library('pagination');
-        $config['total_rows'] = $total_rows;
-        $config['per_page'] = $this->limit;
-        $config['uri_segment'] = 3;
-        $config['base_url'] = base_url() . '/estudiante/disertacion';
-        $this->pagination->initialize($config);
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            $data['estudiante'] = $this->Estudiante_model->get_estudiantes_disertacion();
+            $total_rows = $this->Estudiante_model->count();
+            $this->load->library('pagination');
+            $config['total_rows'] = $total_rows;
+            $config['per_page'] = $this->limit;
+            $config['uri_segment'] = 3;
+            $config['base_url'] = base_url() . '/estudiante/disertacion';
+            $this->pagination->initialize($config);
 
-        $page_links = $this->pagination->create_links();
-        $data['links'] = explode('&nbsp;', $page_links);
-        /*Fin de paginacion*/
+            $page_links = $this->pagination->create_links();
+            $data['links'] = explode('&nbsp;', $page_links);
+            /*Fin de paginacion*/
 
-        $this->load->helper('form');
-        $this->load->helper(array('form'));
-        $this->load->view('templates/header');
-        $this->load->view('estudiante/disertacion', $data);
-        $this->load->view('templates/footer');
+            $this->load->helper('form');
+            $this->load->helper(array('form'));
+            $this->load->view('templates/header');
+            $this->load->view('estudiante/disertacion', $data);
+            $this->load->view('templates/footer');
+
+        }
+        else{
 
 
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
 
+        }
 
     }
 
@@ -264,26 +316,35 @@ class Estudiante extends CI_Controller
      */
 
     function titulacion(){
-        $data['estudiante'] = $this->Estudiante_model->get_estudiantes_titulacion();
-        $total_rows=$this->Estudiante_model->count();
-        $this->load->library('pagination');
-        $config['total_rows'] = $total_rows;
-        $config['per_page'] = $this->limit;
-        $config['uri_segment'] = 3;
-        $config['base_url'] = base_url() . '/estudiante/titulacion';
-        $this->pagination->initialize($config);
 
-        $page_links = $this->pagination->create_links();
-        $data['links'] = explode('&nbsp;', $page_links);
-        /*Fin de paginacion*/
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            $data['estudiante'] = $this->Estudiante_model->get_estudiantes_titulacion();
+            $total_rows = $this->Estudiante_model->count();
+            $this->load->library('pagination');
+            $config['total_rows'] = $total_rows;
+            $config['per_page'] = $this->limit;
+            $config['uri_segment'] = 3;
+            $config['base_url'] = base_url() . '/estudiante/titulacion';
+            $this->pagination->initialize($config);
 
-        $this->load->helper('form');
-        $this->load->helper(array('form'));
-        $this->load->view('templates/header');
-        $this->load->view('estudiante/titulacion', $data);
-        $this->load->view('templates/footer');
+            $page_links = $this->pagination->create_links();
+            $data['links'] = explode('&nbsp;', $page_links);
+            /*Fin de paginacion*/
+
+            $this->load->helper('form');
+            $this->load->helper(array('form'));
+            $this->load->view('templates/header');
+            $this->load->view('estudiante/titulacion', $data);
+            $this->load->view('templates/footer');
+        }
+        else{
 
 
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
 
 
     }
@@ -293,61 +354,68 @@ class Estudiante extends CI_Controller
      */
     function add()
     {
-        $this->load->library('form_validation');
-
-        $this->form_validation->set_rules('carr_codigo','Carr Codigo','required|integer');
-        $this->form_validation->set_rules('est_nombre1','Est Nombre1','required');
-        $this->form_validation->set_rules('est_apellido1','Est Apellido1','required');
-        $this->form_validation->set_rules('est_tipoid','Est Tipoid','required|max_length[3]');
-        $this->form_validation->set_rules('est_id','Est Id','required');
-        $this->form_validation->set_rules('est_direccion','Est Direccion','required');
-        $this->form_validation->set_rules('est_celular','Est Celular','required');
-        $this->form_validation->set_rules('est_mail','Est Mail','required|valid_email');
-        $this->form_validation->set_rules('est_fechanac','Est Fechanac','required');
-        $this->form_validation->set_rules('est_sexo','Est Sexo','required|max_length[1]');
-        $this->form_validation->set_rules('est_fechaingreso','Est Fechaingreso','required');
-        $this->form_validation->set_rules('est_mailpuce','Est Mailpuce','valid_email');
-
-        if($this->form_validation->run())
+        if (isset($_SERVER['HTTP_REFERER']))
         {
-            //$this->db->select_max('per_codigo');
-            //$result= $this->db->get('estudiante')->row_array();
-            $params = array(
-                'carr_codigo' => $this->input->post('carr_codigo'),
-                'est_nombre1' => $this->input->post('est_nombre1'),
-                'est_nombre2' => $this->input->post('est_nombre2'),
-                'est_apellido1' => $this->input->post('est_apellido1'),
-                'est_apellido2' => $this->input->post('est_apellido2'),
-                'est_tipoid' => $this->input->post('est_tipoid'),
-                'est_id' => $this->input->post('est_id'),
-                'est_direccion' => $this->input->post('est_direccion'),
-                'est_telefono' => $this->input->post('est_telefono'),
-                'est_celular' => $this->input->post('est_celular'),
-                'est_mail' => $this->input->post('est_mail'),
-                'est_mailpuce' => $this->input->post('est_mailpuce'),
-                'est_fechanac' => $this->input->post('est_fechanac'),
-                'est_sexo' => $this->input->post('est_sexo'),
-                'est_foto' => $this->input->post('est_foto'),
-                'est_fechaingreso' => $this->input->post('est_fechaingreso'),
-                'est_fechaestimadagraduacion' => $this->input->post('est_fechaestimadagraduacion'),
-                'est_fechagraduacion' => $this->input->post('est_fechagraduacion'),
-            );
+            $this->load->library('form_validation');
 
-            $estudiante_id = $this->Estudiante_model->add_estudiante($params);
-            $this->Estudiante_model->add_user($params['est_mailpuce'],$params['est_id']);
-            redirect('estudiante/index');
+            $this->form_validation->set_rules('carr_codigo', 'Carr Codigo', 'required|integer');
+            $this->form_validation->set_rules('est_nombre1', 'Est Nombre1', 'required');
+            $this->form_validation->set_rules('est_apellido1', 'Est Apellido1', 'required');
+            $this->form_validation->set_rules('est_tipoid', 'Est Tipoid', 'required|max_length[3]');
+            $this->form_validation->set_rules('est_id', 'Est Id', 'required');
+            $this->form_validation->set_rules('est_direccion', 'Est Direccion', 'required');
+            $this->form_validation->set_rules('est_celular', 'Est Celular', 'required');
+            $this->form_validation->set_rules('est_mail', 'Est Mail', 'required|valid_email');
+            $this->form_validation->set_rules('est_fechanac', 'Est Fechanac', 'required');
+            $this->form_validation->set_rules('est_sexo', 'Est Sexo', 'required|max_length[1]');
+            $this->form_validation->set_rules('est_fechaingreso', 'Est Fechaingreso', 'required');
+            $this->form_validation->set_rules('est_mailpuce', 'Est Mailpuce', 'valid_email');
+
+            if ($this->form_validation->run()) {
+                //$this->db->select_max('per_codigo');
+                //$result= $this->db->get('estudiante')->row_array();
+                $params = array(
+                    'carr_codigo' => $this->input->post('carr_codigo'),
+                    'est_nombre1' => $this->input->post('est_nombre1'),
+                    'est_nombre2' => $this->input->post('est_nombre2'),
+                    'est_apellido1' => $this->input->post('est_apellido1'),
+                    'est_apellido2' => $this->input->post('est_apellido2'),
+                    'est_tipoid' => $this->input->post('est_tipoid'),
+                    'est_id' => $this->input->post('est_id'),
+                    'est_direccion' => $this->input->post('est_direccion'),
+                    'est_telefono' => $this->input->post('est_telefono'),
+                    'est_celular' => $this->input->post('est_celular'),
+                    'est_mail' => $this->input->post('est_mail'),
+                    'est_mailpuce' => $this->input->post('est_mailpuce'),
+                    'est_fechanac' => $this->input->post('est_fechanac'),
+                    'est_sexo' => $this->input->post('est_sexo'),
+                    'est_foto' => $this->input->post('est_foto'),
+                    'est_fechaingreso' => $this->input->post('est_fechaingreso'),
+                    'est_fechaestimadagraduacion' => $this->input->post('est_fechaestimadagraduacion'),
+                    'est_fechagraduacion' => $this->input->post('est_fechagraduacion'),
+                );
+
+                $estudiante_id = $this->Estudiante_model->add_estudiante($params);
+                $this->Estudiante_model->add_user($params['est_mailpuce'], $params['est_id']);
+                redirect('estudiante/index');
+            } else {
+
+
+                $this->load->model('Carrera_model');
+                $data['all_carreras'] = $this->Carrera_model->get_all_carreras_();
+
+                $this->load->view('templates/header');
+                $this->load->view('estudiante/add', $data);
+                $this->load->view('templates/footer');
+            }
         }
-        else
-        {
+        else{
 
-
-
-            $this->load->model('Carrera_model');
-            $data['all_carreras'] = $this->Carrera_model->get_all_carreras_();
 
             $this->load->view('templates/header');
-            $this->load->view('estudiante/add',$data);
+            $this->load->view('templates/forbidden');
             $this->load->view('templates/footer');
+
         }
     }
 
@@ -356,6 +424,8 @@ class Estudiante extends CI_Controller
      */
     function edit($est_codigo)
     {
+        if (isset($_SERVER['HTTP_REFERER']))
+        {
         $this->load->library('form_validation');
         // check if the estudiante exists before trying to edit it
         $estudiante = $this->Estudiante_model->get_estudiante($est_codigo);
@@ -416,6 +486,15 @@ class Estudiante extends CI_Controller
         }
         else
             show_error('The estudiante you are trying to edit does not exist.');
+        }
+        else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
@@ -423,6 +502,8 @@ class Estudiante extends CI_Controller
      */
     function remove($est_codigo)
     {
+        if (isset($_SERVER['HTTP_REFERER']))
+        {
         $estudiante = $this->Estudiante_model->get_estudiante($est_codigo);
 
         // check if the estudiante exists before trying to delete it
@@ -433,6 +514,15 @@ class Estudiante extends CI_Controller
         }
         else
             show_error('The estudiante you are trying to delete does not exist.');
+        }
+        else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
 
