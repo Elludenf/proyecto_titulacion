@@ -247,8 +247,7 @@
                     <?php echo $directorDisertacion['prof_nombre1'].' '.$directorDisertacion['prof_nombre2'].' '.$directorDisertacion['prof_apellido1'].' '.$directorDisertacion['prof_apellido2']; ?>
                     <ul>
                         <li>
-                            <span class="usuario-item">Mail Personal:</span>
-                            <?php echo $directorDisertacion['prof_mail'] ?>
+
                             <span class="usuario-item"> Mail PUCE:</span>
                             <?php echo $directorDisertacion['prof_mailpuce'] ?>
                             <span class="usuario-item"> Oficina:</span>
@@ -257,8 +256,7 @@
                         <li>
                             <span class="usuario-item">Telefono:</span>
                             <?php echo $directorDisertacion['prof_telefono'] ?>
-                            <span class="usuario-item"> Celular:</span>
-                            <?php echo $directorDisertacion['prof_celular'] ?>
+
                         </li>
                     </ul>
                 </li>
@@ -268,8 +266,7 @@
                     <?php echo $revisor1Disertacion['prof_nombre1'].' '.$revisor1Disertacion['prof_nombre2'].' '.$revisor1Disertacion['prof_apellido1'].' '.$revisor1Disertacion['prof_apellido2']; ?>
                     <ul>
                         <li>
-                            <span class="usuario-item">Mail Personal:</span>
-                            <?php echo $revisor1Disertacion['prof_mail'] ?>
+
                             <span class="usuario-item"> Mail PUCE:</span>
                             <?php echo $revisor1Disertacion['prof_mailpuce'] ?>
                             <span class="usuario-item"> Oficina:</span>
@@ -278,8 +275,7 @@
                         <li>
                             <span class="usuario-item">Telefono:</span>
                             <?php echo $revisor1Disertacion['prof_telefono'] ?>
-                            <span class="usuario-item"> Celular:</span>
-                            <?php echo $revisor1Disertacion['prof_celular'] ?>
+
                         </li>
                     </ul>
                 </li>
@@ -289,8 +285,7 @@
                     <?php echo $revisor2Disertacion['prof_nombre1'].' '.$revisor2Disertacion['prof_nombre2'].' '.$revisor2Disertacion['prof_apellido1'].' '.$revisor2Disertacion['prof_apellido2']; ?>
                     <ul>
                         <li>
-                            <span class="usuario-item">Mail Personal:</span>
-                            <?php echo $revisor2Disertacion['prof_mail'] ?>
+
                             <span class="usuario-item"> Mail PUCE:</span>
                             <?php echo $revisor2Disertacion['prof_mailpuce'] ?>
                             <span class="usuario-item"> Oficina:</span>
@@ -299,8 +294,7 @@
                         <li>
                             <span class="usuario-item">Telefono:</span>
                             <?php echo $revisor2Disertacion['prof_telefono'] ?>
-                            <span class="usuario-item"> Celular:</span>
-                            <?php echo $revisor2Disertacion['prof_celular'] ?>
+
                         </li>
                     </ul>
                 </li>

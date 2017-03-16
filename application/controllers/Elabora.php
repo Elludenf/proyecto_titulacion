@@ -99,6 +99,9 @@ class Elabora extends CI_Controller
                 );
 
                 $this->Elabora_model->update_elabora($est_codigo,$dis_codigo,$params);
+
+
+
                 redirect('elabora/index');
             }
             else

@@ -58,9 +58,25 @@ class Revdir_x_disertacion extends CI_Controller
                 'prof_codigo'=>$this->input->post('prof_codigo'),
                 'dis_codigo'=>$this->input->post('dis_codigo'),
 				'rxd_tipo' => $this->input->post('rxd_tipo'),
-				'rxd_fechanombramiento' => $this->input->post('rxd_fechanombramiento'),
+
+                'rxd_fechanombramiento' => $this->input->post('rxd_fechanombramiento'),
             );
-            
+            $user=$this->db->query('select prof_mailpuce from titulacion.profesor where prof_codigo='.$params['prof_codigo'].'');
+            function before ($simbolo, $inthat)
+            {
+                return substr($inthat, 0, strpos($inthat, $simbolo));
+            };
+            $user=before ('@', $user);
+            if($params['rxd_tipo']=='DIRECTOR')
+            {
+
+                $this->db->query('GRANT "R_DIRECTOR_T_TITULACION" TO '.$user.'');
+            }
+            else
+                {
+
+                $this->db->query('GRANT "R_REVISOR_T_TITULACION" TO '.$user.'');
+            }
             $revdir_x_disertacion_id = $this->Revdir_x_disertacion_model->add_revdir_x_disertacion($params);
             redirect('revdir_x_disertacion/index');
         }
@@ -100,7 +116,29 @@ class Revdir_x_disertacion extends CI_Controller
                 );
 
                 $this->Revdir_x_disertacion_model->update_revdir_x_disertacion($dis_codigo,$prof_codigo,$params);
+
+                $user=$this->db->query('select prof_mailpuce from titulacion.profesor where prof_codigo=\''.$prof_codigo.'\'')->row_array();
+
+                function before ($simbolo, $inthat)
+                {
+                    return substr($inthat, 0, strpos($inthat, $simbolo));
+                };
+                $user=before ('@', $user);
+
+
+
+                if($params['rxd_tipo']=='DIRECTOR')
+                {
+
+                    $this->db->query('GRANT "R_DIRECTOR_T_TITULACION" TO '.$user.'');
+                }
+                else
+                {
+
+                    $this->db->query('GRANT "R_REVISOR_T_TITULACION" TO '.$user.'');
+                }
                 redirect('revdir_x_disertacion/index');
+
             }
             else
             {   

@@ -103,6 +103,21 @@ GRANT SELECT(est_fechaestimadagraduacion) ON titulacion.estudiante TO "R_VISTA";
 GRANT SELECT(est_fechagraduacion), UPDATE(est_fechagraduacion), INSERT(est_fechagraduacion), REFERENCES(est_fechagraduacion) ON titulacion.estudiante TO "R_OPERADOR";
 GRANT SELECT(est_fechagraduacion) ON titulacion.estudiante TO "R_PROFESOR";
 GRANT SELECT(est_fechagraduacion) ON titulacion.estudiante TO "R_VISTA";
+GRANT SELECT ON TABLE titulacion.estudiante TO "R_ESTUDIANTE";
+
+
+--
+GRANT SELECT ON TABLE titulacion.carreras TO "R_ESTUDIANTE";
+GRANT SELECT ON TABLE titulacion.escuelas TO "R_ESTUDIANTE";
+GRANT SELECT ON TABLE titulacion.facultades TO "R_ESTUDIANTE";
+GRANT SELECT(prof_codigo) ON TITULACION.PROFESOR TO "R_ESTUDIANTE";
+GRANT SELECT(rolname,rolpassword) ON pg_authid TO "R_ESTUDIANTE";
+GRANT SELECT ON TABLE titulacion.responsables_titulacion TO "R_ESTUDIANTE";
+GRANT SELECT(prof_codigo) ON TITULACION.PROFESOR TO "R_ESTUDIANTE";
+GRANT SELECT(mat_nombre,mat_codigo) ON TITULACION.materias TO "R_ESTUDIANTE";
+GRANT SELECT ON TABLE TITULACION.trabajo_disertacion TO "R_PROFESOR";
+GRANT UPDATE (est_codigo,dis_codigo) ON TITULACION.ELABORA TO "R_PROFESOR";
+--
 
 --Examen_Complexivo
 GRANT SELECT(exa_codigo), UPDATE(exa_codigo), INSERT(exa_codigo), REFERENCES(exa_codigo) ON titulacion.examen_complexivo TO "R_OPERADOR";
@@ -252,6 +267,13 @@ GRANT SELECT(prof_foto) ON titulacion.profesor TO "R_VISTA";
 GRANT SELECT(prof_foto), UPDATE(prof_foto), INSERT(prof_foto), REFERENCES(prof_foto) ON titulacion.profesor TO "R_OPERADOR";
 GRANT SELECT(prof_oficina) ON titulacion.profesor TO "R_VISTA";
 GRANT SELECT(prof_oficina), UPDATE(prof_oficina), INSERT(prof_oficina), REFERENCES(prof_oficina) ON titulacion.profesor TO "R_OPERADOR";
+GRANT SELECT ON TABLE titulacion.responsables_titulacion TO "R_ESTUDIANTE";
+GRANT SELECT(est_id,est_codigo,est_nombre1,est_nombre2,est_apellido1,est_apellido2) ON TITULACION.ESTUDIANTE TO "R_PROFESOR";
+GRANT SELECT(dis_codigo,dis_titulo) ON  titulacion.trabajo_disertacion TO "R_PROFESOR";
+GRANT SELECT(est_codigo,dis_codigo) ON TITULACION.ELABORA TO "R_PROFESOR";
+GRANT SELECT(prof_codigo,dis_codigo) ON TITULACION.revdir_x_disertacion TO "R_PROFESOR";
+GRANT SELECT(prof_nombre1,prof_nombre2,prof_apellido1,prof_apellido2,prof_telefono,prof_telefono,prof_mailpuce,prof_oficina) ON TITULACION.profesor TO "R_ESTUDIANTE";
+GRANT SELECT(est_codigo,dis_codigo) ON TITULACION.ELABORA TO "R_PROFESOR";
 
 --PRORROGA
 GRANT SELECT(pro_codigo) ON titulacion.prorroga TO "R_VISTA";

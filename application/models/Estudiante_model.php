@@ -334,7 +334,7 @@ WHERE FOO IS NOT NULL')->row_array();
 
 
         //$pass="'".$pass."'";
-        $query='CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$this->db->escape($pass).'; GRANT "R_ESTUDIANTE" TO '.$user.'; GRANT "R_VISTA" TO '.$user.'';
+        $query='CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$this->db->escape($pass).'; GRANT "R_ESTUDIANTE" TO '.$user.'';
         //$this->db->query('CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$this->db->escape($pass).'; GRANT "R_ESTUDIANTE" TO '.$user.'');
         $this->db->query($query);
 
