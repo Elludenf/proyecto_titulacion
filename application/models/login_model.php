@@ -40,7 +40,7 @@ Class Login_model extends CI_Model
     }
 
     public function get_grup_role($username){
-        return $this->db->query(' SELECT rolname FROM pg_roles WHERE pg_has_role( \''.$username.'\', oid, \'member\') LIMIT 1 offset 1;')->row_array();
+        return $this->db->query(' SELECT rolname FROM pg_roles WHERE pg_has_role( \''.$username.'\', oid, \'member\') LIMIT 1;')->row_array();
     }
 }
 ?>

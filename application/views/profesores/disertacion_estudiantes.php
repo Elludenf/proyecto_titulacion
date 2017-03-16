@@ -59,17 +59,27 @@
 
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo</a>	</th>
 
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">titulo</a></th>
-
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">1er Nombre</a></th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">2do Nombre</a></th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">1er Apellido</a></th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">2do Apellido</a></th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">TIPO</a></th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">TEMA</a></th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</a></th>
 
                                 </tr>
                                 <?php foreach($estudiantes as $e){ ?>
                                     <tr>
-                                        <td><?php echo $e['dis_codigo']; ?></td>
+                                        <td><?php echo $e['est_id']; ?></td>
+                                        <td><?php echo $e['est_nombre1']; ?></td>
+                                        <td><?php echo $e['est_nombre2']; ?></td>
+                                        <td><?php echo $e['est_apellido1']; ?></td>
+                                        <td><?php echo $e['est_apellido2']; ?></td>
+                                        <td><?php echo $e['rxd_tipo']; ?></td>>
                                         <td><?php echo $e['dis_titulo']; ?></td>
 
-
                                         <td>
+
                                             <a href="<?php echo site_url('elabora/edit/'.$e['est_codigo'].'/'.$e['dis_codigo']); ?>">Calificar</a>
                                         </td>
 
