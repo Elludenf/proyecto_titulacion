@@ -120,12 +120,20 @@ class Elabora extends CI_Controller
 					'elb_nota_escrito' => $this->input->post('elb_nota_escrito'),
                 );
 
-                $this->Elabora_model->update_elabora($est_codigo,$params);            
-                redirect('elabora/index');
+                $this->Elabora_model->update_elabora($est_codigo,$dis_codigo,$params);
+
+                if($this->session-> __get('rol_group')== 'R_PROFESOR')
+                {
+                    redirect('profesor/disertacion_estudiantes');
+                }
+                else
+                {
+                     redirect('elabora/index');
+                }
             }
             else
             {   
-                $data['elabora'] = $this->Elabora_model->get_elabora($est_codigo);
+                $data['elabora'] = $this->Elabora_model->get_elabora($est_codigo,$dis_codigo);
 
                 $this->load->model('Estudiante_model');
                 $data['estudiante'] = $this->Estudiante_model->get_estudiante($est_codigo);

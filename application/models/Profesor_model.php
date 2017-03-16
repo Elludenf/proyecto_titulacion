@@ -27,7 +27,7 @@ class Profesor_model extends CI_Model
     function get_estudiantes_disertacion($user){
 
         $correo=$user.'@puce.edu.ec';
-        return $this->db->query('select est_id,est_nombre1,est_nombre2,est_apellido1,est_apellido2,dis_titulo from titulacion.estudiante natural join 
+        return $this->db->query('select est_id,est_codigo,est_nombre1,est_nombre2,est_apellido1,est_apellido2,dis_codigo,dis_titulo from titulacion.estudiante natural join 
         titulacion.elabora natural join titulacion.trabajo_disertacion natural join titulacion.revdir_x_disertacion 
         natural join titulacion.profesor where prof_mailpuce=\''.$correo.'\'')->result_array();
     }
@@ -39,20 +39,20 @@ class Profesor_model extends CI_Model
 
     function getResponsableTitulacion1()
     {
-        return $this->db->query('SELECT * FROM titulacion.profesor where titulacion.profesor.prof_codigo in (SELECT titulacion.responsables_titulacion.prof_codigo FROM 
+        return $this->db->query('SELECT prof_Codigo,prof_nombre1,prof_nombre2,prof_apellido1,prof_apellido2,prof_telefono,prof_mailpuce,prof_oficina FROM titulacion.profesor where titulacion.profesor.prof_codigo in (SELECT titulacion.responsables_titulacion.prof_codigo FROM 
 titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.res_tipo=\'R1\' AND titulacion.responsables_titulacion.res_fechanombramiento=(select max(titulacion.responsables_titulacion.res_fechanombramiento) 
 from titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.res_tipo=\'R1\'))')->row_array();
     }
     function getResponsableTitulacion2()
     {
-        return $this->db->query('SELECT * FROM titulacion.profesor where titulacion.profesor.prof_codigo in (SELECT titulacion.responsables_titulacion.prof_codigo FROM 
+        return $this->db->query('SELECT prof_Codigo,prof_nombre1,prof_nombre2,prof_apellido1,prof_apellido2,prof_telefono,prof_mailpuce,prof_oficina FROM titulacion.profesor where titulacion.profesor.prof_codigo in (SELECT titulacion.responsables_titulacion.prof_codigo FROM 
 titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.res_tipo=\'R2\' AND titulacion.responsables_titulacion.res_fechanombramiento=(select max(titulacion.responsables_titulacion.res_fechanombramiento) 
 from titulacion.responsables_titulacion WHERE titulacion.responsables_titulacion.res_tipo=\'R2\'))')->row_array();
     }
     function getDirectorDisertacion($user)
     {
         $correo=$user.'@puce.edu.ec';
-        return $this->db->query('SELECT * FROM TITULACION.PROFESOR WHERE titulacion.profesor.prof_Codigo in
+        return $this->db->query('SELECT prof_Codigo,prof_nombre1,prof_nombre2,prof_apellido1,prof_apellido2,prof_telefono,prof_mailpuce,prof_oficina FROM TITULACION.PROFESOR WHERE titulacion.profesor.prof_Codigo in
 (SELECT prof_Codigo FROM titulacion.REVDIR_X_DISERTACION WHERE titulacion.REVDIR_X_DISERTACION.dis_Codigo
 in(SELECT dis_codigo FROM TITULACION.trabajo_disertacion where TITULACION.trabajo_disertacion.dis_codigo in
 (SELECT titulacion.elabora.dis_codigo FROM titulacion.elabora WHERE
@@ -63,7 +63,7 @@ titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) and titulacion.REVDIR_X_DI
     function getRevisor1Disertacion($user)
     {
         $correo=$user.'@puce.edu.ec';
-        return $this->db->query('SELECT * FROM TITULACION.PROFESOR WHERE titulacion.profesor.prof_Codigo in
+        return $this->db->query('SELECT prof_Codigo,prof_nombre1,prof_nombre2,prof_apellido1,prof_apellido2,prof_telefono,prof_mailpuce,prof_oficina FROM TITULACION.PROFESOR WHERE titulacion.profesor.prof_Codigo in
 (SELECT prof_Codigo FROM titulacion.REVDIR_X_DISERTACION WHERE titulacion.REVDIR_X_DISERTACION.dis_Codigo
 in(SELECT dis_codigo FROM TITULACION.trabajo_disertacion where TITULACION.trabajo_disertacion.dis_codigo in
 (SELECT titulacion.elabora.dis_codigo FROM titulacion.elabora WHERE
@@ -74,7 +74,7 @@ titulacion.estudiante.est_MailPuce=\''.$correo.'\'))) and titulacion.REVDIR_X_DI
     function getRevisor2Disertacion($user)
     {
         $correo=$user.'@puce.edu.ec';
-        return $this->db->query('SELECT * FROM TITULACION.PROFESOR WHERE titulacion.profesor.prof_Codigo in
+        return $this->db->query('SELECT prof_Codigo,prof_nombre1,prof_nombre2,prof_apellido1,prof_apellido2,prof_telefono,prof_mailpuce,prof_oficina FROM TITULACION.PROFESOR WHERE titulacion.profesor.prof_Codigo in
 (SELECT prof_Codigo FROM titulacion.REVDIR_X_DISERTACION WHERE titulacion.REVDIR_X_DISERTACION.dis_Codigo
 in(SELECT dis_codigo FROM TITULACION.trabajo_disertacion where TITULACION.trabajo_disertacion.dis_codigo in
 (SELECT titulacion.elabora.dis_codigo FROM titulacion.elabora WHERE
@@ -149,7 +149,7 @@ then \'Responsable Unidad de Titulación 2\'
         $user=before ('@', $user);
         $pass="'".$pass."'";
 
-        $this->db->query('CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$pass.'; GRANT "R_PROFESOR" TO '.$user.'; GRANT "R_VISTA" TO '.$user.'');
+        $this->db->query('CREATE ROLE '.$user.' LOGIN ENCRYPTED PASSWORD '.$pass.'; GRANT "R_PROFESOR" TO '.$user.'');
         //return $this->db->insert_id();
     }
     

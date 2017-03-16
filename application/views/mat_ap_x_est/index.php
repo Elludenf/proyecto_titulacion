@@ -109,7 +109,7 @@
 		<td><?php echo $m['est_codigo']; ?></td>
         <td><?php echo $m['est_apellido1'].' '.$m['est_apellido2'].' '.$m['est_nombre1'].' '.$m['est_nombre2']; ; ?></td>
 		<td>
-            <a href="<?php echo site_url('mat_ap_x_est/edit/'.$m['mat_codigo'].'/'.$m['est_codigo']); ?>">Edit</a> |
+
             <a href="<?php echo site_url('mat_ap_x_est/remove/'.$m['mat_codigo'].'/'.$m['est_codigo']); ?>">Delete</a>
         </td>
     </tr>

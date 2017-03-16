@@ -29,21 +29,20 @@
     <div id="edit-titulo">Modificar Disertacion Elaborada por Estudiante</div>
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('elabora/edit/'.$elabora['est_codigo']); ?>
+<?php echo form_open('elabora/edit/'.$elabora['est_codigo'].'/'.$elabora['dis_codigo']); ?>
 
     <div id="custom-lbl">Estudiante: <?php echo $estudiante['est_apellido1'].$estudiante['est_apellido2'].$estudiante['est_nombre1'].$estudiante['est_nombre2']?></div>
     <div id="custom-lbl">Trabajo Disertacion :
-        <select name="dis_codigo"  class="edit-inp" >
-            <option value="">Seleccionar Disertacion</option>
+
             <?php
             foreach($all_trabajos as $trabajo_disertacion)
             {
-                $selected = ($trabajo_disertacion['dis_codigo'] == $elabora['dis_codigo']) ? ' selected="selected"' : null;
+               if($trabajo_disertacion['dis_codigo'] == $elabora['dis_codigo'])
 
-                echo '<option value="'.$trabajo_disertacion['dis_codigo'].'" '.$selected.'>'.$trabajo_disertacion['dis_titulo'].'</option>';
+                 echo $trabajo_disertacion['dis_titulo']?><?php
             }
             ?>
-        </select>
+
     </div>
 	<div id="custom-lbl">Nota Oral : <input type="text"  class="edit-inp" name="elb_nota_horal" value="<?php echo ($this->input->post('elb_nota_horal') ? $this->input->post('elb_nota_horal') : $elabora['elb_nota_horal']); ?>" /></div>
 	<div id="custom-lbl">Nota Escrito : <input type="text" class="edit-inp"  name="elb_nota_escrito" value="<?php echo ($this->input->post('elb_nota_escrito') ? $this->input->post('elb_nota_escrito') : $elabora['elb_nota_escrito']); ?>" /></div>
