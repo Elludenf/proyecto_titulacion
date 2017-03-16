@@ -27,9 +27,10 @@ class Profesor_model extends CI_Model
     function get_estudiantes_disertacion($user){
 
         $correo=$user.'@puce.edu.ec';
-        return $this->db->query('select est_id,est_codigo,est_nombre1,est_nombre2,est_apellido1,est_apellido2,dis_codigo,dis_titulo from titulacion.estudiante natural join 
-        titulacion.elabora natural join titulacion.trabajo_disertacion natural join titulacion.revdir_x_disertacion 
-        natural join titulacion.profesor where prof_mailpuce=\''.$correo.'\'')->result_array();
+        return $this->db->query('SELECT * FROM titulacion.trabajo_disertacion WHERE titulacion.trabajo_disertacion.dis_Codigo IN
+(SELECT titulacion.revdir_x_disertacion.dis_Codigo FROM  titulacion.revdir_x_disertacion WHERE titulacion.revdir_x_disertacion.prof_Codigo IN
+(SELECT titulacion.profesor.prof_Codigo FROM titulacion.profesor WHERE 
+titulacion.profesor.prof_MailPuce =\''.$correo.'\'))')->result_array();
     }
 
     function count()
