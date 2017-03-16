@@ -42,6 +42,7 @@ grant SELECT(est_codigo,dis_codigo) ON TITULACION.ELABORA to "R_PROFESOR";
 grant SELECT(est_codigo,dis_codigo) ON TITULACION.ELABORA to "R_PROFESOR";
 grant UPDATE (est_codigo,dis_codigo) ON TITULACION.ELABORA to "R_PROFESOR";
 
+
 --Escuelas
 GRANT SELECT(esc_codigo), UPDATE(esc_codigo), INSERT(esc_codigo), REFERENCES(esc_codigo) ON titulacion.escuelas TO "R_OPERADOR";
 GRANT SELECT(esc_codigo) ON titulacion.escuelas TO "R_VISTA";
