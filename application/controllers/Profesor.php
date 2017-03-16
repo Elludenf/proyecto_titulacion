@@ -105,7 +105,7 @@ class Profesor extends CI_Controller
     function disertacion_estudiantes(){
         $user=$this->session-> __get('rolname');
         $data['profesor'] = $this->Profesor_model->get_datos($user);
-        $data['estudiantes']=$this->Profesor_model->get_estudiantes_disertacion($user);
+        $data['estudiantes']=$this->Profesor_model->get_all_trabajo_disertacion_x_profCodigo($user);
 
         /*Empiezo de paginacion*/
         $total_rows = $this->Profesor_model->count();
