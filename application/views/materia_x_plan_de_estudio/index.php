@@ -102,7 +102,7 @@
 		<td><?php echo $m['pac_codigo']; ?></td>
         <td><?php echo $m['pac_descripcion']; ?></td>
 		<td>
-            <a href="<?php echo site_url('materia_x_plan_de_estudio/edit/'.$m['plan_codigo'].'/'.$m['mat_codigo'].'/'.$m['pac_codigo']); ?>">Edit</a> |
+
             <a href="<?php echo site_url('materia_x_plan_de_estudio/remove/'.$m['plan_codigo'].'/'.$m['mat_codigo'].'/'.$m['pac_codigo']); ?>">Delete</a>
         </td>
     </tr>
