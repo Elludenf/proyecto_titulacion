@@ -88,7 +88,7 @@ class Profesor extends CI_Controller
             $c=0;
             $a_prof=[];
             foreach ($data['all_revdir'] as $revdir){
-                $prof=$this->Profesor_model->get_profesor($revdir['prof_codigo']);
+                $prof=$this->Trabajo_disertacion_model->get_profesor($revdir['prof_codigo']);
                 $a_prof[$c]=$prof;
                 $c++;
             }
