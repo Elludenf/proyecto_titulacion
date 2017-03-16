@@ -32,7 +32,7 @@
 
 <?php echo form_open('facultades/edit/'.$facultades['facu_codigo']); ?>
 
-	<div id="custom-lbl">Facu Descripcion : <input type="text" class="edit-inp"  name="facu_descripcion" value="<?php echo ($this->input->post('facu_descripcion') ? $this->input->post('facu_descripcion') : $facultades['facu_descripcion']); ?>" /></div>
+	<div id="custom-lbl">Descripcion : <input type="text" class="edit-inp"  name="facu_descripcion" value="<?php echo ($this->input->post('facu_descripcion') ? $this->input->post('facu_descripcion') : $facultades['facu_descripcion']); ?>" /></div>
 
     <div id="custom-lbl"><button type="submit" id="edit-submit"></button></div>
 

@@ -32,7 +32,7 @@
 <?php echo form_open('revision/edit/'.$revision['obs_codigo']); ?>
 
 	<div id="custom-lbl" >
-				Dis Codigo : 
+				Trabajo de Disertación :
 				<select name="dis_codigo" class="edit-inp" >
 
 					<?php 
@@ -46,7 +46,7 @@
 				</select>
 		</div>
 	<div id="custom-lbl" >
-				Prof Codigo : 
+				Profesor:
 				<select name="prof_codigo" class="edit-inp" >
 					<?php 
 					foreach($all_profesores as $profesor)
@@ -58,8 +58,8 @@
 					?>
 				</select>
 		</div>
-	<div id="custom-lbl" >Obs Fecha : <input type="text" class="edit-inp"  name="obs_fecha" value="<?php echo ($this->input->post('obs_fecha') ? $this->input->post('obs_fecha') : $revision['obs_fecha']); ?>" /></div>
-	<div id="custom-lbl" >Obs Descripcion : <input type="text" class="edit-inp" name="obs_descripcion" value="<?php echo ($this->input->post('obs_descripcion') ? $this->input->post('obs_descripcion') : $revision['obs_descripcion']); ?>" /></div>
+	<div id="custom-lbl" >Fecha de la Observación : <input type="date" class="edit-inp"  name="obs_fecha" value="<?php echo ($this->input->post('obs_fecha') ? $this->input->post('obs_fecha') : $revision['obs_fecha']); ?>" /></div>
+	<div id="custom-lbl" >Observación: <input type="text" class="edit-inp" name="obs_descripcion" value="<?php echo ($this->input->post('obs_descripcion') ? $this->input->post('obs_descripcion') : $revision['obs_descripcion']); ?>" /></div>
 
     <div id="custom-lbl"><button type="submit" id="edit-submit"></button></div>
 

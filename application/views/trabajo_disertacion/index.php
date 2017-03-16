@@ -26,42 +26,55 @@
     <div id="content">
         <!--  start top-search -->
         <div id="top-search">
-            <h1>Trabajos de Disertacion</h1>
-            <table id= "tabla-busqueda" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td>
-                        <select  class="styledselect" onchange="location= this.value;">
-                            <option  value="default">-Seleccione una tabla-</option>
-                            <option  value='<?php echo site_url('estudiante/index')?>'> Estudiantes</option>
-                            <option  value='<?php echo site_url('profesor/index')?>'>Profesores</option>
-                            <option  value='<?php echo site_url('dicta/index')?>'>Materias Dictadas por Profesor</option>
-                            <option  value='<?php echo site_url('elabora/index')?>'>Disertacion Elaborada por Estudiante</option>
-                            <option  value='<?php echo site_url('escuela/index')?>'>Escuelas</option>
-                            <option  value='<?php echo site_url('carrera/index')?>'> Carreras</option>
-                            <option  value='<?php echo site_url('materia/index')?>'>Materias</option>
-                            <option  value='<?php echo site_url('facultades/index')?>'>Facultades</option>
-                            <option  value='<?php echo site_url('materia_x_plan_de_estudio/index')?>'>Materias por Plan de Estudio</option>
-                            <option  value='<?php echo site_url('mat_ap_x_est/index')?>'> Materias Aprobadas por Estudiante</option>
-                            <option  value='<?php echo site_url('matsorteadas_x_examan/index')?>'> Materias Sorteadas por Examen</option>
-                            <option  value='<?php echo site_url('periodos_academicos/index')?>'>Periodos Academicos</option>
-                            <option  value='<?php echo site_url('plan_de_estudio/index')?>'> Planes de estudio</option>
-                            <option  value='<?php echo site_url('examen_complexivo/index')?>'> Examen Complexivo</option>
-                            <option  value='<?php echo site_url('prorroga/index')?>'>Prorrogas</option>
-                            <option  value='<?php echo site_url('responsables_titulacion/index')?>'> Responsables Titulacion</option>
-                            <option  value='<?php echo site_url('revdir_x_disertacion/index')?>'>Director por Disertacion</option>
-                            <option  value='<?php echo site_url('revision/index')?>'> Revisiones</option>
-                            <option  value='<?php echo site_url('trabajo_disertacion/index')?>'>Trabajo de Disertacion</option>
+            <div id="titulo-ind" >Trabajos de Disertación   <a href="<?php echo site_url('trabajo_disertacion/add')?>"> <img src="<?php echo base_url();?>assets/images/pantalla_main/btn-add.png"></a>
+                <table id= "tabla-busqueda" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>
+                            <select  class="styledselect" onchange="location= this.value;">
+                                <option  value="default">-Seleccione una tabla-</option>
+                                <option  value='<?php echo site_url('estudiante/index')?>'> Estudiantes</option>
+                                <option  value='<?php echo site_url('profesor/index')?>'>Profesores</option>
+                                <option  value='<?php echo site_url('dicta/index')?>'>Materias Dictadas por Profesor</option>
+                                <option  value='<?php echo site_url('elabora/index')?>'>Disertacion Elaborada por Estudiante</option>
+                                <option  value='<?php echo site_url('escuela/index')?>'>Escuelas</option>
+                                <option  value='<?php echo site_url('carrera/index')?>'> Carreras</option>
+                                <option  value='<?php echo site_url('materia/index')?>'>Materias</option>
+                                <option  value='<?php echo site_url('facultades/index')?>'>Facultades</option>
+                                <option  value='<?php echo site_url('materia_x_plan_de_estudio/index')?>'>Materias por Plan de Estudio</option>
+                                <option  value='<?php echo site_url('mat_ap_x_est/index')?>'> Materias Aprobadas por Estudiante</option>
+                                <option  value='<?php echo site_url('matsorteadas_x_examan/index')?>'> Materias Sorteadas por Examen</option>
+                                <option  value='<?php echo site_url('periodos_academicos/index')?>'>Periodos Academicos</option>
+                                <option  value='<?php echo site_url('plan_de_estudio/index')?>'> Planes de estudio</option>
+                                <option  value='<?php echo site_url('examen_complexivo/index')?>'> Examen Complexivo</option>
+                                <option  value='<?php echo site_url('prorroga/index')?>'>Prorrogas</option>
+                                <option  value='<?php echo site_url('responsables_titulacion/index')?>'> Responsables Titulacion</option>
+                                <option  value='<?php echo site_url('revdir_x_disertacion/index')?>'>Director por Disertacion</option>
+                                <option  value='<?php echo site_url('revision/index')?>'> Revisiones</option>
+                                <option  value='<?php echo site_url('trabajo_disertacion/index')?>'>Trabajo de Disertacion</option>
 
-                        </select>
+                            </select>
+                        </td>
+                        <!-- <form action= <?php /*echo site_url("/estudiante/buscarEstudiante")*/ ?> value ="search" method ="post">
+                    <td>
+                        <input type="text" class="searchBox" id="searchBox"/>
+
                     </td>
                     <td>
-                        <input type="image" src="<?php echo base_url();?>/assets/images/pantalla_main/icono_busqueda.png"  />
+                        <input type="submit" value="search" src="<?php /*echo base_url();*/?>/assets/images/pantalla_main/icono_busqueda.png"  />
                     </td>
-                </tr>
-            </table>
+                    </form> -->
+                        <td>
+                            <img src="<?php echo base_url();?>/assets/images/pantalla_main/icono_busqueda.png"  />
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
     <!--  end top-search -->
+    <br><br><br>
+
 
     <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
         <tr>
@@ -85,15 +98,15 @@
 
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Codigo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Fechainicio</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Fechapresentacionplan</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Fechaaprobacion</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Titulo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Estado</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Fechafin</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Defensa</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha Inicio</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha de Presentacion del Plan</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fechaaprobacion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Titulo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Estado</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha de Fin</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Defensa</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
     </tr>
 	<?php foreach($trabajo_disertacion as $t){ ?>
     <tr>
@@ -106,14 +119,14 @@
 		<td><?php echo $t['dis_fechafin']; ?></td>
 		<td><?php echo $t['dis_defensa']; ?></td>
 		<td>
-            <a href="<?php echo site_url('trabajo_disertacion/edit/'.$t['dis_codigo']); ?>">Edit</a> |
-            <a href="<?php echo site_url('trabajo_disertacion/remove/'.$t['dis_codigo']); ?>">Delete</a>
+            <a href="<?php echo site_url('trabajo_disertacion/edit/'.$t['dis_codigo']); ?>">Editar</a> |
+            <a href="<?php echo site_url('trabajo_disertacion/remove/'.$t['dis_codigo']); ?>">Eliminar</a>
         </td>
     </tr>
 	<?php } ?>
 </table>
                             <?php foreach ($links as $link) {
-                                echo "<li>". $link."</li>";
+                                echo $link;
                             } ?>
                             <!--  end product-table................................... -->
                         </form>

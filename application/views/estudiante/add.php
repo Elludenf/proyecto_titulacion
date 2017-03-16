@@ -32,13 +32,13 @@
 <?php echo form_open('estudiante/add'); ?>
 
 
-	<div id="custom-lbl" >Est Nombre1 : <input type="text" class="edit-inp" name="est_nombre1" value="<?php echo $this->input->post('est_nombre1'); ?>" /></div>
-	<div id="custom-lbl" >Est Nombre2 : <input type="text" class="edit-inp" name="est_nombre2" value="<?php echo $this->input->post('est_nombre2'); ?>" /></div>
-	<div id="custom-lbl" >Est Apellido1 : <input type="text" class="edit-inp" name="est_apellido1" value="<?php echo $this->input->post('est_apellido1'); ?>" /></div>
-	<div id="custom-lbl" >Est Apellido2 : <input type="text" class="edit-inp" name="est_apellido2" value="<?php echo $this->input->post('est_apellido2'); ?>" /></div>
-	<div id="custom-lbl" >Est Tipoid :
+	<div id="custom-lbl" >Primer Nombre : <input type="text" class="edit-inp" name="est_nombre1" value="<?php echo $this->input->post('est_nombre1'); ?>" /></div>
+	<div id="custom-lbl" >Segundo Nombre : <input type="text" class="edit-inp" name="est_nombre2" value="<?php echo $this->input->post('est_nombre2'); ?>" /></div>
+	<div id="custom-lbl" >Primer Apellido : <input type="text" class="edit-inp" name="est_apellido1" value="<?php echo $this->input->post('est_apellido1'); ?>" /></div>
+	<div id="custom-lbl" >Segundp Apellido : <input type="text" class="edit-inp" name="est_apellido2" value="<?php echo $this->input->post('est_apellido2'); ?>" /></div>
+	<div id="custom-lbl" >Tipo ID :
 		<select name="est_tipoid" class="edit-inp">
-			<option value="">Seleccione el tipo de identificacion:</option>
+			<option value="">Seleccionar Tipo de ID</option>
 			<?php
 
 			echo '<option value="CED">Cedula</option>';
@@ -48,27 +48,27 @@
 			?>
 		</select>
 	</div>
-	<div id="custom-lbl" >Est Id : <input type="text" class="edit-inp" name="est_id" value="<?php echo $this->input->post('est_id'); ?>" /></div>
-	<div id="custom-lbl" >Est Direccion : <input type="text" class="edit-inp" name="est_direccion" value="<?php echo $this->input->post('est_direccion'); ?>" /></div>
-	<div id="custom-lbl" >Est Telefono : <input type="text" class="edit-inp" name="est_telefono" value="<?php echo $this->input->post('est_telefono'); ?>" /></div>
-	<div id="custom-lbl" >Est Celular : <input type="text" class="edit-inp" name="est_celular" value="<?php echo $this->input->post('est_celular'); ?>" /></div>
-	<div id="custom-lbl" >Est Mail : <input type="text" class="edit-inp" name="est_mail" value="<?php echo $this->input->post('est_mail'); ?>" /></div>
-	<div id="custom-lbl" >Est Mailpuce : <input type="text" class="edit-inp"  name="est_mailpuce" value="<?php echo $this->input->post('est_mailpuce'); ?>" /></div>
-	<div id="custom-lbl" >Est Fechanac : <input type="text" class="edit-inp" name="est_fechanac" value="<?php echo $this->input->post('est_fechanac'); ?>" /></div>
-	<div id="custom-lbl" >Est Sexo :
+	<div id="custom-lbl" >Id : <input type="text" class="edit-inp" name="est_id" value="<?php echo $this->input->post('est_id'); ?>" /></div>
+	<div id="custom-lbl" >Direccion : <input type="text" class="edit-inp" name="est_direccion" value="<?php echo $this->input->post('est_direccion'); ?>" /></div>
+	<div id="custom-lbl" >Telefono : <input type="text" class="edit-inp" name="est_telefono" value="<?php echo $this->input->post('est_telefono'); ?>" /></div>
+	<div id="custom-lbl" >Celular : <input type="text" class="edit-inp" name="est_celular" value="<?php echo $this->input->post('est_celular'); ?>" /></div>
+	<div id="custom-lbl" >Mail : <input type="text" class="edit-inp" name="est_mail" value="<?php echo $this->input->post('est_mail'); ?>" /></div>
+	<div id="custom-lbl" >Mail PUCE : <input type="text" class="edit-inp"  name="est_mailpuce" value="<?php echo $this->input->post('est_mailpuce'); ?>" /></div>
+	<div id="custom-lbl" >Fecha de Nacimiento : <input type="date"  class="edit-inp" name="est_fechanac" value="<?php echo $this->input->post('est_fechanac'); ?>" /></div>
+	<div id="custom-lbl" >Sexo :
 		<select name="est_sexo" class="edit-inp">
 			<option value="">Seleccione:</option>
 			<?php
 
-			echo '<option value="F">FEMENINO</option>';
-			echo '<option value="M">MASCULINO</option>';
+			echo '<option value="F">Femenino</option>';
+			echo '<option value="M">Masculino</option>';
 
 			?>
 		</select>
 	</div>
-	<div id="custom-lbl" >Est Foto : <input type="text" class="edit-inp" name="est_foto" value="<?php echo $this->input->post('est_foto'); ?>" /></div>
+	<div id="custom-lbl" >Foto : <input type="text" class="edit-inp" name="est_foto" value="<?php echo $this->input->post('est_foto'); ?>" /></div>
 	<div id="custom-lbl" >
-		Carr Codigo :
+		Carrera :
 		<select name="carr_codigo" class="edit-inp" >
 			<option value="">Seleccionar Carrera</option>
 			<?php
@@ -81,9 +81,9 @@
 			?>
 		</select>
 	</div>
-	<div id="custom-lbl" >Est Fechaingreso : <input type="text" class="edit-inp" name="est_fechaingreso" value="<?php echo $this->input->post('est_fechaingreso'); ?>" /></div>
-	<div id="custom-lbl" >Est Fechaestimadagraduacion : <input type="text" class="edit-inp" name="est_fechaestimadagraduacion" value="<?php echo $this->input->post('est_fechaestimadagraduacion'); ?>" /></div>
-	<div id="custom-lbl" >Est Fechagraduacion : <input type="text" class="edit-inp" name="est_fechagraduacion" value="<?php echo $this->input->post('est_fechagraduacion'); ?>" /></div>
+	<div id="custom-lbl" >Fecha de Ingreso : <input type="date" class="edit-inp" name="est_fechaingreso" value="<?php echo $this->input->post('est_fechaingreso'); ?>" /></div>
+	<div id="custom-lbl" >Fecha Estimada de Graduacion : <input type="date" class="edit-inp" name="est_fechaestimadagraduacion" value="<?php echo $this->input->post('est_fechaestimadagraduacion'); ?>" /></div>
+	<div id="custom-lbl" >Fecha de Graduacion : <input type="date" class="edit-inp" name="est_fechagraduacion" value="<?php echo $this->input->post('est_fechagraduacion'); ?>" /></div>
 
     <div id="custom-lbl" ><button type="submit" id="add-submit"></button></div>
 

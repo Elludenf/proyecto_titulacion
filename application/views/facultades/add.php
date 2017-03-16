@@ -31,7 +31,7 @@
 
 <?php echo form_open('facultades/add'); ?>
 
-	<div id="custom-lbl" >Facu Descripcion : <input type="text" class="edit-inp"  name="facu_descripcion" value="<?php echo $this->input->post('facu_descripcion'); ?>" /></div>
+	<div id="custom-lbl" >Descripcion: <input type="text" class="edit-inp"  name="facu_descripcion" value="<?php echo $this->input->post('facu_descripcion'); ?>" /></div>
 
     <div id="custom-lbl" ><button type="submit" id="add-submit"></button></div>
 

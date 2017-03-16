@@ -15,11 +15,31 @@ class Pg_authid extends CI_Controller
     /*
      * Listing of pg_authid
      */
+    private $limit = 5;
     function index()
     {
         $data['pg_authid'] = $this->Pg_authid_model->get_all_pg_authid();
 
-        $this->load->view('pg_authid/index',$data);
+
+        /*Empiezo de paginacion*/
+        $total_rows = $this->Pg_authid_model->count();
+
+        $this->load->library('pagination');
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'/pg_authid/index';
+        $this->pagination->initialize($config);
+
+        $page_links = $this->pagination->create_links();
+        $data['links'] = explode('&nbsp;',$page_links );
+        /*Fin de paginacion*/
+
+        $this->load->helper('form');
+        $this->load->helper(array('form'));
+        $this->load->view('templates/header');
+        $this->load->view('pg_authid/index', $data);
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -44,7 +64,9 @@ class Pg_authid extends CI_Controller
         }
         else
         {
+            $this->load->view('templates/header');
             $this->load->view('pg_authid/add');
+            $this->load->view('templates/footer');
         }
     }  
 
@@ -75,7 +97,9 @@ class Pg_authid extends CI_Controller
             else
             {
                 //$data['group_rol'] = $this->Pg_authid_model->get_rol($rolname);
-                $this->load->view('pg_authid/edit',$data);
+                $this->load->view('templates/header');
+                $this->load->view('pg_authid/edit', $data);
+                $this->load->view('templates/footer');
             }
         }
         else

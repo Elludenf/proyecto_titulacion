@@ -32,13 +32,13 @@
 <?php echo form_open('profesor/add'); ?>
 
 
-	<div  id="custom-lbl" >Prof Nombre1 : <input type="text"  class="edit-inp" name="prof_nombre1" value="<?php echo $this->input->post('prof_nombre1'); ?>" /></div>
-	<div  id="custom-lbl" >Prof Nombre2 : <input type="text" class="edit-inp"  name="prof_nombre2" value="<?php echo $this->input->post('prof_nombre2'); ?>" /></div>
-	<div  id="custom-lbl" >Prof Apellido1 : <input type="text" class="edit-inp" name="prof_apellido1" value="<?php echo $this->input->post('prof_apellido1'); ?>" /></div>
-	<div  id="custom-lbl" >Prof Apellido2 : <input type="text" class="edit-inp" name="prof_apellido2" value="<?php echo $this->input->post('prof_apellido2'); ?>" /></div>
-	<div  id="custom-lbl" >Prof Tipoid :
+	<div  id="custom-lbl" >Primer Nombre : <input type="text"  class="edit-inp" name="prof_nombre1" value="<?php echo $this->input->post('prof_nombre1'); ?>" /></div>
+	<div  id="custom-lbl" >Segundo Nombre : <input type="text" class="edit-inp"  name="prof_nombre2" value="<?php echo $this->input->post('prof_nombre2'); ?>" /></div>
+	<div  id="custom-lbl" >Primer Apellido : <input type="text" class="edit-inp" name="prof_apellido1" value="<?php echo $this->input->post('prof_apellido1'); ?>" /></div>
+	<div  id="custom-lbl" >Seguno Apellido : <input type="text" class="edit-inp" name="prof_apellido2" value="<?php echo $this->input->post('prof_apellido2'); ?>" /></div>
+	<div  id="custom-lbl" >Tipo ID :
         <select name="prof_tipoid" class="edit-inp">
-            <option value="">Seleccione el tipo de identificacion:</option>
+            <option value="">Seleccionar el Tipo de ID</option>
             <?php
 
             echo '<option value="CED">Cedula</option>';
@@ -48,26 +48,26 @@
             ?>
         </select>
     </div>
-	<div  id="custom-lbl" >Prof Id : <input type="text" class="edit-inp" name="prof_id" value="<?php echo $this->input->post('prof_id'); ?>" /></div>
-	<div  id="custom-lbl" >Prof Direccion : <input type="text" class="edit-inp" name="prof_direccion" value="<?php echo $this->input->post('prof_direccion'); ?>" /></div>
-	<div  id="custom-lbl" >Prof Telefono : <input type="text" class="edit-inp" name="prof_telefono" value="<?php echo $this->input->post('prof_telefono'); ?>" /></div>
-	<div  id="custom-lbl" >Prof Celular : <input type="text" class="edit-inp"  name="prof_celular" value="<?php echo $this->input->post('prof_celular'); ?>" /></div>
-	<div  id="custom-lbl" >Prof Mail : <input type="text" class="edit-inp" name="prof_mail" value="<?php echo $this->input->post('prof_mail'); ?>" /></div>
-	<div  id="custom-lbl" >Prof Mailpuce : <input type="text" class="edit-inp" name="prof_mailpuce" value="<?php echo $this->input->post('prof_mailpuce'); ?>" /></div>
-	<div  id="custom-lbl" >Prof Fechanac : <input type="text" class="edit-inp" name="prof_fechanac" value="<?php echo $this->input->post('prof_fechanac'); ?>" /></div>
-	<div  id="custom-lbl" >Prof Sexo :
+	<div  id="custom-lbl" >Id : <input type="text" class="edit-inp" name="prof_id" value="<?php echo $this->input->post('prof_id'); ?>" /></div>
+	<div  id="custom-lbl" >Direccion : <input type="text" class="edit-inp" name="prof_direccion" value="<?php echo $this->input->post('prof_direccion'); ?>" /></div>
+	<div  id="custom-lbl" >Telefono : <input type="text" class="edit-inp" name="prof_telefono" value="<?php echo $this->input->post('prof_telefono'); ?>" /></div>
+	<div  id="custom-lbl" >Celular : <input type="text" class="edit-inp"  name="prof_celular" value="<?php echo $this->input->post('prof_celular'); ?>" /></div>
+	<div  id="custom-lbl" >Mail : <input type="text" class="edit-inp" name="prof_mail" value="<?php echo $this->input->post('prof_mail'); ?>" /></div>
+	<div  id="custom-lbl" >Mail PUCE : <input type="text" class="edit-inp" name="prof_mailpuce" value="<?php echo $this->input->post('prof_mailpuce'); ?>" /></div>
+	<div  id="custom-lbl" >Fecha de Nacimiento : <input type="date" class="edit-inp" name="prof_fechanac" value="<?php echo $this->input->post('prof_fechanac'); ?>" /></div>
+	<div  id="custom-lbl" >Sexo :
         <select name="prof_sexo" class="edit-inp">
-            <option value="">Seleccione:</option>
+            <option value="">Seleccionar:</option>
             <?php
 
-            echo '<option value="F">FEMENINO</option>';
-            echo '<option value="M">MASCULINO</option>';
+            echo '<option value="F">Femenino</option>';
+            echo '<option value="M">Masculino</option>';
 
             ?>
         </select>
     </div>
-	<div  id="custom-lbl" >Prof Foto : <input type="text" class="edit-inp" name="prof_foto" value="<?php echo $this->input->post('prof_foto'); ?>" /></div>
-	<div  id="custom-lbl" >Prof Oficina : <input type="text" class="edit-inp" name="prof_oficina" value="<?php echo $this->input->post('prof_oficina'); ?>" /></div>
+	<div  id="custom-lbl" >Foto : <input type="text" class="edit-inp" name="prof_foto" value="<?php echo $this->input->post('prof_foto'); ?>" /></div>
+	<div  id="custom-lbl" >Oficina : <input type="text" class="edit-inp" name="prof_oficina" value="<?php echo $this->input->post('prof_oficina'); ?>" /></div>
 
     <div id="custom-lbl" ><button type="submit" id="add-submit"></button></div>
 

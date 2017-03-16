@@ -31,11 +31,11 @@
 
 <?php echo form_open('permiso/add'); ?>
 
-	<div  id="custom-lbl" >perm Estado : <input type="checkbox" class="edit-inp" name="perm_estado" value="1" value="<?php echo $this->input->post('perm_estado'); ?>" /></div>
-	<div  id="custom-lbl" >perm Creat : <input type="checkbox" class="edit-inp" name="perm_creat" value="1" value="<?php echo $this->input->post('perm_creat'); ?>" /></div>
-	<div  id="custom-lbl" >perm Read : <input type="checkbox" class="edit-inp" name="perm_read" value="1" value="<?php echo $this->input->post('perm_read'); ?>" /></div>
-	<div  id="custom-lbl" >perm Update : <input type="checkbox" class="edit-inp" name="perm_update" value="1" value="<?php echo $this->input->post('perm_update'); ?>" /></div>
-	<div  id="custom-lbl" >perm Delete : <input type="checkbox" class="edit-inp" name="perm_delete" value="1" value="<?php echo $this->input->post('perm_delete'); ?>" /></div>
+	<div  id="custom-lbl" >Estado : <input type="checkbox" class="edit-inp" name="perm_estado" value="1" value="<?php echo $this->input->post('perm_estado'); ?>" /></div>
+	<div  id="custom-lbl" >Creat : <input type="checkbox" class="edit-inp" name="perm_creat" value="1" value="<?php echo $this->input->post('perm_creat'); ?>" /></div>
+	<div  id="custom-lbl" >Read : <input type="checkbox" class="edit-inp" name="perm_read" value="1" value="<?php echo $this->input->post('perm_read'); ?>" /></div>
+	<div  id="custom-lbl" >Update : <input type="checkbox" class="edit-inp" name="perm_update" value="1" value="<?php echo $this->input->post('perm_update'); ?>" /></div>
+	<div  id="custom-lbl" >Delete : <input type="checkbox" class="edit-inp" name="perm_delete" value="1" value="<?php echo $this->input->post('perm_delete'); ?>" /></div>
 
     <div id="custom-lbl" ><button type="submit" id="add-submit"></button></div>
 

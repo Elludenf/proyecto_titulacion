@@ -10,7 +10,11 @@ class Pg_authid_model extends CI_Model
     {
         parent::__construct();
     }
-    
+    private $table = "pg_catalog.pg_authid";
+    function count()
+    {
+        return $this->db->count_all_results($this->table);
+    }
     /*
      * Get pg_authid by rolename
      */
@@ -33,9 +37,11 @@ class Pg_authid_model extends CI_Model
     /*
      * Get all pg_authid
      */
-    function get_all_pg_authid()
+    function get_all_pg_authid($limit = 5)
     {
-        $pg_authid = $this->db->query('SELECT rolname,rolpassword FROM pg_catalog.pg_authid WHERE rolinherit = TRUE')->result_array();
+        $offset = $this->uri->segment(3);
+        $pg_authid = $this->db->limit($limit, $offset)
+            ->query('SELECT rolname,rolpassword FROM pg_catalog.pg_authid WHERE rolinherit = TRUE')->result_array();
 
         return $pg_authid;
     }
