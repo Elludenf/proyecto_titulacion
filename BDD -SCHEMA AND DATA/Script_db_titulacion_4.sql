@@ -41,7 +41,7 @@ GRANT SELECT(elb_nota_escrito) ON titulacion.elabora TO "R_VISTA";
 grant SELECT(est_codigo,dis_codigo) ON TITULACION.ELABORA to "R_PROFESOR";
 grant SELECT(est_codigo,dis_codigo) ON TITULACION.ELABORA to "R_PROFESOR";
 grant UPDATE (est_codigo,dis_codigo) ON TITULACION.ELABORA to "R_PROFESOR";
-
+grant UPDATE  ON TABLE TITULACION.elabora to "R_PROFESOR";
 
 --Escuelas
 GRANT SELECT(esc_codigo), UPDATE(esc_codigo), INSERT(esc_codigo), REFERENCES(esc_codigo) ON titulacion.escuelas TO "R_OPERADOR";
