@@ -342,6 +342,7 @@ GRANT SELECT(res_fechanombramiento) ON titulacion.responsables_titulacion TO "R_
 GRANT SELECT(res_fechanombramiento) ON titulacion.responsables_titulacion TO "R_DIRECTOR_T_TITULACION";
 GRANT SELECT(res_fechanombramiento), UPDATE(res_fechanombramiento), INSERT(res_fechanombramiento), REFERENCES(res_fechanombramiento) ON titulacion.responsables_titulacion TO "R_OPERADOR";
 GRANT SELECT ON TABLE titulacion.responsables_titulacion TO "R_ESTUDIANTE";
+GRANT SELECT ON TABLE titulacion.responsables_titulacion TO "R_PROFESOR";
 
 
 --REVDIR_X_DISERTACION
