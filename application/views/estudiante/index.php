@@ -10,9 +10,9 @@
 
     <div class = "usuario-opciones">
         <div class = "usuario-opciones-desplegable">
-            <a href="<?php echo base_url();?>login/index" id="usuario-logout"> <img src="<?php echo base_url();?>assets/images/pantalla_main/icono_logout.png"> </a>
+            <a href="<?php echo site_url('Estudiante/reportes')?>" id="usuario-logout"> <img src="<?php echo base_url();?>assets/images/pantalla_main/icono_reportes.png"> </a>
             <div class="clear-desplegable"></div>
-
+            <a href="<?php echo base_url();?>login/index" id="usuario-logout"> <img src="<?php echo base_url();?>assets/images/pantalla_main/icono_logout.png"> </a>
         </div>
     </div>
 </div>
@@ -28,7 +28,8 @@
     <div id="content">
         <!--  start top-search -->
         <div id="top-search">
-            <h1>Estudiantes</h1>
+
+            <div id="titulo-ind" >Estudiantes   <a href="<?php echo site_url('Estudiante/add')?>"> <img src="<?php echo base_url();?>assets/images/pantalla_main/btn-add.png"></a>
             <table id= "tabla-busqueda" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                     <td>
@@ -71,6 +72,7 @@
 
                 </tr>
             </table>
+            </div>
         </div>
     </div>
         <!--  end top-search -->
@@ -78,15 +80,7 @@
 <!--stars reposts--------------------------------------------------------------------------------------------------------------------->
 <br><br><br>
 
-        <div id="select-report">
-
-            <div class="btn-reports">
-
-                <a href='<?php echo site_url('Estudiante/reportes')?>' class="btn-reports-default">REPORTES</a>
-
-            </div>
-        </div>
-<!----end reports----------------------------------------------------------------->
+     <!----end reports----------------------------------------------------------------->
 
         <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
             <tr>
@@ -160,8 +154,8 @@
                                             <td><?php echo $e['est_fechaestimadagraduacion']; ?></td>
                                             <td><?php echo $e['est_fechagraduacion']; ?></td>
                                             <td>
-                                                <a href="<?php echo site_url('estudiante/edit/'.$e['est_codigo']); ?>">Edit</a> |
-                                                <a href="<?php echo site_url('estudiante/remove/'.$e['est_codigo']); ?>">Delete</a>
+                                                <a href="<?php echo site_url('estudiante/edit/'.$e['est_codigo']); ?>">Editar</a> |
+                                                <a href="<?php echo site_url('estudiante/remove/'.$e['est_codigo']); ?>">Eliminar</a>
                                             </td>
 
                                         </tr>
@@ -169,7 +163,7 @@
                                 </table>
 
                                 <?php foreach ($links as $link) {
-                                    echo "<li>". $link."</li>";
+                                    echo $link;
                                 } ?>
                                 <!--  end product-table................................... -->
                             </form>

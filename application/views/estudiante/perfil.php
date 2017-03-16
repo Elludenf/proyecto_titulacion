@@ -13,7 +13,7 @@
         ]);
 
         var options = {
-            title: 'Horas de estudio para examen complexivo',
+            title: '',
             pieHole: 0.4,
         };
 
@@ -28,7 +28,7 @@
 
     function drawMultSeries() {
         var data = google.visualization.arrayToDataTable([
-            ['Materias', 'Nota de examen horal por materia', 'Nota de examen escrito por materia'],
+            ['Materias', 'Nota de examen oral por materia', 'Nota de examen escrito por materia'],
             [<?php echo "'" ?><?php echo $nombreMateria1ComplexivoPrimerIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia1ComplexivoPrimerIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia1ComplexivoPrimerIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia1ComplexivoPrimerIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia1ComplexivoPrimerIntento['mxe_nota_escrita_1'] ; ?> ],
             [<?php echo "'" ?><?php echo $nombreMateria2ComplexivoPrimerIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia2ComplexivoPrimerIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia2ComplexivoPrimerIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia2ComplexivoPrimerIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia2ComplexivoPrimerIntento['mxe_nota_escrita_1'] ; ?> ],
             [<?php echo "'" ?><?php echo $nombreMateria3ComplexivoPrimerIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia3ComplexivoPrimerIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia3ComplexivoPrimerIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia3ComplexivoPrimerIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia3ComplexivoPrimerIntento['mxe_nota_escrita_1'] ; ?> ],
@@ -37,7 +37,7 @@
         ]);
 
         var options = {
-            title: 'Notas primer intento examen complexivo',
+            title: '',
             chartArea: {width: '50%'},
             hAxis: {
                 title: 'Notas',
@@ -59,7 +59,7 @@
 
     function drawMultSeries1() {
         var data = google.visualization.arrayToDataTable([
-            ['Materias', 'Nota de examen horal por materia', 'Nota de examen escrito por materia'],
+            ['Materias', 'Nota de examen oral por materia', 'Nota de examen escrito por materia'],
             [<?php echo "'" ?><?php echo $nombreMateria1ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia1ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia1ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia1ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia1ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
             [<?php echo "'" ?><?php echo $nombreMateria2ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia2ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia2ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia2ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia2ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
             [<?php echo "'" ?><?php echo $nombreMateria3ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia3ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia3ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia3ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia3ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
@@ -68,7 +68,7 @@
         ]);
 
         var options = {
-            title: 'Notas segundo intento examen complexivo',
+            title: '',
             chartArea: {width: '50%'},
             hAxis: {
                 title: 'Notas',
@@ -113,561 +113,534 @@
 
     <div class="row">
 
-        <div class="servicios">
-            <h3>CONSULTAS</h3>
 
-            <div id="select-report">
-
-                <div class="btn-reports">
-
-                    <a href='<?php echo site_url('Estudiante/reportes')?>' class="btn-reports-default">DISERTACION</a>
-
-                </div>
-            </div>
-            <div id="select-report">
-
-                <div class="btn-reports">
-
-                    <a href='<?php echo site_url('Estudiante/reportes')?>' class="btn-reports-default">EXAMEN COMPLEXIVO</a>
-
-                </div>
-            </div>
-
-        </div>
 
         <div class="datos">
-            <h3>DATOS PERSONALES</h3>
 
-            <div class="pricing hover-effect">
+            <?php if(strcmp($disertacionExists['case'],'true')==0){;?> <div id ="main-titulo">Trabajo de Disertación</div><?php } ?>
+            <?php if(strcmp($complexivoExists['case'],'true')==0){;?> <div id ="main-titulo">Examen Complexivo</div><?php } ?>
+            <div id="container-datos">
 
+                <div id="container-inner-datos">
+                <div id="datosp-titulo">Datos Personales            </div>
+                <div class="datos-header">
 
-                <div class="pricing-head">
-
-                    <h3 class="bg-purple-wisteria">
-                        <?php echo $estudiante['est_apellido1'].' '.$estudiante['est_apellido2'].' '.$estudiante['est_nombre1'].' '.$estudiante['est_nombre2']; ?> <span>Estudiante</span>
-                    </h3>
+                    <div class="datos-nombre-tipo">
+                        <?php echo $estudiante['est_apellido1'].' '.$estudiante['est_apellido2'].' '.$estudiante['est_nombre1'].' '.$estudiante['est_nombre2']; ?>
+                    </div>
+                    <div class="datos-nombre-tipo2">
+                        <span>Estudiante</span>
+                    </div>
 
                 </div>
-                <ul class="pricing-content list-unstyled">
+                <div class="datos-body">
 
-                    <li>
-                        <i class="fa fa-user"></i>
-                        <span class="usuario-item"><?php echo $estudiante['est_tipoid']; ?>:</span>
-                        <?php echo $estudiante['est_id']; ?>             </li>
+                    <div id = "datos-ind" >
 
-                    <li>
-                        <i class="fa fa-envelope"></i>
-                        <span class="usuario-item">Correo:</span>
-                        <?php echo $estudiante['est_mailpuce']; ?>                 </li>
+                        <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"><span class="txt-ind"><?php echo $estudiante['est_tipoid']; ?>:
+                        <?php echo $estudiante['est_id']; ?>  </span>           </div>
 
-                    <li>
-                        <i class="fa fa-calendar-minus-o"></i>
-                        <span class="usuario-item">Facultad:</span>
-                        <?php echo $carrera['facu_descripcion']; ?>                      </li>
+                    <div id = "datos-ind" >
 
-                    <li>
-                        <i class="fa fa-calendar-minus-o"></i>
-                        <span class="usuario-item">Carrera:</span>
-                        <?php echo $carrera['carr_descripcion'];?>                      </li>
+                        <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/mail_icono.png"> <span class="txt-ind">Correo:
+                            <?php echo $estudiante['est_mailpuce']; ?>           </span>      </div>
 
+                    <div id = "datos-ind" >
 
+                        <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"><span class="txt-ind">Facultad:
+                        <?php echo $carrera['facu_descripcion']; ?></span>                      </div>
 
-                </ul>
+                    <div id = "datos-ind" >
 
+                        <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"> <span class="txt-ind">Carrera:
+                        <?php echo $carrera['carr_descripcion'];?>   </span>                   </div>
 
+                </div>
+
+                </div>
+                <?php if(strcmp($disertacionExists['case'],'true')==0){;?>
+                <div id="container-inner-datos">
+
+                    <div id="datosp-titulo" >Progreso de la Disertación</div>
+                    <div class = "barra">
+                        <ul class="progressbar">
+                            <li <?php echo $disertacionEstadoPresentacion['disestado']; ?>>Presentación plan de Tesis</li>
+                            <li <?php echo $disertacionEstadoAprobacion['disestado']; ?>>Aprobación plan de Tesis</li>
+                            <li <?php echo $disertacionEstadoFinalizacion['disestado']; ?>>Finalización Disertación</li>
+                            <li <?php echo $disertacionEstadoDefensa['disestado']; ?>>Defensa</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <?php } else if(strcmp($complexivoExists['case'],'true')==0){;?>
+                <div id="container-inner-datos">
+
+                    <div id="datosp-titulo" >  Horas de Estudio Para Examen Complexivo </div>
+                    <div class="grafico">
+                        <div id="donutchart" style="width: 500px; height: 275px;"></div> </div></div><?php };?>
 
             </div>
-
+            <div class = "clear2"></div>
             <?php if(strcmp($disertacionExists['case'],'true')==0){;?>
-            <div class="container">
-                <ul class="progressbar">
-                    <li <?php echo $disertacionEstadoPresentacion['disestado']; ?>>Presentación plan de Tesis</li>
-                    <li <?php echo $disertacionEstadoAprobacion['disestado']; ?>>Aprobación plan de Tesis</li>
-                    <li <?php echo $disertacionEstadoFinalizacion['disestado']; ?>>Finalización Disertación</li>
-                    <li <?php echo $disertacionEstadoDefensa['disestado']; ?>>Defensa</li>
-                </ul>
+            <div id="container-datos">
 
+                <div id="container-inner-datos">
 
-            <b></b>
-            <b></b>
+                    <div id="datosp-titulo">Detalles</div>
 
-                <h3>INFORMACIÓN DEL TRABAJO DEL ESTUDIANTE</h3>
+                    <div class="datos-header">
 
-                <div class="pricing hover-effect">
-
-
-                    <div class="pricing-head">
-
-                        <h3 class="bg-purple-wisteria"><span>Disertación</span>
-                        </h3>
+                        <div class="datos-nombre-tipo"><span>Disertación</span>
+                        </div>
 
                     </div>
 
-            <ul class="pricing-content list-unstyled">
+                    <div class="datos-body">
 
-                <li>
-                    <i class="fa fa-user"></i>
-                    <span class="usuario-item">Codigo de la Disertación:</span>
-                    <?php echo $disertacionInfo['dis_codigo']; ?>             </li>
+                        <div id = "datos-ind" >
 
-                <li>
-                    <i class="fa fa-envelope"></i>
-                    <span class="usuario-item">Fecha Inicio de la Disertación:</span>
-                    <?php echo $disertacionInfo['dis_fechainicio']; ?>                 </li>
+                            <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Codigo de la Disertación:
+                            <?php echo $disertacionInfo['dis_codigo']; ?>        </span>      </div>
+                        <div id = "datos-ind" >
 
-                <li>
-                    <i class="fa fa-calendar-minus-o"></i>
-                    <span class="usuario-item">Fecha presentación del plan:</span>
-                    <?php echo $disertacionInfo['dis_fechapresentacionplan']; ?>                      </li>
+                            <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"> <span class="txt-ind">Fecha Inicio de la Disertación:
+                            <?php echo $disertacionInfo['dis_fechainicio']; ?>   </span>               </div>
 
-                <li>
-                    <i class="fa fa-calendar-minus-o"></i>
-                    <span class="usuario-item">Fecha aprobación del plan:</span>
-                    <?php echo $disertacionInfo['dis_fechaaprobacion']; ?>                      </li>
+                        <div id = "datos-ind" >
 
-                <li>
-                    <i class="fa fa-calendar-minus-o"></i>
-                    <span class="usuario-item">Título de la disertación:</span>
-                    <?php echo $disertacionInfo['dis_titulo']; ?>                      </li>
-                <li>
-                    <i class="fa fa-calendar-minus-o"></i>
-                    <span class="usuario-item">Finalizado?:</span>
-                    <?php echo $disertacionInfo['dis_estado']; ?>                      </li>
-                <li>
-                    <i class="fa fa-calendar-minus-o"></i>
-                    <span class="usuario-item">Fecha finalización de la disertación:</span>
-                    <?php echo $disertacionInfo['dis_fechafin']; ?>                      </li>
-                <li>
-                    <i class="fa fa-calendar-minus-o"></i>
-                    <span class="usuario-item">Fecha defensa:</span>
-                    <?php echo $disertacionInfo['dis_defensa']; ?>                      </li>
-                <li>
-                    <i class="fa fa-calendar-minus-o"></i>
-                    <span class="usuario-item">Director:</span>
-                    <?php echo $directorDisertacion['prof_nombre1'].' '.$directorDisertacion['prof_nombre2'].' '.$directorDisertacion['prof_apellido1'].' '.$directorDisertacion['prof_apellido2']; ?>
-                    <ul>
-                        <li>
-                            <span class="usuario-item">Mail Personal:</span>
-                            <?php echo $directorDisertacion['prof_mail'] ?>
-                            <span class="usuario-item"> Mail PUCE:</span>
-                            <?php echo $directorDisertacion['prof_mailpuce'] ?>
-                            <span class="usuario-item"> Oficina:</span>
-                            <?php echo $directorDisertacion['prof_oficina'] ?>
-                        </li>
-                        <li>
-                            <span class="usuario-item">Telefono:</span>
-                            <?php echo $directorDisertacion['prof_telefono'] ?>
-                            <span class="usuario-item"> Celular:</span>
-                            <?php echo $directorDisertacion['prof_celular'] ?>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <i class="fa fa-calendar-minus-o"></i>
-                    <span class="usuario-item">Revisor 1:</span>
-                    <?php echo $revisor1Disertacion['prof_nombre1'].' '.$revisor1Disertacion['prof_nombre2'].' '.$revisor1Disertacion['prof_apellido1'].' '.$revisor1Disertacion['prof_apellido2']; ?>
-                    <ul>
-                        <li>
-                            <span class="usuario-item">Mail Personal:</span>
-                            <?php echo $revisor1Disertacion['prof_mail'] ?>
-                            <span class="usuario-item"> Mail PUCE:</span>
-                            <?php echo $revisor1Disertacion['prof_mailpuce'] ?>
-                            <span class="usuario-item"> Oficina:</span>
-                            <?php echo $revisor1Disertacion['prof_oficina'] ?>
-                        </li>
-                        <li>
-                            <span class="usuario-item">Telefono:</span>
-                            <?php echo $revisor1Disertacion['prof_telefono'] ?>
-                            <span class="usuario-item"> Celular:</span>
-                            <?php echo $revisor1Disertacion['prof_celular'] ?>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <i class="fa fa-calendar-minus-o"></i>
-                    <span class="usuario-item">Revisor 2:</span>
-                    <?php echo $revisor2Disertacion['prof_nombre1'].' '.$revisor2Disertacion['prof_nombre2'].' '.$revisor2Disertacion['prof_apellido1'].' '.$revisor2Disertacion['prof_apellido2']; ?>
-                    <ul>
-                        <li>
-                            <span class="usuario-item">Mail Personal:</span>
-                            <?php echo $revisor2Disertacion['prof_mail'] ?>
-                            <span class="usuario-item"> Mail PUCE:</span>
-                            <?php echo $revisor2Disertacion['prof_mailpuce'] ?>
-                            <span class="usuario-item"> Oficina:</span>
-                            <?php echo $revisor2Disertacion['prof_oficina'] ?>
-                        </li>
-                        <li>
-                            <span class="usuario-item">Telefono:</span>
-                            <?php echo $revisor2Disertacion['prof_telefono'] ?>
-                            <span class="usuario-item"> Celular:</span>
-                            <?php echo $revisor2Disertacion['prof_celular'] ?>
-                        </li>
-                    </ul>
-                </li>
+                            <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"><span class="txt-ind">Fecha presentación del plan:
+                            <?php echo $disertacionInfo['dis_fechapresentacionplan']; ?>          </span>             </div>
 
-            </ul>
+                        <div id = "datos-ind" >
+
+                            <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"><span class="txt-ind">Fecha aprobación del plan:
+                            <?php echo $disertacionInfo['dis_fechaaprobacion']; ?>    </span>                   </div>
+
+                        <div id = "datos-ind" >
+
+                            <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Título de la disertación:
+                            <?php echo $disertacionInfo['dis_titulo']; ?>           </span>            </div>
+                        <div id = "datos-ind" >
+
+                            <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">  <span class="txt-ind">Estado:
+                            <?php  if($disertacionInfo['dis_estado'] == true) echo "Finalizado"; else echo "No Finalizado" ; ?>                 </span>      </div>
+                        <div id = "datos-ind" >
+
+                            <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"><span class="txt-ind">Fecha finalización de la disertación:
+                            <?php echo $disertacionInfo['dis_fechafin']; ?>              </span>         </div>
+                        <div id = "datos-ind" >
+
+                            <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"><span class="txt-ind">Fecha de la Defensa:
+                            <?php echo $disertacionInfo['dis_defensa']; ?>                 </span>      </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+                    <div id="container-inner-datos">
+                        <div id="datosp-titulo">Información de Contacto</div>
+                        <div class="datos-header">
+
+                            <div class="datos-nombre-tipo"><span>Director y Revisores</span>
+                            </div>
+
+                        </div>
+
+                        <div class="datos-body">
+
+                        <div id = "datos-ind" >
+                            <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"><span class="txt-ind">Director:
+                            <?php echo $directorDisertacion['prof_nombre1'].' '.$directorDisertacion['prof_nombre2'].' '.$directorDisertacion['prof_apellido1'].' '.$directorDisertacion['prof_apellido2']; ?></span>
+                        </div>
+                                <div id = "datos-ind2" >
+                                    <img class = "icn-inner-ind" src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind">Mail Personal:
+                                    <?php echo $directorDisertacion['prof_mail'] ?></span>
+                                </div>
+                                <div  id = "datos-ind2" >
+                                    <img class = "icn-inner-ind" src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind"> Mail PUCE:
+                                    <?php echo $directorDisertacion['prof_mailpuce'] ?></span>
+                                </div>
+                                <div  id = "datos-ind2" >
+                                    <img class = "icn-inner-ind" src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind"> Oficina:
+                                    <?php echo $directorDisertacion['prof_oficina'] ?></span>
+                                </div>
+                                <div id = "datos-ind2" >
+                                    <img class = "icn-inner-ind" src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind">Telefono:
+                                    <?php echo $directorDisertacion['prof_telefono'] ?></span>
+                                </div>
+                                  <div id = "datos-ind2" >
+                                      <img class = "icn-inner-ind" src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind"> Celular:
+                                    <?php echo $directorDisertacion['prof_celular'] ?></span>
+                                </div>
+
+                        <div id = "datos-ind" >
+                            <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"><span class="txt-ind">Revisor 1:
+                            <?php echo $revisor1Disertacion['prof_nombre1'].' '.$revisor1Disertacion['prof_nombre2'].' '.$revisor1Disertacion['prof_apellido1'].' '.$revisor1Disertacion['prof_apellido2']; ?></span>
+                        </div>
+
+                        <div id = "datos-ind2" >
+                            <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind">Mail Personal:
+                            <?php echo $revisor1Disertacion['prof_mail'] ?></span></div>
+
+                            <div id = "datos-ind2" >
+                                <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind"> Mail PUCE:
+                                <?php echo $revisor1Disertacion['prof_mailpuce'] ?></span></div>
+
+                                <div id = "datos-ind2" >
+                                    <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind"> Oficina:
+                                    <?php echo $revisor1Disertacion['prof_oficina'] ?></span></div>
+
+                        <div id = "datos-ind2" >
+                            <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind">Telefono:
+                            <?php echo $revisor1Disertacion['prof_telefono'] ?></span></div>
+                        <div id = "datos-ind2" >
+                            <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind"> Celular:
+                            <?php echo $revisor1Disertacion['prof_celular'] ?></span></div>
+
+
+
+
+                        <div id = "datos-ind" >
+                            <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"> <span class="txt-ind">Revisor 2:
+                            <?php echo $revisor2Disertacion['prof_nombre1'].' '.$revisor2Disertacion['prof_nombre2'].' '.$revisor2Disertacion['prof_apellido1'].' '.$revisor2Disertacion['prof_apellido2']; ?></span>
+                        </div>
+
+                        <div id = "datos-ind2" >
+                            <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Mail Personal:
+                            <?php echo $revisor2Disertacion['prof_mail'] ?></span></div>
+                        <div id = "datos-ind2" >
+                            <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind"> Mail PUCE:
+                            <?php echo $revisor2Disertacion['prof_mailpuce'] ?></span></div>
+                        <div id = "datos-ind2" >
+                            <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind"> Oficina:
+                            <?php echo $revisor2Disertacion['prof_oficina'] ?></span></div>
+
+
+                        <div id = "datos-ind2" >
+                            <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind">Telefono:
+                            <?php echo $revisor2Disertacion['prof_telefono'] ?></span></div>
+                        <div id = "datos-ind2" >
+                            <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind"> Celular:
+                            <?php echo $revisor2Disertacion['prof_celular'] ?></span></div>
+
+
+                        </div>
+
+                    </div>
             
             </div>
             <?php } ?>
 
 
             <?php if(strcmp($complexivoExists['case'],'true')==0){;?>
-                <div id="donutchart" style="width: 900px; height: 500px;"></div>
+
                 <div class="datos">
-                    <h3>INFORMACIÓN DEL TRABAJO DEL ESTUDIANTE</h3>
-
-                    <div class="pricing hover-effect">
-
-
-                        <div class="pricing-head">
-
-                            <h3 class="bg-purple-wisteria">
-                                <span>Examen Complexivo</span>
-                            </h3>
-
-                        </div>
-                        <ul class="pricing-content list-unstyled">
-
-                            <li>
-                                <i class="fa fa-calendar-minus-o"></i>
-                                <span class="usuario-item">Responsable Unidad Titulación 1:</span>
-                                <?php echo $responsableTitulacion1['prof_nombre1'].' '.$responsableTitulacion1['prof_nombre2'].' '.$responsableTitulacion1['prof_apellido1'].' '.$responsableTitulacion1['prof_apellido2']; ?>
-                                <ul>
-                                    <li>
-                                        <span class="usuario-item">Mail Personal:</span>
-                                        <?php echo $responsableTitulacion1['prof_mail'] ?>
-                                        <span class="usuario-item"> Mail PUCE:</span>
-                                        <?php echo $responsableTitulacion1['prof_mailpuce'] ?>
-                                        <span class="usuario-item"> Oficina:</span>
-                                        <?php echo $responsableTitulacion1['prof_oficina'] ?>
-                                    </li>
-                                    <li>
-                                        <span class="usuario-item">Telefono:</span>
-                                        <?php echo $responsableTitulacion1['prof_telefono'] ?>
-                                        <span class="usuario-item"> Celular:</span>
-                                        <?php echo $responsableTitulacion1['prof_celular'] ?>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <i class="fa fa-calendar-minus-o"></i>
-                                <span class="usuario-item">Responsable Unidad Titulación 2:</span>
-                                <?php echo $responsableTitulacion2['prof_nombre1'].' '.$responsableTitulacion2['prof_nombre2'].' '.$responsableTitulacion2['prof_apellido1'].' '.$responsableTitulacion2['prof_apellido2']; ?>
-                                <ul>
-                                    <li>
-                                        <span class="usuario-item">Mail Personal:</span>
-                                        <?php echo $responsableTitulacion2['prof_mail'] ?>
-                                        <span class="usuario-item"> Mail PUCE:</span>
-                                        <?php echo $responsableTitulacion2['prof_mailpuce'] ?>
-                                        <span class="usuario-item"> Oficina:</span>
-                                        <?php echo $responsableTitulacion2['prof_oficina'] ?>
-                                    </li>
-                                    <li>
-                                        <span class="usuario-item">Telefono:</span>
-                                        <?php echo $responsableTitulacion2['prof_telefono'] ?>
-                                        <span class="usuario-item"> Celular:</span>
-                                        <?php echo $responsableTitulacion2['prof_celular'] ?>
-                                    </li>
-                                </ul>
-                            </li>
-
-                        </ul>
 
 
 
-                    </div>
 
-                    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+                    <div id ="container-datos">
+                        <div id ="container-inner-datos">
+                        <div id="datosp-titulo" >  Notas Primer Intento Examen Complexivo </div>
+                        <div class="grafico">
+                            <div id="chart_div" style="width: 500px; height: 450px;"></div>
+                        </div></div>
 
-                    <div class="pricing-head">
 
-                        <h3 class="bg-purple-wisteria">
+                        <div id ="container-inner-datos">
+                            <div id="datosp-titulo" >  Detalle </div>
+                    <div class="datos-header">
+
+                        <div class="datos-nombre-tipo">
                             <span>Primer Intento</span>
-                        </h3>
+                        </div>
 
                     </div>
-                    <ul class="pricing-content list-unstyled">
 
-                                <li>
-                            <i class="fa fa-calendar-minus-o"></i>
+                    <div class="datos-body">
 
+                        <div id = "datos-ind" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"> <span class="txt-ind">Fecha inicio del proceso:
+                            <?php echo $complexivoPrimerIntentoInfo['exa_fechainicio'] ?></span></div>
 
-                                    <span class="usuario-item">Fecha inicio del proceso:</span>
-                                    <?php echo $complexivoPrimerIntentoInfo['exa_fechainicio'] ?>
-
-                                </li>
-                                <li>
-                                    <span class="usuario-item">Estado del examen:</span>
+                        <div id = "datos-ind" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Estado del examen:
                                     <?php if(strcmp($complexivoPrimerIntentoInfo['exa_estado'],'EP')==0)
                                         echo 'En proceso';
                                     else if(strcmp($complexivoPrimerIntentoInfo['exa_estado'],'RP')==0)
                                         echo 'Reprobado';
                                     else if(strcmp($complexivoPrimerIntentoInfo['exa_estado'],'AP')==0)
                                         echo 'Aprobado';
-                                    ?>
-                                </li>
+                                    ?></span></div>
 
 
-                                <li>
+                        <div id = "datos-ind2" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Materia 1:
+                            <?php echo $nombreMateria1ComplexivoPrimerIntento['mat_nombre'] ?></span></div>
+                        <div id = "datos-ind2" ><img class = "icn-inner-ind" src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"> <span class="txt-ind">Fecha:
+                            <?php echo $materia1ComplexivoPrimerIntento['mxe_fecha_1'] ?></span> </div>
 
-                                <span class="usuario-item">Materia 1:</span>
-                                <?php echo $nombreMateria1ComplexivoPrimerIntento['mat_nombre'] ?>
-                                    <ul>
-                                        <li>
+                        <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
+                            <?php echo $materia1ComplexivoPrimerIntento['mxe_nota_horal_1'] ?> </span></div>
 
-                                            <span class="usuario-item">Fecha:</span>
-                                            <?php echo $materia1ComplexivoPrimerIntento['mxe_fecha_1'] ?> </li>
-                                        <li>
+                        <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind"> Nota escrita:
+                            <?php echo $materia1ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?></span></span></div>
 
-                                            <span class="usuario-item">Nota horal:</span>
-                                            <?php echo $materia1ComplexivoPrimerIntento['mxe_nota_horal_1'] ?> </li>
-                                        <li>
+                                    <div id = "datos-ind2" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Materia 2:
+                                <?php echo $nombreMateria2ComplexivoPrimerIntento['mat_nombre'] ?></span></div>
 
-                                            <span class="usuario-item">Nota escrita:</span>
-                                            <?php echo $materia1ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?> </li>
+                            <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"> <span class="txt-ind">Fecha:
+                                <?php echo $materia2ComplexivoPrimerIntento['mxe_fecha_1'] ?></span></div>
 
-                                    </ul>
+                            <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
+                                <?php echo $materia2ComplexivoPrimerIntento['mxe_nota_horal_1'] ?></span></div>
 
-                                </li>
-                                <li>
+                            <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
+                                <?php echo $materia2ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?></span></div>
 
-                                    <span class="usuario-item">Materia 2:</span>
-                                    <?php echo $nombreMateria2ComplexivoPrimerIntento['mat_nombre'] ?>
-                                    <ul>
-                                        <li>
+                                    <div id = "datos-ind2" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Materia 3:
+                                <?php echo $nombreMateria3ComplexivoPrimerIntento['mat_nombre'] ?></span></div>
 
-                                            <span class="usuario-item">Fecha:</span>
-                                            <?php echo $materia2ComplexivoPrimerIntento['mxe_fecha_1'] ?> </li>
-                                        <li>
+                            <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"> <span class="txt-ind">Fecha:
+                                <?php echo $materia3ComplexivoPrimerIntento['mxe_fecha_1'] ?></span></div>
 
-                                            <span class="usuario-item">Nota horal:</span>
-                                            <?php echo $materia2ComplexivoPrimerIntento['mxe_nota_horal_1'] ?> </li>
-                                        <li>
+                            <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
+                                <?php echo $materia3ComplexivoPrimerIntento['mxe_nota_horal_1'] ?></span></div>
 
-                                            <span class="usuario-item">Nota escrita:</span>
-                                            <?php echo $materia2ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?> </li>
+                            <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
+                                <?php echo $materia3ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?></span></div>
 
-                                    </ul>
-
-                                </li>
-                                <li>
-
-                                    <span class="usuario-item">Materia 3:</span>
-                                    <?php echo $nombreMateria3ComplexivoPrimerIntento['mat_nombre'] ?>
-                                    <ul>
-                                        <li>
-
-                                            <span class="usuario-item">Fecha:</span>
-                                            <?php echo $materia3ComplexivoPrimerIntento['mxe_fecha_1'] ?> </li>
-                                        <li>
-
-                                            <span class="usuario-item">Nota horal:</span>
-                                            <?php echo $materia3ComplexivoPrimerIntento['mxe_nota_horal_1'] ?> </li>
-                                        <li>
-
-                                            <span class="usuario-item">Nota escrita:</span>
-                                            <?php echo $materia3ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?> </li>
-
-                                    </ul>
-
-                                </li>
-                                <li>
-
-                                    <span class="usuario-item">Materia 4:</span>
-                                    <?php echo $nombreMateria4ComplexivoPrimerIntento['mat_nombre'] ?>
-                                    <ul>
-                                        <li>
-
-                                            <span class="usuario-item">Fecha:</span>
-                                            <?php echo $materia4ComplexivoPrimerIntento['mxe_fecha_1'] ?> </li>
-                                        <li>
-
-                                            <span class="usuario-item">Nota horal:</span>
-                                            <?php echo $materia4ComplexivoPrimerIntento['mxe_nota_horal_1'] ?> </li>
-                                        <li>
-
-                                            <span class="usuario-item">Nota escrita:</span>
-                                            <?php echo $materia4ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?> </li>
-
-                                    </ul>
-
-                                </li>
-                                <li>
-
-                                    <span class="usuario-item">Materia 5:</span>
-                                    <?php echo $nombreMateria5ComplexivoPrimerIntento['mat_nombre'] ?>
-                                    <ul>
-                                        <li>
-
-                                            <span class="usuario-item">Fecha:</span>
-                                            <?php echo $materia5ComplexivoPrimerIntento['mxe_fecha_1'] ?> </li>
-                                        <li>
-
-                                            <span class="usuario-item">Nota horal:</span>
-                                            <?php echo $materia5ComplexivoPrimerIntento['mxe_nota_horal_1'] ?> </li>
-                                        <li>
-
-                                            <span class="usuario-item">Nota escrita:</span>
-                                            <?php echo $materia5ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?> </li>
-
-                                    </ul>
-
-                                </li>
-
-                    </ul>
+                            <div id = "datos-ind2" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Materia 4:
+                                <?php echo $nombreMateria4ComplexivoPrimerIntento['mat_nombre'] ?></span></div>
 
 
+                            <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"> <span class="txt-ind">Fecha:
+                                <?php echo $materia4ComplexivoPrimerIntento['mxe_fecha_1'] ?></span></div>
+
+                            <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
+                                <?php echo $materia4ComplexivoPrimerIntento['mxe_nota_horal_1'] ?></span></div>
+
+                            <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
+                                <?php echo $materia4ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?></span></div>
+
+                            <div id = "datos-ind2" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Materia 5:
+                                <?php echo $nombreMateria5ComplexivoPrimerIntento['mat_nombre'] ?></span></div>
+
+
+                            <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"> <span class="txt-ind">Fecha:
+                                <?php echo $materia5ComplexivoPrimerIntento['mxe_fecha_1'] ?></span></div>
+
+                            <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
+                                <?php echo $materia5ComplexivoPrimerIntento['mxe_nota_horal_1'] ?></span></div>
+
+                            <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
+                                <?php echo $materia5ComplexivoPrimerIntento['mxe_nota_escrita_1'] ?></span></div>
+
+                    </div>
+
+                        </div>
 
                 </div>
 
-                <div id="chart_div1" style="width: 900px; height: 500px;"></div>
-
-                <div class="pricing-head">
-
-                    <h3 class="bg-purple-wisteria">
-                        <span>Segundo Intento</span>
-                    </h3>
-
-                </div>
-                <ul class="pricing-content list-unstyled">
-
-                    <li>
-                        <i class="fa fa-calendar-minus-o"></i>
+                    <div class ="clear2"></div>
+                <div id = "container-datos">
 
 
-                        <span class="usuario-item">Fecha inicio del proceso:</span>
-                        <?php echo $complexivoSegundoIntentoInfo['exa_fechainicio'] ?>
 
-                    </li>
-                    <li>
-                        <span class="usuario-item">Estado del examen:</span>
+                    <div id ="container-inner-datos">
+                        <div id="datosp-titulo" >  Detalle </div>
+                        <div class="datos-header">
+
+                            <div class="datos-nombre-tipo">
+                                <span>Segundo Intento</span>
+                            </div>
+
+                        </div>
+                <div class="datos-body">
+
+
+
+                    <div id = "datos-ind" >
+                        <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/calendar_icono.png"> <span class="txt-ind">Fecha inicio del proceso:
+                        <?php echo $complexivoSegundoIntentoInfo['exa_fechainicio'] ?></div></span>
+
+
+                    <div id = "datos-ind" >
+
+                        <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Estado del examen:
                         <?php if(strcmp($complexivoSegundoIntentoInfo['exa_estado'],'EP')==0)
                             echo 'En proceso';
                         else if(strcmp($complexivoSegundoIntentoInfo['exa_estado'],'RP')==0)
                             echo 'Reprobado';
                         else if(strcmp($complexivoSegundoIntentoInfo['exa_estado'],'AP')==0)
                             echo 'Aprobado';
-                        ?>
-                    </li>
+                        ?></div></span>
 
 
-                    <li>
+                    <div id = "datos-ind2" >
+                        <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Materia 1:
+                        <?php echo $nombreMateria1ComplexivoSegundoIntento['mat_nombre'] ?></span></div>
 
-                        <span class="usuario-item">Materia 1:</span>
-                        <?php echo $nombreMateria1ComplexivoSegundoIntento['mat_nombre'] ?>
-                        <ul>
-                            <li>
 
-                                <span class="usuario-item">Fecha:</span>
-                                <?php echo $materia1ComplexivoSegundoIntento['mxe_fecha_1'] ?> </li>
-                            <li>
+                    <div id = "datos-ind2" >
+                        <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Fecha:
+                        <?php echo $materia1ComplexivoSegundoIntento['mxe_fecha_1'] ?></span></div>
 
-                                <span class="usuario-item">Nota horal:</span>
-                                <?php echo $materia1ComplexivoSegundoIntento['mxe_nota_horal_1'] ?> </li>
-                            <li>
 
-                                <span class="usuario-item">Nota escrita:</span>
-                                <?php echo $materia1ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?> </li>
+                    <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
+                        <?php echo $materia1ComplexivoSegundoIntento['mxe_nota_horal_1'] ?></span></div>
 
-                        </ul>
 
-                    </li>
-                    <li>
-
-                        <span class="usuario-item">Materia 2:</span>
-                        <?php echo $nombreMateria2ComplexivoSegundoIntento['mat_nombre'] ?>
-                        <ul>
-                            <li>
-
-                                <span class="usuario-item">Fecha:</span>
-                                <?php echo $materia2ComplexivoSegundoIntento['mxe_fecha_1'] ?> </li>
-                            <li>
-
-                                <span class="usuario-item">Nota horal:</span>
-                                <?php echo $materia2ComplexivoSegundoIntento['mxe_nota_horal_1'] ?> </li>
-                            <li>
-
-                                <span class="usuario-item">Nota escrita:</span>
-                                <?php echo $materia2ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?> </li>
-
-                        </ul>
-
-                    </li>
-                    <li>
-
-                        <span class="usuario-item">Materia 3:</span>
-                        <?php echo $nombreMateria3ComplexivoSegundoIntento['mat_nombre'] ?>
-                        <ul>
-                            <li>
-
-                                <span class="usuario-item">Fecha:</span>
-                                <?php echo $materia3ComplexivoSegundoIntento['mxe_fecha_1'] ?> </li>
-                            <li>
-
-                                <span class="usuario-item">Nota horal:</span>
-                                <?php echo $materia3ComplexivoSegundoIntento['mxe_nota_horal_1'] ?> </li>
-                            <li>
-
-                                <span class="usuario-item">Nota escrita:</span>
-                                <?php echo $materia3ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?> </li>
-
-                        </ul>
-
-                    </li>
-                    <li>
-
-                        <span class="usuario-item">Materia 4:</span>
-                        <?php echo $nombreMateria4ComplexivoSegundoIntento['mat_nombre'] ?>
-                        <ul>
-                            <li>
-
-                                <span class="usuario-item">Fecha:</span>
-                                <?php echo $materia4ComplexivoSegundoIntento['mxe_fecha_1'] ?> </li>
-                            <li>
-
-                                <span class="usuario-item">Nota horal:</span>
-                                <?php echo $materia4ComplexivoSegundoIntento['mxe_nota_horal_1'] ?> </li>
-                            <li>
-
-                                <span class="usuario-item">Nota escrita:</span>
-                                <?php echo $materia4ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?> </li>
-
-                        </ul>
-
-                    </li>
-                    <li>
-
-                        <span class="usuario-item">Materia 5:</span>
-                        <?php echo $nombreMateria5ComplexivoSegundoIntento['mat_nombre'] ?>
-                        <ul>
-                            <li>
-
-                                <span class="usuario-item">Fecha:</span>
-                                <?php echo $materia5ComplexivoSegundoIntento['mxe_fecha_1'] ?> </li>
-                            <li>
-
-                                <span class="usuario-item">Nota horal:</span>
-                                <?php echo $materia5ComplexivoSegundoIntento['mxe_nota_horal_1'] ?> </li>
-                            <li>
-
-                                <span class="usuario-item">Nota escrita:</span>
-                                <?php echo $materia5ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?> </li>
-
-                        </ul>
-
-                    </li>
-
-                </ul>
+                    <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
+                        <?php echo $materia1ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?></span></div>
 
 
 
-            </div>
-            <?php } ?>        
+
+                    <div id = "datos-ind2" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Materia 2:
+                        <?php echo $nombreMateria2ComplexivoSegundoIntento['mat_nombre'] ?></span></div>
+
+
+                    <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Fecha:
+                        <?php echo $materia2ComplexivoSegundoIntento['mxe_fecha_1'] ?></span></div>
+
+
+                        <div id = "datos-ind2" >  <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
+                            <?php echo $materia2ComplexivoSegundoIntento['mxe_nota_horal_1'] ?></span></div>
+
+
+                            <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
+                                <?php echo $materia2ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?></span></div>
+
+
+                    <div id = "datos-ind2" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Materia 3:
+                        <?php echo $nombreMateria3ComplexivoSegundoIntento['mat_nombre'] ?></span></div>
+
+
+
+                    <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Fecha:
+                        <?php echo $materia3ComplexivoSegundoIntento['mxe_fecha_1'] ?></span></div>
+
+                        <div id = "datos-ind2" >     <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
+                            <?php echo $materia3ComplexivoSegundoIntento['mxe_nota_horal_1'] ?></span></div>
+
+
+                            <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
+                                <?php echo $materia3ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?></span></div>
+
+
+                    <div id = "datos-ind2" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Materia 4:
+                        <?php echo $nombreMateria4ComplexivoSegundoIntento['mat_nombre'] ?></span></div>
+
+
+                    <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Fecha:
+                        <?php echo $materia4ComplexivoSegundoIntento['mxe_fecha_1'] ?></span></div>
+
+
+                        <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
+                            <?php echo $materia4ComplexivoSegundoIntento['mxe_nota_horal_1'] ?></span></div>
+
+
+                            <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
+                                <?php echo $materia4ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?></span></div>
+
+
+                    <div id = "datos-ind2" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Materia 5:
+                        <?php echo $nombreMateria5ComplexivoSegundoIntento['mat_nombre'] ?></span></div>
+
+
+
+                    <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Fecha:
+                        <?php echo $materia5ComplexivoSegundoIntento['mxe_fecha_1'] ?></span></div>
+
+
+                        <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
+                            <?php echo $materia5ComplexivoSegundoIntento['mxe_nota_horal_1'] ?></span></div>
+
+
+                            <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
+                                <?php echo $materia5ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?></span></div>
+
+
+
+
+
+                </div></div>  <div id ="container-inner-datos">
+                        <div id="datosp-titulo" >  Notas Segundo Intento Examen Complexivo </div>
+                        <div class="grafico">
+                            <div id="chart_div1" style="width: 500px; height: 450px;"></div>
+                        </div></div>
 
     </div>
+                    <div class="clear2"></div>
+                    <div id="container-datos">
 
-</div>
+
+                        <div id="container-inner-datos">
+                            <div id="datosp-titulo">Información de Contacto</div>
+                            <div class="datos-header">
+
+                                <div class="datos-nombre-tipo">Examen Complexivo</div>
+                            </div>
+
+
+                            <div class="datos-body">
+
+
+                                <div id = "datos-ind" >
+                                    <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"> <span class="txt-ind">Responsable Unidad Titulación 1:
+                                        <?php echo $responsableTitulacion1['prof_nombre1'].' '.$responsableTitulacion1['prof_nombre2'].' '.$responsableTitulacion1['prof_apellido1'].' '.$responsableTitulacion1['prof_apellido2']; ?></span>
+                                </div>
+                                <div id = "datos-ind" >      <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/mail_icono.png"> <span class="txt-ind">Mail Personal:
+                                        <?php echo $responsableTitulacion1['prof_mail'] ?> </div></span>
+                                <div id = "datos-ind" >        <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/mail_icono.png">  <span class="txt-ind"> Mail PUCE:
+                                    <?php echo $responsableTitulacion1['prof_mailpuce'] ?></div></span>
+                                <div id = "datos-ind" >         <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">     <span class="txt-ind"> Oficina:
+                                    <?php echo $responsableTitulacion1['prof_oficina'] ?></div></span>
+
+                                <div id = "datos-ind" >      <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"><span class="txt-ind">Telefono:
+                                    <?php echo $responsableTitulacion1['prof_telefono'] ?></div></span>
+                                <div id = "datos-ind" >       <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">    <span class="txt-ind"> Celular:
+                                    <?php echo $responsableTitulacion1['prof_celular'] ?></div></span>
+
+                            </div></div>
+                        <div id="container-inner-datos">
+                            <div id="datosp-titulo"></div>
+                            <div class="datos-header">
+
+                                <div class="datos-nombre-tipo">Examen Complexivo</div>
+                            </div>
+
+
+                            <div class="datos-body">
+
+                                <div id = "datos-ind" >
+                                    <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"><span class="txt-ind">Responsable Unidad Titulación 2:</span>
+                                    <?php echo $responsableTitulacion2['prof_nombre1'].' '.$responsableTitulacion2['prof_nombre2'].' '.$responsableTitulacion2['prof_apellido1'].' '.$responsableTitulacion2['prof_apellido2']; ?>
+                                </div>
+                                <div id = "datos-ind" >             <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/mail_icono.png">   <span class="txt-ind">Mail Personal:
+                                    <?php echo $responsableTitulacion2['prof_mail'] ?></div></span>
+                                <div id = "datos-ind" >           <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/mail_icono.png"> <span class="txt-ind"> Mail PUCE:
+                                    <?php echo $responsableTitulacion2['prof_mailpuce'] ?></div></span>
+                                <div id = "datos-ind" >             <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"><span class="txt-ind"> Oficina:
+                                    <?php echo $responsableTitulacion2['prof_oficina'] ?></div></span>
+
+                                <div id = "datos-ind" >           <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">  <span class="txt-ind">Telefono:
+                                    <?php echo $responsableTitulacion2['prof_telefono'] ?></div></span>
+                                <div id = "datos-ind" >          <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">  <span class="txt-ind"> Celular:
+                                    <?php echo $responsableTitulacion2['prof_celular'] ?></div></span>
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <?php } ?>
+
+                </div>
 
 <!--  end content -->
 <div class="clear-desplegable">&nbsp;</div>

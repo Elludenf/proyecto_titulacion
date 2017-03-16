@@ -57,12 +57,12 @@
         </select>
     </div>
 
-    <div id="custom-lbl">Mxe Fecha 1 : <input type="text"  class="edit-inp" name="mxe_fecha_1" value="<?php echo $this->input->post('mxe_fecha_1'); ?>" /></div>
-	<div id="custom-lbl">Mxe Fecha 2 : <input type="text"  class="edit-inp"  name="mxe_fecha_2" value="<?php echo $this->input->post('mxe_fecha_2'); ?>" /></div>
-	<div id="custom-lbl">Mxe Nota Horal 1 : <input type="text"  class="edit-inp"  name="mxe_nota_horal_1" value="<?php echo $this->input->post('mxe_nota_horal_1'); ?>" /></div>
-	<div id="custom-lbl">Mxe Nota Escrita 1 : <input type="text"  class="edit-inp"  name="mxe_nota_escrita_1" value="<?php echo $this->input->post('mxe_nota_escrita_1'); ?>" /></div>
-	<div id="custom-lbl">Mxe Nota Horal 2 : <input type="text"  class="edit-inp"  name="mxe_nota_horal_2" value="<?php echo $this->input->post('mxe_nota_horal_2'); ?>" /></div>
-	<div id="custom-lbl">Mxe Nota Escrita 2 : <input type="text"  class="edit-inp"  name="mxe_nota_escrita_2" value="<?php echo $this->input->post('mxe_nota_escrita_2'); ?>" /></div>
+    <div id="custom-lbl">Fecha #1 : <input type="date"  class="edit-inp" name="mxe_fecha_1" value="<?php echo $this->input->post('mxe_fecha_1'); ?>" /></div>
+	<div id="custom-lbl">Fecha #2 : <input type="date"  class="edit-inp"  name="mxe_fecha_2" value="<?php echo $this->input->post('mxe_fecha_2'); ?>" /></div>
+	<div id="custom-lbl">Nota Oral #1 : <input type="text"  class="edit-inp"  name="mxe_nota_horal_1" value="<?php echo $this->input->post('mxe_nota_horal_1'); ?>" /></div>
+	<div id="custom-lbl">Nota Escrita #1 : <input type="text"  class="edit-inp"  name="mxe_nota_escrita_1" value="<?php echo $this->input->post('mxe_nota_escrita_1'); ?>" /></div>
+	<div id="custom-lbl">Nota Oral #2 : <input type="text"  class="edit-inp"  name="mxe_nota_horal_2" value="<?php echo $this->input->post('mxe_nota_horal_2'); ?>" /></div>
+	<div id="custom-lbl">Nota Escrita #2 : <input type="text"  class="edit-inp"  name="mxe_nota_escrita_2" value="<?php echo $this->input->post('mxe_nota_escrita_2'); ?>" /></div>
 
     <div id="custom-lbl" ><button type="submit" id="add-submit"></button></div>
 

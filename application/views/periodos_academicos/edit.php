@@ -32,10 +32,10 @@
 
 <?php echo form_open('periodos_academicos/edit/'.$periodos_academicos['pac_codigo']); ?>
 
-	<div id="custom-lbl">Pac Descripcion : <input type="text"  class="edit-inp" name="pac_descripcion" value="<?php echo ($this->input->post('pac_descripcion') ? $this->input->post('pac_descripcion') : $periodos_academicos['pac_descripcion']); ?>" /></div>
-	<div id="custom-lbl">Pac Fechainicio : <input type="text"  class="edit-inp" name="pac_fechainicio" value="<?php echo ($this->input->post('pac_fechainicio') ? $this->input->post('pac_fechainicio') : $periodos_academicos['pac_fechainicio']); ?>" /></div>
-	<div id="custom-lbl">Pac Fechafinal : <input type="text"  class="edit-inp" name="pac_fechafinal" value="<?php echo ($this->input->post('pac_fechafinal') ? $this->input->post('pac_fechafinal') : $periodos_academicos['pac_fechafinal']); ?>" /></div>
-	<div id="custom-lbl">Pac Perido : <input type="text"  class="edit-inp" name="pac_perido" value="<?php echo ($this->input->post('pac_perido') ? $this->input->post('pac_perido') : $periodos_academicos['pac_perido']); ?>" /></div>
+	<div id="custom-lbl">Descripcion : <input type="text"  class="edit-inp" name="pac_descripcion" value="<?php echo ($this->input->post('pac_descripcion') ? $this->input->post('pac_descripcion') : $periodos_academicos['pac_descripcion']); ?>" /></div>
+	<div id="custom-lbl">Fecha de Inicio : <input type="date"  class="edit-inp" name="pac_fechainicio" value="<?php echo ($this->input->post('pac_fechainicio') ? $this->input->post('pac_fechainicio') : $periodos_academicos['pac_fechainicio']); ?>" /></div>
+	<div id="custom-lbl">Fecha de Final : <input type="date"  class="edit-inp" name="pac_fechafinal" value="<?php echo ($this->input->post('pac_fechafinal') ? $this->input->post('pac_fechafinal') : $periodos_academicos['pac_fechafinal']); ?>" /></div>
+	<div id="custom-lbl">Periodo : <input type="text"  class="edit-inp" name="pac_perido" value="<?php echo ($this->input->post('pac_perido') ? $this->input->post('pac_perido') : $periodos_academicos['pac_perido']); ?>" /></div>
 
     <div id="custom-lbl"><button type="submit" id="edit-submit"></button></div>
 

@@ -33,7 +33,7 @@
 
 	<div id="custom-lbl" >Estudiante :
 		<select name="est_codigo" class="edit-inp">
-			<option value="">Seleccione el estudiante</option>
+			<option value="">Seleccionar Estudiante</option>
 			<?php
 			foreach($all_estudiantes as $estudiante)
 			{
@@ -46,7 +46,7 @@
 	</div>
 	<div id="custom-lbl" >Trabajo Disertacion :
 		<select name="dis_codigo" class="edit-inp">
-			<option value="">Selecciona la disertacion</option>
+			<option value="">Seleccionar Disertacion</option>
 			<?php
 			foreach($all_trabajos as $trabajo_disertacion)
 			{
@@ -57,8 +57,8 @@
 			?>
 		</select>
 	</div>
-	<div id="custom-lbl">Elb Nota Horal : <input type="text" class="edit-inp" name="elb_nota_horal" value="<?php echo $this->input->post('elb_nota_horal'); ?>" /></div>
-	<div id="custom-lbl">Elb Nota Escrito : <input type="text" class="edit-inp" name="elb_nota_escrito" value="<?php echo $this->input->post('elb_nota_escrito'); ?>" /></div>
+	<div id="custom-lbl">Nota Oral : <input type="text" class="edit-inp" name="elb_nota_horal" value="<?php echo $this->input->post('elb_nota_horal'); ?>" /></div>
+	<div id="custom-lbl">Nota Escrito : <input type="text" class="edit-inp" name="elb_nota_escrito" value="<?php echo $this->input->post('elb_nota_escrito'); ?>" /></div>
 
     <div id="custom-lbl" ><button type="submit" id="add-submit"></button></div>
 

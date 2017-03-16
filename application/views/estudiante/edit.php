@@ -31,37 +31,37 @@
 
 <?php echo form_open('estudiante/edit/'.$estudiante['est_codigo']); ?>
 
-	<div id="custom-lbl" >Est Nombre1 : <input type="text"  class="edit-inp" name="est_nombre1" value="<?php echo ($this->input->post('est_nombre1') ? $this->input->post('est_nombre1') : $estudiante['est_nombre1']); ?>" /></div>
-	<div id="custom-lbl">Est Nombre2 : <input type="text"  class="edit-inp" name="est_nombre2" value="<?php echo ($this->input->post('est_nombre2') ? $this->input->post('est_nombre2') : $estudiante['est_nombre2']); ?>" /></div>
-	<div id="custom-lbl">Est Apellido1 : <input type="text" class="edit-inp" name="est_apellido1" value="<?php echo ($this->input->post('est_apellido1') ? $this->input->post('est_apellido1') : $estudiante['est_apellido1']); ?>" /></div>
-	<div id="custom-lbl">Est Apellido2 : <input type="text" class="edit-inp" name="est_apellido2" value="<?php echo ($this->input->post('est_apellido2') ? $this->input->post('est_apellido2') : $estudiante['est_apellido2']); ?>" /></div>
-	<div id="custom-lbl">Est Tipoid :
+	<div id="custom-lbl" >Primer Nombre : <input type="text"  class="edit-inp" name="est_nombre1" value="<?php echo ($this->input->post('est_nombre1') ? $this->input->post('est_nombre1') : $estudiante['est_nombre1']); ?>" /></div>
+	<div id="custom-lbl">Segundo Nombre : <input type="text"  class="edit-inp" name="est_nombre2" value="<?php echo ($this->input->post('est_nombre2') ? $this->input->post('est_nombre2') : $estudiante['est_nombre2']); ?>" /></div>
+	<div id="custom-lbl">Primer Apellido : <input type="text" class="edit-inp" name="est_apellido1" value="<?php echo ($this->input->post('est_apellido1') ? $this->input->post('est_apellido1') : $estudiante['est_apellido1']); ?>" /></div>
+	<div id="custom-lbl">Segundo Apellido : <input type="text" class="edit-inp" name="est_apellido2" value="<?php echo ($this->input->post('est_apellido2') ? $this->input->post('est_apellido2') : $estudiante['est_apellido2']); ?>" /></div>
+	<div id="custom-lbl">Tipo ID :
 		<select name="est_tipoid" class="edit-inp">
-			<option value="">Seleccione el tipo de identificacion:</option>
+			<option value="">Seleccionar el Tipo de ID</option>
             <option <?php if ($estudiante['est_tipoid'] == 'CED' ) echo 'selected' ; ?> value="CED">Cedula</option>
             <option <?php if ($estudiante['est_tipoid'] == 'PAS' ) echo 'selected' ; ?> value="PAS">Pasaporte</option>
             <option <?php if ($estudiante['est_tipoid'] == 'OTR' ) echo 'selected' ; ?> value="OTR">Otro</option>
 		</select>
 	</div>
-	<div id="custom-lbl">Est Id : <input type="text"class="edit-inp"  name="est_id" value="<?php echo ($this->input->post('est_id') ? $this->input->post('est_id') : $estudiante['est_id']); ?>" /></div>
-	<div id="custom-lbl">Est Direccion : <input type="text" class="edit-inp" name="est_direccion" value="<?php echo ($this->input->post('est_direccion') ? $this->input->post('est_direccion') : $estudiante['est_direccion']); ?>" /></div>
-	<div id="custom-lbl">Est Telefono : <input type="text" class="edit-inp" name="est_telefono" value="<?php echo ($this->input->post('est_telefono') ? $this->input->post('est_telefono') : $estudiante['est_telefono']); ?>" /></div>
-	<div id="custom-lbl">Est Celular : <input type="text" class="edit-inp" name="est_celular" value="<?php echo ($this->input->post('est_celular') ? $this->input->post('est_celular') : $estudiante['est_celular']); ?>" /></div>
-	<div id="custom-lbl">Est Mail : <input type="text"class="edit-inp"  name="est_mail" value="<?php echo ($this->input->post('est_mail') ? $this->input->post('est_mail') : $estudiante['est_mail']); ?>" /></div>
-	<div id="custom-lbl">Est Mailpuce : <input type="text"class="edit-inp"  name="est_mailpuce" value="<?php echo ($this->input->post('est_mailpuce') ? $this->input->post('est_mailpuce') : $estudiante['est_mailpuce']); ?>" /></div>
-	<div id="custom-lbl">Est Fechanac : <input type="text" class="edit-inp"  id="datepicker" name="est_fechanac" value="<?php echo ($this->input->post('est_fechanac') ? $this->input->post('est_fechanac') : $estudiante['est_fechanac']); ?>" /></div>
-	<div id="custom-lbl">Est Sexo :
+	<div id="custom-lbl">Id : <input type="text"class="edit-inp"  name="est_id" value="<?php echo ($this->input->post('est_id') ? $this->input->post('est_id') : $estudiante['est_id']); ?>" /></div>
+	<div id="custom-lbl">Direccion : <input type="text" class="edit-inp" name="est_direccion" value="<?php echo ($this->input->post('est_direccion') ? $this->input->post('est_direccion') : $estudiante['est_direccion']); ?>" /></div>
+	<div id="custom-lbl">Telefono : <input type="text" class="edit-inp" name="est_telefono" value="<?php echo ($this->input->post('est_telefono') ? $this->input->post('est_telefono') : $estudiante['est_telefono']); ?>" /></div>
+	<div id="custom-lbl">Celular : <input type="text" class="edit-inp" name="est_celular" value="<?php echo ($this->input->post('est_celular') ? $this->input->post('est_celular') : $estudiante['est_celular']); ?>" /></div>
+	<div id="custom-lbl">Mail : <input type="text"class="edit-inp"  name="est_mail" value="<?php echo ($this->input->post('est_mail') ? $this->input->post('est_mail') : $estudiante['est_mail']); ?>" /></div>
+	<div id="custom-lbl">Mail PUCE : <input type="text"class="edit-inp"  name="est_mailpuce" value="<?php echo ($this->input->post('est_mailpuce') ? $this->input->post('est_mailpuce') : $estudiante['est_mailpuce']); ?>" /></div>
+	<div id="custom-lbl">Fecha de Nacimiento : <input type="date" class="edit-inp"   name="est_fechanac" value="<?php echo ($this->input->post('est_fechanac') ? $this->input->post('est_fechanac') : $estudiante['est_fechanac']); ?>" /></div>
+	<div id="custom-lbl">Sexo :
         <select name="est_sexo" class="edit-inp">
 
-            <option <?php if ($estudiante['est_sexo'] == 'F' ) echo 'selected' ; ?> value="F">FEMENINO</option>
-            <option <?php if ($estudiante['est_sexo'] == 'M' ) echo 'selected' ; ?> value="M">MASCULINO</option>
+            <option <?php if ($estudiante['est_sexo'] == 'F' ) echo 'selected' ; ?> value="F">Femenino</option>
+            <option <?php if ($estudiante['est_sexo'] == 'M' ) echo 'selected' ; ?> value="M">Masculino</option>
         </select>
     </div>
-	<div id="custom-lbl">Est Foto : <input type="text" class="edit-inp" name="est_foto" value="<?php echo ($this->input->post('est_foto') ? $this->input->post('est_foto') : $estudiante['est_foto']); ?>" /></div>
+	<div id="custom-lbl">Foto : <input type="text" class="edit-inp" name="est_foto" value="<?php echo ($this->input->post('est_foto') ? $this->input->post('est_foto') : $estudiante['est_foto']); ?>" /></div>
 	<div id="custom-lbl">
-		Carr Codigo :
+		Carrera:
 		<select name="carr_codigo" class="edit-inp" >
-			<option value="">Seleccion carrera</option>
+			<option value="">Seleccionar carrera</option>
 			<?php
 			foreach($all_carreras as $carrera)
 			{
@@ -73,9 +73,9 @@
 		</select>
 	</div>
 
-	<div id="custom-lbl">Est Fechaingreso : <input type="text"  class="edit-inp" id="datepicker" name="est_fechaingreso" value="<?php echo ($this->input->post('est_fechaingreso') ? $this->input->post('est_fechaingreso') : $estudiante['est_fechaingreso']); ?>" /></div>
-	<div id="custom-lbl">Est Fechaestimadagraduacion : <input type="text"  class="edit-inp" id="datepicker" name="est_fechaestimadagraduacion" value="<?php echo ($this->input->post('est_fechaestimadagraduacion') ? $this->input->post('est_fechaestimadagraduacion') : $estudiante['est_fechaestimadagraduacion']); ?>" /></div>
-	<div id="custom-lbl">Est Fechagraduacion : <input type="text" id="datepicker"  class="edit-inp" name="est_fechagraduacion" value="<?php echo ($this->input->post('est_fechagraduacion') ? $this->input->post('est_fechagraduacion') : $estudiante['est_fechagraduacion']); ?>" /></div>
+	<div id="custom-lbl">Fecha de Ingreso : <input type="date"  class="edit-inp" name="est_fechaingreso" value="<?php echo ($this->input->post('est_fechaingreso') ? $this->input->post('est_fechaingreso') : $estudiante['est_fechaingreso']); ?>" /></div>
+	<div id="custom-lbl">Fecha Estimada de Graduacion : <input type="date"  class="edit-inp"  name="est_fechaestimadagraduacion" value="<?php echo ($this->input->post('est_fechaestimadagraduacion') ? $this->input->post('est_fechaestimadagraduacion') : $estudiante['est_fechaestimadagraduacion']); ?>" /></div>
+	<div id="custom-lbl">Fecha de Graduacion : <input type="date" id="datepicker"  class="edit-inp" name="est_fechagraduacion" value="<?php echo ($this->input->post('est_fechagraduacion') ? $this->input->post('est_fechagraduacion') : $estudiante['est_fechagraduacion']); ?>" /></div>
 
 <div id="custom-lbl"><button type="submit" id="edit-submit"></button></div>
 

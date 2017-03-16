@@ -32,7 +32,7 @@
 <?php echo form_open('escuela/add'); ?>
 
 	<div id="custom-lbl" >
-				Facu Codigo : 
+				Facultad :
 				<select name="facu_codigo"  class="edit-inp">
 					<option value="">Seleccionar Facultad</option>
 					<?php 
@@ -45,7 +45,7 @@
 					?>
 				</select>
 		</div>
-	<div id="custom-lbl" >Esc Descripcion : <input type="text"  class="edit-inp" name="esc_descripcion" value="<?php echo $this->input->post('esc_descripcion'); ?>" /></div>
+	<div id="custom-lbl" >Descripcion Escuela: <input type="text"  class="edit-inp" name="esc_descripcion" value="<?php echo $this->input->post('esc_descripcion'); ?>" /></div>
 
     <div id="custom-lbl" ><button type="submit" id="add-submit"></button></div>
 

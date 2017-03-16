@@ -32,9 +32,9 @@
 <?php echo form_open('plan_de_estudio/edit/'.$plan_de_estudio['plan_codigo']); ?>
 
 	<div id="custom-lbl" >
-				Carr Codigo : 
+				Carrera:
 				<select name="carr_codigo" class="edit-inp" >
-					<option value="">select carrera</option>
+					<option value="">Seleccionar carrera</option>
 					<?php 
 					foreach($all_carreras as $carrera)
 					{
@@ -45,9 +45,9 @@
 					?>
 				</select>
 		</div>
-	<div id="custom-lbl" >Plan Descripcion : <input type="text" class="edit-inp" name="plan_descripcion" value="<?php echo ($this->input->post('plan_descripcion') ? $this->input->post('plan_descripcion') : $plan_de_estudio['plan_descripcion']); ?>" /></div>
-	<div id="custom-lbl" >Plan Fechainicio : <input type="text" class="edit-inp" name="plan_fechainicio" value="<?php echo ($this->input->post('plan_fechainicio') ? $this->input->post('plan_fechainicio') : $plan_de_estudio['plan_fechainicio']); ?>" /></div>
-	<div id="custom-lbl" >Plan Vigencia : <input type="checkbox" class="edit-inp" name="plan_vigencia" value="1" <?php echo ($plan_de_estudio['plan_vigencia']==1 ? 'checked="checked"' : ''); ?> /></div>
+	<div id="custom-lbl" >Descripcion : <input type="text" class="edit-inp" name="plan_descripcion" value="<?php echo ($this->input->post('plan_descripcion') ? $this->input->post('plan_descripcion') : $plan_de_estudio['plan_descripcion']); ?>" /></div>
+	<div id="custom-lbl" >Fecha de Inicio : <input type="date" class="edit-inp" name="plan_fechainicio" value="<?php echo ($this->input->post('plan_fechainicio') ? $this->input->post('plan_fechainicio') : $plan_de_estudio['plan_fechainicio']); ?>" /></div>
+	<div id="custom-lbl" >Vigencia : <input type="checkbox" class="edit-inp" name="plan_vigencia" value="1" <?php echo ($plan_de_estudio['plan_vigencia']==1 ? 'checked="checked"' : ''); ?> /></div>
 
     <div id="custom-lbl"><button type="submit" id="edit-submit"></button></div>
 

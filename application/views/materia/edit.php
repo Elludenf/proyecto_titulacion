@@ -31,8 +31,8 @@
 
 <?php echo form_open('materia/edit/'.$materia['mat_codigo']); ?>
 
-	<div id="custom-lbl" >Mat Nombre : <input type="text" class="edit-inp" name="mat_nombre" value="<?php echo ($this->input->post('mat_nombre') ? $this->input->post('mat_nombre') : $materia['mat_nombre']); ?>" /></div>
-	<div id="custom-lbl" >Mat Nivel : <input type="text" class="edit-inp" name="mat_nivel" value="<?php echo ($this->input->post('mat_nivel') ? $this->input->post('mat_nivel') : $materia['mat_nivel']); ?>" /></div>
+	<div id="custom-lbl" >Nombre : <input type="text" class="edit-inp" name="mat_nombre" value="<?php echo ($this->input->post('mat_nombre') ? $this->input->post('mat_nombre') : $materia['mat_nombre']); ?>" /></div>
+	<div id="custom-lbl" >Nivel : <input type="text" class="edit-inp" name="mat_nivel" value="<?php echo ($this->input->post('mat_nivel') ? $this->input->post('mat_nivel') : $materia['mat_nivel']); ?>" /></div>
 
     <div id="custom-lbl"><button type="submit" id="edit-submit"></button></div>
 

@@ -29,7 +29,7 @@
 <?php echo form_open('examen_complexivo/edit/'.$examen_complexivo['exa_codigo']); ?>
 
 	<div  id="custom-lbl">
-				Est Codigo : 
+				Estudiante:
 				<select name="est_codigo"  class="edit-inp">
 					<option value="">Seleccionar Estudiante</option>
 					<?php 
@@ -42,17 +42,17 @@
 					?>
 				</select>
 		</div>
-	<div  id="custom-lbl">Exa Fechainicio : <input type="text"  class="edit-inp" name="exa_fechainicio" value="<?php echo ($this->input->post('exa_fechainicio') ? $this->input->post('exa_fechainicio') : $examen_complexivo['exa_fechainicio']); ?>" /></div>
-	<div  id="custom-lbl">Exa Estado :
+	<div  id="custom-lbl">Fecha de Inicio : <input type="date"  class="edit-inp" name="exa_fechainicio" value="<?php echo ($this->input->post('exa_fechainicio') ? $this->input->post('exa_fechainicio') : $examen_complexivo['exa_fechainicio']); ?>" /></div>
+	<div  id="custom-lbl">Estado :
         <select name="exa_estado" class="edit-inp">
 
-            <option <?php if ($examen_complexivo['exa_estado'] == 'EP' ) echo 'selected' ; ?> value="EP">EN PROCESO</option>
-            <option <?php if ($examen_complexivo['exa_estado'] == 'AP' ) echo 'selected' ; ?> value="AP">APROBADO</option>
-            <option <?php if ($examen_complexivo['exa_estado'] == 'RP' ) echo 'selected' ; ?> value="RP">REPROBADO</option>
+            <option <?php if ($examen_complexivo['exa_estado'] == 'EP' ) echo 'selected' ; ?> value="EP">En Proceso</option>
+            <option <?php if ($examen_complexivo['exa_estado'] == 'AP' ) echo 'selected' ; ?> value="AP">Aprobado</option>
+            <option <?php if ($examen_complexivo['exa_estado'] == 'RP' ) echo 'selected' ; ?> value="RP">Reprobado</option>
         </select>
     </div>
-	<div  id="custom-lbl">Exa Horas Docencia : <input type="text"  class="edit-inp" name="exa_horas_docencia" value="<?php echo ($this->input->post('exa_horas_docencia') ? $this->input->post('exa_horas_docencia') : $examen_complexivo['exa_horas_docencia']); ?>" /></div>
-	<div  id="custom-lbl">Exa Horas Autonomas : <input type="text"  class="edit-inp" name="exa_horas_autonomas" value="<?php echo ($this->input->post('exa_horas_autonomas') ? $this->input->post('exa_horas_autonomas') : $examen_complexivo['exa_horas_autonomas']); ?>" /></div>
+	<div  id="custom-lbl">Horas de Docencia : <input type="text"  class="edit-inp" name="exa_horas_docencia" value="<?php echo ($this->input->post('exa_horas_docencia') ? $this->input->post('exa_horas_docencia') : $examen_complexivo['exa_horas_docencia']); ?>" /></div>
+	<div  id="custom-lbl">Horas Autonomas : <input type="text"  class="edit-inp" name="exa_horas_autonomas" value="<?php echo ($this->input->post('exa_horas_autonomas') ? $this->input->post('exa_horas_autonomas') : $examen_complexivo['exa_horas_autonomas']); ?>" /></div>
 
     <div id="custom-lbl"><button type="submit" id="edit-submit"></button></div>
 

@@ -33,7 +33,7 @@
 <?php echo form_open('examen_complexivo/add'); ?>
 
 	<div id="custom-lbl" >
-				Est Codigo : 
+				Estudiante:
 				<select name="est_codigo" class="edit-inp">
 					<option value="">Seleccionar Estudiante</option>
 					<?php 
@@ -46,21 +46,21 @@
 					?>
 				</select>
 		</div>
-	<div id="custom-lbl" >Exa Fechainicio : <input type="text" class="edit-inp" name="exa_fechainicio" value="<?php echo $this->input->post('exa_fechainicio'); ?>" /></div>
-	<div id="custom-lbl" >Exa Estado :
+	<div id="custom-lbl" >Fecha de Inicio : <input type="date" class="edit-inp" name="exa_fechainicio" value="<?php echo $this->input->post('exa_fechainicio'); ?>" /></div>
+	<div id="custom-lbl" >Estado :
         <select name="exa_estado" class="edit-inp">
-            <option value="">Seleccione un valor</option>
+            <option value="">Seleccionar Estado</option>
             <?php
 
-            echo '<option value="EP">EN PROCESO</option>';
-            echo '<option value="AP">APROBADO</option>';
-            echo '<option value="RP">REPROBADO</option>';
+            echo '<option value="EP">En Proceso</option>';
+            echo '<option value="AP">Aprobado</option>';
+            echo '<option value="RP">Reprobado</option>';
 
             ?>
         </select>
     </div>
-	<div id="custom-lbl" >Exa Horas Docencia : <input type="text" class="edit-inp" name="exa_horas_docencia" value="<?php echo $this->input->post('exa_horas_docencia'); ?>" /></div>
-	<div id="custom-lbl" >Exa Horas Autonomas : <input type="text" class="edit-inp" name="exa_horas_autonomas" value="<?php echo $this->input->post('exa_horas_autonomas'); ?>" /></div>
+	<div id="custom-lbl" >Horas de Docencia : <input type="text" class="edit-inp" name="exa_horas_docencia" value="<?php echo $this->input->post('exa_horas_docencia'); ?>" /></div>
+	<div id="custom-lbl" >Horas de Autonomas : <input type="text" class="edit-inp" name="exa_horas_autonomas" value="<?php echo $this->input->post('exa_horas_autonomas'); ?>" /></div>
 
     <div id="custom-lbl" ><button type="submit" id="add-submit"></button></div>
 

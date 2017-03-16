@@ -31,11 +31,11 @@
 
 <?php echo form_open('permiso/edit/'.$permiso['perm_codigo']); ?>
 
-	<div id="custom-lbl">perm Estado : <input type="checkbox" class="edit-inp" name="perm_estado" value="1" <?php echo ($permiso['perm_estado']==1 ? 'checked="checked"' : ''); ?> /></div>
-	<div id="custom-lbl">perm Creat : <input type="checkbox" class="edit-inp" name="perm_creat" value="1" <?php echo ($permiso['perm_creat']==1 ? 'checked="checked"' : ''); ?> /></div>
-	<div id="custom-lbl">perm Read : <input type="checkbox" class="edit-inp" name="perm_read" value="1" <?php echo ($permiso['perm_read']==1 ? 'checked="checked"' : ''); ?> /></div>
-	<div id="custom-lbl">perm Update : <input type="checkbox" class="edit-inp" name="perm_update" value="1" <?php echo ($permiso['perm_update']==1 ? 'checked="checked"' : ''); ?> /></div>
-	<div id="custom-lbl">perm Delete : <input type="checkbox" class="edit-inp" name="perm_delete" value="1" <?php echo ($permiso['perm_delete']==1 ? 'checked="checked"' : ''); ?> /></div>
+	<div id="custom-lbl">Estado : <input type="checkbox" class="edit-inp" name="perm_estado" value="1" <?php echo ($permiso['perm_estado']==1 ? 'checked="checked"' : ''); ?> /></div>
+	<div id="custom-lbl">Creat : <input type="checkbox" class="edit-inp" name="perm_creat" value="1" <?php echo ($permiso['perm_creat']==1 ? 'checked="checked"' : ''); ?> /></div>
+	<div id="custom-lbl">Read : <input type="checkbox" class="edit-inp" name="perm_read" value="1" <?php echo ($permiso['perm_read']==1 ? 'checked="checked"' : ''); ?> /></div>
+	<div id="custom-lbl">Update : <input type="checkbox" class="edit-inp" name="perm_update" value="1" <?php echo ($permiso['perm_update']==1 ? 'checked="checked"' : ''); ?> /></div>
+	<div id="custom-lbl">Delete : <input type="checkbox" class="edit-inp" name="perm_delete" value="1" <?php echo ($permiso['perm_delete']==1 ? 'checked="checked"' : ''); ?> /></div>
 
     <div id="custom-lbl"><button type="submit" id="edit-submit"></button></div>
 
