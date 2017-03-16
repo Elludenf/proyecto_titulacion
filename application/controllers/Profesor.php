@@ -88,7 +88,7 @@ class Profesor extends CI_Controller
             $c=0;
             $a_prof=[];
             foreach ($data['all_revdir'] as $revdir){
-                $prof=$this->Trabajo_disertacion_model->get_profesor($revdir['prof_codigo']);
+                $prof=$this->Profesor_model->get_profesor($revdir['prof_codigo']);
                 $a_prof[$c]=$prof;
                 $c++;
             }
@@ -105,7 +105,7 @@ class Profesor extends CI_Controller
     function disertacion_estudiantes(){
         $user=$this->session-> __get('rolname');
         $data['profesor'] = $this->Profesor_model->get_datos($user);
-        $data['estudiantes']=$this->Profesor_model->get_all_trabajo_disertacion_x_profCodigo($user);
+        $data['estudiantes']=$this->Trabajo_disertacion_model->get_all_trabajo_disertacion_x_profCodigo($user);
 
         /*Empiezo de paginacion*/
         $total_rows = $this->Profesor_model->count();
