@@ -48,7 +48,7 @@
 			?>
 		</select>
 	</div>
-	<div id="custom-lbl" >Id : <input type="text" class="edit-inp" name="est_id" value="<?php echo $this->input->post('est_id'); ?>" /></div>
+	<div id="custom-lbl" >ID : <input type="text" class="edit-inp" name="est_id" value="<?php echo $this->input->post('est_id'); ?>" /></div>
 	<div id="custom-lbl" >Direccion : <input type="text" class="edit-inp" name="est_direccion" value="<?php echo $this->input->post('est_direccion'); ?>" /></div>
 	<div id="custom-lbl" >Telefono : <input type="text" class="edit-inp" name="est_telefono" value="<?php echo $this->input->post('est_telefono'); ?>" /></div>
 	<div id="custom-lbl" >Celular : <input type="text" class="edit-inp" name="est_celular" value="<?php echo $this->input->post('est_celular'); ?>" /></div>

@@ -159,7 +159,7 @@ class Matsorteadas_x_examan extends CI_Controller
     /*
      * Deleting matsorteadas_x_examan
      */
-    function remove($mat_codigo)
+    function remove($mat_codigo,$exa_codigo)
     {
         $matsorteadas_x_examan = $this->Matsorteadas_x_examan_model->get_matsorteadas_x_examan($mat_codigo,$exa_codigo);
 

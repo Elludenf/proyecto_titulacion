@@ -1250,6 +1250,42 @@ padding-left: 40px;
 }
 /*-----------------------------FIN Perfil Estudiante---------------------------------*/
 
+/*--------------------------------Forbidden----------------------*/
+
+#error{
+
+
+	font-size: 60px;
+	text-align: left;
+	padding-top: 40px;
+	padding-left: 40px;
+	color:#535456;
+}
+
+#error2{
+
+
+	font-size: 25px;
+	text-align: left;
+		padding-left: 50px;
+		color: #7e7780;
+}
+
+
+#btn-atras{
+
+	height: 150px;
+	width: 95%;
+	padding-left: 50px;
+	 border-bottom: 1px solid;
+	 border-color: #e1dce2;
+}
+
+#btn-volver{
+	padding-top: 50px;
+}
+/*-----------------------------------FIN Forbidden----------------*/
+
 /*-----------------------------Footer----------------------------*/
 div#footer{
 
