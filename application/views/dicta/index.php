@@ -98,7 +98,7 @@
 		<td><?php echo $d['mat_codigo']; ?></td>
         <td><?php echo $d['mat_nombre']; ?></td>
 		<td>
-            <a href="<?php echo site_url('dicta/edit/'.$d['prof_codigo'].'/'.$d['mat_codigo']); ?>">Edit</a> |
+
             <a href="<?php echo site_url('dicta/remove/'.$d['prof_codigo'].'/'.$d['mat_codigo']); ?>">Delete</a>
         </td>
     </tr>
