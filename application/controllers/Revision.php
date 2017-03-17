@@ -18,7 +18,9 @@ class Revision extends CI_Controller
     private $limit = 5;
     function index()
     {
-        $data['revisiones'] = $this->Revision_model->get_all_revisiones();
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $data['revisiones'] = $this->Revision_model->get_all_revisiones();
 
         /*Empiezo de paginacion*/
         $total_rows = $this->Revision_model->count();
@@ -61,14 +63,25 @@ class Revision extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('revision/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
      * Adding a new revision
      */
     function add()
-    {   
-        $this->load->library('form_validation');
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('obs_fecha','Obs Fecha','required');
 		$this->form_validation->set_rules('obs_descripcion','Obs Descripcion','required|max_length[1024]');
@@ -110,14 +123,25 @@ class Revision extends CI_Controller
             $this->load->view('revision/add', $data);
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a revision
      */
     function edit($obs_codigo)
-    {   
-        // check if the revision exists before trying to edit it
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            // check if the revision exists before trying to edit it
         $revision = $this->Revision_model->get_revision($obs_codigo);
         
         if(isset($revision['obs_codigo']))
@@ -156,6 +180,15 @@ class Revision extends CI_Controller
         }
         else
             show_error('The revision you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -163,7 +196,9 @@ class Revision extends CI_Controller
      */
     function remove($obs_codigo)
     {
-        $revision = $this->Revision_model->get_revision($obs_codigo);
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $revision = $this->Revision_model->get_revision($obs_codigo);
 
         // check if the revision exists before trying to delete it
         if(isset($revision['obs_codigo']))
@@ -173,6 +208,15 @@ class Revision extends CI_Controller
         }
         else
             show_error('The revision you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

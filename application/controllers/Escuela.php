@@ -18,6 +18,7 @@ class Escuela extends CI_Controller
     private $limit = 5;
     function index()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $data['escuelas'] = $this->Escuela_model->get_all_escuelas();
 
         /*Empiezo de paginacion*/
@@ -61,13 +62,24 @@ class Escuela extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('escuelas/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
      * Adding a new escuela
      */
     function add()
-    {   
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('facu_codigo','Facu Codigo','required|integer');
@@ -96,13 +108,22 @@ class Escuela extends CI_Controller
             $this->load->view('escuelas/add', $data);
             $this->load->view('templates/footer');
         }
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a escuela
      */
     function edit($esc_codigo)
-    {   
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         // check if the escuela exists before trying to edit it
         $escuela = $this->Escuela_model->get_escuela($esc_codigo);
         
@@ -137,6 +158,14 @@ class Escuela extends CI_Controller
         }
         else
             show_error('The escuela you are trying to edit does not exist.');
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -144,6 +173,7 @@ class Escuela extends CI_Controller
      */
     function remove($esc_codigo)
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $escuela = $this->Escuela_model->get_escuela($esc_codigo);
 
         // check if the escuela exists before trying to delete it
@@ -154,6 +184,14 @@ class Escuela extends CI_Controller
         }
         else
             show_error('The escuela you are trying to delete does not exist.');
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

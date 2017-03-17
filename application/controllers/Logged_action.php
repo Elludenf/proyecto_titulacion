@@ -17,9 +17,19 @@ class Logged_action extends CI_Controller
      */
     function index()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $data['logged_actions'] = $this->Logged_action_model->get_all_logged_actions();
 
         $this->load->view('logged_action/index',$data);
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*Listing details
@@ -27,6 +37,7 @@ class Logged_action extends CI_Controller
      */
     function detail($action_tstamp)
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         // check if the logged_action exists before trying to edit it
         $data['logged_action'] = $this->Logged_action_model->get_logged_action($action_tstamp);
 
@@ -61,5 +72,14 @@ class Logged_action extends CI_Controller
         }
         else
             show_error('The logged_action you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 }

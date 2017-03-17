@@ -19,7 +19,9 @@ class Responsables_titulacion extends CI_Controller
     private $limit = 5;
     function index()
     {
-        $data['responsables_titulacion'] = $this->Responsables_titulacion_model->get_all_responsables_titulacion();
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $data['responsables_titulacion'] = $this->Responsables_titulacion_model->get_all_responsables_titulacion();
 
         /*Empiezo de paginacion*/
         $total_rows = $this->Responsables_titulacion_model->count();
@@ -62,14 +64,25 @@ class Responsables_titulacion extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('responsables_titulacion/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
      * Adding a new responsables_titulacion
      */
     function add()
-    {   
-        $this->load->library('form_validation');
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('res_tipo','Res Tipo','required|max_length[2]');
 		$this->form_validation->set_rules('res_fechanombramiento','Res Fechanombramiento','required');
@@ -95,14 +108,25 @@ class Responsables_titulacion extends CI_Controller
             $this->load->view('responsables_titulacion/add', $data);
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a responsables_titulacion
      */
     function edit($res_codigo)
-    {   
-        // check if the responsables_titulacion exists before trying to edit it
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            // check if the responsables_titulacion exists before trying to edit it
         $responsables_titulacion = $this->Responsables_titulacion_model->get_responsables_titulacion($res_codigo);
         
         if(isset($responsables_titulacion['res_codigo']))
@@ -137,6 +161,15 @@ class Responsables_titulacion extends CI_Controller
         }
         else
             show_error('The responsables_titulacion you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -144,7 +177,9 @@ class Responsables_titulacion extends CI_Controller
      */
     function remove($res_codigo)
     {
-        $responsables_titulacion = $this->Responsables_titulacion_model->get_responsables_titulacion($res_codigo);
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $responsables_titulacion = $this->Responsables_titulacion_model->get_responsables_titulacion($res_codigo);
 
         // check if the responsables_titulacion exists before trying to delete it
         if(isset($responsables_titulacion['res_codigo']))
@@ -154,6 +189,15 @@ class Responsables_titulacion extends CI_Controller
         }
         else
             show_error('The responsables_titulacion you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

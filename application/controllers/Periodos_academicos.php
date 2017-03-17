@@ -18,7 +18,9 @@ class Periodos_academicos extends CI_Controller
     private $limit = 5;
     function index()
     {
-        $data['periodos_academicos'] = $this->Periodos_academicos_model->get_all_periodos_academicos();
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $data['periodos_academicos'] = $this->Periodos_academicos_model->get_all_periodos_academicos();
 
         /*Empiezo de paginacion*/
         $total_rows = $this->Periodos_academicos_model->count();
@@ -62,6 +64,15 @@ class Periodos_academicos extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('periodos_academicos/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
 
@@ -69,8 +80,10 @@ class Periodos_academicos extends CI_Controller
      * Adding a new periodos_academicos
      */
     function add()
-    {   
-        $this->load->library('form_validation');
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('pac_descripcion','Pac Descripcion','required|max_length[30]');
 		$this->form_validation->set_rules('pac_fechainicio','Pac Fechainicio','required');
@@ -98,14 +111,25 @@ class Periodos_academicos extends CI_Controller
             $this->load->view('periodos_academicos/add');
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a periodos_academicos
      */
     function edit($pac_codigo)
-    {   
-        // check if the periodos_academicos exists before trying to edit it
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            // check if the periodos_academicos exists before trying to edit it
         $periodos_academicos = $this->Periodos_academicos_model->get_periodos_academicos($pac_codigo);
         
         if(isset($periodos_academicos['pac_codigo']))
@@ -140,6 +164,15 @@ class Periodos_academicos extends CI_Controller
         }
         else
             show_error('The periodos_academicos you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -147,7 +180,9 @@ class Periodos_academicos extends CI_Controller
      */
     function remove($pac_codigo)
     {
-        $periodos_academicos = $this->Periodos_academicos_model->get_periodos_academicos($pac_codigo);
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $periodos_academicos = $this->Periodos_academicos_model->get_periodos_academicos($pac_codigo);
 
         // check if the periodos_academicos exists before trying to delete it
         if(isset($periodos_academicos['pac_codigo']))
@@ -157,6 +192,15 @@ class Periodos_academicos extends CI_Controller
         }
         else
             show_error('The periodos_academicos you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

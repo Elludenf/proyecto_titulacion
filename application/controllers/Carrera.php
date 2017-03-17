@@ -19,6 +19,9 @@ class Carrera extends CI_Controller
     private $limit = 5;
     function index()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+
         $data['carreras'] = $this->Carrera_model->get_all_carreras();
 
         /*Empiezo de paginacion*/
@@ -63,13 +66,25 @@ class Carrera extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('carreras/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
      * Adding a new carrera
      */
     function add()
-    {   
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('esc_codigo','Esc Codigo','required|integer');
@@ -97,13 +112,24 @@ class Carrera extends CI_Controller
             $this->load->view('carreras/add',$data);
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a carrera
      */
     function edit($carr_codigo)
-    {   
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         // check if the carrera exists before trying to edit it
         $carrera = $this->Carrera_model->get_carrera($carr_codigo);
         
@@ -138,6 +164,15 @@ class Carrera extends CI_Controller
         }
         else
             show_error('The carrera you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -145,6 +180,8 @@ class Carrera extends CI_Controller
      */
     function remove($carr_codigo)
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $carrera = $this->Carrera_model->get_carrera($carr_codigo);
 
         // check if the carrera exists before trying to delete it
@@ -155,6 +192,15 @@ class Carrera extends CI_Controller
         }
         else
             show_error('The carrera you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
-    
+
 }

@@ -19,7 +19,9 @@ class Prorroga extends CI_Controller
     private $limit = 5;
     function index()
     {
-        $data['prorrogas'] = $this->Prorroga_model->get_all_prorrogas();
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $data['prorrogas'] = $this->Prorroga_model->get_all_prorrogas();
 
         /*Empiezo de paginacion*/
         $total_rows = $this->Prorroga_model->count();
@@ -62,14 +64,25 @@ class Prorroga extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('prorroga/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
      * Adding a new prorroga
      */
     function add()
-    {   
-        $this->load->library('form_validation');
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('pro_fechaint','Pro Fechaint','required');
 		$this->form_validation->set_rules('pro_fechainicio','Pro Fechainicio','required');
@@ -101,14 +114,25 @@ class Prorroga extends CI_Controller
             $this->load->view('prorroga/add', $data);
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a prorroga
      */
     function edit($pro_codigo)
-    {   
-        // check if the prorroga exists before trying to edit it
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            // check if the prorroga exists before trying to edit it
         $prorroga = $this->Prorroga_model->get_prorroga($pro_codigo);
         
         if(isset($prorroga['pro_codigo']))
@@ -149,6 +173,15 @@ class Prorroga extends CI_Controller
         }
         else
             show_error('The prorroga you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -156,7 +189,9 @@ class Prorroga extends CI_Controller
      */
     function remove($pro_codigo)
     {
-        $prorroga = $this->Prorroga_model->get_prorroga($pro_codigo);
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $prorroga = $this->Prorroga_model->get_prorroga($pro_codigo);
 
         // check if the prorroga exists before trying to delete it
         if(isset($prorroga['pro_codigo']))
@@ -166,6 +201,15 @@ class Prorroga extends CI_Controller
         }
         else
             show_error('The prorroga you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

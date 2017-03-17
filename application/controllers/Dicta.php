@@ -18,6 +18,8 @@ class Dicta extends CI_Controller
     private $limit = 5;
     function index()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $data['dicta'] = $this->Dicta_model->get_all_dicta();
 
         /*Empiezo de paginacion*/
@@ -61,6 +63,15 @@ class Dicta extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('dicta/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
@@ -68,6 +79,8 @@ class Dicta extends CI_Controller
      */
     function add()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $this->load->library('form_validation');
         $this->form_validation->set_rules('mat_codigo','Materia','required');
 
@@ -91,13 +104,23 @@ class Dicta extends CI_Controller
             $this->load->view('dicta/add',$data);
             $this->load->view('templates/footer');
         }
+
+    }  else{
+
+
+$this->load->view('templates/header');
+$this->load->view('templates/forbidden');
+$this->load->view('templates/footer');
+
+}
     }  
 
     /*
      * Editing a dicta
      */
     function edit($prof_codigo,$mat_codigo)
-    {   
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         // check if the dicta exists before trying to edit it
         $dicta = $this->Dicta_model->get_dicta($prof_codigo,$mat_codigo);
         
@@ -126,6 +149,15 @@ class Dicta extends CI_Controller
         }
         else
             show_error('The dicta you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -133,6 +165,7 @@ class Dicta extends CI_Controller
      */
     function remove($prof_codigo,$mat_codigo)
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $dicta = $this->Dicta_model->get_dicta($prof_codigo,$mat_codigo);
 
         // check if the dicta exists before trying to delete it
@@ -143,6 +176,15 @@ class Dicta extends CI_Controller
         }
         else
             show_error('The dicta you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

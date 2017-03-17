@@ -18,6 +18,8 @@ class Matsorteadas_x_examan extends CI_Controller
     private $limit = 5;
     function index()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $data['matsorteadas_x_examen'] = $this->Matsorteadas_x_examan_model->get_all_matsorteadas_x_examen();
 
         /*Empiezo de paginacion*/
@@ -61,14 +63,25 @@ class Matsorteadas_x_examan extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('matsorteadas_x_examan/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
      * Adding a new matsorteadas_x_examan
      */
     function add()
-    {   
-        $this->load->library('form_validation');
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('mxe_nota_horal_1','Mxe Nota Horal 1','numeric');
 		$this->form_validation->set_rules('mxe_nota_escrita_1','Mxe Nota Escrita 1','numeric');
@@ -103,14 +116,25 @@ class Matsorteadas_x_examan extends CI_Controller
             $this->load->view('matsorteadas_x_examan/add', $data);
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a matsorteadas_x_examan
      */
     function edit($mat_codigo,$exa_codigo)
-    {   
-        // check if the matsorteadas_x_examan exists before trying to edit it
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            // check if the matsorteadas_x_examan exists before trying to edit it
         $matsorteadas_x_examan = $this->Matsorteadas_x_examan_model->get_matsorteadas_x_examan($mat_codigo,$exa_codigo);
         
         if(isset($matsorteadas_x_examan['mat_codigo'])&&isset($matsorteadas_x_examan['exa_codigo']))
@@ -154,6 +178,15 @@ class Matsorteadas_x_examan extends CI_Controller
         }
         else
             show_error('The matsorteadas_x_examan you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -161,7 +194,9 @@ class Matsorteadas_x_examan extends CI_Controller
      */
     function remove($mat_codigo,$exa_codigo)
     {
-        $matsorteadas_x_examan = $this->Matsorteadas_x_examan_model->get_matsorteadas_x_examan($mat_codigo,$exa_codigo);
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $matsorteadas_x_examan = $this->Matsorteadas_x_examan_model->get_matsorteadas_x_examan($mat_codigo,$exa_codigo);
 
         // check if the matsorteadas_x_examan exists before trying to delete it
         if(isset($matsorteadas_x_examan['mat_codigo'])&&isset($matsorteadas_x_examan['exa_codigo']))
@@ -171,6 +206,15 @@ class Matsorteadas_x_examan extends CI_Controller
         }
         else
             show_error('The matsorteadas_x_examan you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

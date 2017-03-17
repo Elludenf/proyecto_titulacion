@@ -19,7 +19,9 @@ class Revdir_x_disertacion extends CI_Controller
     private $limit = 5;
     function index()
     {
-        $data['revdir_x_disertacion'] = $this->Revdir_x_disertacion_model->get_all_revdir_x_disertacion();
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $data['revdir_x_disertacion'] = $this->Revdir_x_disertacion_model->get_all_revdir_x_disertacion();
 
         /*Empiezo de paginacion*/
         $total_rows = $this->Revdir_x_disertacion_model->count();
@@ -62,14 +64,25 @@ class Revdir_x_disertacion extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('revdir_x_disertacion/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
      * Adding a new revdir_x_disertacion
      */
     function add()
-    {   
-        $this->load->library('form_validation');
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('rxd_tipo','Rxd Tipo','required|max_length[3]');
 		$this->form_validation->set_rules('rxd_fechanombramiento','Rxd Fechanombramiento','required');
@@ -113,14 +126,25 @@ class Revdir_x_disertacion extends CI_Controller
             $this->load->view('revdir_x_disertacion/add', $data);
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a revdir_x_disertacion
      */
     function edit($dis_codigo,$prof_codigo)
-    {   
-        // check if the revdir_x_disertacion exists before trying to edit it
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            // check if the revdir_x_disertacion exists before trying to edit it
         $revdir_x_disertacion = $this->Revdir_x_disertacion_model->get_revdir_x_disertacion($dis_codigo,$prof_codigo);
         
         if(isset($revdir_x_disertacion['dis_codigo'])&&isset($revdir_x_disertacion['prof_codigo']))
@@ -179,6 +203,15 @@ class Revdir_x_disertacion extends CI_Controller
         }
         else
             show_error('The revdir_x_disertacion you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -186,7 +219,9 @@ class Revdir_x_disertacion extends CI_Controller
      */
     function remove($dis_codigo,$prof_codigo)
     {
-        $revdir_x_disertacion = $this->Revdir_x_disertacion_model->get_revdir_x_disertacion($dis_codigo,$prof_codigo);
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $revdir_x_disertacion = $this->Revdir_x_disertacion_model->get_revdir_x_disertacion($dis_codigo,$prof_codigo);
 
         // check if the revdir_x_disertacion exists before trying to delete it
         if(isset($revdir_x_disertacion['dis_codigo'])&&isset($revdir_x_disertacion['prof_codigo']))
@@ -196,6 +231,15 @@ class Revdir_x_disertacion extends CI_Controller
         }
         else
             show_error('The revdir_x_disertacion you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

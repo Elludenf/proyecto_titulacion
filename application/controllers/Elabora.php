@@ -18,6 +18,7 @@ class Elabora extends CI_Controller
     private $limit = 5;
     function index()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $data['elabora'] = $this->Elabora_model->get_all_elabora();
 
         /*Empiezo de paginacion*/
@@ -61,13 +62,24 @@ class Elabora extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('elabora/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
+
     }
 
     /*
      * Adding a new elabora
      */
     function add()
-    {   
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('elb_nota_horal','Elb Nota Horal','numeric');
@@ -96,13 +108,22 @@ class Elabora extends CI_Controller
             $this->load->view('elabora/add', $data);
             $this->load->view('templates/footer');
         }
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a elabora
      */
     function edit($est_codigo,$dis_codigo)
-    {   
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         // check if the elabora exists before trying to edit it
         $elabora = $this->Elabora_model->get_elabora($est_codigo,$dis_codigo);
         
@@ -147,6 +168,15 @@ class Elabora extends CI_Controller
         }
         else
             show_error('The elabora you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -154,6 +184,7 @@ class Elabora extends CI_Controller
      */
     function remove($est_codigo,$dis_codigo)
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $elabora = $this->Elabora_model->get_elabora($est_codigo,$dis_codigo);
 
         // check if the elabora exists before trying to delete it
@@ -164,6 +195,14 @@ class Elabora extends CI_Controller
         }
         else
             show_error('The elabora you are trying to delete does not exist.');
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

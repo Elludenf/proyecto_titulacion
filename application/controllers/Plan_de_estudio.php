@@ -19,7 +19,9 @@ class Plan_de_estudio extends CI_Controller
     private $limit = 5;
     function index()
     {
-        $data['planes_de_estudio'] = $this->Plan_de_estudio_model->get_all_planes_de_estudio();
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $data['planes_de_estudio'] = $this->Plan_de_estudio_model->get_all_planes_de_estudio();
 
         /*Empiezo de paginacion*/
         $total_rows = $this->Plan_de_estudio_model->count();
@@ -62,14 +64,25 @@ class Plan_de_estudio extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('plan_de_estudio/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
      * Adding a new plan_de_estudio
      */
     function add()
-    {   
-        $this->load->library('form_validation');
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('carr_codigo','Carr Codigo','required|integer');
 		$this->form_validation->set_rules('plan_descripcion','Plan Descripcion','required');
@@ -103,14 +116,25 @@ class Plan_de_estudio extends CI_Controller
             $this->load->view('plan_de_estudio/add', $data);
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a plan_de_estudio
      */
     function edit($plan_codigo)
-    {   
-        // check if the plan_de_estudio exists before trying to edit it
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            // check if the plan_de_estudio exists before trying to edit it
         $plan_de_estudio = $this->Plan_de_estudio_model->get_plan_de_estudio($plan_codigo);
         
         if(isset($plan_de_estudio['plan_codigo']))
@@ -146,6 +170,15 @@ class Plan_de_estudio extends CI_Controller
         }
         else
             show_error('The plan_de_estudio you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -153,7 +186,9 @@ class Plan_de_estudio extends CI_Controller
      */
     function remove($plan_codigo)
     {
-        $plan_de_estudio = $this->Plan_de_estudio_model->get_plan_de_estudio($plan_codigo);
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $plan_de_estudio = $this->Plan_de_estudio_model->get_plan_de_estudio($plan_codigo);
 
         // check if the plan_de_estudio exists before trying to delete it
         if(isset($plan_de_estudio['plan_codigo']))
@@ -163,6 +198,15 @@ class Plan_de_estudio extends CI_Controller
         }
         else
             show_error('The plan_de_estudio you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

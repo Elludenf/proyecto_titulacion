@@ -18,7 +18,9 @@ class Pg_authid extends CI_Controller
     private $limit = 5;
     function index()
     {
-        $data['pg_authid'] = $this->Pg_authid_model->get_all_pg_authid();
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $data['pg_authid'] = $this->Pg_authid_model->get_all_pg_authid();
 
 
         /*Empiezo de paginacion*/
@@ -40,14 +42,25 @@ class Pg_authid extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('pg_authid/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
      * Adding a new pg_authid
      */
     function add()
-    {   
-        $this->load->library('form_validation');
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('rolpassword','Rolpassword','required');
 		
@@ -68,14 +81,25 @@ class Pg_authid extends CI_Controller
             $this->load->view('pg_authid/add');
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a pg_authid
      */
     function edit($rolname)
-    {   
-        // check if the pg_authid exists before trying to edit it
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            // check if the pg_authid exists before trying to edit it
         $data['pg_authid'] = $this->Pg_authid_model->get_pg_authid($rolname);
         
         if(isset($data['pg_authid']['rolname']))
@@ -104,6 +128,15 @@ class Pg_authid extends CI_Controller
         }
         else
             show_error('The pg_authid you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -111,7 +144,9 @@ class Pg_authid extends CI_Controller
      */
     function remove($rolname)
     {
-        $pg_authid = $this->Pg_authid_model->get_pg_authid($rolname);
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $pg_authid = $this->Pg_authid_model->get_pg_authid($rolname);
 
         // check if the pg_authid exists before trying to delete it
         if(isset($pg_authid['rolename']))
@@ -121,6 +156,15 @@ class Pg_authid extends CI_Controller
         }
         else
             show_error('The pg_authid you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

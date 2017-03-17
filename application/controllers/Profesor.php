@@ -20,7 +20,9 @@ class Profesor extends CI_Controller
     private $limit = 5;
     function index()
     {
-        $data['profesores'] = $this->Profesor_model->get_all_profesores();
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $data['profesores'] = $this->Profesor_model->get_all_profesores();
 
         /*Empiezo de paginacion*/
         $total_rows = $this->Profesor_model->count();
@@ -63,10 +65,21 @@ class Profesor extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('profesores/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     function perfil()
     {
-        $user=$this->session-> __get('rolname');
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $user=$this->session-> __get('rolname');
         $data['profesor'] = $this->Profesor_model->get_datos($user);
         $data['responsableTitulacion1'] = $this->Profesor_model->getIfResponsableTitulacion1($user);
         $data['responsableTitulacion2'] = $this->Profesor_model->getIfResponsableTitulacion2($user);
@@ -75,11 +88,22 @@ class Profesor extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('profesores/perfil', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     function addRevision()
     {
-        $user=$this->session-> __get('rolname');
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $user=$this->session-> __get('rolname');
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('obs_fecha','Obs Fecha','required');
@@ -122,10 +146,22 @@ class Profesor extends CI_Controller
             $this->load->view('profesores/revisarDisertacion', $data);
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     function disertacion_estudiantes(){
-        $user=$this->session-> __get('rolname');
+
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $user=$this->session-> __get('rolname');
         $data['profesor'] = $this->Profesor_model->get_datos($user);
         $data['estudiantes']=$this->Profesor_model->get_estudiantes_disertacion($user);
 
@@ -147,14 +183,25 @@ class Profesor extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('profesores/disertacion_estudiantes', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
      * Adding a new profesor
      */
     function add()
-    {   
-        $this->load->library('form_validation');
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $this->load->library('form_validation');
 
         $this->form_validation->set_rules('prof_nombre1','Prof Nombre1','required');
         $this->form_validation->set_rules('prof_apellido1','Prof Apellido1','required');
@@ -201,14 +248,25 @@ class Profesor extends CI_Controller
             $this->load->view('profesores/add');
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a profesor
      */
     function edit($prof_codigo)
-    {   
-        // check if the profesor exists before trying to edit it
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            // check if the profesor exists before trying to edit it
         $profesor = $this->Profesor_model->get_profesor($prof_codigo);
         
         if(isset($profesor['prof_codigo']))
@@ -261,6 +319,15 @@ class Profesor extends CI_Controller
         }
         else
             show_error('The profesor you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -268,7 +335,9 @@ class Profesor extends CI_Controller
      */
     function remove($prof_codigo)
     {
-        $profesor = $this->Profesor_model->get_profesor($prof_codigo);
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $profesor = $this->Profesor_model->get_profesor($prof_codigo);
 
         // check if the profesor exists before trying to delete it
         if(isset($profesor['prof_codigo']))
@@ -278,6 +347,15 @@ class Profesor extends CI_Controller
         }
         else
             show_error('The profesor you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

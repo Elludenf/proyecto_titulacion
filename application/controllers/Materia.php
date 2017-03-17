@@ -18,6 +18,8 @@ class Materia extends CI_Controller
     private $limit = 5;
     function index()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $data['materias'] = $this->Materia_model->get_all_materias();
 
         /*Empiezo de paginacion*/
@@ -61,13 +63,24 @@ class Materia extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('materia/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
      * Adding a new materia
      */
     function add()
-    {   
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('mat_nombre','Mat Nombre','required|max_length[100]');
@@ -95,13 +108,24 @@ class Materia extends CI_Controller
             $this->load->view('materia/add');
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a materia
      */
     function edit($mat_codigo)
-    {   
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         // check if the materia exists before trying to edit it
         $materia = $this->Materia_model->get_materia($mat_codigo);
         
@@ -133,6 +157,15 @@ class Materia extends CI_Controller
         }
         else
             show_error('The materia you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -140,6 +173,8 @@ class Materia extends CI_Controller
      */
     function remove($mat_codigo)
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $materia = $this->Materia_model->get_materia($mat_codigo);
 
         // check if the materia exists before trying to delete it
@@ -150,6 +185,15 @@ class Materia extends CI_Controller
         }
         else
             show_error('The materia you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

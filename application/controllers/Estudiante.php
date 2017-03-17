@@ -32,6 +32,7 @@ class Estudiante extends CI_Controller
     function index()
     {
         if (isset($_SERVER['HTTP_REFERER'])) {
+
             $data['estudiante'] = $this->Estudiante_model->get_all_estudiantes();
 
             /*Empiezo de paginacion*/

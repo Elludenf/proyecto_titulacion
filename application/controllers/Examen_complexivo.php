@@ -18,6 +18,7 @@ class Examen_complexivo extends CI_Controller
     private $limit = 5;
     function index()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $data['examenes_complexivo'] = $this->Examen_complexivo_model->get_all_examenes_complexivo();
 
         /*Empiezo de paginacion*/
@@ -61,13 +62,23 @@ class Examen_complexivo extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('examen_complexivo/index', $data);
         $this->load->view('templates/footer');
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
      * Adding a new examen_complexivo
      */
     function add()
-    {   
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('est_codigo','Est Codigo','integer');
@@ -99,13 +110,22 @@ class Examen_complexivo extends CI_Controller
             $this->load->view('examen_complexivo/add', $data);
             $this->load->view('templates/footer');
         }
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a examen_complexivo
      */
     function edit($exa_codigo)
-    {   
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         // check if the examen_complexivo exists before trying to edit it
         $examen_complexivo = $this->Examen_complexivo_model->get_examen_complexivo($exa_codigo);
         
@@ -146,6 +166,14 @@ class Examen_complexivo extends CI_Controller
         }
         else
             show_error('The examen_complexivo you are trying to edit does not exist.');
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -153,6 +181,7 @@ class Examen_complexivo extends CI_Controller
      */
     function remove($exa_codigo)
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $examen_complexivo = $this->Examen_complexivo_model->get_examen_complexivo($exa_codigo);
 
         // check if the examen_complexivo exists before trying to delete it
@@ -163,6 +192,14 @@ class Examen_complexivo extends CI_Controller
         }
         else
             show_error('The examen_complexivo you are trying to delete does not exist.');
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

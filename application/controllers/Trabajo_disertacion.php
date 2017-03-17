@@ -19,7 +19,9 @@ class Trabajo_disertacion extends CI_Controller
     private $limit = 5;
     function index()
     {
-        $data['trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $data['trabajo_disertacion'] = $this->Trabajo_disertacion_model->get_all_trabajo_disertacion();
 
         /*Empiezo de paginacion*/
         $total_rows = $this->Trabajo_disertacion_model->count();
@@ -62,6 +64,15 @@ class Trabajo_disertacion extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('trabajo_disertacion/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
@@ -69,7 +80,9 @@ class Trabajo_disertacion extends CI_Controller
      */
     function add()
     {
-        $this->load->library('form_validation');
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $this->load->library('form_validation');
 
         $this->form_validation->set_rules('dis_fechainicio','Dis Fechainicio','required');
         $this->form_validation->set_rules('dis_fechapresentacionplan','Dis Fechapresentacionplan','required');
@@ -98,6 +111,15 @@ class Trabajo_disertacion extends CI_Controller
             $this->load->view('trabajo_disertacion/add');
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
@@ -105,7 +127,9 @@ class Trabajo_disertacion extends CI_Controller
      */
     function edit($dis_codigo)
     {
-        // check if the trabajo_disertacion exists before trying to edit it
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            // check if the trabajo_disertacion exists before trying to edit it
         $trabajo_disertacion = $this->Trabajo_disertacion_model->get_trabajo_disertacion($dis_codigo);
 
         if(isset($trabajo_disertacion['dis_codigo']))
@@ -144,6 +168,15 @@ class Trabajo_disertacion extends CI_Controller
         }
         else
             show_error('The trabajo_disertacion you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
@@ -151,7 +184,9 @@ class Trabajo_disertacion extends CI_Controller
      */
     function remove($dis_codigo)
     {
-        $trabajo_disertacion = $this->Trabajo_disertacion_model->get_trabajo_disertacion($dis_codigo);
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
+            $trabajo_disertacion = $this->Trabajo_disertacion_model->get_trabajo_disertacion($dis_codigo);
 
         // check if the trabajo_disertacion exists before trying to delete it
         if(isset($trabajo_disertacion['dis_codigo']))
@@ -161,6 +196,15 @@ class Trabajo_disertacion extends CI_Controller
         }
         else
             show_error('The trabajo_disertacion you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
 }

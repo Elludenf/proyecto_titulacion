@@ -18,6 +18,7 @@ class Facultades extends CI_Controller
     private $limit = 5;
     function index()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $data['facultades'] = $this->Facultades_model->get_all_facultades();
 
         /*Empiezo de paginacion*/
@@ -61,6 +62,15 @@ class Facultades extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('facultades/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
@@ -68,6 +78,7 @@ class Facultades extends CI_Controller
      */
     function add()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $this->load->library('form_validation');
 
         //Agregado
@@ -94,6 +105,14 @@ class Facultades extends CI_Controller
             $this->load->view('facultades/add');
             $this->load->view('templates/footer');
         }
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
@@ -101,6 +120,7 @@ class Facultades extends CI_Controller
      */
     function edit($facu_codigo)
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $this->load->library('form_validation');
         // check if the facultades exists before trying to edit it
         $facultades = $this->Facultades_model->get_facultades($facu_codigo);
@@ -127,6 +147,14 @@ class Facultades extends CI_Controller
         }
         else
             show_error('The facultades you are trying to edit does not exist.');
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -134,6 +162,7 @@ class Facultades extends CI_Controller
      */
     function remove($facu_codigo)
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $facultades = $this->Facultades_model->get_facultades($facu_codigo);
 
         // check if the facultades exists before trying to delete it
@@ -144,6 +173,14 @@ class Facultades extends CI_Controller
         }
         else
             show_error('The facultades you are trying to delete does not exist.');
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

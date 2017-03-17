@@ -18,6 +18,7 @@ class Mat_ap_x_est extends CI_Controller
     private $limit = 5;
     function index()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $data['mat_ap_x_est'] = $this->Mat_ap_x_est_model->get_all_mat_ap_x_est();
 
         /*Empiezo de paginacion*/
@@ -61,6 +62,15 @@ class Mat_ap_x_est extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('mat_ap_x_est/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
@@ -68,6 +78,8 @@ class Mat_ap_x_est extends CI_Controller
      */
     function add()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('est_codigo','Estudiante','required');
@@ -94,6 +106,15 @@ class Mat_ap_x_est extends CI_Controller
             $this->load->view('mat_ap_x_est/add', $data);
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
@@ -101,6 +122,8 @@ class Mat_ap_x_est extends CI_Controller
      */
     function edit($mat_codigo,$est_codigo)
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         // check if the mat_ap_x_est exists before trying to edit it
         $mat_ap_x_est = $this->Mat_ap_x_est_model->get_mat_ap_x_est($mat_codigo,$est_codigo);
         
@@ -132,6 +155,15 @@ class Mat_ap_x_est extends CI_Controller
         }
         else
             show_error('The mat_ap_x_est you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -139,6 +171,8 @@ class Mat_ap_x_est extends CI_Controller
      */
     function remove($mat_codigo,$est_codigo)
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $mat_ap_x_est = $this->Mat_ap_x_est_model->get_mat_ap_x_est($mat_codigo,$est_codigo);
 
         // check if the mat_ap_x_est exists before trying to delete it
@@ -149,6 +183,15 @@ class Mat_ap_x_est extends CI_Controller
         }
         else
             show_error('The mat_ap_x_est you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }

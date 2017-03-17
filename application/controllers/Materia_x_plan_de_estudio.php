@@ -18,6 +18,7 @@ class Materia_x_plan_de_estudio extends CI_Controller
     private $limit = 5;
     function index()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
         $data['materia_x_plan_de_estudio'] = $this->Materia_x_plan_de_estudio_model->get_all_materia_x_plan_de_estudio();
 
 
@@ -62,6 +63,15 @@ class Materia_x_plan_de_estudio extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('materia_x_plan_de_estudio/index', $data);
         $this->load->view('templates/footer');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
 
     /*
@@ -69,6 +79,8 @@ class Materia_x_plan_de_estudio extends CI_Controller
      */
     function add()
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('plan_codigo','Plan de Estudio','required');
@@ -101,13 +113,24 @@ class Materia_x_plan_de_estudio extends CI_Controller
             $this->load->view('materia_x_plan_de_estudio/add', $data);
             $this->load->view('templates/footer');
         }
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }  
 
     /*
      * Editing a materia_x_plan_de_estudio
      */
     function edit($plan_codigo,$mat_codigo,$pac_codigo)
-    {   
+    {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         // check if the materia_x_plan_de_estudio exists before trying to edit it
         $materia_x_plan_de_estudio = $this->Materia_x_plan_de_estudio_model->get_materia_x_plan_de_estudio($plan_codigo,$mat_codigo,$pac_codigo);
         
@@ -134,6 +157,15 @@ class Materia_x_plan_de_estudio extends CI_Controller
         }
         else
             show_error('The materia_x_plan_de_estudio you are trying to edit does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     } 
 
     /*
@@ -141,6 +173,8 @@ class Materia_x_plan_de_estudio extends CI_Controller
      */
     function remove($plan_codigo,$mat_codigo,$pac_codigo)
     {
+        if (isset($_SERVER['HTTP_REFERER'])) {
+
         $materia_x_plan_de_estudio = $this->Materia_x_plan_de_estudio_model->get_materia_x_plan_de_estudio($plan_codigo,$mat_codigo,$pac_codigo);
 
         // check if the materia_x_plan_de_estudio exists before trying to delete it
@@ -151,6 +185,15 @@ class Materia_x_plan_de_estudio extends CI_Controller
         }
         else
             show_error('The materia_x_plan_de_estudio you are trying to delete does not exist.');
+
+        }  else{
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
     }
     
 }
