@@ -96,13 +96,13 @@
 
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Plan Codigo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Plan De Estudios</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Mat Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo PLan de Estudios</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Plan de Estudios</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Materia</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Materia</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Pac Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Periodo Academico</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Periodo Academico</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
     </tr>
 	<?php foreach($materia_x_plan_de_estudio as $m){ ?>
     <tr>

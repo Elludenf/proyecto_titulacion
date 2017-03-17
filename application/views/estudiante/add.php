@@ -48,7 +48,7 @@
 			?>
 		</select>
 	</div>
-	<div id="custom-lbl" >Id : <input type="text" class="edit-inp" name="est_id" value="<?php echo $this->input->post('est_id'); ?>" /></div>
+	<div id="custom-lbl" >ID : <input type="text" class="edit-inp" name="est_id" value="<?php echo $this->input->post('est_id'); ?>" /></div>
 	<div id="custom-lbl" >Direccion : <input type="text" class="edit-inp" name="est_direccion" value="<?php echo $this->input->post('est_direccion'); ?>" /></div>
 	<div id="custom-lbl" >Telefono : <input type="text" class="edit-inp" name="est_telefono" value="<?php echo $this->input->post('est_telefono'); ?>" /></div>
 	<div id="custom-lbl" >Celular : <input type="text" class="edit-inp" name="est_celular" value="<?php echo $this->input->post('est_celular'); ?>" /></div>
@@ -57,7 +57,7 @@
 	<div id="custom-lbl" >Fecha de Nacimiento : <input type="date"  class="edit-inp" name="est_fechanac" value="<?php echo $this->input->post('est_fechanac'); ?>" /></div>
 	<div id="custom-lbl" >Sexo :
 		<select name="est_sexo" class="edit-inp">
-			<option value="">Seleccione:</option>
+			<option value="">Seleccionar</option>
 			<?php
 
 			echo '<option value="F">Femenino</option>';

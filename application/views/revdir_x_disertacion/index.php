@@ -96,13 +96,13 @@
 
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Disertacion</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Trabajo Disertacion</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Prof Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Profesor</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Profesor</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Rxd Tipo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Rxd Fechanombramiento</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Tipo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha de Nombramiento</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
     </tr>
 	<?php foreach($revdir_x_disertacion as $r){ ?>
     <tr>
@@ -113,8 +113,8 @@
 		<td><?php if($r['rxd_tipo']=='DIR') echo 'Director'; else if ($r['rxd_tipo']=='R_1') echo 'Revisor 1'; else echo 'Revisor 2';?></td>
 		<td><?php echo $r['rxd_fechanombramiento']; ?></td>
 		<td>
-            <a href="<?php echo site_url('revdir_x_disertacion/edit/'.$r['dis_codigo'].'/'.$r['prof_codigo']); ?>">Edit</a> |
-            <a href="<?php echo site_url('revdir_x_disertacion/remove/'.$r['dis_codigo'].'/'.$r['prof_codigo']); ?>">Delete</a>
+            <a href="<?php echo site_url('revdir_x_disertacion/edit/'.$r['dis_codigo'].'/'.$r['prof_codigo']); ?>">Editar</a> |
+            <a href="<?php echo site_url('revdir_x_disertacion/remove/'.$r['dis_codigo'].'/'.$r['prof_codigo']); ?>">Eliminar</a>
         </td>
     </tr>
 	<?php } ?>

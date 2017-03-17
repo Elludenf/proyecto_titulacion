@@ -96,15 +96,15 @@
 
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Codigo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Trabajo Disertacion</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Prof Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Disertacion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Trabajo de Disertacion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Profesor</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Profesor</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Tipo Revisor</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Obs Codigo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Obs Fecha</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Obs Descripcion</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Observacion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha Observacion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Descripcion Observacion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
     </tr>
 	<?php foreach($revisiones as $r){ ?>
     <tr>
@@ -117,8 +117,8 @@
 		<td><?php echo $r['obs_fecha']; ?></td>
 		<td><?php echo $r['obs_descripcion']; ?></td>
 		<td>
-            <a href="<?php echo site_url('revision/edit/'.$r['obs_codigo']); ?>">Edit</a> |
-            <a href="<?php echo site_url('revision/remove/'.$r['obs_codigo']); ?>">Delete</a>
+            <a href="<?php echo site_url('revision/edit/'.$r['obs_codigo']); ?>">Editar</a> |
+            <a href="<?php echo site_url('revision/remove/'.$r['obs_codigo']); ?>">Eliminar</a>
         </td>
     </tr>
 	<?php } ?>

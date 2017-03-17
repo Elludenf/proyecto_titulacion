@@ -99,22 +99,22 @@
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Primer Nombre</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Segundo Nombre</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Primer Apellido</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Segundo Apellido</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">1er Nombre</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">2do Nombre</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">1er Apellido</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">2do Apellido</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Tipo ID</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">ID</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Direccion</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Telefono</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Celular</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Mail</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Mailpuce</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Fechanac</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Mail PUCE</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha de Nacimiento</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Sexo</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Foto</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Oficina</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
     </tr>
 	<?php foreach($profesores as $p){ ?>
     <tr>

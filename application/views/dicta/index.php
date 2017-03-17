@@ -96,11 +96,11 @@
 
 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Prof Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Profesor</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Profesor</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Mat Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Materia</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Materia</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
     </tr>
 	<?php foreach($dicta as $d){ ?>
     <tr>
@@ -110,7 +110,7 @@
         <td><?php echo $d['mat_nombre']; ?></td>
 		<td>
 
-            <a href="<?php echo site_url('dicta/remove/'.$d['prof_codigo'].'/'.$d['mat_codigo']); ?>">Delete</a>
+            <a href="<?php echo site_url('dicta/remove/'.$d['prof_codigo'].'/'.$d['mat_codigo']); ?>">Eliminar</a>
         </td>
     </tr>
 	<?php } ?>

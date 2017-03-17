@@ -102,7 +102,7 @@
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
                                 <tr>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo</th>
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Descripcion</th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Facultad</th>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
                                 </tr>
                                 <?php foreach($facultades as $f){ ?>
@@ -110,7 +110,7 @@
                                         <td><?php echo $f['facu_codigo']; ?></td>
                                         <td><?php echo $f['facu_descripcion']; ?></td>
                                         <td>
-                                            <a href="<?php echo site_url('facultades/edit/'.$f['facu_codigo']); ?>">Editar/a> |
+                                            <a href="<?php echo site_url('facultades/edit/'.$f['facu_codigo']); ?>">Editar</a> |
                                             <a href="<?php echo site_url('facultades/remove/'.$f['facu_codigo']); ?>">Eliminar</a>
                                         </td>
                                     </tr>

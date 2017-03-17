@@ -299,7 +299,7 @@ WHERE FOO IS NOT NULL')->row_array();
         $this->db->from('titulacion.estudiante t1');
         $this->db->where("NOT EXISTS (
                     SELECT est_codigo FROM titulacion.elabora t2 WHERE t1.est_codigo = t2.est_codigo)
-                    AND
+                    OR
                     est_codigo in (SELECT est_codigo FROM titulacion.examen_complexivo t2 WHERE t1.est_codigo = t2.est_codigo)");
         $this->db->group_by('est_codigo');
         $this->db->having('count (*) <=2');

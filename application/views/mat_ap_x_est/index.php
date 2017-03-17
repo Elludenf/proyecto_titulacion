@@ -96,11 +96,11 @@
 
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
-		<th class="table-header-repeat line-left minwidth-1"><a href="">Mat Codigo</th>
+		<th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Materia</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Materia</th>
-		<th class="table-header-repeat line-left minwidth-1"><a href="">Est Codigo</th>
+		<th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Estudiante</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Estudiante</th>
-		<th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
+		<th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
     </tr>
 	<?php foreach($mat_ap_x_est as $m){ ?>
     <tr>
@@ -110,7 +110,7 @@
         <td><?php echo $m['est_apellido1'].' '.$m['est_apellido2'].' '.$m['est_nombre1'].' '.$m['est_nombre2']; ; ?></td>
 		<td>
 
-            <a href="<?php echo site_url('mat_ap_x_est/remove/'.$m['mat_codigo'].'/'.$m['est_codigo']); ?>">Delete</a>
+            <a href="<?php echo site_url('mat_ap_x_est/remove/'.$m['mat_codigo'].'/'.$m['est_codigo']); ?>">Eliminar</a>
         </td>
     </tr>
 	<?php } ?>
