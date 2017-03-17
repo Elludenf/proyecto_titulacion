@@ -57,7 +57,7 @@
 	<div id="custom-lbl" >Fecha de Nacimiento : <input type="date"  class="edit-inp" name="est_fechanac" value="<?php echo $this->input->post('est_fechanac'); ?>" /></div>
 	<div id="custom-lbl" >Sexo :
 		<select name="est_sexo" class="edit-inp">
-			<option value="">Seleccione:</option>
+			<option value="">Seleccionar</option>
 			<?php
 
 			echo '<option value="F">Femenino</option>';

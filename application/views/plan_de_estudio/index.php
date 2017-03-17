@@ -97,12 +97,12 @@
 
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Plan Codigo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Carr Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Plan de Estudio</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Carrera</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Carrera</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Plan Descripcion</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Plan Fechainicio</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Plan Vigencia</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Descripcion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha Inicio</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Vigencia</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
     </tr>
 	<?php foreach($planes_de_estudio as $p){ ?>

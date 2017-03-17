@@ -96,16 +96,16 @@
 
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Mat Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Materia</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Materia</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Exa Codigo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Mxe Fecha 1</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Mxe Fecha 2</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Mxe Nota Horal 1</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Mxe Nota Escrita 1</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Mxe Nota Horal 2</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Mxe Nota Escrita 2</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Examen</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha #1</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha #2</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Nota Oral #1</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Nota Escrita #1</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Nota Oral #2</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Nota Escrita #2</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
     </tr>
 	<?php foreach($matsorteadas_x_examen as $m){ ?>
     <tr>
@@ -119,8 +119,8 @@
 		<td><?php echo $m['mxe_nota_horal_2']; ?></td>
 		<td><?php echo $m['mxe_nota_escrita_2']; ?></td>
 		<td>
-            <a href="<?php echo site_url('matsorteadas_x_examan/edit/'.$m['mat_codigo'].'/'.$m['exa_codigo']); ?>">Edit</a> |
-            <a href="<?php echo site_url('matsorteadas_x_examan/remove/'.$m['mat_codigo'].'/'.$m['exa_codigo']); ?>">Delete</a>
+            <a href="<?php echo site_url('matsorteadas_x_examan/edit/'.$m['mat_codigo'].'/'.$m['exa_codigo']); ?>">Editar</a> |
+            <a href="<?php echo site_url('matsorteadas_x_examan/remove/'.$m['mat_codigo'].'/'.$m['exa_codigo']); ?>">Eliminar</a>
         </td>
     </tr>
 	<?php } ?>

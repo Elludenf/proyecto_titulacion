@@ -96,14 +96,14 @@
 
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
                                 <tr>
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Exa Codigo</th>
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Est Codigo</th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Examen</th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo EStudiante</th>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">Estudiante</th>
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Exa Fechainicio</th>
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Exa Estado</th>
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Exa Horas Docencia</th>
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Exa Horas Autonomas</th>
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha de Inicio</th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Estado</th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Horas Docencia</th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Horas Autonomas</th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
                                 </tr>
                                 <?php foreach($examenes_complexivo as $e){ ?>
                                 <tr>
@@ -115,8 +115,8 @@
                                     <td><?php echo $e['exa_horas_docencia']; ?></td>
                                     <td><?php echo $e['exa_horas_autonomas']; ?></td>
                                     <td>
-                                        <a href="<?php echo site_url('examen_complexivo/edit/'.$e['exa_codigo']); ?>">Edit</a> |
-                                        <a href="<?php echo site_url('examen_complexivo/remove/'.$e['exa_codigo']); ?>">Delete</a>
+                                        <a href="<?php echo site_url('examen_complexivo/edit/'.$e['exa_codigo']); ?>">Editar</a> |
+                                        <a href="<?php echo site_url('examen_complexivo/remove/'.$e['exa_codigo']); ?>">Eliminar</a>
                                     </td>
                                 </tr>
                                 <?php } ?>

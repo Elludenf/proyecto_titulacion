@@ -96,15 +96,15 @@
 
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Pro Codigo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Codigo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Trabajo Disertacion</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Pro Fechaint</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Pro Fechainicio</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Pro Fechafin</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Pro Descripcion</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Pro Detalle</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Prorroga</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Disertacion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Trabajo de Disertacion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fechaint</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha de Inicio</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha de Fin</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Descripcion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Detalle</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
     </tr>
 	<?php foreach($prorrogas as $p){ ?>
     <tr>
@@ -117,8 +117,8 @@
 		<td><?php echo $p['pro_descripcion']; ?></td>
 		<td><?php echo $p['pro_detalle']; ?></td>
 		<td>
-            <a href="<?php echo site_url('prorroga/edit/'.$p['pro_codigo']); ?>">Edit</a> |
-            <a href="<?php echo site_url('prorroga/remove/'.$p['pro_codigo']); ?>">Delete</a>
+            <a href="<?php echo site_url('prorroga/edit/'.$p['pro_codigo']); ?>">Editar</a> |
+            <a href="<?php echo site_url('prorroga/remove/'.$p['pro_codigo']); ?>">Eliminar</a>
         </td>
     </tr>
 	<?php } ?>

@@ -95,13 +95,13 @@
                         <form id="mainform" action="">
 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Est Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Estudiante</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Estudiante</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Dis Codigo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Trabajo Disertacion</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Elb Nota Horal</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Elb Nota Escrito</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Disertacion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Trabajo de Disertacion</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Nota Oral</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Nota Escrita</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
     </tr>
 	<?php foreach($elabora as $e){ ?>
     <tr>
@@ -112,8 +112,8 @@
 		<td><?php echo $e['elb_nota_horal']; ?></td>
 		<td><?php echo $e['elb_nota_escrito']; ?></td>
 		<td>
-            <a href="<?php echo site_url('elabora/edit/'.$e['est_codigo'].'/'.$e['dis_codigo']); ?>">Edit</a> |
-            <a href="<?php echo site_url('elabora/remove/'.$e['est_codigo'].'/'.$e['dis_titulo']); ?>">Delete</a>
+            <a href="<?php echo site_url('elabora/edit/'.$e['est_codigo'].'/'.$e['dis_codigo']); ?>">Editar</a> |
+            <a href="<?php echo site_url('elabora/remove/'.$e['est_codigo'].'/'.$e['dis_titulo']); ?>">Eliminar</a>
         </td>
     </tr>
 	<?php } ?>

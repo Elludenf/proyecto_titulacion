@@ -96,12 +96,12 @@
 
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
     <tr>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Res Codigo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Prof Codigo</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Responsable</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Codigo Profesor</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Profesor</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Res Tipo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Res Fechanombramiento</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Actions</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Tipo de Responsable</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha de Nombramiento</th>
+        <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
     </tr>
 	<?php foreach($responsables_titulacion as $r){ ?>
     <tr>
@@ -111,8 +111,8 @@
 		<td><?php if($r['res_tipo']=='R1') echo 'Responsable Titulacion I'; else echo 'Responsable Titulacion II'?></td>
 		<td><?php echo $r['res_fechanombramiento']; ?></td>
 		<td>
-            <a href="<?php echo site_url('responsables_titulacion/edit/'.$r['res_codigo']); ?>">Edit</a> |
-            <a href="<?php echo site_url('responsables_titulacion/remove/'.$r['res_codigo']); ?>">Delete</a>
+            <a href="<?php echo site_url('responsables_titulacion/edit/'.$r['res_codigo']); ?>">Editar</a> |
+            <a href="<?php echo site_url('responsables_titulacion/remove/'.$r['res_codigo']); ?>">Eliminar</a>
         </td>
     </tr>
 	<?php } ?>
