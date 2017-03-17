@@ -58,7 +58,7 @@ class Dicta_model extends CI_Model
     function add_dicta($params)
     {
         $this->db->insert('dicta',$params);
-        return $this->db->insert_id();
+        //return $this->db->insert_id();
     }
     
     /*
