@@ -23,7 +23,7 @@ class Cambio_clave extends CI_Controller {
             $this->load->view('Cambio/cambio_view');
             $this->load->view('templates/footer');
 
-        }  else{
+        } else {
 
 
             $this->load->view('templates/header');
