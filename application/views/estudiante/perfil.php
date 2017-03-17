@@ -8,8 +8,8 @@
 
         var data = google.visualization.arrayToDataTable([
             ['Task', 'Hours per Day'],
-            ['Horas Docencia',     <?php echo $complexivoPrimerIntentoInfo['exa_horas_docencia']+ $complexivoSegundoIntentoInfo['exa_horas_docencia']; ?>  ],
-            ['Horas Autónomas',      <?php echo $complexivoPrimerIntentoInfo['exa_horas_autonomas']+$complexivoSegundoIntentoInfo['exa_horas_autonomas']; ?>],
+            ['Horas Docencia',     <?php echo $complexivoPrimerIntentoInfo['exa_horas_docencia']; ?>  ],
+            ['Horas Autónomas',      <?php echo $complexivoPrimerIntentoInfo['exa_horas_autonomas']; ?>],
         ]);
 
         var options = {
@@ -60,11 +60,11 @@
     function drawMultSeries1() {
         var data = google.visualization.arrayToDataTable([
             ['Materias', 'Nota de examen oral por materia', 'Nota de examen escrito por materia'],
-            [<?php echo "'" ?><?php echo $nombreMateria1ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia1ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia1ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia1ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia1ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
-            [<?php echo "'" ?><?php echo $nombreMateria2ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia2ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia2ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia2ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia2ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
-            [<?php echo "'" ?><?php echo $nombreMateria3ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia3ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia3ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia3ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia3ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
-            [<?php echo "'" ?><?php echo $nombreMateria4ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia4ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia4ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia4ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia4ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
-            [<?php echo "'" ?><?php echo $nombreMateria5ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia5ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia5ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia5ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia5ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ]
+            [<?php echo "'" ?><?php echo $nombreMateria1ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia1ComplexivoSegundoIntento['mxe_nota_horal_2'])==0) echo 0; else echo $materia1ComplexivoSegundoIntento['mxe_nota_horal_2'] ; ?> , <?php if (strlen($materia1ComplexivoSegundoIntento['mxe_nota_escrita_2'])==0) echo 0; else echo $materia1ComplexivoSegundoIntento['mxe_nota_escrita_2'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria2ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia2ComplexivoSegundoIntento['mxe_nota_horal_2'])==0) echo 0; else echo $materia2ComplexivoSegundoIntento['mxe_nota_horal_2'] ; ?> , <?php if (strlen($materia2ComplexivoSegundoIntento['mxe_nota_escrita_2'])==0) echo 0; else echo $materia2ComplexivoSegundoIntento['mxe_nota_escrita_2'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria3ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia3ComplexivoSegundoIntento['mxe_nota_horal_2'])==0) echo 0; else echo $materia3ComplexivoSegundoIntento['mxe_nota_horal_2'] ; ?> , <?php if (strlen($materia3ComplexivoSegundoIntento['mxe_nota_escrita_2'])==0) echo 0; else echo $materia3ComplexivoSegundoIntento['mxe_nota_escrita_2'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria4ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia4ComplexivoSegundoIntento['mxe_nota_horal_2'])==0) echo 0; else echo $materia4ComplexivoSegundoIntento['mxe_nota_horal_2'] ; ?> , <?php if (strlen($materia4ComplexivoSegundoIntento['mxe_nota_escrita_2'])==0) echo 0; else echo $materia4ComplexivoSegundoIntento['mxe_nota_escrita_2'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria5ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia5ComplexivoSegundoIntento['mxe_nota_horal_2'])==0) echo 0; else echo $materia5ComplexivoSegundoIntento['mxe_nota_horal_2'] ; ?> , <?php if (strlen($materia5ComplexivoSegundoIntento['mxe_nota_escrita_2'])==0) echo 0; else echo $materia5ComplexivoSegundoIntento['mxe_nota_escrita_2'] ; ?> ]
         ]);
 
         var options = {
@@ -367,12 +367,18 @@
                             <?php echo $complexivoPrimerIntentoInfo['exa_fechainicio'] ?></span></div>
 
                         <div id = "datos-ind" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Estado del examen:
-                                    <?php if(strcmp($complexivoPrimerIntentoInfo['exa_estado'],'EP')==0)
-                                        echo 'En proceso';
-                                    else if(strcmp($complexivoPrimerIntentoInfo['exa_estado'],'RP')==0)
+                                    <?php
+
+                                    if(strlen($materia1ComplexivoPrimerIntento['mxe_fecha_2'])!=0)
                                         echo 'Reprobado';
-                                    else if(strcmp($complexivoPrimerIntentoInfo['exa_estado'],'AP')==0)
-                                        echo 'Aprobado';
+                                    else {
+                                        if (strcmp($complexivoPrimerIntentoInfo['exa_estado'], 'EP') == 0)
+                                            echo 'En proceso';
+                                        else if (strcmp($complexivoPrimerIntentoInfo['exa_estado'], 'RP') == 0)
+                                            echo 'Reprobado';
+                                        else if (strcmp($complexivoPrimerIntentoInfo['exa_estado'], 'AP') == 0)
+                                            echo 'Aprobado';
+                                    }
                                     ?></span></div>
 
 
@@ -485,15 +491,15 @@
 
                     <div id = "datos-ind2" >
                         <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Fecha:
-                        <?php echo $materia1ComplexivoSegundoIntento['mxe_fecha_1'] ?></span></div>
+                        <?php echo $materia1ComplexivoSegundoIntento['mxe_fecha_2'] ?></span></div>
 
 
                     <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
-                        <?php echo $materia1ComplexivoSegundoIntento['mxe_nota_horal_1'] ?></span></div>
+                        <?php echo $materia1ComplexivoSegundoIntento['mxe_nota_horal_2'] ?></span></div>
 
 
                     <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
-                        <?php echo $materia1ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?></span></div>
+                        <?php echo $materia1ComplexivoSegundoIntento['mxe_nota_escrita_2'] ?></span></div>
 
 
 
@@ -503,15 +509,15 @@
 
 
                     <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Fecha:
-                        <?php echo $materia2ComplexivoSegundoIntento['mxe_fecha_1'] ?></span></div>
+                        <?php echo $materia2ComplexivoSegundoIntento['mxe_fecha_2'] ?></span></div>
 
 
                         <div id = "datos-ind2" >  <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
-                            <?php echo $materia2ComplexivoSegundoIntento['mxe_nota_horal_1'] ?></span></div>
+                            <?php echo $materia2ComplexivoSegundoIntento['mxe_nota_horal_2'] ?></span></div>
 
 
                             <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
-                                <?php echo $materia2ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?></span></div>
+                                <?php echo $materia2ComplexivoSegundoIntento['mxe_nota_escrita_2'] ?></span></div>
 
 
                     <div id = "datos-ind2" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Materia 3:
@@ -520,14 +526,14 @@
 
 
                     <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Fecha:
-                        <?php echo $materia3ComplexivoSegundoIntento['mxe_fecha_1'] ?></span></div>
+                        <?php echo $materia3ComplexivoSegundoIntento['mxe_fecha_2'] ?></span></div>
 
                         <div id = "datos-ind2" >     <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
-                            <?php echo $materia3ComplexivoSegundoIntento['mxe_nota_horal_1'] ?></span></div>
+                            <?php echo $materia3ComplexivoSegundoIntento['mxe_nota_horal_2'] ?></span></div>
 
 
                             <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
-                                <?php echo $materia3ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?></span></div>
+                                <?php echo $materia3ComplexivoSegundoIntento['mxe_nota_escrita_2'] ?></span></div>
 
 
                     <div id = "datos-ind2" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Materia 4:
@@ -535,15 +541,15 @@
 
 
                     <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Fecha:
-                        <?php echo $materia4ComplexivoSegundoIntento['mxe_fecha_1'] ?></span></div>
+                        <?php echo $materia4ComplexivoSegundoIntento['mxe_fecha_2'] ?></span></div>
 
 
                         <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
-                            <?php echo $materia4ComplexivoSegundoIntento['mxe_nota_horal_1'] ?></span></div>
+                            <?php echo $materia4ComplexivoSegundoIntento['mxe_nota_horal_2'] ?></span></div>
 
 
                             <div id = "datos-ind2" ><img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
-                                <?php echo $materia4ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?></span></div>
+                                <?php echo $materia4ComplexivoSegundoIntento['mxe_nota_escrita_2'] ?></span></div>
 
 
                     <div id = "datos-ind2" ><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"> <span class="txt-ind">Materia 5:
@@ -552,15 +558,15 @@
 
 
                     <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Fecha:
-                        <?php echo $materia5ComplexivoSegundoIntento['mxe_fecha_1'] ?></span></div>
+                        <?php echo $materia5ComplexivoSegundoIntento['mxe_fecha_2'] ?></span></div>
 
 
                         <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota Oral:
-                            <?php echo $materia5ComplexivoSegundoIntento['mxe_nota_horal_1'] ?></span></div>
+                            <?php echo $materia5ComplexivoSegundoIntento['mxe_nota_horal_2'] ?></span></div>
 
 
                             <div id = "datos-ind2" > <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Nota escrita:
-                                <?php echo $materia5ComplexivoSegundoIntento['mxe_nota_escrita_1'] ?></span></div>
+                                <?php echo $materia5ComplexivoSegundoIntento['mxe_nota_escrita_2'] ?></span></div>
 
 
 
@@ -592,8 +598,6 @@
                                     <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"> <span class="txt-ind">Responsable Unidad Titulación 1:
                                         <?php echo $responsableTitulacion1['prof_nombre1'].' '.$responsableTitulacion1['prof_nombre2'].' '.$responsableTitulacion1['prof_apellido1'].' '.$responsableTitulacion1['prof_apellido2']; ?></span>
                                 </div>
-                                <div id = "datos-ind" >      <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/mail_icono.png"> <span class="txt-ind">Mail Personal:
-                                        <?php echo $responsableTitulacion1['prof_mail'] ?> </div></span>
                                 <div id = "datos-ind" >        <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/mail_icono.png">  <span class="txt-ind"> Mail PUCE:
                                     <?php echo $responsableTitulacion1['prof_mailpuce'] ?></div></span>
                                 <div id = "datos-ind" >         <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">     <span class="txt-ind"> Oficina:
@@ -601,8 +605,7 @@
 
                                 <div id = "datos-ind" >      <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"><span class="txt-ind">Telefono:
                                     <?php echo $responsableTitulacion1['prof_telefono'] ?></div></span>
-                                <div id = "datos-ind" >       <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">    <span class="txt-ind"> Celular:
-                                    <?php echo $responsableTitulacion1['prof_celular'] ?></div></span>
+
 
                             </div></div>
                         <div id="container-inner-datos">
@@ -619,8 +622,6 @@
                                     <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"><span class="txt-ind">Responsable Unidad Titulación 2:</span>
                                     <?php echo $responsableTitulacion2['prof_nombre1'].' '.$responsableTitulacion2['prof_nombre2'].' '.$responsableTitulacion2['prof_apellido1'].' '.$responsableTitulacion2['prof_apellido2']; ?>
                                 </div>
-                                <div id = "datos-ind" >             <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/mail_icono.png">   <span class="txt-ind">Mail Personal:
-                                    <?php echo $responsableTitulacion2['prof_mail'] ?></div></span>
                                 <div id = "datos-ind" >           <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/mail_icono.png"> <span class="txt-ind"> Mail PUCE:
                                     <?php echo $responsableTitulacion2['prof_mailpuce'] ?></div></span>
                                 <div id = "datos-ind" >             <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"><span class="txt-ind"> Oficina:
@@ -628,8 +629,7 @@
 
                                 <div id = "datos-ind" >           <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">  <span class="txt-ind">Telefono:
                                     <?php echo $responsableTitulacion2['prof_telefono'] ?></div></span>
-                                <div id = "datos-ind" >          <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">  <span class="txt-ind"> Celular:
-                                    <?php echo $responsableTitulacion2['prof_celular'] ?></div></span>
+                                
 
 
                             </div>
