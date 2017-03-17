@@ -197,6 +197,7 @@ class Trabajo_disertacion extends CI_Controller
         else
             show_error('The trabajo_disertacion you are trying to delete does not exist.');
 
+
         }  else{
 
 
