@@ -103,7 +103,7 @@ class Profesor extends CI_Controller
         }
     }
 
-    function addRevision()
+    function addRevision($prof_codigo)
     {
         if (isset($_SERVER['HTTP_REFERER'])) {
 
@@ -112,6 +112,8 @@ class Profesor extends CI_Controller
 
             $this->form_validation->set_rules('obs_fecha', 'Obs Fecha', 'required');
             $this->form_validation->set_rules('obs_descripcion', 'Obs Descripcion', 'required|max_length[1024]');
+
+            $profesor = $this->Profesor_model->get_profesor($prof_codigo);
 
             if ($this->form_validation->run()) {
                 $params = array(
@@ -143,6 +145,7 @@ class Profesor extends CI_Controller
                 $this->load->model('Profesor_model');
                 $data['all_profesores'] = $a_prof;
 
+                $data['d_prof']=$profesor;
                 $this->load->view('templates/header');
                 $this->load->view('profesores/revisarDisertacion', $data);
                 $this->load->view('templates/footer');

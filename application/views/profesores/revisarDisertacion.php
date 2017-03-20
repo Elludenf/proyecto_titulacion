@@ -48,14 +48,10 @@
     <div  id="custom-lbl" >
         Prof Codigo :
         <select name="prof_codigo" class="edit-inp" >
-            <option value="">Seleccionar Profesor</option>
-            <?php
-            foreach($all_profesores as $profesor)
-            {
-                $selected = ($profesor['prof_codigo'] == $this->input->post('prof_codigo')) ? ' selected="selected"' : null;
 
-                echo '<option value="'.$profesor['prof_codigo'].'" '.$selected.'>'.$profesor['prof_apellido1'].' '.$profesor['prof_apellido2'].' '.$profesor['prof_nombre1'].' '.$profesor['prof_nombre2'].'</option>';
-            }
+            <?php
+                echo '<option value="'.$d_prof['prof_codigo'].'" '.$selected.'>'.$d_prof['prof_apellido1'].' '.$d_prof['prof_apellido2'].' '.$d_prof['prof_nombre1'].' '.$d_prof['prof_nombre2'].'</option>';
+
             ?>
         </select>
     </div>

@@ -80,7 +80,7 @@
 
                 <div id="container-inner-btn">
 
-                    <a href='<?php echo site_url('profesor/addRevision')?>' class=""><img src="<?php echo base_url();?>assets/images/pantalla_perfil/revision-btn.png"></a>
+                    <a href='<?php echo site_url('profesor/addRevision/'.$profesor['prof_codigo'])?>' class=""><img src="<?php echo base_url();?>assets/images/pantalla_perfil/revision-btn.png"></a>
 
                 </div>
 
