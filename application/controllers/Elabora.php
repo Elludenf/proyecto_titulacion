@@ -82,13 +82,15 @@ class Elabora extends CI_Controller
 
             $this->form_validation->set_rules('elb_nota_horal', 'Elb Nota Horal|greater_than_equal_to[0]', 'numeric|greater_than_equal_to[0]');
             $this->form_validation->set_rules('elb_nota_escrito', 'Elb Nota Escrito|greater_than_equal_to[0]', 'numeric|greater_than_equal_to[0]');
+            if (empty($this->input->post('elb_nota_horal'))) {$nota_oral = NULL;} else {$nota_oral =$this->input->post('elb_nota_horal');}
+            if (empty($this->input->post('elb_nota_escrito'))) {$nota_escrita = NULL;} else {$nota_escrita=$this->input->post('elb_escrito');}
 
             if ($this->form_validation->run()) {
                 $params = array(
                     'est_codigo' => $this->input->post('est_codigo'),
                     'dis_codigo' => $this->input->post('dis_codigo'),
-                    'elb_nota_horal' => $this->input->post('elb_nota_horal'),
-                    'elb_nota_escrito' => $this->input->post('elb_nota_escrito'),
+                    'elb_nota_horal' => $nota_oral,
+                    'elb_nota_escrito' => $nota_escrita,
                 );
 
                 $elabora_id = $this->Elabora_model->add_elabora($params);
@@ -126,10 +128,13 @@ class Elabora extends CI_Controller
                 $this->form_validation->set_rules('elb_nota_horal', 'Elb Nota Horal|greater_than[0]', 'numeric|greater_than_equal_to[0]');
                 $this->form_validation->set_rules('elb_nota_escrito', 'Elb Nota Escrito|greater_than[0]', 'numeric|greater_than_equal_to[0]');
 
+                if (empty($this->input->post('elb_nota_horal'))) {$nota_oral = NULL;} else {$nota_oral =$this->input->post('elb_nota_horal');}
+                if (empty($this->input->post('elb_nota_escrito'))) {$nota_escrita = NULL;} else {$nota_escrita=$this->input->post('elb_escrito');}
+
                 if ($this->form_validation->run()) {
                     $params = array(
-                        'elb_nota_horal' => $this->input->post('elb_nota_horal'),
-                        'elb_nota_escrito' => $this->input->post('elb_nota_escrito'),
+                        'elb_nota_horal' => $nota_oral,
+                        'elb_nota_escrito' => $nota_escrita,
                     );
 
                     $this->Elabora_model->update_elabora($est_codigo, $dis_codigo, $params);
