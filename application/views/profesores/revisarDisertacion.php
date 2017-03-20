@@ -49,6 +49,7 @@
         Prof Codigo :
         <select name="prof_codigo" class="edit-inp" >
 
+
             <?php
                 echo '<option value="'.$d_prof['prof_codigo'].'" '.$selected.'>'.$d_prof['prof_apellido1'].' '.$d_prof['prof_apellido2'].' '.$d_prof['prof_nombre1'].' '.$d_prof['prof_nombre2'].'</option>';
 
