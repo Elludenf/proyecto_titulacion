@@ -460,6 +460,17 @@ class Estudiante extends CI_Controller
                 $this->form_validation->set_rules('est_fechaingreso', 'Est Fechaingreso', 'required');
                 $this->form_validation->set_rules('est_mailpuce', 'Est Mailpuce', 'valid_email');
 
+                if (empty($this->input->post('est_fechaestimadagraduacion'))) {
+                    $fecha_est_grad = NULL;
+                } else {
+                    $fecha_est_grad = $this->input->post('est_fechaestimadagraduacion');
+                }
+                if (empty($this->input->post('est_fechagraduacion'))) {
+                    $fecha_grad = NULL;
+                } else {
+                    $fecha_grad = $this->input->post('est_fechagraduacion');
+                }
+
                 if ($this->form_validation->run()) {
                     $params = array(
                         'carr_codigo' => $this->input->post('carr_codigo'),
@@ -478,8 +489,8 @@ class Estudiante extends CI_Controller
                         'est_sexo' => $this->input->post('est_sexo'),
                         'est_foto' => $this->input->post('est_foto'),
                         'est_fechaingreso' => $this->input->post('est_fechaingreso'),
-                        'est_fechaestimadagraduacion' => $this->input->post('est_fechaestimadagraduacion'),
-                        'est_fechagraduacion' => $this->input->post('est_fechagraduacion'),
+                        'est_fechaestimadagraduacion' => $fecha_est_grad,
+                        'est_fechagraduacion' => $fecha_grad,
                     );
 
                     $this->Estudiante_model->update_estudiante($est_codigo, $params);
