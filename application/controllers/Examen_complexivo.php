@@ -89,13 +89,18 @@ class Examen_complexivo extends CI_Controller
             $this->form_validation->set_rules('exa_horas_docencia', 'Exa Horas Docencia', 'integer');
             $this->form_validation->set_rules('exa_horas_autonomas', 'Exa Horas Autonomas', 'integer');
 
+
+            if (empty($this->input->post('exa_horas_docencia'))) {$horas_docencia = NULL;} else {$horas_docencia=$this->input->post('exa_horas_docencia');}
+            if (empty($this->input->post('exa_horas_autonomas'))) {$horas_autonomas = NULL;} else {$horas_autonomas=$this->input->post('exa_horas_autonomas');}
+
+
             if ($this->form_validation->run()) {
                 $params = array(
                     'est_codigo' => $this->input->post('est_codigo'),
                     'exa_fechainicio' => $this->input->post('exa_fechainicio'),
                     'exa_estado' => $this->input->post('exa_estado'),
-                    'exa_horas_docencia' => $this->input->post('exa_horas_docencia'),
-                    'exa_horas_autonomas' => $this->input->post('exa_horas_autonomas'),
+                    'exa_horas_docencia' => $horas_docencia,
+                    'exa_horas_autonomas' => $horas_autonomas,
                 );
 
                 $examen_complexivo_id = $this->Examen_complexivo_model->add_examen_complexivo($params);
@@ -137,13 +142,17 @@ class Examen_complexivo extends CI_Controller
                 $this->form_validation->set_rules('exa_horas_docencia', 'Exa Horas Docencia', 'integer');
                 $this->form_validation->set_rules('exa_horas_autonomas', 'Exa Horas Autonomas', 'integer');
 
+
+                if (empty($this->input->post('exa_horas_docencia'))) {$horas_docencia = NULL;} else {$horas_docencia=$this->input->post('exa_horas_docencia');}
+                if (empty($this->input->post('exa_horas_autonomas'))) {$horas_autonomas = NULL;} else {$horas_autonomas=$this->input->post('exa_horas_autonomas');}
+
                 if ($this->form_validation->run()) {
                     $params = array(
                         'est_codigo' => $this->input->post('est_codigo'),
                         'exa_fechainicio' => $this->input->post('exa_fechainicio'),
                         'exa_estado' => $this->input->post('exa_estado'),
-                        'exa_horas_docencia' => $this->input->post('exa_horas_docencia'),
-                        'exa_horas_autonomas' => $this->input->post('exa_horas_autonomas'),
+                        'exa_horas_docencia' => $horas_docencia,
+                        'exa_horas_autonomas' => $horas_autonomas,
                     );
 
                     $this->Examen_complexivo_model->update_examen_complexivo($exa_codigo, $params);
