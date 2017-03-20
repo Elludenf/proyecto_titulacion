@@ -115,7 +115,11 @@
                     <div id = "datos-ind" >
                         <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"><span class="txt-ind">Correo:
                         <?php echo $profesor['prof_mailpuce']; ?>   </span>   </div>
-
+                    <div id="datos-ind"><img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"><span class="txt-ind">Materias:
+                            <br><?php foreach($materias as $m){ ?>
+                        <tr><?php echo '-'.$m['mat_nombre']; ?> <br></tr>
+                        <?php } ?>
+                    </div>
                 </div>
 
 

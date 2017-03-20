@@ -195,6 +195,7 @@ GRANT SELECT(mat_nombre) ON titulacion.materias TO "R_VISTA";
 GRANT SELECT(mat_nivel), UPDATE(mat_nivel), INSERT(mat_nivel), REFERENCES(mat_nivel) ON titulacion.materias TO "R_OPERADOR";
 GRANT SELECT(mat_nivel) ON titulacion.materias TO "R_VISTA";
 GRANT SELECT(mat_nombre,mat_codigo) ON TITULACION.materias TO "R_ESTUDIANTE";
+GRANT SELECT ON TABLE titulacion.MATERIAS TO "R_PROFESOR";
 
 --MATSORTEADAS_X_EXAMEN
 GRANT SELECT(mat_codigo) ON titulacion.matsorteadas_x_examen TO "R_ESTUDIANTE";
@@ -394,6 +395,7 @@ GRANT SELECT(obs_descripcion) ON titulacion.revisiones TO "R_ESTUDIANTE";
 GRANT SELECT(obs_descripcion), UPDATE(obs_descripcion), INSERT(obs_descripcion) ON titulacion.revisiones TO "R_DIRECTOR_T_TITULACION";
 GRANT SELECT(obs_descripcion), UPDATE(obs_descripcion), INSERT(obs_descripcion) ON titulacion.revisiones TO "R_REVISOR_T_TITULACION";
 GRANT SELECT(obs_descripcion), REFERENCES(obs_descripcion) ON titulacion.revisiones TO "R_OPERADOR";
+grant UPDATE  ON TABLE TITULACION.revisiones to "R_PROFESOR";
 
 --TRABAJO_DISERTACION
 GRANT SELECT(dis_codigo) ON titulacion.trabajo_disertacion TO "R_ESTUDIANTE";

@@ -113,7 +113,7 @@
 		<td><?php echo $e['elb_nota_escrito']; ?></td>
 		<td>
             <a href="<?php echo site_url('elabora/edit/'.$e['est_codigo'].'/'.$e['dis_codigo']); ?>">Editar</a> |
-            <a href="<?php echo site_url('elabora/remove/'.$e['est_codigo'].'/'.$e['dis_titulo']); ?>">Eliminar</a>
+            <a href="<?php echo site_url('elabora/remove/'.$e['est_codigo'].'/'.$e['dis_codigo']); ?>">Eliminar</a>
         </td>
     </tr>
 	<?php } ?>

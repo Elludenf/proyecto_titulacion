@@ -3,7 +3,7 @@
     <div class = "logo2"><img src = "<?php echo base_url();?>assets/images/pantalla_main/logo_puce2.png"></div>
     <div class = "icono-despliegue"><img src = "<?php echo base_url();?>assets/images/pantalla_main/icono_despliegue_lista.png"></div>
     <div class = "tipo-usuario"><?php echo $this->session-> __get('tipo_usuario');?></div>
-    <div class = "nombre-usuario"><?php echo $this->session-> __get('rolname'); ?></div>
+    <div class = "nombre-usuario"><a href="<?php echo base_url();?>profesor/perfil"><?php echo $profesor['prof_apellido1'].' '.$profesor['prof_apellido2'].' '.$profesor['prof_nombre1'].' '.$profesor['prof_nombre2']; ?></a></div>
     <div class = "icono-usuario"><img src = "<?php echo base_url();?>assets/images/pantalla_main/icono_usuario.png"></div>
 
 

@@ -33,6 +33,11 @@ class Profesor_model extends CI_Model
 titulacion.profesor.prof_MailPuce =\''.$correo.'\'))')->result_array();
     }
 
+    function get_materias($user){
+        $correo=$user.'@puce.edu.ec';
+        return $this->db->query('select prof_codigo,prof_mailpuce,mat_nombre from titulacion.profesor natural join titulacion.dicta natural join titulacion.materias where titulacion.profesor.prof_mailpuce=\''.$correo.'\'')->result_array();
+    }
+
     function count()
     {
         return $this->db->count_all_results($this->table);

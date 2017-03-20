@@ -80,8 +80,8 @@ class Elabora extends CI_Controller
         if (isset($_SERVER['HTTP_REFERER'])) {
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('elb_nota_horal', 'Elb Nota Horal', 'numeric');
-            $this->form_validation->set_rules('elb_nota_escrito', 'Elb Nota Escrito', 'numeric');
+            $this->form_validation->set_rules('elb_nota_horal', 'Elb Nota Horal|greater_than_equal_to[0]', 'numeric|greater_than_equal_to[0]');
+            $this->form_validation->set_rules('elb_nota_escrito', 'Elb Nota Escrito|greater_than_equal_to[0]', 'numeric|greater_than_equal_to[0]');
 
             if ($this->form_validation->run()) {
                 $params = array(
@@ -123,8 +123,8 @@ class Elabora extends CI_Controller
             if (isset($elabora['est_codigo']) && isset($elabora['dis_codigo'])) {
                 $this->load->library('form_validation');
 
-                $this->form_validation->set_rules('elb_nota_horal', 'Elb Nota Horal', 'numeric');
-                $this->form_validation->set_rules('elb_nota_escrito', 'Elb Nota Escrito', 'numeric');
+                $this->form_validation->set_rules('elb_nota_horal', 'Elb Nota Horal|greater_than[0]', 'numeric|greater_than_equal_to[0]');
+                $this->form_validation->set_rules('elb_nota_escrito', 'Elb Nota Escrito|greater_than[0]', 'numeric|greater_than_equal_to[0]');
 
                 if ($this->form_validation->run()) {
                     $params = array(
