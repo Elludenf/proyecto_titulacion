@@ -167,7 +167,6 @@ class Profesor extends CI_Controller
 
             $user = $this->session->__get('rolname');
             $this->load->library('form_validation');
-
             $this->form_validation->set_rules('obs_fecha', 'Obs Fecha', 'required');
             $this->form_validation->set_rules('obs_descripcion', 'Obs Descripcion', 'required|max_length[1024]');
 
@@ -182,7 +181,13 @@ class Profesor extends CI_Controller
                 );
 
                 $revision_id = $this->Revision_model->add_revision($params);
-                redirect('revision/index');
+
+                if ($this->session->__get('rol_group') == 'R_PROFESOR') {
+                    redirect('profesor/perfil');
+                } else {
+                    redirect('revision/index');
+                }
+
             } else {
 
                 $this->load->model('Trabajo_disertacion_model');
@@ -191,17 +196,10 @@ class Profesor extends CI_Controller
                 $this->load->model('Revdir_x_disertacion_model');
                 $data['all_revdir'] = $this->Revdir_x_disertacion_model->get_this_revdir_x_disertacion_($user);
 
-                $this->load->model('Profesor_model');
-                $c = 0;
-                $a_prof = [];
-                foreach ($data['all_revdir'] as $revdir) {
-                    $prof = $this->Profesor_model->get_profesor($revdir['prof_codigo']);
-                    $a_prof[$c] = $prof;
-                    $c++;
-                }
 
-                $this->load->model('Profesor_model');
-                $data['all_profesores'] = $a_prof;
+
+
+
 
                 $data['d_prof']=$profesor;
                 $this->load->view('templates/header');

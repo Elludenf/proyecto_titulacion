@@ -175,14 +175,10 @@
 
     <div class="btn-imprimir">
 
-        <a href='<?php echo site_url('Estudiante/imprimir_disertacion')?>'  class="btn-imprimir-default">IMPRIMIR REPORTE</a>
+        <a href='<?php echo site_url('Estudiante/imprimir_disertacion')?>'  class="btn-imprimir-default">IMPRIMIR</a>
 
     </div>
-    <div class="btn-imprimir">
 
-       <a href='<?php echo site_url('Estudiante/imprimir_grafico_disertacion')?>'  class="btn-imprimir-default">IMPRIMIR GRAFICO</a>
-
-    </div>
 
 </div>
 
