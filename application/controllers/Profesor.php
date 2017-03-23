@@ -159,10 +159,6 @@ class Profesor extends CI_Controller
         }
     }
 
-
-
-
-
     function disertacion_estudiantes()
     {
 

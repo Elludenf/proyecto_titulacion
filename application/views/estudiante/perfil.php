@@ -611,8 +611,6 @@
                                 <div id = "datos-ind" >           <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">  <span class="txt-ind">Telefono:
                                     <?php echo $responsableTitulacion2['prof_telefono'] ?></span></div>
 
-
-
                             </div>
 
 
