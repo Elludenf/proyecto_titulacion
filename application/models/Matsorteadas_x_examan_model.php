@@ -25,6 +25,33 @@ class Matsorteadas_x_examan_model extends CI_Model
     {
         return $this->db->count_all_results($this->table);
     }
+
+    function getMatXExBusqueda($param, $limit = 5) {
+
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*','mat_nombre');
+        $this->db->from('matsorteadas_x_examen','materias');
+        $this->db->join('materias','materias.mat_codigo=matsorteadas_x_examen.mat_codigo');
+        $this->db->like('materias.mat_nombre', $param, 'both');
+
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*','mat_nombre');
+        $this->db->from('matsorteadas_x_examen','materias');
+        $this->db->join('materias','materias.mat_codigo=matsorteadas_x_examen.mat_codigo');
+        $this->db->like('materias.mat_nombre', $param, 'both');
+
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     /*
      * Get all matsorteadas_x_examen
      */

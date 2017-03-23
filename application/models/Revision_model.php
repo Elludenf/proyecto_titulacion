@@ -24,6 +24,52 @@ class Revision_model extends CI_Model
         return $this->db->count_all_results($this->table);
     }
 
+    function getRevisionBusqueda($param, $limit = 5) {
+
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*',
+            'profesor.prof_apellido1',
+            'profesor.prof_apellido2',
+            'profesor.prof_nombre1',
+            'profesor.prof_nombre2',
+            'rxd_tipo',
+            'trabajo_disertacion.dis_titulo');
+        $this->db->from('revisiones','profesor','revdir_x_disertacion','trabajo_disertacion');
+        $this->db->join('profesor','profesor.prof_codigo=revisiones.prof_codigo');
+        $this->db->join('revdir_x_disertacion','revdir_x_disertacion.prof_codigo=revisiones.prof_codigo');
+        $this->db->join('trabajo_disertacion','trabajo_disertacion.dis_codigo=revisiones.dis_codigo');
+        $this->db->like('prof_apellido1', $param, 'both');
+        $this->db->or_like('trabajo_disertacion.dis_titulo', $param, 'both');
+
+
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*',
+            'profesor.prof_apellido1',
+            'profesor.prof_apellido2',
+            'profesor.prof_nombre1',
+            'profesor.prof_nombre2',
+            'rxd_tipo',
+            'trabajo_disertacion.dis_titulo');
+        $this->db->from('revisiones','profesor','revdir_x_disertacion','trabajo_disertacion');
+        $this->db->join('profesor','profesor.prof_codigo=revisiones.prof_codigo');
+        $this->db->join('revdir_x_disertacion','revdir_x_disertacion.prof_codigo=revisiones.prof_codigo');
+        $this->db->join('trabajo_disertacion','trabajo_disertacion.dis_codigo=revisiones.dis_codigo');
+        $this->db->like('prof_apellido1', $param, 'both');
+        $this->db->or_like('trabajo_disertacion.dis_titulo', $param, 'both');
+
+
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     /*
      * Get all revisiones
      */

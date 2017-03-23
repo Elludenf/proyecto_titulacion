@@ -20,7 +20,45 @@ class Dicta_model extends CI_Model
         $mat_codigo=$this->uri->segment(4);
         return $this->db->get_where('dicta',array('prof_codigo'=>$prof_codigo,'mat_codigo'=>$mat_codigo))->row_array();
     }
-    
+
+    function getDictaBusqueda($param, $limit = 5) {
+
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*','mat_nombre',
+            'profesor.prof_apellido1',
+            'profesor.prof_apellido2',
+            'profesor.prof_nombre1',
+            'profesor.prof_nombre2');
+        $this->db->from('dicta','profesor','materias');
+        $this->db->join('materias','materias.mat_codigo=dicta.mat_codigo');
+        $this->db->join('profesor','profesor.prof_codigo=dicta.prof_codigo');
+        $this->db->like('mat_nombre', $param, 'both');
+        $this->db->or_like('prof_apellido1', $param, 'both');
+
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*','mat_nombre',
+            'profesor.prof_apellido1',
+            'profesor.prof_apellido2',
+            'profesor.prof_nombre1',
+            'profesor.prof_nombre2');
+        $this->db->from('dicta','profesor','materias');
+        $this->db->join('materias','materias.mat_codigo=dicta.mat_codigo');
+        $this->db->join('profesor','profesor.prof_codigo=dicta.prof_codigo');
+        $this->db->like('mat_nombre', $param, 'both');
+        $this->db->or_like('prof_apellido1', $param, 'both');
+
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     /*
      * Get all dicta
      */

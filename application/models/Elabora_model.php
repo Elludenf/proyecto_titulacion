@@ -20,7 +20,44 @@ class Elabora_model extends CI_Model
         $dis_codigo=$this->uri->segment(4);
         return $this->db->get_where('elabora',array('est_codigo'=>$est_codigo,'dis_codigo'=>$dis_codigo))->row_array();
     }
-    
+
+    function getElaboraBusqueda($param, $limit = 5) {
+
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*','estudiante.est_apellido1',
+            'estudiante.est_apellido2',
+            'estudiante.est_nombre1',
+            'estudiante.est_nombre2',
+            'trabajo_disertacion.dis_titulo');
+        $this->db->from('elabora', 'estudiante', 'trabajo_disertacion');
+        $this->db->join('estudiante','estudiante.est_codigo = elabora.est_codigo');
+        $this->db->join('trabajo_disertacion','trabajo_disertacion.dis_codigo = elabora.dis_codigo');
+        $this->db->like('estudiante.est_apellido1', $param, 'both');
+        $this->db->or_like('trabajo_disertacion.dis_titulo', $param, 'both');
+               $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+
+        $this->db->select('*','estudiante.est_apellido1',
+            'estudiante.est_apellido2',
+            'estudiante.est_nombre1',
+            'estudiante.est_nombre2',
+            'trabajo_disertacion.dis_titulo');
+        $this->db->from('elabora', 'estudiante', 'trabajo_disertacion');
+        $this->db->join('estudiante','estudiante.est_codigo = elabora.est_codigo');
+        $this->db->join('trabajo_disertacion','trabajo_disertacion.dis_codigo = elabora.dis_codigo');
+        $this->db->like('estudiante.est_apellido1', $param, 'both');
+        $this->db->or_like('trabajo_disertacion.dis_titulo', $param, 'both');
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     /*
      * Get all elabora
      */

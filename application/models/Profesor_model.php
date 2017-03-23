@@ -117,6 +117,36 @@ then \'Responsable Unidad de Titulación 2\'
   end;')->row_array();
 
     }
+
+
+    function getProfesorBusqueda($param, $limit = 5) {
+
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*');
+        $this->db->from('profesor');
+
+        $this->db->like('prof_id', $param, 'both');
+        $this->db->or_like('prof_apellido1', $param, 'both');
+        $this->db->or_like('prof_oficina', $param, 'both');
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*');
+        $this->db->from('profesor');
+
+        $this->db->like('prof_id', $param, 'both');
+        $this->db->or_like('prof_apellido1', $param, 'both');
+        $this->db->or_like('prof_oficina', $param, 'both');
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     /*
      * Get all profesores
      */

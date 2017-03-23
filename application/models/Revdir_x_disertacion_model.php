@@ -25,7 +25,48 @@ class Revdir_x_disertacion_model extends CI_Model
         $prof_codigo=$this->uri->segment(4);
         return $this->db->get_where('revdir_x_disertacion',array('dis_codigo'=>$dis_codigo,'prof_codigo'=>$prof_codigo))->row_array();
     }
-    
+
+    function getRevDirXDisBusqueda($param, $limit = 5) {
+
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+        $this->db->select('*',
+            'profesor.prof_apellido1',
+            'profesor.prof_apellido2',
+            'profesor.prof_nombre1',
+            'profesor.prof_nombre2',
+            'trabajo_disertacion.dis_titulo');
+        $this->db->from('revdir_x_disertacion','profesor','trabajo_disertacion');
+        $this->db->join('profesor','profesor.prof_codigo=revdir_x_disertacion.prof_codigo');
+        $this->db->join('trabajo_disertacion','trabajo_disertacion.dis_codigo=revdir_x_disertacion.dis_codigo');
+        $this->db->like('profesor.prof_apellido1', $param, 'both');
+        $this->db->or_like('trabajo_disertacion.dis_titulo', $param, 'both');
+        $this->db->or_like('rxd_tipo', $param, 'both');
+
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*',
+            'profesor.prof_apellido1',
+            'profesor.prof_apellido2',
+            'profesor.prof_nombre1',
+            'profesor.prof_nombre2',
+            'trabajo_disertacion.dis_titulo');
+        $this->db->from('revdir_x_disertacion','profesor','trabajo_disertacion');
+        $this->db->join('profesor','profesor.prof_codigo=revdir_x_disertacion.prof_codigo');
+        $this->db->join('trabajo_disertacion','trabajo_disertacion.dis_codigo=revdir_x_disertacion.dis_codigo');
+        $this->db->like('profesor.prof_apellido1', $param, 'both');
+        $this->db->or_like('trabajo_disertacion.dis_titulo', $param, 'both');
+        $this->db->or_like('rxd_tipo', $param, 'both');
+
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     /*
      * Get all revdir_x_disertacion
      */

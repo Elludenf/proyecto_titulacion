@@ -23,7 +23,36 @@ class Plan_de_estudio_model extends CI_Model
     {
         return $this->db->count_all_results($this->table);
     }
+    function getPlanEstudioBusqueda($param, $limit = 5) {
 
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*','carr_descripcion');
+        $this->db->from('plan_de_estudio','carreras');
+        $this->db->join('carreras','carreras.carr_codigo=plan_de_estudio.carr_codigo');
+        $this->db->like('carr_descripcion', $param, 'both');
+        $this->db->or_like('plan_descripcion', $param, 'both');
+
+
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*','carr_descripcion');
+        $this->db->from('plan_de_estudio','carreras');
+        $this->db->join('carreras','carreras.carr_codigo=plan_de_estudio.carr_codigo');
+        $this->db->like('carr_descripcion', $param, 'both');
+        $this->db->or_like('plan_descripcion', $param, 'both');
+
+
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     /*
      * Get all planes_de_estudio
      */

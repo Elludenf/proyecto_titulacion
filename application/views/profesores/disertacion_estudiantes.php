@@ -63,7 +63,7 @@
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">2do Nombre</a></th>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">1er Apellido</a></th>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">2do Apellido</a></th>
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">TEMA</a></th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Tema</a></th>
                                     <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</a></th>
 
                                 </tr>

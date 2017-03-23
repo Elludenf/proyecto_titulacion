@@ -18,11 +18,42 @@ class Escuela_model extends CI_Model
     {
         return $this->db->get_where('escuelas',array('esc_codigo'=>$esc_codigo))->row_array();
     }
+
+    function getEscuelaBusqueda($param, $limit = 5) {
+
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*','facu_descripcion');
+        $this->db->from('escuelas','facultades');
+        $this->db->join('facultades','facultades.facu_codigo=escuelas.facu_codigo');
+        $this->db->like('esc_descripcion', $param, 'both');
+        $this->db->or_like('facu_descripcion', $param, 'both');
+
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*','facu_descripcion');
+        $this->db->from('escuelas','facultades');
+        $this->db->join('facultades','facultades.facu_codigo=escuelas.facu_codigo');
+        $this->db->like('esc_descripcion', $param, 'both');
+        $this->db->or_like('facu_descripcion', $param, 'both');
+
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     private $table = "escuelas";
     function count()
     {
         return $this->db->count_all_results($this->table);
     }
+
+
     /*
      * Get all escuelas
      */

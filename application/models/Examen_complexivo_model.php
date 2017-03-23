@@ -10,7 +10,43 @@ class Examen_complexivo_model extends CI_Model
     {
         parent::__construct();
     }
-    
+    function getExamenBusqueda($param, $limit = 5) {
+
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*','estudiante.est_apellido1',
+            'estudiante.est_apellido2',
+            'estudiante.est_nombre1',
+            'estudiante.est_nombre2',
+            'trabajo_disertacion.dis_titulo');
+        $this->db->from('examen_complexivo', 'estudiante');
+        $this->db->join('estudiante','estudiante.est_codigo = examen_complexivo.est_codigo');
+        $this->db->like('estudiante.est_apellido1', $param, 'both');
+
+        $this->db->or_like('exa_estado', $param, 'both');
+       // $this->db->or_where('exa_fechainicio', $param, 'both');
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*','estudiante.est_apellido1',
+            'estudiante.est_apellido2',
+            'estudiante.est_nombre1',
+            'estudiante.est_nombre2',
+            'trabajo_disertacion.dis_titulo');
+        $this->db->from('examen_complexivo', 'estudiante');
+        $this->db->join('estudiante','estudiante.est_codigo = examen_complexivo.est_codigo');
+        $this->db->like('estudiante.est_apellido1', $param, 'both');
+    //    $this->db->or_like('exa_fechainicio', $param, 'both');
+        $this->db->or_like('exa_estado', $param, 'both');
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     /*
      * Get examen_complexivo by exa_codigo
      */

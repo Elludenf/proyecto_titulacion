@@ -25,6 +25,44 @@ class Mat_ap_x_est_model extends CI_Model
     {
         return $this->db->count_all_results($this->table);
     }
+
+    function getMatApXEstBusqueda($param, $limit = 5) {
+
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*','mat_nombre',
+            'estudiante.est_apellido1',
+            'estudiante.est_apellido2',
+            'estudiante.est_nombre1',
+            'estudiante.est_nombre2');
+        $this->db->from('mat_ap_x_est','estudiante','materias');
+        $this->db->join('materias','materias.mat_codigo=mat_ap_x_est.mat_codigo');
+        $this->db->join('estudiante','estudiante.est_codigo=mat_ap_x_est.est_codigo');
+        $this->db->like('est_apellido1', $param, 'both');
+        $this->db->or_like('mat_nombre', $param, 'both');
+
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*','mat_nombre',
+            'estudiante.est_apellido1',
+            'estudiante.est_apellido2',
+            'estudiante.est_nombre1',
+            'estudiante.est_nombre2');
+        $this->db->from('mat_ap_x_est','estudiante','materias');
+        $this->db->join('materias','materias.mat_codigo=mat_ap_x_est.mat_codigo');
+        $this->db->join('estudiante','estudiante.est_codigo=mat_ap_x_est.est_codigo');
+        $this->db->like('est_apellido1', $param, 'both');
+        $this->db->or_like('mat_nombre', $param, 'both');
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     /*
      * Get all mat_ap_x_est
      */

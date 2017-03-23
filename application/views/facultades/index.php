@@ -54,18 +54,15 @@
 
                             </select>
                         </td>
-                        <!-- <form action= <?php /*echo site_url("/estudiante/buscarEstudiante")*/ ?> value ="search" method ="post">
-                    <td>
-                        <input type="text" class="searchBox" id="searchBox"/>
-
-                    </td>
-                    <td>
-                        <input type="submit" value="search" src="<?php /*echo base_url();*/?>/assets/images/pantalla_main/icono_busqueda.png"  />
-                    </td>
-                    </form> -->
+                        <form action= <?php echo site_url("/facultades/buscarFacultad") ?>  method ="post">
                         <td>
-                            <img src="<?php echo base_url();?>/assets/images/pantalla_main/icono_busqueda.png"  />
+                            <input type="text"  name="search" id="searchBox"/>
+
                         </td>
+                        <td>
+                            <input type="image" value="search" src="<?php echo base_url();?>/assets/images/pantalla_main/icono_busqueda.png"  />
+                        </td>
+                        </form>
 
                     </tr>
                 </table>

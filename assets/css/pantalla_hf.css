@@ -384,6 +384,14 @@ div#header{
 	margin-left: 45px;
 }
 
+#searchBox{
+	  height:20px;
+    width:160px;
+    padding-bottom: 3px;
+    margin-right: 3px;
+    margin-left: 5px;
+    border-radius: 8px;
+}
 #tabla-busqueda{
 	float:right;
 		background-color: white;

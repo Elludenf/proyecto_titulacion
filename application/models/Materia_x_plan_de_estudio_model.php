@@ -27,7 +27,38 @@ class Materia_x_plan_de_estudio_model extends CI_Model
     {
         return $this->db->count_all_results($this->table);
     }
+    function getMatXPlanBusqueda($param, $limit = 5) {
 
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*','plan_descripcion','mat_nombre','pac_descripcion');
+        $this->db->from('materia_x_plan_de_estudio','plan_de_estudio','materias','periodos_academicos');
+        $this->db->join('plan_de_estudio','plan_de_estudio.plan_codigo=materia_x_plan_de_estudio.plan_codigo');
+        $this->db->join('materias','materias.mat_codigo=materia_x_plan_de_estudio.mat_codigo');
+        $this->db->join('periodos_academicos','periodos_academicos.pac_codigo=materia_x_plan_de_estudio.pac_codigo');
+        $this->db->like('mat_nombre', $param, 'both');
+        $this->db->or_like('plan_descripcion', $param, 'both');
+        $this->db->or_like('pac_descripcion', $param, 'both');
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*','plan_descripcion','mat_nombre','pac_descripcion');
+        $this->db->from('materia_x_plan_de_estudio','plan_de_estudio','materias','periodos_academicos');
+        $this->db->join('plan_de_estudio','plan_de_estudio.plan_codigo=materia_x_plan_de_estudio.plan_codigo');
+        $this->db->join('materias','materias.mat_codigo=materia_x_plan_de_estudio.mat_codigo');
+        $this->db->join('periodos_academicos','periodos_academicos.pac_codigo=materia_x_plan_de_estudio.pac_codigo');
+        $this->db->like('mat_nombre', $param, 'both');
+        $this->db->or_like('plan_descripcion', $param, 'both');
+        $this->db->or_like('pac_descripcion', $param, 'both');
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     /*
      * Get all materia_x_plan_de_estudio
      */

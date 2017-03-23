@@ -11,6 +11,32 @@ class Trabajo_disertacion_model extends CI_Model
         parent::__construct();
     }
 
+    function getDisertacionBusqueda($param, $limit = 5) {
+
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*');
+        $this->db->from('trabajo_disertacion');
+         $this->db->like('dis_titulo', $param, 'both');
+
+
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*');
+        $this->db->from('trabajo_disertacion');
+        $this->db->like('dis_titulo', $param, 'both');
+
+
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     /*
      * Get trabajo_disertacion by dis_codigo
      */

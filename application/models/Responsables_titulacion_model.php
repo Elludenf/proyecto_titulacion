@@ -24,6 +24,42 @@ class Responsables_titulacion_model extends CI_Model
         return $this->db->count_all_results($this->table);
     }
 
+    function getResponsableTitulacionBusqueda($param, $limit = 5) {
+
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*',
+            'profesor.prof_apellido1',
+            'profesor.prof_apellido2',
+            'profesor.prof_nombre1',
+            'profesor.prof_nombre2');
+        $this->db->from('responsables_titulacion','profesor');
+        $this->db->join('profesor','profesor.prof_codigo=responsables_titulacion.prof_codigo');
+        $this->db->like('prof_apellido1', $param, 'both');
+        $this->db->or_like('res_tipo', $param, 'both');
+
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*',
+            'profesor.prof_apellido1',
+            'profesor.prof_apellido2',
+            'profesor.prof_nombre1',
+            'profesor.prof_nombre2');
+        $this->db->from('responsables_titulacion','profesor');
+        $this->db->join('profesor','profesor.prof_codigo=responsables_titulacion.prof_codigo');
+        $this->db->like('prof_apellido1', $param, 'both');
+        $this->db->or_like('res_tipo', $param, 'both');
+
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     /*
      * Get all responsables_titulacion
      */

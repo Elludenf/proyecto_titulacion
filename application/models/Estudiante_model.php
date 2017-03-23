@@ -124,15 +124,33 @@ WHERE FOO IS NOT NULL')->row_array();
 
 
 
-    function getEstudianteBusqueda($param) {
+    function getEstudianteBusqueda($param, $limit = 5) {
 
+       // $offset = $this->uri->segment(3);
+       // $this->db->limit($limit, $offset);
 
-        $result = $this->db->like('est_id', $param)
-            ->or_like('est_apellido1', $param)
-            ->or_like('est_apellido2', $param)
-            ->get('estudiante');
+        $this->db->select('*');
+        $this->db->from('estudiante','carreras');
+        $this->db->join('carreras','carreras.carr_codigo=estudiante.carr_codigo');
+        $this->db->like('est_id', $param, 'both');
+        $this->db->or_like('est_apellido1', $param, 'both');
+        $this->db->or_like('carr_descripcion', $param, 'both');
+        $query=$this->db->get();
+        return $query->result_array();
 
-        return $result->result_array();
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*');
+        $this->db->from('estudiante','carreras');
+        $this->db->join('carreras','carreras.carr_codigo=estudiante.carr_codigo');
+        $this->db->like('est_id', $param, 'both');
+        $this->db->or_like('est_apellido1', $param, 'both');
+        $this->db->or_like('carr_descripcion', $param, 'both');
+        $query=$this->db->get();
+
+        return $query->num_rows();
     }
 
 
@@ -228,15 +246,6 @@ WHERE FOO IS NOT NULL')->row_array();
         return $this->db->count_all_results($this->table);
     }
 
-    function countParamSearch($param)
-    {
-        $result = $this->db->like('est_id', $param)
-            ->or_like('est_apellido1', $param)
-            ->or_like('est_apellido2', $param)
-            ->get('estudiante');
-
-        return $result->num_rows();
-    }
 
 
     /*

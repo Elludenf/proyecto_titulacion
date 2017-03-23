@@ -19,7 +19,32 @@ class Carrera_model extends CI_Model
     {
         return $this->db->get_where('carreras',array('carr_codigo'=>$carr_codigo))->row_array();
     }
-    
+
+    function getCarreraBusqueda($param, $limit = 5) {
+
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*');
+        $this->db->from('escuelas','carreras');
+        $this->db->join('carreras','carreras.esc_codigo=escuelas.esc_codigo');
+
+        $this->db->like('carr_descripcion', $param, 'both');
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*');
+        $this->db->from('escuelas','carreras');
+        $this->db->join('carreras','carreras.esc_codigo=escuelas.esc_codigo');
+            $this->db->like('carr_descripcion', $param, 'both');
+        $query=$this->db->get();
+
+        return $query->num_rows();
+    }
     /*
      * Get all carreras
      */

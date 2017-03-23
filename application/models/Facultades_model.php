@@ -23,7 +23,30 @@ class Facultades_model extends CI_Model
     {
         return $this->db->count_all_results($this->table);
     }
+    function getFacultadBusqueda($param, $limit = 5) {
 
+        // $offset = $this->uri->segment(3);
+        // $this->db->limit($limit, $offset);
+
+        $this->db->select('*');
+        $this->db->from('facultades');
+        $this->db->like('facu_descripcion', $param, 'both');
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
+
+    function countParamSearch($param)
+    {
+        $this->db->select('*');
+        $this->db->from('facultades');
+
+        $this->db->like('facu_descripcion', $param, 'both');
+        $query=$this->db->get();
+
+
+        return $query->num_rows();
+    }
     /*
      * Get all facultades
      */

@@ -76,7 +76,65 @@ class Prorroga extends CI_Controller
 
         }
     }
+    function buscarProrroga()
+    {
 
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            $data['prorrogas'] = $this->Prorroga_model->getProrrogaBusqueda($this->input->post('search'));
+
+            /*Empiezo de paginacion*/
+            $total_rows = $this->Prorroga_model->countParamSearch($this->input->post('search'));
+
+            $this->load->library('pagination');
+            //   $config['total_rows'] = $total_rows;
+            $config['per_page'] = 5;
+            $config['uri_segment'] = 3;
+            $config['base_url'] = base_url() . '/prorroga/buscarProrroga';
+
+
+            //CSS
+            $config['full_tag_open'] = '<ul class="tsc_pagination tsc_paginationA tsc_paginationA01">';
+            $config['full_tag_close'] = '</ul>';
+            $config['prev_link'] = '&lt;';
+            $config['prev_tag_open'] = '<li>';
+            $config['prev_tag_close'] = '</li>';
+            $config['next_link'] = '&gt;';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['cur_tag_open'] = '<li class="current"><a href="#">';
+            $config['cur_tag_close'] = '</a></li>';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
+
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['last_tag_open'] = '<li>';
+            $config['last_tag_close'] = '</li>';
+
+            $config['first_link'] = '&lt;&lt;';
+            $config['last_link'] = '&gt;&gt;';
+            //Fin CSS
+            $this->pagination->initialize($config);
+
+            $page_links = $this->pagination->create_links();
+            $data['links'] = explode('&nbsp;', $page_links);
+            /*Fin de paginacion*/
+
+
+            $this->load->helper('form');
+            $this->load->helper(array('form'));
+            $this->load->view('templates/header');
+            $this->load->view('prorroga/index', $data);
+            $this->load->view('templates/footer');
+        } else {
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/forbidden');
+            $this->load->view('templates/footer');
+
+        }
+    }
     /*
      * Adding a new prorroga
      */
