@@ -60,6 +60,18 @@ $(document).ready(function () {
 
 });
 
+$(document).ready(function () {
+
+    $("#log_errors").dialog({
+
+        maxWidth:450,
+        maxHeight: 100,
+        width: 450,
+        height: 100
+    });
+
+});
+
 // 3 - MESSAGE BOX FADING SCRIPTS ---------------------------------------------------------------------
 
 $(document).ready(function() {

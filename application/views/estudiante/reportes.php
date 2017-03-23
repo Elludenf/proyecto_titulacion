@@ -146,7 +146,7 @@
                             </table>
 
                             <?php foreach ($links as $link) {
-                                echo "<li>". $link."</li>";
+                                echo $link;
                             } ?>
                             <!--  end product-table................................... -->
                         </form>

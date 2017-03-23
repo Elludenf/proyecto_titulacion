@@ -12,7 +12,11 @@
 
         <!--  start login-inner -->
         <div id="login-inner">
-            <?php echo validation_errors(); ?>
+            <?php if(validation_errors() == true) {?>
+
+                <div id="log_errors"  title="Error"> <?php echo validation_errors(); ?></div>
+
+            <?php  }?>
             <?php echo form_open('verifylogin/index'); ?>
             <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
