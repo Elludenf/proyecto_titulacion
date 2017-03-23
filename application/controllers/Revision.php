@@ -97,7 +97,12 @@ class Revision extends CI_Controller
                 );
 
                 $revision_id = $this->Revision_model->add_revision($params);
-                redirect('revision/index');
+                if ($this->session->__get('rol_group') == 'R_PROFESOR') {
+                    redirect('profesor/perfil');
+                } else {
+                    redirect('revision/index');
+                }
+
             } else {
 
                 $this->load->model('Trabajo_disertacion_model');
@@ -113,6 +118,7 @@ class Revision extends CI_Controller
                     $prof = $this->Profesor_model->get_profesor($revdir['prof_codigo']);
                     $a_prof[$c] = $prof;
                     $c++;
+                break;
                 }
 
                 $this->load->model('Profesor_model');
