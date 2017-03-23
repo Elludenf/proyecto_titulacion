@@ -129,7 +129,7 @@ class Elabora extends CI_Controller
                 $this->form_validation->set_rules('elb_nota_escrito', 'Nota Escrita|greater_than[0]', 'numeric|greater_than_equal_to[0]');
 
                 if (empty($this->input->post('elb_nota_horal'))) {$nota_oral = NULL;} else {$nota_oral =$this->input->post('elb_nota_horal');}
-                if (empty($this->input->post('elb_nota_escrito'))) {$nota_escrita = NULL;} else {$nota_escrita=$this->input->post('elb_escrito');}
+                if (empty($this->input->post('elb_nota_escrito'))) {$nota_escrita = NULL;} else {$nota_escrita=$this->input->post('elb_nota_escrito');}
 
                 if ($this->form_validation->run()) {
                     $params = array(
