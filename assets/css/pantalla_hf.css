@@ -178,6 +178,11 @@ div#header{
 
 }
 
+#val_errors{
+	display: none;
+	color: #808080;
+}
+
 .forgot-pwd:hover{
 
 	text-decoration: underline;

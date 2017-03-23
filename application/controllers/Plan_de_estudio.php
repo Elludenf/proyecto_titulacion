@@ -86,8 +86,8 @@ class Plan_de_estudio extends CI_Controller
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('carr_codigo', 'Carr Codigo', 'required|integer');
-            $this->form_validation->set_rules('plan_descripcion', 'Plan Descripcion', 'required');
+            $this->form_validation->set_rules('carr_codigo', 'Codigo Carrera', 'required|integer');
+            $this->form_validation->set_rules('plan_descripcion', 'Descripcion Plan de Estudio', 'required');
 
             if ($this->form_validation->run()) {
                 //Agregado

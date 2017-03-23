@@ -112,7 +112,7 @@
         <th class="table-header-repeat line-left minwidth-1"><a href="">Mail PUCE</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha de Nacimiento</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Sexo</th>
-        <th class="table-header-repeat line-left minwidth-1"><a href="">Foto</th>
+
         <th class="table-header-repeat line-left minwidth-1"><a href="">Oficina</th>
         <th class="table-header-repeat line-left minwidth-1"><a href="">Acciones</th>
     </tr>
@@ -132,11 +132,11 @@
 		<td><?php echo $p['prof_mailpuce']; ?></td>
 		<td><?php echo $p['prof_fechanac']; ?></td>
 		<td><?php if ($p['prof_sexo'] == 'F' )echo 'FEMENINO'; else echo 'MASCULINO'; ?></td>
-		<td><?php echo $p['prof_foto']; ?></td>
+
 		<td><?php echo $p['prof_oficina']; ?></td>
 		<td>
-            <a href="<?php echo site_url('profesor/edit/'.$p['prof_codigo']); ?>">Edit</a> |
-            <a href="<?php echo site_url('profesor/remove/'.$p['prof_codigo']); ?>">Delete</a>
+            <a href="<?php echo site_url('profesor/edit/'.$p['prof_codigo']); ?>">Editar</a> |
+            <a href="<?php echo site_url('profesor/remove/'.$p['prof_codigo']); ?>">Eliminar</a>
         </td>
     </tr>
 	<?php } ?>

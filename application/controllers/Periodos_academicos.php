@@ -87,10 +87,10 @@ class Periodos_academicos extends CI_Controller
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('pac_descripcion', 'Pac Descripcion', 'required|max_length[30]');
-            $this->form_validation->set_rules('pac_fechainicio', 'Pac Fechainicio', 'required');
-            $this->form_validation->set_rules('pac_fechafinal', 'Pac Fechafinal', 'required');
-            $this->form_validation->set_rules('pac_perido', 'Pac Perido', 'integer');
+            $this->form_validation->set_rules('pac_descripcion', 'Descripcion', 'required|max_length[30]');
+            $this->form_validation->set_rules('pac_fechainicio', 'Fecha de Inicio', 'required');
+            $this->form_validation->set_rules('pac_fechafinal', 'Fecha Final', 'required');
+            $this->form_validation->set_rules('pac_perido', 'Periodo', 'integer');
 
             if ($this->form_validation->run()) {
                 $this->db->select_max('pac_codigo');
@@ -134,10 +134,10 @@ class Periodos_academicos extends CI_Controller
             if (isset($periodos_academicos['pac_codigo'])) {
                 $this->load->library('form_validation');
 
-                $this->form_validation->set_rules('pac_descripcion', 'Pac Descripcion', 'required|max_length[30]');
-                $this->form_validation->set_rules('pac_fechainicio', 'Pac Fechainicio', 'required');
-                $this->form_validation->set_rules('pac_fechafinal', 'Pac Fechafinal', 'required');
-                $this->form_validation->set_rules('pac_perido', 'Pac Perido', 'integer');
+                $this->form_validation->set_rules('pac_descripcion', 'Descripcion', 'required|max_length[30]');
+                $this->form_validation->set_rules('pac_fechainicio', 'Fecha de Inicio', 'required');
+                $this->form_validation->set_rules('pac_fechafinal', 'Fecha Final', 'required');
+                $this->form_validation->set_rules('pac_perido', 'Periodo', 'integer');
 
                 if ($this->form_validation->run()) {
                     $params = array(

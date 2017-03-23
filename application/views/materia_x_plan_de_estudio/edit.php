@@ -27,7 +27,11 @@
 
 <div id="edit-container">
     <div id="edit-titulo">Modificar Materia Por Plan de Estudio</div>
-<?php echo validation_errors(); ?>
+    <?php if(validation_errors() == true) {?>
+
+        <div id="val_errors"  title="Error"> <?php echo validation_errors(); ?></div>
+
+    <?php  }?>
 
 <?php echo form_open('materia_x_plan_de_estudio/edit/'.$materia_x_plan_de_estudio['plan_codigo']); ?>
 

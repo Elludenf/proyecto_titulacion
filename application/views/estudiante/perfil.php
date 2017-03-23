@@ -256,10 +256,7 @@
                             <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"><span class="txt-ind">Director:
                             <?php echo $directorDisertacion['prof_nombre1'].' '.$directorDisertacion['prof_nombre2'].' '.$directorDisertacion['prof_apellido1'].' '.$directorDisertacion['prof_apellido2']; ?></span>
                         </div>
-                                <div id = "datos-ind2" >
-                                    <img class = "icn-inner-ind" src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind">Mail Personal:
-                                    <?php echo $directorDisertacion['prof_mail'] ?></span>
-                                </div>
+
                                 <div  id = "datos-ind2" >
                                     <img class = "icn-inner-ind" src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind"> Mail PUCE:
                                     <?php echo $directorDisertacion['prof_mailpuce'] ?></span>
@@ -272,19 +269,13 @@
                                     <img class = "icn-inner-ind" src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind">Telefono:
                                     <?php echo $directorDisertacion['prof_telefono'] ?></span>
                                 </div>
-                                  <div id = "datos-ind2" >
-                                      <img class = "icn-inner-ind" src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind"> Celular:
-                                    <?php echo $directorDisertacion['prof_celular'] ?></span>
-                                </div>
+
 
                         <div id = "datos-ind" >
                             <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"><span class="txt-ind">Revisor 1:
                             <?php echo $revisor1Disertacion['prof_nombre1'].' '.$revisor1Disertacion['prof_nombre2'].' '.$revisor1Disertacion['prof_apellido1'].' '.$revisor1Disertacion['prof_apellido2']; ?></span>
                         </div>
 
-                        <div id = "datos-ind2" >
-                            <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind">Mail Personal:
-                            <?php echo $revisor1Disertacion['prof_mail'] ?></span></div>
 
                             <div id = "datos-ind2" >
                                 <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind"> Mail PUCE:
@@ -297,9 +288,7 @@
                         <div id = "datos-ind2" >
                             <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind">Telefono:
                             <?php echo $revisor1Disertacion['prof_telefono'] ?></span></div>
-                        <div id = "datos-ind2" >
-                            <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind"> Celular:
-                            <?php echo $revisor1Disertacion['prof_celular'] ?></span></div>
+
 
 
 
@@ -309,9 +298,7 @@
                             <?php echo $revisor2Disertacion['prof_nombre1'].' '.$revisor2Disertacion['prof_nombre2'].' '.$revisor2Disertacion['prof_apellido1'].' '.$revisor2Disertacion['prof_apellido2']; ?></span>
                         </div>
 
-                        <div id = "datos-ind2" >
-                            <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind">Mail Personal:
-                            <?php echo $revisor2Disertacion['prof_mail'] ?></span></div>
+
                         <div id = "datos-ind2" >
                             <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind"> Mail PUCE:
                             <?php echo $revisor2Disertacion['prof_mailpuce'] ?></span></div>
@@ -323,9 +310,7 @@
                         <div id = "datos-ind2" >
                             <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"><span class="txt-ind">Telefono:
                             <?php echo $revisor2Disertacion['prof_telefono'] ?></span></div>
-                        <div id = "datos-ind2" >
-                            <img class = "icn-inner-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_inner_icono.png"> <span class="txt-ind"> Celular:
-                            <?php echo $revisor2Disertacion['prof_celular'] ?></span></div>
+
 
 
                         </div>
@@ -592,17 +577,15 @@
                                     <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"> <span class="txt-ind">Responsable Unidad Titulación 1:
                                         <?php echo $responsableTitulacion1['prof_nombre1'].' '.$responsableTitulacion1['prof_nombre2'].' '.$responsableTitulacion1['prof_apellido1'].' '.$responsableTitulacion1['prof_apellido2']; ?></span>
                                 </div>
-                                <div id = "datos-ind" >      <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/mail_icono.png"> <span class="txt-ind">Mail Personal:
-                                        <?php echo $responsableTitulacion1['prof_mail'] ?> </div></span>
+
                                 <div id = "datos-ind" >        <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/mail_icono.png">  <span class="txt-ind"> Mail PUCE:
-                                    <?php echo $responsableTitulacion1['prof_mailpuce'] ?></div></span>
+                                    <?php echo $responsableTitulacion1['prof_mailpuce'] ?></span></div>
                                 <div id = "datos-ind" >         <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">     <span class="txt-ind"> Oficina:
-                                    <?php echo $responsableTitulacion1['prof_oficina'] ?></div></span>
+                                    <?php echo $responsableTitulacion1['prof_oficina'] ?></span></div>
 
                                 <div id = "datos-ind" >      <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"><span class="txt-ind">Telefono:
-                                    <?php echo $responsableTitulacion1['prof_telefono'] ?></div></span>
-                                <div id = "datos-ind" >       <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">    <span class="txt-ind"> Celular:
-                                    <?php echo $responsableTitulacion1['prof_celular'] ?></div></span>
+                                    <?php echo $responsableTitulacion1['prof_telefono'] ?></span></div>
+
 
                             </div></div>
                         <div id="container-inner-datos">
@@ -619,17 +602,15 @@
                                     <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/user_icono.png"><span class="txt-ind">Responsable Unidad Titulación 2:</span>
                                     <?php echo $responsableTitulacion2['prof_nombre1'].' '.$responsableTitulacion2['prof_nombre2'].' '.$responsableTitulacion2['prof_apellido1'].' '.$responsableTitulacion2['prof_apellido2']; ?>
                                 </div>
-                                <div id = "datos-ind" >             <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/mail_icono.png">   <span class="txt-ind">Mail Personal:
-                                    <?php echo $responsableTitulacion2['prof_mail'] ?></div></span>
+
                                 <div id = "datos-ind" >           <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/mail_icono.png"> <span class="txt-ind"> Mail PUCE:
-                                    <?php echo $responsableTitulacion2['prof_mailpuce'] ?></div></span>
+                                    <?php echo $responsableTitulacion2['prof_mailpuce'] ?></span></div>
                                 <div id = "datos-ind" >             <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png"><span class="txt-ind"> Oficina:
-                                    <?php echo $responsableTitulacion2['prof_oficina'] ?></div></span>
+                                    <?php echo $responsableTitulacion2['prof_oficina'] ?></span></div>
 
                                 <div id = "datos-ind" >           <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">  <span class="txt-ind">Telefono:
-                                    <?php echo $responsableTitulacion2['prof_telefono'] ?></div></span>
-                                <div id = "datos-ind" >          <img class = "icn-ind"src="<?php echo base_url();?>assets/images/pantalla_perfil/general_icono.png">  <span class="txt-ind"> Celular:
-                                    <?php echo $responsableTitulacion2['prof_celular'] ?></div></span>
+                                    <?php echo $responsableTitulacion2['prof_telefono'] ?></span></div>
+
 
 
                             </div>

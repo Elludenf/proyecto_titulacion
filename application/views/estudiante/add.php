@@ -27,7 +27,14 @@
 
 <div id="edit-container">
     <div id="edit-titulo">Nuevo Estudiante</div>
-    <?php echo validation_errors(); ?>
+
+    <?php if(validation_errors() == true) {?>
+
+        <div id="val_errors"  title="Error"> <?php echo validation_errors(); ?></div>
+
+    <?php  }?>
+
+
 
 <?php echo form_open('estudiante/add'); ?>
 
@@ -52,7 +59,8 @@
 	<div id="custom-lbl" >Direccion : <input type="text" class="edit-inp" name="est_direccion" value="<?php echo $this->input->post('est_direccion'); ?>" /></div>
 	<div id="custom-lbl" >Telefono : <input type="text" class="edit-inp" name="est_telefono" value="<?php echo $this->input->post('est_telefono'); ?>" /></div>
 	<div id="custom-lbl" >Celular : <input type="text" class="edit-inp" name="est_celular" value="<?php echo $this->input->post('est_celular'); ?>" /></div>
-	<div id="custom-lbl" >Mail : <input type="text" class="edit-inp" name="est_mail" value="<?php echo $this->input->post('est_mail'); ?>" /></div>
+
+    <div id="custom-lbl" >Mail : <input type="text" class="edit-inp" name="est_mail" value="<?php echo $this->input->post('est_mail'); ?>" /></div>
 	<div id="custom-lbl" >Mail PUCE : <input type="text" class="edit-inp"  name="est_mailpuce" value="<?php echo $this->input->post('est_mailpuce'); ?>" /></div>
 	<div id="custom-lbl" >Fecha de Nacimiento : <input type="date"  class="edit-inp" name="est_fechanac" value="<?php echo $this->input->post('est_fechanac'); ?>" /></div>
 	<div id="custom-lbl" >Sexo :
@@ -66,7 +74,7 @@
 			?>
 		</select>
 	</div>
-	<div id="custom-lbl" >Foto : <input type="text" class="edit-inp" name="est_foto" value="<?php echo $this->input->post('est_foto'); ?>" /></div>
+
 	<div id="custom-lbl" >
 		Carrera :
 		<select name="carr_codigo" class="edit-inp" >

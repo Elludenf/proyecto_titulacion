@@ -27,7 +27,11 @@
 
 <div id="edit-container">
     <div id="edit-titulo">Modificar Disertacion Elaborada por Estudiante</div>
-<?php echo validation_errors(); ?>
+    <?php if(validation_errors() == true) {?>
+
+        <div id="val_errors"  title="Error"> <?php echo validation_errors(); ?></div>
+
+    <?php  }?>
 
 <?php echo form_open('elabora/edit/'.$elabora['est_codigo'].'/'.$elabora['dis_codigo']); ?>
 

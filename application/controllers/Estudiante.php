@@ -362,18 +362,18 @@ class Estudiante extends CI_Controller
         if (isset($_SERVER['HTTP_REFERER'])) {
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('carr_codigo', 'Carr Codigo', 'required|integer');
-            $this->form_validation->set_rules('est_nombre1', 'Est Nombre1', 'required');
-            $this->form_validation->set_rules('est_apellido1', 'Est Apellido1', 'required');
-            $this->form_validation->set_rules('est_tipoid', 'Est Tipoid', 'required|max_length[3]');
-            $this->form_validation->set_rules('est_id', 'Est Id', 'required');
-            $this->form_validation->set_rules('est_direccion', 'Est Direccion', 'required');
-            $this->form_validation->set_rules('est_celular', 'Est Celular', 'required');
-            $this->form_validation->set_rules('est_mail', 'Est Mail', 'required|valid_email');
-            $this->form_validation->set_rules('est_fechanac', 'Est Fechanac', 'required');
-            $this->form_validation->set_rules('est_sexo', 'Est Sexo', 'required|max_length[1]');
-            $this->form_validation->set_rules('est_fechaingreso', 'Est Fechaingreso', 'required');
-            $this->form_validation->set_rules('est_mailpuce', 'Est Mailpuce', 'valid_email');
+            $this->form_validation->set_rules('carr_codigo', 'Codigo Carrera', 'required|integer');
+            $this->form_validation->set_rules('est_nombre1', 'Primer Nombre', 'required');
+            $this->form_validation->set_rules('est_apellido1', 'Primer Apellido', 'required');
+            $this->form_validation->set_rules('est_tipoid', 'Tipo ID', 'required|max_length[3]');
+            $this->form_validation->set_rules('est_id', 'ID', 'required');
+            $this->form_validation->set_rules('est_direccion', 'Direccion', 'required');
+            $this->form_validation->set_rules('est_celular', 'Celular', 'required');
+            $this->form_validation->set_rules('est_mail', 'Mail', 'required|valid_email');
+            $this->form_validation->set_rules('est_fechanac', 'Fecha de Nacimiento', 'required');
+            $this->form_validation->set_rules('est_sexo', 'Sexo', 'required|max_length[1]');
+            $this->form_validation->set_rules('est_fechaingreso', 'Fecha de Ingreso', 'required');
+            $this->form_validation->set_rules('est_mailpuce', 'Mail PUCE', 'valid_email');
 
             if (empty($this->input->post('est_fechaestimadagraduacion'))) {
                 $fecha_est_grad = NULL;
@@ -447,18 +447,18 @@ class Estudiante extends CI_Controller
             if (isset($estudiante['est_codigo'])) {
                 $this->load->library('form_validation');
 
-                $this->form_validation->set_rules('carr_codigo', 'Carr Codigo', 'required|integer');
-                $this->form_validation->set_rules('est_nombre1', 'Est Nombre1', 'required');
-                $this->form_validation->set_rules('est_apellido1', 'Est Apellido1', 'required');
-                $this->form_validation->set_rules('est_tipoid', 'Est Tipoid', 'required|max_length[3]');
-                $this->form_validation->set_rules('est_id', 'Est Id', 'required');
-                $this->form_validation->set_rules('est_direccion', 'Est Direccion', 'required');
-                $this->form_validation->set_rules('est_celular', 'Est Celular', 'required');
-                $this->form_validation->set_rules('est_mail', 'Est Mail', 'required|valid_email');
-                $this->form_validation->set_rules('est_fechanac', 'Est Fechanac', 'required');
-                $this->form_validation->set_rules('est_sexo', 'Est Sexo', 'required|max_length[1]');
-                $this->form_validation->set_rules('est_fechaingreso', 'Est Fechaingreso', 'required');
-                $this->form_validation->set_rules('est_mailpuce', 'Est Mailpuce', 'valid_email');
+                $this->form_validation->set_rules('carr_codigo', 'Codigo Carrera', 'required|integer');
+                $this->form_validation->set_rules('est_nombre1', 'Primer Nombre', 'required');
+                $this->form_validation->set_rules('est_apellido1', 'Primer Apellido', 'required');
+                $this->form_validation->set_rules('est_tipoid', 'Tipo ID', 'required|max_length[3]');
+                $this->form_validation->set_rules('est_id', 'ID', 'required');
+                $this->form_validation->set_rules('est_direccion', 'Direccion', 'required');
+                $this->form_validation->set_rules('est_celular', 'Celular', 'required');
+                $this->form_validation->set_rules('est_mail', 'Mail', 'required|valid_email');
+                $this->form_validation->set_rules('est_fechanac', 'Fecha de Nacimiento', 'required');
+                $this->form_validation->set_rules('est_sexo', 'Sexo', 'required|max_length[1]');
+                $this->form_validation->set_rules('est_fechaingreso', 'Fecha de Ingreso', 'required');
+                $this->form_validation->set_rules('est_mailpuce', 'Mail PUCE', 'valid_email');
 
                 if (empty($this->input->post('est_fechaestimadagraduacion'))) {
                     $fecha_est_grad = NULL;

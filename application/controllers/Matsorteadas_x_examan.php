@@ -85,10 +85,10 @@ class Matsorteadas_x_examan extends CI_Controller
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('mxe_nota_horal_1', 'Mxe Nota Horal 1', 'numeric');
-            $this->form_validation->set_rules('mxe_nota_escrita_1', 'Mxe Nota Escrita 1', 'numeric');
-            $this->form_validation->set_rules('mxe_nota_horal_2', 'Mxe Nota Horal 2', 'numeric');
-            $this->form_validation->set_rules('mxe_nota_escrita_2', 'Mxe Nota Escrita 2', 'numeric');
+            $this->form_validation->set_rules('mxe_nota_horal_1', 'Nota Oral 1', 'numeric');
+            $this->form_validation->set_rules('mxe_nota_escrita_1', 'Nota Escrita 1', 'numeric');
+            $this->form_validation->set_rules('mxe_nota_horal_2', 'Nota Oral 2', 'numeric');
+            $this->form_validation->set_rules('mxe_nota_escrita_2', 'Nota Escrita 2', 'numeric');
 
             if ($this->form_validation->run()) {
                 $params = array(
@@ -139,10 +139,11 @@ class Matsorteadas_x_examan extends CI_Controller
             if (isset($matsorteadas_x_examan['mat_codigo']) && isset($matsorteadas_x_examan['exa_codigo'])) {
                 $this->load->library('form_validation');
 
-                $this->form_validation->set_rules('mxe_nota_horal_1', 'Mxe Nota Horal 1', 'numeric');
-                $this->form_validation->set_rules('mxe_nota_escrita_1', 'Mxe Nota Escrita 1', 'numeric');
-                $this->form_validation->set_rules('mxe_nota_horal_2', 'Mxe Nota Horal 2', 'numeric');
-                $this->form_validation->set_rules('mxe_nota_escrita_2', 'Mxe Nota Escrita 2', 'numeric');
+                $this->form_validation->set_rules('mxe_nota_horal_1', 'Nota Oral 1', 'numeric');
+                $this->form_validation->set_rules('mxe_nota_escrita_1', 'Nota Escrita 1', 'numeric');
+                $this->form_validation->set_rules('mxe_nota_horal_2', 'Nota Oral 2', 'numeric');
+                $this->form_validation->set_rules('mxe_nota_escrita_2', 'Nota Escrita 2', 'numeric');
+
 
                 if ($this->form_validation->run()) {
                     $params = array(

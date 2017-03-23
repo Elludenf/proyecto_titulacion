@@ -27,7 +27,11 @@
 
 <div id="edit-container">
     <div id="edit-titulo">Modificar Director por Disertacion</div>
-<?php echo validation_errors(); ?>
+    <?php if(validation_errors() == true) {?>
+
+        <div id="val_errors"  title="Error"> <?php echo validation_errors(); ?></div>
+
+    <?php  }?>
 
 <?php echo form_open('revdir_x_disertacion/edit/'.$revdir_x_disertacion['dis_codigo'].'/'.$revdir_x_disertacion['prof_codigo']); ?>
 

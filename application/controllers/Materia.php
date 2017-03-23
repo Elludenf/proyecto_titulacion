@@ -85,8 +85,8 @@ class Materia extends CI_Controller
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('mat_nombre', 'Mat Nombre', 'required|max_length[100]');
-            $this->form_validation->set_rules('mat_nivel', 'Mat Nivel', 'required|integer');
+            $this->form_validation->set_rules('mat_nombre', 'Nombre', 'required|max_length[100]');
+            $this->form_validation->set_rules('mat_nivel', 'Nivel', 'required|integer');
 
             if ($this->form_validation->run()) {
                 //Agregado
@@ -131,8 +131,8 @@ class Materia extends CI_Controller
             if (isset($materia['mat_codigo'])) {
                 $this->load->library('form_validation');
 
-                $this->form_validation->set_rules('mat_nombre', 'Mat Nombre', 'required|max_length[100]');
-                $this->form_validation->set_rules('mat_nivel', 'Mat Nivel', 'required|integer');
+                $this->form_validation->set_rules('mat_nombre', 'Nombre', 'required|max_length[100]');
+                $this->form_validation->set_rules('mat_nivel', 'Nivel', 'required|integer');
 
                 if ($this->form_validation->run()) {
                     $params = array(

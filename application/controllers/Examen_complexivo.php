@@ -83,11 +83,11 @@ class Examen_complexivo extends CI_Controller
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('est_codigo', 'Est Codigo', 'integer');
-            $this->form_validation->set_rules('exa_fechainicio', 'Exa Fechainicio', 'required');
-            $this->form_validation->set_rules('exa_estado', 'Exa Estado', 'required');
-            $this->form_validation->set_rules('exa_horas_docencia', 'Exa Horas Docencia', 'integer');
-            $this->form_validation->set_rules('exa_horas_autonomas', 'Exa Horas Autonomas', 'integer');
+            $this->form_validation->set_rules('est_codigo', 'Codigo Estudiante', 'integer');
+            $this->form_validation->set_rules('exa_fechainicio', 'Fecha de Inicio', 'required');
+            $this->form_validation->set_rules('exa_estado', 'Estado', 'required');
+            $this->form_validation->set_rules('exa_horas_docencia', 'Horas de Docencia', 'integer');
+            $this->form_validation->set_rules('exa_horas_autonomas', 'Horas Autonomas', 'integer');
 
 
             if (empty($this->input->post('exa_horas_docencia'))) {$horas_docencia = NULL;} else {$horas_docencia=$this->input->post('exa_horas_docencia');}
@@ -136,11 +136,11 @@ class Examen_complexivo extends CI_Controller
             if (isset($examen_complexivo['exa_codigo'])) {
                 $this->load->library('form_validation');
 
-                $this->form_validation->set_rules('est_codigo', 'Est Codigo', 'integer');
-                $this->form_validation->set_rules('exa_fechainicio', 'Exa Fechainicio', 'required');
-                $this->form_validation->set_rules('exa_estado', 'Exa Estado', 'required');
-                $this->form_validation->set_rules('exa_horas_docencia', 'Exa Horas Docencia', 'integer');
-                $this->form_validation->set_rules('exa_horas_autonomas', 'Exa Horas Autonomas', 'integer');
+                $this->form_validation->set_rules('est_codigo', 'Codigo Estudiante', 'integer');
+                $this->form_validation->set_rules('exa_fechainicio', 'Fecha de Inicio', 'required');
+                $this->form_validation->set_rules('exa_estado', 'Estado', 'required');
+                $this->form_validation->set_rules('exa_horas_docencia', 'Horas de Docencia', 'integer');
+                $this->form_validation->set_rules('exa_horas_autonomas', 'Horas Autonomas', 'integer');
 
 
                 if (empty($this->input->post('exa_horas_docencia'))) {$horas_docencia = NULL;} else {$horas_docencia=$this->input->post('exa_horas_docencia');}

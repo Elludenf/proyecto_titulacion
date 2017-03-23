@@ -24,7 +24,11 @@
 
 <div id="edit-container">
     <div id="edit-titulo">Modificar Examen Complexivo</div>
-    <?php echo validation_errors(); ?>
+    <?php if(validation_errors() == true) {?>
+
+        <div id="val_errors"  title="Error"> <?php echo validation_errors(); ?></div>
+
+    <?php  }?>
 
 <?php echo form_open('examen_complexivo/edit/'.$examen_complexivo['exa_codigo']); ?>
 

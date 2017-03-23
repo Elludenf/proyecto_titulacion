@@ -177,6 +177,29 @@ class Profesor extends CI_Controller
             $config['per_page'] = $this->limit;
             $config['uri_segment'] = 3;
             $config['base_url'] = base_url() . 'profesor/disertacion_estudiantes';
+
+            //CSS
+            $config['full_tag_open'] = '<ul class="tsc_pagination tsc_paginationA tsc_paginationA01">';
+            $config['full_tag_close'] = '</ul>';
+            $config['prev_link'] = '&lt;';
+            $config['prev_tag_open'] = '<li>';
+            $config['prev_tag_close'] = '</li>';
+            $config['next_link'] = '&gt;';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['cur_tag_open'] = '<li class="current"><a href="#">';
+            $config['cur_tag_close'] = '</a></li>';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
+
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['last_tag_open'] = '<li>';
+            $config['last_tag_close'] = '</li>';
+
+            $config['first_link'] = '&lt;&lt;';
+            $config['last_link'] = '&gt;&gt;';
+            //Fin CSS
             $this->pagination->initialize($config);
 
             $page_links = $this->pagination->create_links();
@@ -208,16 +231,16 @@ class Profesor extends CI_Controller
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('prof_nombre1', 'Prof Nombre1', 'required');
-            $this->form_validation->set_rules('prof_apellido1', 'Prof Apellido1', 'required');
-            $this->form_validation->set_rules('prof_tipoid', 'Prof Tipoid', 'required|max_length[3]');
-            $this->form_validation->set_rules('prof_id', 'Prof Id', 'required');
-            $this->form_validation->set_rules('prof_direccion', 'Prof Direccion', 'required');
-            $this->form_validation->set_rules('prof_celular', 'Prof Celular', 'required');
-            $this->form_validation->set_rules('prof_mail', 'Prof Mail', 'required|valid_email');
-            $this->form_validation->set_rules('prof_fechanac', 'Prof Fechanac', 'required');
-            $this->form_validation->set_rules('prof_sexo', 'Prof Sexo', 'required|max_length[1]');
-            $this->form_validation->set_rules('prof_mailpuce', 'Prof Mailpuce', 'valid_email');
+            $this->form_validation->set_rules('prof_nombre1', 'Primer Nombre', 'required');
+            $this->form_validation->set_rules('prof_apellido1', 'Primer Apellido', 'required');
+            $this->form_validation->set_rules('prof_tipoid', 'Tipo ID', 'required|max_length[3]');
+            $this->form_validation->set_rules('prof_id', 'ID', 'required');
+            $this->form_validation->set_rules('prof_direccion', 'Direccion', 'required');
+            $this->form_validation->set_rules('prof_celular', 'Celular', 'required');
+            $this->form_validation->set_rules('prof_mail', 'Mail', 'required|valid_email');
+            $this->form_validation->set_rules('prof_fechanac', 'Fecha de Nacimiento', 'required');
+            $this->form_validation->set_rules('prof_sexo', 'Sexo', 'required|max_length[1]');
+            $this->form_validation->set_rules('prof_mailpuce', 'Mail PUCE', 'valid_email');
 
 
             if ($this->form_validation->run()) {
@@ -274,16 +297,16 @@ class Profesor extends CI_Controller
             if (isset($profesor['prof_codigo'])) {
                 $this->load->library('form_validation');
 
-                $this->form_validation->set_rules('prof_nombre1', 'Prof Nombre1', 'required');
-                $this->form_validation->set_rules('prof_apellido1', 'Prof Apellido1', 'required');
-                $this->form_validation->set_rules('prof_tipoid', 'Prof Tipoid', 'required|max_length[3]');
-                $this->form_validation->set_rules('prof_id', 'Prof Id', 'required');
-                $this->form_validation->set_rules('prof_direccion', 'Prof Direccion', 'required');
-                $this->form_validation->set_rules('prof_celular', 'Prof Celular', 'required');
-                $this->form_validation->set_rules('prof_mail', 'Prof Mail', 'required|valid_email');
-                $this->form_validation->set_rules('prof_fechanac', 'Prof Fechanac', 'required');
-                $this->form_validation->set_rules('prof_sexo', 'Prof Sexo', 'required|max_length[1]');
-                $this->form_validation->set_rules('prof_mailpuce', 'Prof Mailpuce', 'valid_email');
+                $this->form_validation->set_rules('prof_nombre1', 'Primer Nombre', 'required');
+                $this->form_validation->set_rules('prof_apellido1', 'Primer Apellido', 'required');
+                $this->form_validation->set_rules('prof_tipoid', 'Tipo ID', 'required|max_length[3]');
+                $this->form_validation->set_rules('prof_id', 'ID', 'required');
+                $this->form_validation->set_rules('prof_direccion', 'Direccion', 'required');
+                $this->form_validation->set_rules('prof_celular', 'Celular', 'required');
+                $this->form_validation->set_rules('prof_mail', 'Mail', 'required|valid_email');
+                $this->form_validation->set_rules('prof_fechanac', 'Fecha de Nacimiento', 'required');
+                $this->form_validation->set_rules('prof_sexo', 'Sexo', 'required|max_length[1]');
+                $this->form_validation->set_rules('prof_mailpuce', 'Mail PUCE', 'valid_email');
 
                 if ($this->form_validation->run()) {
                     $params = array(

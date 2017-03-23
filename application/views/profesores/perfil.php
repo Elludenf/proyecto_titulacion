@@ -57,7 +57,7 @@
 
         <div id="container-datos">
             <div id="container-inner-datos">
-                <div id="datosp-titulo">Consultas        </div>
+                <div id="datosp-titulo">Acciones        </div>
 
 
             <div id="container-datos">
@@ -69,22 +69,11 @@
                 </div>
                 <div id="container-inner-btn">
 
-                    <a href='#' class=""><img src="<?php echo base_url();?>assets/images/pantalla_perfil/examen-btn.png"></a>
-
-                </div>
-            </div>
-                <div id="datosp-titulo">Revisiones    </div>
-
-                <div id="container-datos">
-
-
-                <div id="container-inner-btn">
-
                     <a href='<?php echo site_url('profesor/addRevision/'.$profesor['prof_codigo'])?>' class=""><img src="<?php echo base_url();?>assets/images/pantalla_perfil/revision-btn.png"></a>
 
                 </div>
-
             </div>
+
             </div>
 
 

@@ -25,7 +25,11 @@
 
 <div id="edit-container">
     <div id="edit-titulo">Modificar Carrera</div>
-<?php echo validation_errors(); ?>
+    <?php if(validation_errors() == true) {?>
+
+        <div id="val_errors"  title="Error"> <?php echo validation_errors(); ?></div>
+
+    <?php  }?>
 
 <?php echo form_open('carrera/edit/'.$carrera['carr_codigo']); ?>
 

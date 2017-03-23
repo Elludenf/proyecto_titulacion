@@ -48,6 +48,17 @@
 // END ----------------------------- 2
 
 
+$(document).ready(function () {
+
+        $("#val_errors").dialog({
+
+            maxWidth:450,
+            maxHeight: 400,
+            width: 450,
+            height: 300
+        });
+
+});
 
 // 3 - MESSAGE BOX FADING SCRIPTS ---------------------------------------------------------------------
 

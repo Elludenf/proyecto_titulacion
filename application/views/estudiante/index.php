@@ -122,7 +122,7 @@
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">ID</a></th>
                                         -->
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Sexo</a></th>
-                                        <th class="table-header-repeat line-left minwidth-1"><a href="">Foto</a></th>
+
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Carrera</a></th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha Ingreso Universidad</a></th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Fecha Estimada Graduación</a></th>
@@ -147,8 +147,7 @@
                                             <td><?php echo $e['est_mail']; ?></td>
                                             <td><?php echo $e['est_mailpuce']; ?></td>
                                             <td><?php echo $e['est_fechanac']; ?></td>
-                                            <td><?php if ($e['est_sexo'] == 'F' )echo 'FEMENINO'; else echo 'MASCULINO';?></td>
-                                            <td><?php echo $e['est_foto']; ?></td>
+                                            <td><?php if ($e['est_sexo'] == 'F' )echo 'Femenino'; else echo 'Masculino';?></td>
                                             <td><?php echo $e['carr_descripcion']; ?></td>
                                             <td><?php echo $e['est_fechaingreso']; ?></td>
                                             <td><?php echo $e['est_fechaestimadagraduacion']; ?></td>

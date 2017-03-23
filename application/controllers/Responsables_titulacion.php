@@ -86,8 +86,8 @@ class Responsables_titulacion extends CI_Controller
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('res_tipo', 'Res Tipo', 'required|max_length[2]');
-            $this->form_validation->set_rules('res_fechanombramiento', 'Res Fechanombramiento', 'required');
+            $this->form_validation->set_rules('res_tipo', 'Tipo de Responsable', 'required|max_length[2]');
+            $this->form_validation->set_rules('res_fechanombramiento', 'Fecha de Nombramiento', 'required');
 
             if ($this->form_validation->run()) {
                 $params = array(
@@ -131,8 +131,8 @@ class Responsables_titulacion extends CI_Controller
             if (isset($responsables_titulacion['res_codigo'])) {
                 $this->load->library('form_validation');
 
-                $this->form_validation->set_rules('res_tipo', 'Res Tipo', 'required|max_length[2]');
-                $this->form_validation->set_rules('res_fechanombramiento', 'Res Fechanombramiento', 'required');
+                $this->form_validation->set_rules('res_tipo', 'Tipo de Responsable', 'required|max_length[2]');
+                $this->form_validation->set_rules('res_fechanombramiento', 'Fecha de Nombramiento', 'required');
 
                 if ($this->form_validation->run()) {
                     $params = array(

@@ -85,8 +85,8 @@ class Revision extends CI_Controller
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('obs_fecha', 'Obs Fecha', 'required');
-            $this->form_validation->set_rules('obs_descripcion', 'Obs Descripcion', 'required|max_length[1024]');
+            $this->form_validation->set_rules('obs_fecha', 'Fecha de la Observacion', 'required');
+            $this->form_validation->set_rules('obs_descripcion', 'Observacion', 'required|max_length[1024]');
 
             if ($this->form_validation->run()) {
                 $params = array(

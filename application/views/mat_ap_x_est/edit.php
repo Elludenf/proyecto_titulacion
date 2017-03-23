@@ -27,7 +27,11 @@
 
 <div id="edit-container">
     <div id="edit-titulo">Modificar Materia Aprobada por Estudiante</div>
-<?php echo validation_errors(); ?>
+    <?php if(validation_errors() == true) {?>
+
+        <div id="val_errors"  title="Error"> <?php echo validation_errors(); ?></div>
+
+    <?php  }?>
 
 <?php echo form_open('mat_ap_x_est/edit/'.$mat_ap_x_est['mat_codigo'].'/'.$mat_ap_x_est['est_codigo']); ?>
 

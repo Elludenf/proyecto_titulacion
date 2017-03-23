@@ -85,8 +85,8 @@ class Carrera extends CI_Controller
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('esc_codigo', 'Esc Codigo', 'required|integer');
-            $this->form_validation->set_rules('carr_descripcion', 'Carr Descripcion', 'required|max_length[50]');
+            $this->form_validation->set_rules('esc_codigo', 'Codigo', 'required|integer');
+            $this->form_validation->set_rules('carr_descripcion', 'Descripcion', 'required|max_length[50]');
 
             if ($this->form_validation->run()) {
                 //$this->db->select_max('carr_codigo');
@@ -128,8 +128,8 @@ class Carrera extends CI_Controller
             if (isset($carrera['carr_codigo'])) {
                 $this->load->library('form_validation');
 
-                $this->form_validation->set_rules('esc_codigo', 'Esc Codigo', 'required|integer');
-                $this->form_validation->set_rules('carr_descripcion', 'Carr Descripcion', 'required|max_length[50]');
+                $this->form_validation->set_rules('esc_codigo', 'Codigo', 'required|integer');
+                $this->form_validation->set_rules('carr_descripcion', 'Descripcion', 'required|max_length[50]');
 
                 if ($this->form_validation->run()) {
                     $params = array(

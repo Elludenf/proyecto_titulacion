@@ -84,8 +84,8 @@ class Escuela extends CI_Controller
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('facu_codigo', 'Facu Codigo', 'required|integer');
-            $this->form_validation->set_rules('esc_descripcion', 'Esc Descripcion', 'required|max_length[50]');
+            $this->form_validation->set_rules('facu_codigo', 'Codigo Facultad', 'required|integer');
+            $this->form_validation->set_rules('esc_descripcion', 'Descripcion Escuela', 'required|max_length[50]');
 
             if ($this->form_validation->run()) {
                 $this->db->select_max('esc_codigo');

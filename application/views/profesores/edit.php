@@ -27,7 +27,11 @@
 
 <div id="edit-container">
     <div id="edit-titulo">Modificar Profesor</div>
-<?php echo validation_errors(); ?>
+    <?php if(validation_errors() == true) {?>
+
+        <div id="val_errors"  title="Error"> <?php echo validation_errors(); ?></div>
+
+    <?php  }?>
 
 <?php echo form_open('profesor/edit/'.$profesor['prof_codigo']); ?>
 
@@ -58,7 +62,6 @@
             <option <?php if ($profesor['prof_sexo'] == 'M' ) echo 'selected' ; ?> value="M">Masculino</option>
         </select>
     </div>
-	<div id="custom-lbl" >Foto : <input type="text" class="edit-inp" name="prof_foto" value="<?php echo ($this->input->post('prof_foto') ? $this->input->post('prof_foto') : $profesor['prof_foto']); ?>" /></div>
 	<div id="custom-lbl" >Oficina : <input type="text" class="edit-inp" name="prof_oficina" value="<?php echo ($this->input->post('prof_oficina') ? $this->input->post('prof_oficina') : $profesor['prof_oficina']); ?>" /></div>
 
     <div id="custom-lbl"><button type="submit" id="edit-submit"></button></div>

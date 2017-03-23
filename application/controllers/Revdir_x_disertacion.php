@@ -86,8 +86,8 @@ class Revdir_x_disertacion extends CI_Controller
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('rxd_tipo', 'Rxd Tipo', 'required|max_length[3]');
-            $this->form_validation->set_rules('rxd_fechanombramiento', 'Rxd Fechanombramiento', 'required');
+            $this->form_validation->set_rules('rxd_tipo', 'Tipo de Responsable', 'required|max_length[3]');
+            $this->form_validation->set_rules('rxd_fechanombramiento', 'Fecha de Nombramiento', 'required');
 
             if ($this->form_validation->run()) {
                 $params = array(
@@ -148,8 +148,8 @@ class Revdir_x_disertacion extends CI_Controller
             if (isset($revdir_x_disertacion['dis_codigo']) && isset($revdir_x_disertacion['prof_codigo'])) {
                 $this->load->library('form_validation');
 
-                $this->form_validation->set_rules('rxd_tipo', 'Rxd Tipo', 'required|max_length[3]');
-                $this->form_validation->set_rules('rxd_fechanombramiento', 'Rxd Fechanombramiento', 'required');
+                $this->form_validation->set_rules('rxd_tipo', 'Tipo de Responsable', 'required|max_length[3]');
+                $this->form_validation->set_rules('rxd_fechanombramiento', 'Fecha de Nombramiento', 'required');
 
                 if ($this->form_validation->run()) {
                     $params = array(

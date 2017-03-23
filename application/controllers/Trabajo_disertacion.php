@@ -86,11 +86,11 @@ class Trabajo_disertacion extends CI_Controller
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('dis_fechainicio', 'Dis Fechainicio', 'required');
-            $this->form_validation->set_rules('dis_fechapresentacionplan', 'Dis Fechapresentacionplan', 'required');
-            $this->form_validation->set_rules('dis_fechaaprobacion', 'Dis Fechaaprobacion', 'required');
-            $this->form_validation->set_rules('dis_titulo', 'Dis Titulo', 'required|max_length[1024]');
-            $this->form_validation->set_rules('dis_estado', 'Dis Estado', 'required');
+            $this->form_validation->set_rules('dis_fechainicio', 'Fecha de Inicio', 'required');
+            $this->form_validation->set_rules('dis_fechapresentacionplan', 'Fecha de Presentacion del Plan', 'required');
+            $this->form_validation->set_rules('dis_fechaaprobacion', 'Fecha de Aprobacion', 'required');
+            $this->form_validation->set_rules('dis_titulo', 'Titulo', 'required|max_length[1024]');
+            $this->form_validation->set_rules('dis_estado', 'Estado', 'required');
 
             if ($this->form_validation->run()) {
                 $params = array(
@@ -134,11 +134,11 @@ class Trabajo_disertacion extends CI_Controller
             if (isset($trabajo_disertacion['dis_codigo'])) {
                 $this->load->library('form_validation');
 
-                $this->form_validation->set_rules('dis_fechainicio', 'Dis Fechainicio', 'required');
-                $this->form_validation->set_rules('dis_fechapresentacionplan', 'Dis Fechapresentacionplan', 'required');
-                $this->form_validation->set_rules('dis_fechaaprobacion', 'Dis Fechaaprobacion', 'required');
-                $this->form_validation->set_rules('dis_titulo', 'Dis Titulo', 'required|max_length[1024]');
-                $this->form_validation->set_rules('dis_estado', 'Dis Estado', 'required');
+                $this->form_validation->set_rules('dis_fechainicio', 'Fecha de Inicio', 'required');
+                $this->form_validation->set_rules('dis_fechapresentacionplan', 'Fecha de Presentacion del Plan', 'required');
+                $this->form_validation->set_rules('dis_fechaaprobacion', 'Fecha de Aprobacion', 'required');
+                $this->form_validation->set_rules('dis_titulo', 'Titulo', 'required|max_length[1024]');
+                $this->form_validation->set_rules('dis_estado', 'Estado', 'required');
 
                 if ($this->form_validation->run()) {
                     $params = array(

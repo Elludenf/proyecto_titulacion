@@ -27,7 +27,11 @@
 
 <div id="edit-container">
 <div id="edit-titulo">Modificar Estudiante</div>
-<?php echo validation_errors(); ?>
+    <?php if(validation_errors() == true) {?>
+
+        <div id="val_errors"  title="Error"> <?php echo validation_errors(); ?></div>
+
+    <?php  }?>
 
 <?php echo form_open('estudiante/edit/'.$estudiante['est_codigo']); ?>
 
@@ -57,7 +61,7 @@
             <option <?php if ($estudiante['est_sexo'] == 'M' ) echo 'selected' ; ?> value="M">Masculino</option>
         </select>
     </div>
-	<div id="custom-lbl">Foto : <input type="text" class="edit-inp" name="est_foto" value="<?php echo ($this->input->post('est_foto') ? $this->input->post('est_foto') : $estudiante['est_foto']); ?>" /></div>
+
 	<div id="custom-lbl">
 		Carrera:
 		<select name="carr_codigo" class="edit-inp" >

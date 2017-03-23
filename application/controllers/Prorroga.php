@@ -86,11 +86,11 @@ class Prorroga extends CI_Controller
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('pro_fechaint', 'Pro Fechaint', 'required');
-            $this->form_validation->set_rules('pro_fechainicio', 'Pro Fechainicio', 'required');
-            $this->form_validation->set_rules('pro_fechafin', 'Pro Fechafin', 'required');
-            $this->form_validation->set_rules('pro_descripcion', 'Pro Descripcion', 'required');
-            $this->form_validation->set_rules('pro_detalle', 'Pro Detalle', 'required|max_length[1024]');
+            $this->form_validation->set_rules('pro_fechaint', 'Fecha de Solicitud', 'required');
+            $this->form_validation->set_rules('pro_fechainicio', 'Fecha de Inicio', 'required');
+            $this->form_validation->set_rules('pro_fechafin', 'Fecha de Fin', 'required');
+            $this->form_validation->set_rules('pro_descripcion', 'Descripcion', 'required');
+            $this->form_validation->set_rules('pro_detalle', 'Detalle', 'required|max_length[1024]');
 
             if ($this->form_validation->run()) {
                 $params = array(
@@ -137,11 +137,11 @@ class Prorroga extends CI_Controller
             if (isset($prorroga['pro_codigo'])) {
                 $this->load->library('form_validation');
 
-                $this->form_validation->set_rules('pro_fechaint', 'Pro Fechaint', 'required');
-                $this->form_validation->set_rules('pro_fechainicio', 'Pro Fechainicio', 'required');
-                $this->form_validation->set_rules('pro_fechafin', 'Pro Fechafin', 'required');
-                $this->form_validation->set_rules('pro_descripcion', 'Pro Descripcion', 'required');
-                $this->form_validation->set_rules('pro_detalle', 'Pro Detalle', 'required|max_length[1024]');
+                $this->form_validation->set_rules('pro_fechaint', 'Fecha de Solicitud', 'required');
+                $this->form_validation->set_rules('pro_fechainicio', 'Fecha de Inicio', 'required');
+                $this->form_validation->set_rules('pro_fechafin', 'Fecha de Fin', 'required');
+                $this->form_validation->set_rules('pro_descripcion', 'Descripcion', 'required');
+                $this->form_validation->set_rules('pro_detalle', 'Detalle', 'required|max_length[1024]');
 
                 if ($this->form_validation->run()) {
                     $params = array(
