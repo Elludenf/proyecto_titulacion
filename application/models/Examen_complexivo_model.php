@@ -47,6 +47,7 @@ ORDER BY titulacion.examen_complexivo.exa_fechainicio ASC
 OFFSET 1')->row_array();
     }
 
+
     function  getPrimeraMateriaSorteadasPrimerIntento($user)
     {
         $correo=$user.'@puce.edu.ec';

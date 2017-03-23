@@ -91,8 +91,8 @@ class Matsorteadas_x_examan extends CI_Controller
             $this->form_validation->set_rules('mxe_nota_escrita_2', 'Nota Escrita 2', 'numeric');
 
             //if (empty($this->input->post('elb_nota_escrito'))) {$nota_escrita = NULL;} else {$nota_escrita=$this->input->post('elb_nota_escrito');}
-            if (empty($this->input->post('mxe_nota_horal_1'))) {$nota_oral1 = NULL;} else {$nota_oral1=$this->input->post('mxe_nota_horal_2');}
-            if (empty($this->input->post('mxe_nota_escrita_1'))) {$nota_escrita1 = NULL;} else {$nota_escrita1=$this->input->post('mxe_nota_escrita_2');}
+            if (empty($this->input->post('mxe_nota_horal_1'))) {$nota_oral1 = NULL;} else {$nota_oral1=$this->input->post('mxe_nota_horal_1');}
+            if (empty($this->input->post('mxe_nota_escrita_1'))) {$nota_escrita1 = NULL;} else {$nota_escrita1=$this->input->post('mxe_nota_escrita_1');}
             if (empty($this->input->post('mxe_fecha_2'))) {$fecha = NULL;} else {$fecha=$this->input->post('mxe_fecha_2');}
             if (empty($this->input->post('mxe_nota_horal_2'))) {$nota_oral = NULL;} else {$nota_oral=$this->input->post('mxe_nota_horal_2');}
             if (empty($this->input->post('mxe_nota_escrita_2'))) {$nota_escrita = NULL;} else {$nota_escrita=$this->input->post('mxe_nota_escrita_2');}
@@ -152,8 +152,8 @@ class Matsorteadas_x_examan extends CI_Controller
                 $this->form_validation->set_rules('mxe_nota_horal_2', 'Nota Oral 2', 'numeric');
                 $this->form_validation->set_rules('mxe_nota_escrita_2', 'Nota Escrita 2', 'numeric');
 
-                if (empty($this->input->post('mxe_nota_horal_1'))) {$nota_oral1 = NULL;} else {$nota_oral1=$this->input->post('mxe_nota_horal_2');}
-                if (empty($this->input->post('mxe_nota_escrita_1'))) {$nota_escrita1 = NULL;} else {$nota_escrita1=$this->input->post('mxe_nota_escrita_2');}
+                if (empty($this->input->post('mxe_nota_horal_1'))) {$nota_oral1 = NULL;} else {$nota_oral1=$this->input->post('mxe_nota_horal_1');}
+                if (empty($this->input->post('mxe_nota_escrita_1'))) {$nota_escrita1 = NULL;} else {$nota_escrita1=$this->input->post('mxe_nota_escrita_1');}
                 if (empty($this->input->post('mxe_nota_horal_2'))) {$nota_oral = NULL;} else {$nota_oral=$this->input->post('mxe_nota_horal_2');}
                 if (empty($this->input->post('mxe_nota_escrita_2'))) {$nota_escrita = NULL;} else {$nota_escrita=$this->input->post('mxe_nota_escrita_2');}
                 if (empty($this->input->post('mxe_fecha_2'))) {$fecha = NULL;} else {$fecha=$this->input->post('mxe_fecha_2');}

@@ -22,6 +22,7 @@
     }
 
 </script>
+
 <script>
     google.charts.load('current', {packages: ['corechart', 'bar']});
     google.charts.setOnLoadCallback(drawMultSeries);
@@ -60,11 +61,11 @@
     function drawMultSeries1() {
         var data = google.visualization.arrayToDataTable([
             ['Materias', 'Nota de examen oral por materia', 'Nota de examen escrito por materia'],
-            [<?php echo "'" ?><?php echo $nombreMateria1ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia1ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia1ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia1ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia1ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
-            [<?php echo "'" ?><?php echo $nombreMateria2ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia2ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia2ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia2ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia2ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
-            [<?php echo "'" ?><?php echo $nombreMateria3ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia3ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia3ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia3ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia3ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
-            [<?php echo "'" ?><?php echo $nombreMateria4ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia4ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia4ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia4ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia4ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ],
-            [<?php echo "'" ?><?php echo $nombreMateria5ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia5ComplexivoSegundoIntento['mxe_nota_horal_1'])==0) echo 0; else echo $materia5ComplexivoSegundoIntento['mxe_nota_horal_1'] ; ?> , <?php if (strlen($materia5ComplexivoSegundoIntento['mxe_nota_escrita_1'])==0) echo 0; else echo $materia5ComplexivoSegundoIntento['mxe_nota_escrita_1'] ; ?> ]
+            [<?php echo "'" ?><?php echo $nombreMateria1ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia1ComplexivoSegundoIntento['mxe_nota_horal_2'])==0) echo 0; else echo $materia1ComplexivoSegundoIntento['mxe_nota_horal_2'] ; ?> , <?php if (strlen($materia1ComplexivoSegundoIntento['mxe_nota_escrita_2'])==0) echo 0; else echo $materia1ComplexivoSegundoIntento['mxe_nota_escrita_2'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria2ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia2ComplexivoSegundoIntento['mxe_nota_horal_2'])==0) echo 0; else echo $materia2ComplexivoSegundoIntento['mxe_nota_horal_2'] ; ?> , <?php if (strlen($materia2ComplexivoSegundoIntento['mxe_nota_escrita_2'])==0) echo 0; else echo $materia2ComplexivoSegundoIntento['mxe_nota_escrita_2'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria3ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia3ComplexivoSegundoIntento['mxe_nota_horal_2'])==0) echo 0; else echo $materia3ComplexivoSegundoIntento['mxe_nota_horal_2'] ; ?> , <?php if (strlen($materia3ComplexivoSegundoIntento['mxe_nota_escrita_2'])==0) echo 0; else echo $materia3ComplexivoSegundoIntento['mxe_nota_escrita_2'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria4ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia4ComplexivoSegundoIntento['mxe_nota_horal_2'])==0) echo 0; else echo $materia4ComplexivoSegundoIntento['mxe_nota_horal_2'] ; ?> , <?php if (strlen($materia4ComplexivoSegundoIntento['mxe_nota_escrita_2'])==0) echo 0; else echo $materia4ComplexivoSegundoIntento['mxe_nota_escrita_2'] ; ?> ],
+            [<?php echo "'" ?><?php echo $nombreMateria5ComplexivoSegundoIntento['mat_nombre']; ?> <?php echo "'" ?>, <?php if (strlen($materia5ComplexivoSegundoIntento['mxe_nota_horal_2'])==0) echo 0; else echo $materia5ComplexivoSegundoIntento['mxe_nota_horal_2'] ; ?> , <?php if (strlen($materia5ComplexivoSegundoIntento['mxe_nota_escrita_2'])==0) echo 0; else echo $materia5ComplexivoSegundoIntento['mxe_nota_escrita_2'] ; ?> ]
         ]);
 
         var options = {
@@ -83,6 +84,8 @@
         chart.draw(data, options);
     }
 </script>
+
+
 <div id ="nav-bar">
 
     <div class = "logo2"><img src = "<?php echo base_url();?>assets/images/pantalla_main/logo_puce2.png"></div>
