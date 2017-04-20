@@ -26,6 +26,7 @@ class Profesor extends CI_Controller
 
             $data['profesores'] = $this->Profesor_model->get_all_profesores();
 
+
             /*Empiezo de paginacion*/
             $total_rows = $this->Profesor_model->count();
 
