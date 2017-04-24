@@ -258,8 +258,8 @@ WHERE FOO IS NOT NULL')->row_array();
             //
         $this->db->limit($limit, $offset);
         $this->db->select('*','carr_descripcion');
-        $this->db->from('estudiante','carreras');
-        $this->db->join('carreras','carreras.carr_codigo=estudiante.carr_codigo');
+        $this->db->from('estudiante','carrera');
+        $this->db->join('carrera','carrera.carr_codigo=estudiante.carr_codigo');
         $this->db->order_by('est_codigo','asc');
         $query=$this->db->get();
         return $query->result_array();

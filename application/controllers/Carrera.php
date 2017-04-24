@@ -24,7 +24,7 @@ class Carrera extends CI_Controller
     function index()
     {
         if (isset($_SERVER['HTTP_REFERER'])) {
-            $data['carreras'] = $this->Carrera_model->get_all_carreras();
+            $data['carrera'] = $this->Carrera_model->get_all_carreras();
 
             /*Empiezo de paginacion*/
             $total_rows = $this->Carrera_model->count();
@@ -66,7 +66,7 @@ class Carrera extends CI_Controller
             $this->load->helper('form');
             $this->load->helper(array('form'));
             $this->load->view('templates/header');
-            $this->load->view('carreras/index', $data);
+            $this->load->view('carrera/index', $data);
             $this->load->view('templates/footer');
 
         } else {
@@ -98,13 +98,13 @@ class Carrera extends CI_Controller
                 );
 
                 $carrera_id = $this->Carrera_model->add_carrera($params);
-                redirect('carreras/index');
+                redirect('carrera/index');
             } else {
 
                 $this->load->model('Escuela_model');
                 $data['all_escuelas'] = $this->Escuela_model->get_all_escuelas_();
                 $this->load->view('templates/header');
-                $this->load->view('carreras/add', $data);
+                $this->load->view('carrera/add', $data);
                 $this->load->view('templates/footer');
             }
         } else {
@@ -146,7 +146,7 @@ class Carrera extends CI_Controller
                     $data['all_escuelas'] = $this->Escuela_model->get_all_escuelas_();
 
                     $this->load->view('templates/header');
-                    $this->load->view('carreras/edit', $data);
+                    $this->load->view('carrera/edit', $data);
                     $this->load->view('templates/footer');
                 }
             } else
@@ -164,7 +164,7 @@ class Carrera extends CI_Controller
     {
 
         if (isset($_SERVER['HTTP_REFERER'])) {
-            $data['carreras'] = $this->Carrera_model->getCarreraBusqueda($this->input->post('search'));
+            $data['carrera'] = $this->Carrera_model->getCarreraBusqueda($this->input->post('search'));
 
             /*Empiezo de paginacion*/
             $total_rows = $this->Carrera_model->countParamSearch($this->input->post('search'));
@@ -208,7 +208,7 @@ class Carrera extends CI_Controller
             $this->load->helper('form');
             $this->load->helper(array('form'));
             $this->load->view('templates/header');
-            $this->load->view('carreras/index', $data);
+            $this->load->view('carrera/index', $data);
             $this->load->view('templates/footer');
         } else {
 

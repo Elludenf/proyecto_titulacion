@@ -41,7 +41,7 @@ class VerifyLogin extends CI_Controller {
             }
             else
 
-               redirect('estudiante/index', 'refresh');
+               redirect('evento/index', 'refresh');
         }
 
     }
